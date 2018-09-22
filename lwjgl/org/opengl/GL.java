@@ -631,6 +631,59 @@ public class GL {
         GL_T2F_C4F_N3F_V3F             = 0x2A2C,
         GL_T4F_C4F_N3F_V4F             = 0x2A2D;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEnable">Reference Page</a></p>
+     * 
+     * Enables the specified OpenGL state.
+     *
+     * @param target the OpenGL state to enable
+     */
+    public static void glEnable(@NativeType("GLenum") int target) {
+        org.lwjgl.opengl.GL11.glEnable(target);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDisable">Reference Page</a></p>
+     * 
+     * Disables the specified OpenGL state.
+     *
+     * @param target the OpenGL state to disable
+     */
+    public static void glDisable(@NativeType("GLenum") int target) {
+        org.lwjgl.opengl.GL11.glDisable(target);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glAccum">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Each portion of a pixel in the accumulation buffer consists of four values: one for each of R, G, B, and A. The accumulation buffer is controlled
+     * exclusively through the use of this method (except for clearing it).
+     *
+     * @param op    a symbolic constant indicating an accumulation buffer operation
+     * @param value a floating-point value to be used in that operation. One of:<br><table><tr><td>{@link #GL_ACCUM ACCUM}</td><td>{@link #GL_LOAD LOAD}</td><td>{@link #GL_RETURN RETURN}</td><td>{@link #GL_MULT MULT}</td><td>{@link #GL_ADD ADD}</td></tr></table>
+     */
+    public static void glAccum(@NativeType("GLenum") int op, @NativeType("GLfloat") float value) {
+        org.lwjgl.opengl.GL11.glAccum(op, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glAlphaFunc">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * The alpha test discards a fragment conditionally based on the outcome of a comparison between the incoming fragment’s alpha value and a constant value.
+     * The comparison is enabled or disabled with the generic {@link #glEnable Enable} and {@link #glDisable Disable} commands using the symbolic constant {@link #GL_ALPHA_TEST ALPHA_TEST}.
+     * When disabled, it is as if the comparison always passes. The test is controlled with this method.
+     *
+     * @param func a symbolic constant indicating the alpha test function. One of:<br><table><tr><td>{@link #GL_NEVER NEVER}</td><td>{@link #GL_ALWAYS ALWAYS}</td><td>{@link #GL_LESS LESS}</td><td>{@link #GL_LEQUAL LEQUAL}</td><td>{@link #GL_EQUAL EQUAL}</td><td>{@link #GL_GEQUAL GEQUAL}</td><td>{@link #GL_GREATER GREATER}</td><td>{@link #GL_NOTEQUAL NOTEQUAL}</td></tr></table>
+     * @param ref  a reference value clamped to the range [0, 1]. When performing the alpha test, the GL will convert the reference value to the same representation as the fragment's alpha value (floating-point or fixed-point).
+     */
+    public static void glAlphaFunc(@NativeType("GLenum") int func, @NativeType("GLfloat") float ref) {
+        org.lwjgl.opengl.GL11.glAlphaFunc(func, ref);
+    }
+    /**
+     * Unsafe version of: {@link #glAreTexturesResident AreTexturesResident}
+     *
+     * @param n the number of texture objects in {@code textures}
+     */
+    public static boolean nglAreTexturesResident(int n, long textures, long residences) {
+        return org.lwjgl.opengl.GL11.nglAreTexturesResident(n, textures, residences);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glAreTexturesResident">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Returns {@link #GL_TRUE TRUE} if all of the texture objects named in textures are resident, or if the implementation does not distinguish a working set. If
@@ -656,6 +709,45 @@ public class GL {
     @NativeType("GLboolean")
     public static boolean glAreTexturesResident(@NativeType("const GLuint *") int texture, @NativeType("GLboolean *") ByteBuffer residences) {
         return org.lwjgl.opengl.GL11.glAreTexturesResident(texture, residences);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glArrayElement">Reference Page</a></p>
+     * 
+     * Transfers the ith element of every enabled, non-instanced array, and the first element of every enabled, instanced array to the GL.
+     *
+     * @param i the element to transfer
+     */
+    public static void glArrayElement(@NativeType("GLint") int i) {
+        org.lwjgl.opengl.GL11.glArrayElement(i);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glBegin">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Begins the definition of vertex attributes of a sequence of primitives to be transferred to the GL.
+     *
+     * @param mode the primitive type being defined. One of:<br><table><tr><td>{@link #GL_POINTS POINTS}</td><td>{@link #GL_LINE_STRIP LINE_STRIP}</td><td>{@link #GL_LINE_LOOP LINE_LOOP}</td><td>{@link #GL_LINES LINES}</td><td>{@link #GL_POLYGON POLYGON}</td><td>{@link #GL_TRIANGLE_STRIP TRIANGLE_STRIP}</td><td>{@link #GL_TRIANGLE_FAN TRIANGLE_FAN}</td></tr><tr><td>{@link #GL_TRIANGLES TRIANGLES}</td><td>{@link #GL_QUAD_STRIP QUAD_STRIP}</td><td>{@link #GL_QUADS QUADS}</td><td>{@link GL32#GL_LINES_ADJACENCY LINES_ADJACENCY}</td><td>{@link GL32#GL_LINE_STRIP_ADJACENCY LINE_STRIP_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLES_ADJACENCY TRIANGLES_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLE_STRIP_ADJACENCY TRIANGLE_STRIP_ADJACENCY}</td></tr><tr><td>{@link GL40#GL_PATCHES PATCHES}</td></tr></table>
+     */
+    public static void glBegin(@NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL11.glBegin(mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindTexture">Reference Page</a></p>
+     * 
+     * Binds the a texture to a texture target.
+     * 
+     * <p>While a texture object is bound, GL operations on the target to which it is bound affect the bound object, and queries of the target to which it is
+     * bound return state from the bound object. If texture mapping of the dimensionality of the target to which a texture object is bound is enabled, the
+     * state of the bound texture object directs the texturing operation.</p>
+     *
+     * @param target  the texture target. One of:<br><table><tr><td>{@link #GL_TEXTURE_1D TEXTURE_1D}</td><td>{@link #GL_TEXTURE_2D TEXTURE_2D}</td><td>{@link GL30#GL_TEXTURE_1D_ARRAY TEXTURE_1D_ARRAY}</td><td>{@link GL31#GL_TEXTURE_RECTANGLE TEXTURE_RECTANGLE}</td><td>{@link GL13#GL_TEXTURE_CUBE_MAP TEXTURE_CUBE_MAP}</td></tr><tr><td>{@link GL12#GL_TEXTURE_3D TEXTURE_3D}</td><td>{@link GL30#GL_TEXTURE_2D_ARRAY TEXTURE_2D_ARRAY}</td><td>{@link GL40#GL_TEXTURE_CUBE_MAP_ARRAY TEXTURE_CUBE_MAP_ARRAY}</td><td>{@link GL31#GL_TEXTURE_BUFFER TEXTURE_BUFFER}</td><td>{@link GL32#GL_TEXTURE_2D_MULTISAMPLE TEXTURE_2D_MULTISAMPLE}</td></tr><tr><td>{@link GL32#GL_TEXTURE_2D_MULTISAMPLE_ARRAY TEXTURE_2D_MULTISAMPLE_ARRAY}</td></tr></table>
+     * @param texture the texture object to bind
+     */
+    public static void glBindTexture(@NativeType("GLenum") int target, @NativeType("GLuint") int texture) {
+        org.lwjgl.opengl.GL11.glBindTexture(target, texture);
+    }
+    /** Unsafe version of: {@link #glBitmap Bitmap} */
+    public static void nglBitmap(int w, int h, float xOrig, float yOrig, float xInc, float yInc, long data) {
+        org.lwjgl.opengl.GL11.nglBitmap(w, h, xOrig, yOrig, xInc, yInc, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glBitmap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -690,6 +782,36 @@ public class GL {
      */
     public static void glBitmap(@NativeType("GLsizei") int w, @NativeType("GLsizei") int h, @NativeType("GLfloat") float xOrig, @NativeType("GLfloat") float yOrig, @NativeType("GLfloat") float xInc, @NativeType("GLfloat") float yInc, @NativeType("const GLubyte *") long data) {
         org.lwjgl.opengl.GL11.glBitmap(w, h, xOrig, yOrig, xInc, yInc, data);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendFunc">Reference Page</a></p>
+     * 
+     * Specifies the weighting factors used by the blend equation, for both RGB and alpha functions and for all draw buffers.
+     *
+     * @param sfactor the source weighting factor. One of:<br><table><tr><td>{@link #GL_ZERO ZERO}</td><td>{@link #GL_ONE ONE}</td><td>{@link #GL_SRC_COLOR SRC_COLOR}</td><td>{@link #GL_ONE_MINUS_SRC_COLOR ONE_MINUS_SRC_COLOR}</td><td>{@link #GL_DST_COLOR DST_COLOR}</td></tr><tr><td>{@link #GL_ONE_MINUS_DST_COLOR ONE_MINUS_DST_COLOR}</td><td>{@link #GL_SRC_ALPHA SRC_ALPHA}</td><td>{@link #GL_ONE_MINUS_SRC_ALPHA ONE_MINUS_SRC_ALPHA}</td><td>{@link #GL_DST_ALPHA DST_ALPHA}</td><td>{@link #GL_ONE_MINUS_DST_ALPHA ONE_MINUS_DST_ALPHA}</td></tr><tr><td>{@link GL14#GL_CONSTANT_COLOR CONSTANT_COLOR}</td><td>{@link GL14#GL_ONE_MINUS_CONSTANT_COLOR ONE_MINUS_CONSTANT_COLOR}</td><td>{@link GL14#GL_CONSTANT_ALPHA CONSTANT_ALPHA}</td><td>{@link GL14#GL_ONE_MINUS_CONSTANT_ALPHA ONE_MINUS_CONSTANT_ALPHA}</td><td>{@link #GL_SRC_ALPHA_SATURATE SRC_ALPHA_SATURATE}</td></tr><tr><td>{@link GL33#GL_SRC1_COLOR SRC1_COLOR}</td><td>{@link GL33#GL_ONE_MINUS_SRC1_COLOR ONE_MINUS_SRC1_COLOR}</td><td>{@link GL15#GL_SRC1_ALPHA SRC1_ALPHA}</td><td>{@link GL33#GL_ONE_MINUS_SRC1_ALPHA ONE_MINUS_SRC1_ALPHA}</td></tr></table>
+     * @param dfactor the destination weighting factor
+     */
+    public static void glBlendFunc(@NativeType("GLenum") int sfactor, @NativeType("GLenum") int dfactor) {
+        org.lwjgl.opengl.GL11.glBlendFunc(sfactor, dfactor);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glCallList">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Executes a display list. Causes the commands saved in the display list to be executed, in order, just as if they were issued without using a display list.
+     *
+     * @param list the index of the display list to be called
+     */
+    public static void glCallList(@NativeType("GLuint") int list) {
+        org.lwjgl.opengl.GL11.glCallList(list);
+    }
+    /**
+     * Unsafe version of: {@link #glCallLists CallLists}
+     *
+     * @param n    the number of display lists to be called
+     * @param type the data type of each element in {@code lists}. One of:<br><table><tr><td>{@link #GL_BYTE BYTE}</td><td>{@link #GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link #GL_SHORT SHORT}</td><td>{@link #GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link #GL_INT INT}</td><td>{@link #GL_UNSIGNED_INT UNSIGNED_INT}</td><td>{@link #GL_FLOAT FLOAT}</td><td>{@link #GL_2_BYTES 2_BYTES}</td><td>{@link #GL_3_BYTES 3_BYTES}</td><td>{@link #GL_4_BYTES 4_BYTES}</td></tr></table>
+     */
+    public static void nglCallLists(int n, int type, long lists) {
+        org.lwjgl.opengl.GL11.nglCallLists(n, type, lists);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glCallLists">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -733,6 +855,80 @@ public class GL {
         org.lwjgl.opengl.GL11.glCallLists(lists);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClear">Reference Page</a></p>
+     * 
+     * Sets portions of every pixel in a particular buffer to the same value. The value to which each buffer is cleared depends on the setting of the clear
+     * value for that buffer.
+     *
+     * @param mask Zero or the bitwise OR of one or more values indicating which buffers are to be cleared. One or more of:<br><table><tr><td>{@link #GL_ACCUM_BUFFER_BIT ACCUM_BUFFER_BIT}</td><td>{@link #GL_COLOR_BUFFER_BIT COLOR_BUFFER_BIT}</td><td>{@link #GL_DEPTH_BUFFER_BIT DEPTH_BUFFER_BIT}</td><td>{@link #GL_STENCIL_BUFFER_BIT STENCIL_BUFFER_BIT}</td></tr></table>
+     */
+    public static void glClear(@NativeType("GLbitfield") int mask) {
+        org.lwjgl.opengl.GL11.glClear(mask);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glClearAccum">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the clear values for the accumulation buffer. These values are clamped to the range [-1,1] when they are specified.
+     *
+     * @param red   the value to which to clear the R values of the accumulation buffer
+     * @param green the value to which to clear the G values of the accumulation buffer
+     * @param blue  the value to which to clear the B values of the accumulation buffer
+     * @param alpha the value to which to clear the A values of the accumulation buffer
+     */
+    public static void glClearAccum(@NativeType("GLfloat") float red, @NativeType("GLfloat") float green, @NativeType("GLfloat") float blue, @NativeType("GLfloat") float alpha) {
+        org.lwjgl.opengl.GL11.glClearAccum(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClearColor">Reference Page</a></p>
+     * 
+     * Sets the clear value for fixed-point and floating-point color buffers in RGBA mode. The specified components are stored as floating-point values.
+     *
+     * @param red   the value to which to clear the R channel of the color buffer
+     * @param green the value to which to clear the G channel of the color buffer
+     * @param blue  the value to which to clear the B channel of the color buffer
+     * @param alpha the value to which to clear the A channel of the color buffer
+     */
+    public static void glClearColor(@NativeType("GLfloat") float red, @NativeType("GLfloat") float green, @NativeType("GLfloat") float blue, @NativeType("GLfloat") float alpha) {
+        org.lwjgl.opengl.GL11.glClearColor(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClearDepth">Reference Page</a></p>
+     * 
+     * Sets the depth value used when clearing the depth buffer. When clearing a fixedpoint depth buffer, {@code depth} is clamped to the range [0,1] and
+     * converted to fixed-point. No conversion is applied when clearing a floating-point depth buffer.
+     *
+     * @param depth the value to which to clear the depth buffer
+     */
+    public static void glClearDepth(@NativeType("GLdouble") double depth) {
+        org.lwjgl.opengl.GL11.glClearDepth(depth);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glClearIndex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * sets the clear color index. index is converted to a fixed-point value with unspecified precision to the left of the binary point; the integer part of
+     * this value is then masked with <code>2<sup>m</sup> &ndash; 1</code>, where {@code m} is the number of bits in a color index value stored in the
+     * framebuffer.
+     *
+     * @param index the value to which to clear the color buffer in color index mode
+     */
+    public static void glClearIndex(@NativeType("GLfloat") float index) {
+        org.lwjgl.opengl.GL11.glClearIndex(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClearStencil">Reference Page</a></p>
+     * 
+     * Sets the value to which to clear the stencil buffer. {@code s} is masked to the number of bitplanes in the stencil buffer.
+     *
+     * @param s the value to which to clear the stencil buffer
+     */
+    public static void glClearStencil(@NativeType("GLint") int s) {
+        org.lwjgl.opengl.GL11.glClearStencil(s);
+    }
+    /** Unsafe version of: {@link #glClipPlane ClipPlane} */
+    public static void nglClipPlane(int plane, long equation) {
+        org.lwjgl.opengl.GL11.nglClipPlane(plane, equation);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClipPlane">Reference Page</a></p>
      * 
      * Specifies a client-defined clip plane.
@@ -750,12 +946,116 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the R, G, and B components of the current color. The alpha component is set to 1.0.
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3b(@NativeType("GLbyte") byte red, @NativeType("GLbyte") byte green, @NativeType("GLbyte") byte blue) {
+        org.lwjgl.opengl.GL11.glColor3b(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glColor3b Color3b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3s(@NativeType("GLshort") short red, @NativeType("GLshort") short green, @NativeType("GLshort") short blue) {
+        org.lwjgl.opengl.GL11.glColor3s(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glColor3b Color3b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3i(@NativeType("GLint") int red, @NativeType("GLint") int green, @NativeType("GLint") int blue) {
+        org.lwjgl.opengl.GL11.glColor3i(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glColor3b Color3b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3f(@NativeType("GLfloat") float red, @NativeType("GLfloat") float green, @NativeType("GLfloat") float blue) {
+        org.lwjgl.opengl.GL11.glColor3f(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glColor3b Color3b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3d(@NativeType("GLdouble") double red, @NativeType("GLdouble") double green, @NativeType("GLdouble") double blue) {
+        org.lwjgl.opengl.GL11.glColor3d(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned version of {@link #glColor3b Color3b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3ub(@NativeType("GLubyte") byte red, @NativeType("GLubyte") byte green, @NativeType("GLubyte") byte blue) {
+        org.lwjgl.opengl.GL11.glColor3ub(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned short version of {@link #glColor3b Color3b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3us(@NativeType("GLushort") short red, @NativeType("GLushort") short green, @NativeType("GLushort") short blue) {
+        org.lwjgl.opengl.GL11.glColor3us(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned int version of {@link #glColor3b Color3b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     */
+    public static void glColor3ui(@NativeType("GLint") int red, @NativeType("GLint") int green, @NativeType("GLint") int blue) {
+        org.lwjgl.opengl.GL11.glColor3ui(red, green, blue);
+    }
+    /** Unsafe version of: {@link #glColor3bv Color3bv} */
+    public static void nglColor3bv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3bv(v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Byte pointer version of {@link #glColor3b Color3b}.
      *
      * @param v the color buffer
      */
     public static void glColor3bv(@NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL11.glColor3bv(v);
+    }
+    /** Unsafe version of: {@link #glColor3sv Color3sv} */
+    public static void nglColor3sv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3sv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -767,6 +1067,10 @@ public class GL {
     public static void glColor3sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glColor3sv(v);
     }
+    /** Unsafe version of: {@link #glColor3iv Color3iv} */
+    public static void nglColor3iv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3iv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -776,6 +1080,10 @@ public class GL {
      */
     public static void glColor3iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glColor3iv(v);
+    }
+    /** Unsafe version of: {@link #glColor3fv Color3fv} */
+    public static void nglColor3fv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3fv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -787,6 +1095,10 @@ public class GL {
     public static void glColor3fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL11.glColor3fv(v);
     }
+    /** Unsafe version of: {@link #glColor3dv Color3dv} */
+    public static void nglColor3dv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3dv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -796,6 +1108,10 @@ public class GL {
      */
     public static void glColor3dv(@NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL11.glColor3dv(v);
+    }
+    /** Unsafe version of: {@link #glColor3ubv Color3ubv} */
+    public static void nglColor3ubv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3ubv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -807,6 +1123,10 @@ public class GL {
     public static void glColor3ubv(@NativeType("const GLubyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL11.glColor3ubv(v);
     }
+    /** Unsafe version of: {@link #glColor3usv Color3usv} */
+    public static void nglColor3usv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3usv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -816,6 +1136,10 @@ public class GL {
      */
     public static void glColor3usv(@NativeType("const GLushort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glColor3usv(v);
+    }
+    /** Unsafe version of: {@link #glColor3uiv Color3uiv} */
+    public static void nglColor3uiv(long v) {
+        org.lwjgl.opengl.GL11.nglColor3uiv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -830,12 +1154,124 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the current color.
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4b(@NativeType("GLbyte") byte red, @NativeType("GLbyte") byte green, @NativeType("GLbyte") byte blue, @NativeType("GLbyte") byte alpha) {
+        org.lwjgl.opengl.GL11.glColor4b(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glColor4b Color4b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4s(@NativeType("GLshort") short red, @NativeType("GLshort") short green, @NativeType("GLshort") short blue, @NativeType("GLshort") short alpha) {
+        org.lwjgl.opengl.GL11.glColor4s(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glColor4b Color4b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4i(@NativeType("GLint") int red, @NativeType("GLint") int green, @NativeType("GLint") int blue, @NativeType("GLint") int alpha) {
+        org.lwjgl.opengl.GL11.glColor4i(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glColor4b Color4b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4f(@NativeType("GLfloat") float red, @NativeType("GLfloat") float green, @NativeType("GLfloat") float blue, @NativeType("GLfloat") float alpha) {
+        org.lwjgl.opengl.GL11.glColor4f(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glColor4b Color4b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4d(@NativeType("GLdouble") double red, @NativeType("GLdouble") double green, @NativeType("GLdouble") double blue, @NativeType("GLdouble") double alpha) {
+        org.lwjgl.opengl.GL11.glColor4d(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned version of {@link #glColor4b Color4b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4ub(@NativeType("GLubyte") byte red, @NativeType("GLubyte") byte green, @NativeType("GLubyte") byte blue, @NativeType("GLubyte") byte alpha) {
+        org.lwjgl.opengl.GL11.glColor4ub(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned short version of {@link #glColor4b Color4b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4us(@NativeType("GLushort") short red, @NativeType("GLushort") short green, @NativeType("GLushort") short blue, @NativeType("GLushort") short alpha) {
+        org.lwjgl.opengl.GL11.glColor4us(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned int version of {@link #glColor4b Color4b}
+     *
+     * @param red   the red component of the current color
+     * @param green the green component of the current color
+     * @param blue  the blue component of the current color
+     * @param alpha the alpha component of the current color
+     */
+    public static void glColor4ui(@NativeType("GLint") int red, @NativeType("GLint") int green, @NativeType("GLint") int blue, @NativeType("GLint") int alpha) {
+        org.lwjgl.opengl.GL11.glColor4ui(red, green, blue, alpha);
+    }
+    /** Unsafe version of: {@link #glColor4bv Color4bv} */
+    public static void nglColor4bv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4bv(v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glColor4b Color4b}.
      *
      * @param v the color buffer
      */
     public static void glColor4bv(@NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL11.glColor4bv(v);
+    }
+    /** Unsafe version of: {@link #glColor4sv Color4sv} */
+    public static void nglColor4sv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4sv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -847,6 +1283,10 @@ public class GL {
     public static void glColor4sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glColor4sv(v);
     }
+    /** Unsafe version of: {@link #glColor4iv Color4iv} */
+    public static void nglColor4iv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4iv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -856,6 +1296,10 @@ public class GL {
      */
     public static void glColor4iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glColor4iv(v);
+    }
+    /** Unsafe version of: {@link #glColor4fv Color4fv} */
+    public static void nglColor4fv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4fv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -867,6 +1311,10 @@ public class GL {
     public static void glColor4fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL11.glColor4fv(v);
     }
+    /** Unsafe version of: {@link #glColor4dv Color4dv} */
+    public static void nglColor4dv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4dv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -876,6 +1324,10 @@ public class GL {
      */
     public static void glColor4dv(@NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL11.glColor4dv(v);
+    }
+    /** Unsafe version of: {@link #glColor4ubv Color4ubv} */
+    public static void nglColor4ubv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4ubv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -887,6 +1339,10 @@ public class GL {
     public static void glColor4ubv(@NativeType("const GLubyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL11.glColor4ubv(v);
     }
+    /** Unsafe version of: {@link #glColor4usv Color4usv} */
+    public static void nglColor4usv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4usv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -897,6 +1353,10 @@ public class GL {
     public static void glColor4usv(@NativeType("const GLushort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glColor4usv(v);
     }
+    /** Unsafe version of: {@link #glColor4uiv Color4uiv} */
+    public static void nglColor4uiv(long v) {
+        org.lwjgl.opengl.GL11.nglColor4uiv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -906,6 +1366,36 @@ public class GL {
      */
     public static void glColor4uiv(@NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glColor4uiv(v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glColorMask">Reference Page</a></p>
+     * 
+     * Masks the writing of R, G, B and A values to all draw buffers. In the initial state, all color values are enabled for writing for all draw buffers.
+     *
+     * @param red   whether R values are written or not
+     * @param green whether G values are written or not
+     * @param blue  whether B values are written or not
+     * @param alpha whether A values are written or not
+     */
+    public static void glColorMask(@NativeType("GLboolean") boolean red, @NativeType("GLboolean") boolean green, @NativeType("GLboolean") boolean blue, @NativeType("GLboolean") boolean alpha) {
+        org.lwjgl.opengl.GL11.glColorMask(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColorMaterial">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * It is possible to attach one or more material properties to the current color, so that they continuously track its component values. This behavior is
+     * enabled and disabled by calling {@link #glEnable Enable} or {@link #glDisable Disable} with the symbolic value {@link #GL_COLOR_MATERIAL COLOR_MATERIAL}. This function controls which
+     * of these modes is selected.
+     *
+     * @param face specifies which material face is affected by the current color. One of:<br><table><tr><td>{@link #GL_FRONT FRONT}</td><td>{@link #GL_BACK BACK}</td><td>{@link #GL_FRONT_AND_BACK FRONT_AND_BACK}</td></tr></table>
+     * @param mode specifies which material property or properties track the current color. One of:<br><table><tr><td>{@link #GL_EMISSION EMISSION}</td><td>{@link #GL_AMBIENT AMBIENT}</td><td>{@link #GL_DIFFUSE DIFFUSE}</td><td>{@link #GL_SPECULAR SPECULAR}</td><td>{@link #GL_AMBIENT_AND_DIFFUSE AMBIENT_AND_DIFFUSE}</td></tr></table>
+     */
+    public static void glColorMaterial(@NativeType("GLenum") int face, @NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL11.glColorMaterial(face, mode);
+    }
+    /** Unsafe version of: {@link #glColorPointer ColorPointer} */
+    public static void nglColorPointer(int size, int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL11.nglColorPointer(size, type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColorPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -971,6 +1461,125 @@ public class GL {
      */
     public static void glColorPointer(@NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLsizei") int stride, @NativeType("const void *") FloatBuffer pointer) {
         org.lwjgl.opengl.GL11.glColorPointer(size, type, stride, pointer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyPixels">Reference Page</a></p>
+     * 
+     * Transfers a rectangle of pixel values from one region of the read framebuffer to another in the draw framebuffer
+     *
+     * @param x      the left framebuffer pixel coordinate
+     * @param y      the lower framebuffer pixel coordinate
+     * @param width  the rectangle width
+     * @param height the rectangle height
+     * @param type   Indicates the type of values to be transfered. One of:<br><table><tr><td>{@link #GL_COLOR COLOR}</td><td>{@link #GL_STENCIL STENCIL}</td><td>{@link #GL_DEPTH DEPTH}</td><td>{@link GL30#GL_DEPTH_STENCIL DEPTH_STENCIL}</td></tr></table>
+     */
+    public static void glCopyPixels(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLenum") int type) {
+        org.lwjgl.opengl.GL11.glCopyPixels(x, y, width, height, type);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCullFace">Reference Page</a></p>
+     * 
+     * Specifies which polygon faces are culled if {@link #GL_CULL_FACE CULL_FACE} is enabled. Front-facing polygons are rasterized if either culling is disabled or the
+     * CullFace mode is {@link #GL_BACK BACK} while back-facing polygons are rasterized only if either culling is disabled or the CullFace mode is
+     * {@link #GL_FRONT FRONT}. The initial setting of the CullFace mode is {@link #GL_BACK BACK}. Initially, culling is disabled.
+     *
+     * @param mode the CullFace mode. One of:<br><table><tr><td>{@link #GL_FRONT FRONT}</td><td>{@link #GL_BACK BACK}</td><td>{@link #GL_FRONT_AND_BACK FRONT_AND_BACK}</td></tr></table>
+     */
+    public static void glCullFace(@NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL11.glCullFace(mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glDeleteLists">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Deletes a contiguous group of display lists. All information about the display lists is lost, and the indices become unused. Indices to which no display
+     * list corresponds are ignored. If {@code range} is zero, nothing happens.
+     *
+     * @param list  the index of the first display list to be deleted
+     * @param range the number of display lists to be deleted
+     */
+    public static void glDeleteLists(@NativeType("GLuint") int list, @NativeType("GLsizei") int range) {
+        org.lwjgl.opengl.GL11.glDeleteLists(list, range);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDepthFunc">Reference Page</a></p>
+     * 
+     * Specifies the comparison that takes place during the depth buffer test (when {@link #GL_DEPTH_TEST DEPTH_TEST} is enabled).
+     *
+     * @param func the depth test comparison. One of:<br><table><tr><td>{@link #GL_NEVER NEVER}</td><td>{@link #GL_ALWAYS ALWAYS}</td><td>{@link #GL_LESS LESS}</td><td>{@link #GL_LEQUAL LEQUAL}</td><td>{@link #GL_EQUAL EQUAL}</td><td>{@link #GL_GREATER GREATER}</td><td>{@link #GL_GEQUAL GEQUAL}</td><td>{@link #GL_NOTEQUAL NOTEQUAL}</td></tr></table>
+     */
+    public static void glDepthFunc(@NativeType("GLenum") int func) {
+        org.lwjgl.opengl.GL11.glDepthFunc(func);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDepthMask">Reference Page</a></p>
+     * 
+     * Masks the writing of depth values to the depth buffer. In the initial state, the depth buffer is enabled for writing.
+     *
+     * @param flag whether depth values are written or not.
+     */
+    public static void glDepthMask(@NativeType("GLboolean") boolean flag) {
+        org.lwjgl.opengl.GL11.glDepthMask(flag);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDepthRange">Reference Page</a></p>
+     * 
+     * Sets the depth range for all viewports to the same values.
+     *
+     * @param zNear the near depth range
+     * @param zFar  the far depth range
+     */
+    public static void glDepthRange(@NativeType("GLdouble") double zNear, @NativeType("GLdouble") double zFar) {
+        org.lwjgl.opengl.GL11.glDepthRange(zNear, zFar);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glDisableClientState">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Disables a client-side capability.
+     * 
+     * <p>If the {@link NVVertexBufferUnifiedMemory} extension is supported, this function is available even in a core profile context.</p>
+     *
+     * @param cap the capability to disable. One of:<br><table><tr><td>{@link #GL_COLOR_ARRAY COLOR_ARRAY}</td><td>{@link #GL_EDGE_FLAG_ARRAY EDGE_FLAG_ARRAY}</td><td>{@link GL15#GL_FOG_COORD_ARRAY FOG_COORD_ARRAY}</td><td>{@link #GL_INDEX_ARRAY INDEX_ARRAY}</td></tr><tr><td>{@link #GL_NORMAL_ARRAY NORMAL_ARRAY}</td><td>{@link GL14#GL_SECONDARY_COLOR_ARRAY SECONDARY_COLOR_ARRAY}</td><td>{@link #GL_TEXTURE_COORD_ARRAY TEXTURE_COORD_ARRAY}</td><td>{@link #GL_VERTEX_ARRAY VERTEX_ARRAY}</td></tr><tr><td>{@link NVVertexBufferUnifiedMemory#GL_VERTEX_ATTRIB_ARRAY_UNIFIED_NV VERTEX_ATTRIB_ARRAY_UNIFIED_NV}</td><td>{@link NVVertexBufferUnifiedMemory#GL_ELEMENT_ARRAY_UNIFIED_NV ELEMENT_ARRAY_UNIFIED_NV}</td></tr></table>
+     */
+    public static void glDisableClientState(@NativeType("GLenum") int cap) {
+        org.lwjgl.opengl.GL11.glDisableClientState(cap);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawArrays">Reference Page</a></p>
+     * 
+     * Constructs a sequence of geometric primitives by successively transferring elements for {@code count} vertices. Elements {@code first} through
+     * <code>first + count &ndash; 1</code> of each enabled non-instanced array are transferred to the GL.
+     * 
+     * <p>If an array corresponding to an attribute required by a vertex shader is not enabled, then the corresponding element is taken from the current attribute
+     * state. If an array is enabled, the corresponding current vertex attribute value is unaffected by the execution of this function.</p>
+     *
+     * @param mode  the kind of primitives being constructed
+     * @param first the first vertex to transfer to the GL
+     * @param count the number of vertices after {@code first} to transfer to the GL
+     */
+    public static void glDrawArrays(@NativeType("GLenum") int mode, @NativeType("GLint") int first, @NativeType("GLsizei") int count) {
+        org.lwjgl.opengl.GL11.glDrawArrays(mode, first, count);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawBuffer">Reference Page</a></p>
+     * 
+     * Defines the color buffer to which fragment color zero is written.
+     * 
+     * <p>Acceptable values for {@code buf} depend on whether the GL is using the default framebuffer (i.e., {@link GL30#GL_DRAW_FRAMEBUFFER_BINDING DRAW_FRAMEBUFFER_BINDING} is zero), or
+     * a framebuffer object (i.e., {@link GL30#GL_DRAW_FRAMEBUFFER_BINDING DRAW_FRAMEBUFFER_BINDING} is non-zero). In the initial state, the GL is bound to the default framebuffer.</p>
+     *
+     * @param buf the color buffer to draw to. One of:<br><table><tr><td>{@link #GL_NONE NONE}</td><td>{@link #GL_FRONT_LEFT FRONT_LEFT}</td><td>{@link #GL_FRONT_RIGHT FRONT_RIGHT}</td><td>{@link #GL_BACK_LEFT BACK_LEFT}</td><td>{@link #GL_BACK_RIGHT BACK_RIGHT}</td><td>{@link #GL_FRONT FRONT}</td><td>{@link #GL_BACK BACK}</td><td>{@link #GL_LEFT LEFT}</td></tr><tr><td>{@link #GL_RIGHT RIGHT}</td><td>{@link #GL_FRONT_AND_BACK FRONT_AND_BACK}</td><td>{@link #GL_AUX0 AUX0}</td><td>{@link #GL_AUX1 AUX1}</td><td>{@link #GL_AUX2 AUX2}</td><td>{@link #GL_AUX3 AUX3}</td><td>{@link GL30#GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>GL30.GL_COLOR_ATTACHMENT[1-15]</td></tr></table>
+     */
+    public static void glDrawBuffer(@NativeType("GLenum") int buf) {
+        org.lwjgl.opengl.GL11.glDrawBuffer(buf);
+    }
+    /**
+     * Unsafe version of: {@link #glDrawElements DrawElements}
+     *
+     * @param count the number of vertices to transfer to the GL
+     * @param type  indicates the type of index values in {@code indices}. One of:<br><table><tr><td>{@link #GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link #GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link #GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawElements(int mode, int count, int type, long indices) {
+        org.lwjgl.opengl.GL11.nglDrawElements(mode, count, type, indices);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawElements">Reference Page</a></p>
@@ -1039,6 +1648,10 @@ public class GL {
      */
     public static void glDrawElements(@NativeType("GLenum") int mode, @NativeType("const void *") IntBuffer indices) {
         org.lwjgl.opengl.GL11.glDrawElements(mode, indices);
+    }
+    /** Unsafe version of: {@link #glDrawPixels DrawPixels} */
+    public static void nglDrawPixels(int width, int height, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL11.nglDrawPixels(width, height, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glDrawPixels">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1111,6 +1724,26 @@ public class GL {
         org.lwjgl.opengl.GL11.glDrawPixels(width, height, format, type, pixels);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEdgeFlag">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Each edge of each polygon primitive generated is flagged as either boundary or non-boundary. These classifications are used during polygon
+     * rasterization; some modes affect the interpretation of polygon boundary edges. By default, all edges are boundary edges, but the flagging of polygons,
+     * separate triangles, or separate quadrilaterals may be altered by calling this function.
+     * 
+     * <p>When a primitive of type {@link #GL_POLYGON POLYGON}, {@link #GL_TRIANGLES TRIANGLES}, or {@link #GL_QUADS QUADS} is drawn, each vertex transferred begins an edge. If the edge
+     * flag bit is TRUE, then each specified vertex begins an edge that is flagged as boundary. If the bit is FALSE, then induced edges are flagged as
+     * non-boundary.</p>
+     *
+     * @param flag the edge flag bit
+     */
+    public static void glEdgeFlag(@NativeType("GLboolean") boolean flag) {
+        org.lwjgl.opengl.GL11.glEdgeFlag(flag);
+    }
+    /** Unsafe version of: {@link #glEdgeFlagv EdgeFlagv} */
+    public static void nglEdgeFlagv(long flag) {
+        org.lwjgl.opengl.GL11.nglEdgeFlagv(flag);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glEdgeFlagv">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glEdgeFlag EdgeFlag}.
@@ -1119,6 +1752,10 @@ public class GL {
      */
     public static void glEdgeFlagv(@NativeType("const GLboolean *") ByteBuffer flag) {
         org.lwjgl.opengl.GL11.glEdgeFlagv(flag);
+    }
+    /** Unsafe version of: {@link #glEdgeFlagPointer EdgeFlagPointer} */
+    public static void nglEdgeFlagPointer(int stride, long pointer) {
+        org.lwjgl.opengl.GL11.nglEdgeFlagPointer(stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glEdgeFlagPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1143,6 +1780,40 @@ public class GL {
         org.lwjgl.opengl.GL11.glEdgeFlagPointer(stride, pointer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEnableClientState">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Enables a client-side capability.
+     * 
+     * <p>If the {@link NVVertexBufferUnifiedMemory} extension is supported, this function is available even in a core profile context.</p>
+     *
+     * @param cap the capability to enable. One of:<br><table><tr><td>{@link #GL_COLOR_ARRAY COLOR_ARRAY}</td><td>{@link #GL_EDGE_FLAG_ARRAY EDGE_FLAG_ARRAY}</td><td>{@link GL15#GL_FOG_COORD_ARRAY FOG_COORD_ARRAY}</td><td>{@link #GL_INDEX_ARRAY INDEX_ARRAY}</td></tr><tr><td>{@link #GL_NORMAL_ARRAY NORMAL_ARRAY}</td><td>{@link GL14#GL_SECONDARY_COLOR_ARRAY SECONDARY_COLOR_ARRAY}</td><td>{@link #GL_TEXTURE_COORD_ARRAY TEXTURE_COORD_ARRAY}</td><td>{@link #GL_VERTEX_ARRAY VERTEX_ARRAY}</td></tr><tr><td>{@link NVVertexBufferUnifiedMemory#GL_VERTEX_ATTRIB_ARRAY_UNIFIED_NV VERTEX_ATTRIB_ARRAY_UNIFIED_NV}</td><td>{@link NVVertexBufferUnifiedMemory#GL_ELEMENT_ARRAY_UNIFIED_NV ELEMENT_ARRAY_UNIFIED_NV}</td></tr></table>
+     */
+    public static void glEnableClientState(@NativeType("GLenum") int cap) {
+        org.lwjgl.opengl.GL11.glEnableClientState(cap);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEnd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Ends the definition of vertex attributes of a sequence of primitives to be transferred to the GL.
+     */
+    public static void glEnd() {
+        org.lwjgl.opengl.GL11.glEnd();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Causes evaluation of the enabled one-dimensional evaluator maps.
+     *
+     * @param u the domain coordinate u
+     */
+    public static void glEvalCoord1f(@NativeType("GLfloat") float u) {
+        org.lwjgl.opengl.GL11.glEvalCoord1f(u);
+    }
+    /** Unsafe version of: {@link #glEvalCoord1fv EvalCoord1fv} */
+    public static void nglEvalCoord1fv(long u) {
+        org.lwjgl.opengl.GL11.nglEvalCoord1fv(u);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glEvalCoord1f EvalCoord1f}.
@@ -1151,6 +1822,20 @@ public class GL {
      */
     public static void glEvalCoord1fv(@NativeType("const GLfloat *") FloatBuffer u) {
         org.lwjgl.opengl.GL11.glEvalCoord1fv(u);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glEvalCoord1f EvalCoord1f}.
+     *
+     * @param u the domain coordinate u
+     */
+    public static void glEvalCoord1d(@NativeType("GLdouble") double u) {
+        org.lwjgl.opengl.GL11.glEvalCoord1d(u);
+    }
+    /** Unsafe version of: {@link #glEvalCoord1dv EvalCoord1dv} */
+    public static void nglEvalCoord1dv(long u) {
+        org.lwjgl.opengl.GL11.nglEvalCoord1dv(u);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1165,6 +1850,21 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Causes evaluation of the enabled two-dimensional evaluator maps.
+     *
+     * @param u the domain coordinate u
+     * @param v the domain coordinate v
+     */
+    public static void glEvalCoord2f(@NativeType("GLfloat") float u, @NativeType("GLfloat") float v) {
+        org.lwjgl.opengl.GL11.glEvalCoord2f(u, v);
+    }
+    /** Unsafe version of: {@link #glEvalCoord2fv EvalCoord2fv} */
+    public static void nglEvalCoord2fv(long u) {
+        org.lwjgl.opengl.GL11.nglEvalCoord2fv(u);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glEvalCoord2f EvalCoord2f}.
      *
      * @param u the domain coordinate buffer
@@ -1175,12 +1875,82 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Double version of {@link #glEvalCoord2f EvalCoord2f}.
+     *
+     * @param u the domain coordinate u
+     * @param v the domain coordinate v
+     */
+    public static void glEvalCoord2d(@NativeType("GLdouble") double u, @NativeType("GLdouble") double v) {
+        org.lwjgl.opengl.GL11.glEvalCoord2d(u, v);
+    }
+    /** Unsafe version of: {@link #glEvalCoord2dv EvalCoord2dv} */
+    public static void nglEvalCoord2dv(long u) {
+        org.lwjgl.opengl.GL11.nglEvalCoord2dv(u);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glEvalCoord2d EvalCoord2d}.
      *
      * @param u the domain coordinate buffer
      */
     public static void glEvalCoord2dv(@NativeType("const GLdouble *") DoubleBuffer u) {
         org.lwjgl.opengl.GL11.glEvalCoord2dv(u);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalMesh1">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Carries out an evaluation on a subset of the one-dimensional map grid.
+     *
+     * @param mode the mesh type. One of:<br><table><tr><td>{@link #GL_POINT POINT}</td><td>{@link #GL_LINE LINE}</td></tr></table>
+     * @param i1   the start index
+     * @param i2   the end index
+     */
+    public static void glEvalMesh1(@NativeType("GLenum") int mode, @NativeType("GLint") int i1, @NativeType("GLint") int i2) {
+        org.lwjgl.opengl.GL11.glEvalMesh1(mode, i1, i2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalMesh2">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Carries out an evaluation on a rectangular subset of the two-dimensional map grid.
+     *
+     * @param mode the mesh type. One of:<br><table><tr><td>{@link #GL_FILL FILL}</td><td>{@link #GL_LINE LINE}</td><td>{@link #GL_POINT POINT}</td></tr></table>
+     * @param i1   the u-dimension start index
+     * @param i2   the u-dimension end index
+     * @param j1   the v-dimension start index
+     * @param j2   the v-dimension end index
+     */
+    public static void glEvalMesh2(@NativeType("GLenum") int mode, @NativeType("GLint") int i1, @NativeType("GLint") int i2, @NativeType("GLint") int j1, @NativeType("GLint") int j2) {
+        org.lwjgl.opengl.GL11.glEvalMesh2(mode, i1, i2, j1, j2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalPoint1">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Carries out an evalutation of a single point on the one-dimensional map grid.
+     *
+     * @param i the grid index
+     */
+    public static void glEvalPoint1(@NativeType("GLint") int i) {
+        org.lwjgl.opengl.GL11.glEvalPoint1(i);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEvalPoint2">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Carries out an evalutation of a single point on the two-dimensional map grid.
+     *
+     * @param i the u-dimension grid index
+     * @param j the v-dimension grid index
+     */
+    public static void glEvalPoint2(@NativeType("GLint") int i, @NativeType("GLint") int j) {
+        org.lwjgl.opengl.GL11.glEvalPoint2(i, j);
+    }
+    /**
+     * Unsafe version of: {@link #glFeedbackBuffer FeedbackBuffer}
+     *
+     * @param size the maximum number of values that can be written to {@code buffer}
+     */
+    public static void nglFeedbackBuffer(int size, int type, long buffer) {
+        org.lwjgl.opengl.GL11.nglFeedbackBuffer(size, type, buffer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glFeedbackBuffer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1194,6 +1964,38 @@ public class GL {
         org.lwjgl.opengl.GL11.glFeedbackBuffer(type, buffer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFinish">Reference Page</a></p>
+     * 
+     * Forces all previously issued GL commands to complete. {@code Finish} does not return until all effects from such commands on GL client and server
+     * state and the framebuffer are fully realized.
+     */
+    public static void glFinish() {
+        org.lwjgl.opengl.GL11.glFinish();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFlush">Reference Page</a></p>
+     * 
+     * Causes all previously issued GL commands to complete in finite time (although such commands may still be executing when {@code Flush} returns).
+     */
+    public static void glFlush() {
+        org.lwjgl.opengl.GL11.glFlush();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glFogi">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the integer value of a fog parameter.
+     *
+     * @param pname the fog parameter. One of:<br><table><tr><td>{@link #GL_FOG_MODE FOG_MODE}</td><td>{@link GL15#GL_FOG_COORD_SRC FOG_COORD_SRC}</td></tr></table>
+     * @param param the fog parameter value. One of:<br><table><tr><td>{@link #GL_EXP EXP}</td><td>{@link #GL_EXP2 EXP2}</td><td>{@link #GL_LINEAR LINEAR}</td><td>{@link GL14#GL_FRAGMENT_DEPTH FRAGMENT_DEPTH}</td><td>{@link GL15#GL_FOG_COORD FOG_COORD}</td></tr></table>
+     */
+    public static void glFogi(@NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glFogi(pname, param);
+    }
+    /** Unsafe version of: {@link #glFogiv Fogiv} */
+    public static void nglFogiv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglFogiv(pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glFog">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glFogi Fogi}.
@@ -1205,6 +2007,21 @@ public class GL {
         org.lwjgl.opengl.GL11.glFogiv(pname, params);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glFogf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the float value of a fog parameter.
+     *
+     * @param pname the fog parameter. One of:<br><table><tr><td>{@link #GL_FOG_DENSITY FOG_DENSITY}</td><td>{@link #GL_FOG_START FOG_START}</td><td>{@link #GL_FOG_END FOG_END}</td></tr></table>
+     * @param param the fog parameter value
+     */
+    public static void glFogf(@NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glFogf(pname, param);
+    }
+    /** Unsafe version of: {@link #glFogfv Fogfv} */
+    public static void nglFogfv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglFogfv(pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glFog">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glFogf Fogf}.
@@ -1214,6 +2031,40 @@ public class GL {
      */
     public static void glFogfv(@NativeType("GLenum") int pname, @NativeType("const GLfloat *") FloatBuffer params) {
         org.lwjgl.opengl.GL11.glFogfv(pname, params);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFrontFace">Reference Page</a></p>
+     * 
+     * The first step of polygon rasterization is to determine if the polygon is back-facing or front-facing. This determination is made based on the sign of
+     * the (clipped or unclipped) polygon's area computed in window coordinates. The interpretation of the sign of this value is controlled with this function.
+     * In the initial state, the front face direction is set to {@link #GL_CCW CCW}.
+     *
+     * @param dir the front face direction. One of:<br><table><tr><td>{@link #GL_CCW CCW}</td><td>{@link #GL_CW CW}</td></tr></table>
+     */
+    public static void glFrontFace(@NativeType("GLenum") int dir) {
+        org.lwjgl.opengl.GL11.glFrontFace(dir);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glGenLists">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Returns an integer n such that the indices {@code n,..., n + s - 1} are previously unused (i.e. there are {@code s} previously unused display list
+     * indices starting at n). {@code GenLists} also has the effect of creating an empty display list for each of the indices {@code n,..., n + s - 1}, so
+     * that these indices all become used. {@code GenLists} returns zero if there is no group of {@code s} contiguous previously unused display list indices,
+     * or if {@code s = 0}.
+     *
+     * @param s the number of display lists to create
+     */
+    @NativeType("GLuint")
+    public static int glGenLists(@NativeType("GLsizei") int s) {
+        return org.lwjgl.opengl.GL11.glGenLists(s);
+    }
+    /**
+     * Unsafe version of: {@link #glGenTextures GenTextures}
+     *
+     * @param n the number of textures to create
+     */
+    public static void nglGenTextures(int n, long textures) {
+        org.lwjgl.opengl.GL11.nglGenTextures(n, textures);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenTextures">Reference Page</a></p>
@@ -1235,6 +2086,14 @@ public class GL {
     @NativeType("void")
     public static int glGenTextures() {
         return org.lwjgl.opengl.GL11.glGenTextures();
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteTextures DeleteTextures}
+     *
+     * @param n the number of texture names in the {@code textures} parameter
+     */
+    public static void nglDeleteTextures(int n, long textures) {
+        org.lwjgl.opengl.GL11.nglDeleteTextures(n, textures);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteTextures">Reference Page</a></p>
@@ -1266,6 +2125,10 @@ public class GL {
     public static void glDeleteTextures(@NativeType("const GLuint *") int texture) {
         org.lwjgl.opengl.GL11.glDeleteTextures(texture);
     }
+    /** Unsafe version of: {@link #glGetClipPlane GetClipPlane} */
+    public static void nglGetClipPlane(int plane, long equation) {
+        org.lwjgl.opengl.GL11.nglGetClipPlane(plane, equation);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetClipPlane">Reference Page</a></p>
      * 
@@ -1277,6 +2140,10 @@ public class GL {
      */
     public static void glGetClipPlane(@NativeType("GLenum") int plane, @NativeType("GLdouble *") DoubleBuffer equation) {
         org.lwjgl.opengl.GL11.glGetClipPlane(plane, equation);
+    }
+    /** Unsafe version of: {@link #glGetBooleanv GetBooleanv} */
+    public static void nglGetBooleanv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetBooleanv(pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBooleanv">Reference Page</a></p>
@@ -1308,6 +2175,10 @@ public class GL {
     public static boolean glGetBoolean(@NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetBoolean(pname);
     }
+    /** Unsafe version of: {@link #glGetFloatv GetFloatv} */
+    public static void nglGetFloatv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetFloatv(pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFloatv">Reference Page</a></p>
      * 
@@ -1338,6 +2209,10 @@ public class GL {
     public static float glGetFloat(@NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetFloat(pname);
     }
+    /** Unsafe version of: {@link #glGetIntegerv GetIntegerv} */
+    public static void nglGetIntegerv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetIntegerv(pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetIntegerv">Reference Page</a></p>
      * 
@@ -1367,6 +2242,10 @@ public class GL {
     @NativeType("void")
     public static int glGetInteger(@NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetInteger(pname);
+    }
+    /** Unsafe version of: {@link #glGetDoublev GetDoublev} */
+    public static void nglGetDoublev(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetDoublev(pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetDoublev">Reference Page</a></p>
@@ -1399,6 +2278,22 @@ public class GL {
         return org.lwjgl.opengl.GL11.glGetDouble(pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGetError">Reference Page</a></p>
+     * 
+     * Returns error information. Each detectable error is assigned a numeric code. When an error is detected, a flag is set and the code is recorded. Further
+     * errors, if they occur, do not affect this recorded code. When {@code GetError} is called, the code is returned and the flag is cleared, so that a
+     * further error will again record its code. If a call to {@code GetError} returns {@link #GL_NO_ERROR NO_ERROR}, then there has been no detectable error since
+     * the last call to {@code GetError} (or since the GL was initialized).
+     */
+    @NativeType("GLenum")
+    public static int glGetError() {
+        return org.lwjgl.opengl.GL11.glGetError();
+    }
+    /** Unsafe version of: {@link #glGetLightiv GetLightiv} */
+    public static void nglGetLightiv(int light, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetLightiv(light, pname, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetLight">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Returns integer information about light parameter {@code pname} for {@code light} in {@code data}.
@@ -1421,6 +2316,10 @@ public class GL {
     @NativeType("void")
     public static int glGetLighti(@NativeType("GLenum") int light, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetLighti(light, pname);
+    }
+    /** Unsafe version of: {@link #glGetLightfv GetLightfv} */
+    public static void nglGetLightfv(int light, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetLightfv(light, pname, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetLight">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1446,6 +2345,10 @@ public class GL {
     public static float glGetLightf(@NativeType("GLenum") int light, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetLightf(light, pname);
     }
+    /** Unsafe version of: {@link #glGetMapiv GetMapiv} */
+    public static void nglGetMapiv(int target, int query, long data) {
+        org.lwjgl.opengl.GL11.nglGetMapiv(target, query, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1469,6 +2372,10 @@ public class GL {
     @NativeType("void")
     public static int glGetMapi(@NativeType("GLenum") int target, @NativeType("GLenum") int query) {
         return org.lwjgl.opengl.GL11.glGetMapi(target, query);
+    }
+    /** Unsafe version of: {@link #glGetMapfv GetMapfv} */
+    public static void nglGetMapfv(int target, int query, long data) {
+        org.lwjgl.opengl.GL11.nglGetMapfv(target, query, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1494,6 +2401,10 @@ public class GL {
     public static float glGetMapf(@NativeType("GLenum") int target, @NativeType("GLenum") int query) {
         return org.lwjgl.opengl.GL11.glGetMapf(target, query);
     }
+    /** Unsafe version of: {@link #glGetMapdv GetMapdv} */
+    public static void nglGetMapdv(int target, int query, long data) {
+        org.lwjgl.opengl.GL11.nglGetMapdv(target, query, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1518,6 +2429,10 @@ public class GL {
     public static double glGetMapd(@NativeType("GLenum") int target, @NativeType("GLenum") int query) {
         return org.lwjgl.opengl.GL11.glGetMapd(target, query);
     }
+    /** Unsafe version of: {@link #glGetMaterialiv GetMaterialiv} */
+    public static void nglGetMaterialiv(int face, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetMaterialiv(face, pname, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetMaterial">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1530,6 +2445,10 @@ public class GL {
     public static void glGetMaterialiv(@NativeType("GLenum") int face, @NativeType("GLenum") int pname, @NativeType("GLint *") IntBuffer data) {
         org.lwjgl.opengl.GL11.glGetMaterialiv(face, pname, data);
     }
+    /** Unsafe version of: {@link #glGetMaterialfv GetMaterialfv} */
+    public static void nglGetMaterialfv(int face, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetMaterialfv(face, pname, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetMaterial">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1541,6 +2460,10 @@ public class GL {
      */
     public static void glGetMaterialfv(@NativeType("GLenum") int face, @NativeType("GLenum") int pname, @NativeType("GLfloat *") FloatBuffer data) {
         org.lwjgl.opengl.GL11.glGetMaterialfv(face, pname, data);
+    }
+    /** Unsafe version of: {@link #glGetPixelMapfv GetPixelMapfv} */
+    public static void nglGetPixelMapfv(int map, long data) {
+        org.lwjgl.opengl.GL11.nglGetPixelMapfv(map, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetPixelMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1564,6 +2487,10 @@ public class GL {
     public static void glGetPixelMapfv(@NativeType("GLenum") int map, @NativeType("GLfloat *") long data) {
         org.lwjgl.opengl.GL11.glGetPixelMapfv(map, data);
     }
+    /** Unsafe version of: {@link #glGetPixelMapusv GetPixelMapusv} */
+    public static void nglGetPixelMapusv(int map, long data) {
+        org.lwjgl.opengl.GL11.nglGetPixelMapusv(map, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetPixelMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1585,6 +2512,10 @@ public class GL {
      */
     public static void glGetPixelMapusv(@NativeType("GLenum") int map, @NativeType("GLushort *") long data) {
         org.lwjgl.opengl.GL11.glGetPixelMapusv(map, data);
+    }
+    /** Unsafe version of: {@link #glGetPixelMapuiv GetPixelMapuiv} */
+    public static void nglGetPixelMapuiv(int map, long data) {
+        org.lwjgl.opengl.GL11.nglGetPixelMapuiv(map, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetPixelMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1608,6 +2539,10 @@ public class GL {
     public static void glGetPixelMapuiv(@NativeType("GLenum") int map, @NativeType("GLuint *") long data) {
         org.lwjgl.opengl.GL11.glGetPixelMapuiv(map, data);
     }
+    /** Unsafe version of: {@link #glGetPointerv GetPointerv} */
+    public static void nglGetPointerv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetPointerv(pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetPointerv">Reference Page</a></p>
      * 
@@ -1630,6 +2565,10 @@ public class GL {
     public static long glGetPointer(@NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetPointer(pname);
     }
+    /** Unsafe version of: {@link #glGetPolygonStipple GetPolygonStipple} */
+    public static void nglGetPolygonStipple(long pattern) {
+        org.lwjgl.opengl.GL11.nglGetPolygonStipple(pattern);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetPolygonStipple">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1650,6 +2589,10 @@ public class GL {
     public static void glGetPolygonStipple(@NativeType("void *") long pattern) {
         org.lwjgl.opengl.GL11.glGetPolygonStipple(pattern);
     }
+    /** Unsafe version of: {@link #glGetString GetString} */
+    public static long nglGetString(int name) {
+        return org.lwjgl.opengl.GL11.nglGetString(name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetString">Reference Page</a></p>
      * 
@@ -1660,6 +2603,10 @@ public class GL {
     @NativeType("const GLubyte *")
     public static String glGetString(@NativeType("GLenum") int name) {
         return org.lwjgl.opengl.GL11.glGetString(name);
+    }
+    /** Unsafe version of: {@link #glGetTexEnviv GetTexEnviv} */
+    public static void nglGetTexEnviv(int env, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetTexEnviv(env, pname, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexEnv">Reference Page</a></p>
@@ -1685,6 +2632,10 @@ public class GL {
     public static int glGetTexEnvi(@NativeType("GLenum") int env, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexEnvi(env, pname);
     }
+    /** Unsafe version of: {@link #glGetTexEnvfv GetTexEnvfv} */
+    public static void nglGetTexEnvfv(int env, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetTexEnvfv(env, pname, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexEnv">Reference Page</a></p>
      * 
@@ -1708,6 +2659,10 @@ public class GL {
     @NativeType("void")
     public static float glGetTexEnvf(@NativeType("GLenum") int env, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexEnvf(env, pname);
+    }
+    /** Unsafe version of: {@link #glGetTexGeniv GetTexGeniv} */
+    public static void nglGetTexGeniv(int coord, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetTexGeniv(coord, pname, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetTexGen">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1733,6 +2688,10 @@ public class GL {
     public static int glGetTexGeni(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexGeni(coord, pname);
     }
+    /** Unsafe version of: {@link #glGetTexGenfv GetTexGenfv} */
+    public static void nglGetTexGenfv(int coord, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetTexGenfv(coord, pname, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetTexGen">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1757,6 +2716,10 @@ public class GL {
     public static float glGetTexGenf(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexGenf(coord, pname);
     }
+    /** Unsafe version of: {@link #glGetTexGendv GetTexGendv} */
+    public static void nglGetTexGendv(int coord, int pname, long data) {
+        org.lwjgl.opengl.GL11.nglGetTexGendv(coord, pname, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glGetTexGen">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1780,6 +2743,10 @@ public class GL {
     @NativeType("void")
     public static double glGetTexGend(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexGend(coord, pname);
+    }
+    /** Unsafe version of: {@link #glGetTexImage GetTexImage} */
+    public static void nglGetTexImage(int tex, int level, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL11.nglGetTexImage(tex, level, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexImage">Reference Page</a></p>
@@ -1865,6 +2832,10 @@ public class GL {
     public static void glGetTexImage(@NativeType("GLenum") int tex, @NativeType("GLint") int level, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("void *") DoubleBuffer pixels) {
         org.lwjgl.opengl.GL11.glGetTexImage(tex, level, format, type, pixels);
     }
+    /** Unsafe version of: {@link #glGetTexLevelParameteriv GetTexLevelParameteriv} */
+    public static void nglGetTexLevelParameteriv(int target, int level, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetTexLevelParameteriv(target, level, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexLevelParameter">Reference Page</a></p>
      * 
@@ -1890,6 +2861,10 @@ public class GL {
     @NativeType("void")
     public static int glGetTexLevelParameteri(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexLevelParameteri(target, level, pname);
+    }
+    /** Unsafe version of: {@link #glGetTexLevelParameterfv GetTexLevelParameterfv} */
+    public static void nglGetTexLevelParameterfv(int target, int level, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetTexLevelParameterfv(target, level, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexLevelParameter">Reference Page</a></p>
@@ -1917,6 +2892,10 @@ public class GL {
     public static float glGetTexLevelParameterf(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexLevelParameterf(target, level, pname);
     }
+    /** Unsafe version of: {@link #glGetTexParameteriv GetTexParameteriv} */
+    public static void nglGetTexParameteriv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetTexParameteriv(target, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexParameter">Reference Page</a></p>
      * 
@@ -1940,6 +2919,10 @@ public class GL {
     @NativeType("void")
     public static int glGetTexParameteri(@NativeType("GLenum") int target, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL11.glGetTexParameteri(target, pname);
+    }
+    /** Unsafe version of: {@link #glGetTexParameterfv GetTexParameterfv} */
+    public static void nglGetTexParameterfv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglGetTexParameterfv(target, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexParameter">Reference Page</a></p>
@@ -1966,6 +2949,72 @@ public class GL {
         return org.lwjgl.opengl.GL11.glGetTexParameterf(target, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glHint">Reference Page</a></p>
+     * 
+     * Certain aspects of GL behavior, when there is room for variation, may be controlled with this function. The initial value for all hints is
+     * {@link #GL_DONT_CARE DONT_CARE}.
+     *
+     * @param target the behavior to control. One of:<br><table><tr><td>{@link #GL_PERSPECTIVE_CORRECTION_HINT PERSPECTIVE_CORRECTION_HINT}</td><td>{@link #GL_POINT_SMOOTH_HINT POINT_SMOOTH_HINT}</td><td>{@link #GL_LINE_SMOOTH_HINT LINE_SMOOTH_HINT}</td><td>{@link #GL_POLYGON_SMOOTH_HINT POLYGON_SMOOTH_HINT}</td></tr><tr><td>{@link #GL_FOG_HINT FOG_HINT}</td><td>{@link GL14#GL_GENERATE_MIPMAP_HINT GENERATE_MIPMAP_HINT}</td><td>{@link GL13#GL_TEXTURE_COMPRESSION_HINT TEXTURE_COMPRESSION_HINT}</td><td>{@link GL20#GL_FRAGMENT_SHADER_DERIVATIVE_HINT FRAGMENT_SHADER_DERIVATIVE_HINT}</td></tr></table>
+     * @param hint   the behavior hint. One of:<br><table><tr><td>{@link #GL_FASTEST FASTEST}</td><td>{@link #GL_NICEST NICEST}</td><td>{@link #GL_DONT_CARE DONT_CARE}</td></tr></table>
+     */
+    public static void glHint(@NativeType("GLenum") int target, @NativeType("GLenum") int hint) {
+        org.lwjgl.opengl.GL11.glHint(target, hint);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glIndexi">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Updates the current (single-valued) color index.
+     *
+     * @param index the value to which the current color index should be set
+     */
+    public static void glIndexi(@NativeType("GLint") int index) {
+        org.lwjgl.opengl.GL11.glIndexi(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glIndexub">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned byte version of {@link #glIndexi Indexi}.
+     *
+     * @param index the value to which the current color index should be set
+     */
+    public static void glIndexub(@NativeType("GLubyte") byte index) {
+        org.lwjgl.opengl.GL11.glIndexub(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glIndexs">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glIndexi Indexi}.
+     *
+     * @param index the value to which the current color index should be set
+     */
+    public static void glIndexs(@NativeType("GLshort") short index) {
+        org.lwjgl.opengl.GL11.glIndexs(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glIndexf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glIndexi Indexi}.
+     *
+     * @param index the value to which the current color index should be set
+     */
+    public static void glIndexf(@NativeType("GLfloat") float index) {
+        org.lwjgl.opengl.GL11.glIndexf(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glIndexd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glIndexi Indexi}.
+     *
+     * @param index the value to which the current color index should be set
+     */
+    public static void glIndexd(@NativeType("GLdouble") double index) {
+        org.lwjgl.opengl.GL11.glIndexd(index);
+    }
+    /** Unsafe version of: {@link #glIndexiv Indexiv} */
+    public static void nglIndexiv(long index) {
+        org.lwjgl.opengl.GL11.nglIndexiv(index);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glIndex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glIndexi Indexi}
@@ -1974,6 +3023,10 @@ public class GL {
      */
     public static void glIndexiv(@NativeType("const GLint *") IntBuffer index) {
         org.lwjgl.opengl.GL11.glIndexiv(index);
+    }
+    /** Unsafe version of: {@link #glIndexubv Indexubv} */
+    public static void nglIndexubv(long index) {
+        org.lwjgl.opengl.GL11.nglIndexubv(index);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glIndex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -1985,6 +3038,10 @@ public class GL {
     public static void glIndexubv(@NativeType("const GLubyte *") ByteBuffer index) {
         org.lwjgl.opengl.GL11.glIndexubv(index);
     }
+    /** Unsafe version of: {@link #glIndexsv Indexsv} */
+    public static void nglIndexsv(long index) {
+        org.lwjgl.opengl.GL11.nglIndexsv(index);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glIndex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -1994,6 +3051,10 @@ public class GL {
      */
     public static void glIndexsv(@NativeType("const GLshort *") ShortBuffer index) {
         org.lwjgl.opengl.GL11.glIndexsv(index);
+    }
+    /** Unsafe version of: {@link #glIndexfv Indexfv} */
+    public static void nglIndexfv(long index) {
+        org.lwjgl.opengl.GL11.nglIndexfv(index);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glIndex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2005,6 +3066,10 @@ public class GL {
     public static void glIndexfv(@NativeType("const GLfloat *") FloatBuffer index) {
         org.lwjgl.opengl.GL11.glIndexfv(index);
     }
+    /** Unsafe version of: {@link #glIndexdv Indexdv} */
+    public static void nglIndexdv(long index) {
+        org.lwjgl.opengl.GL11.nglIndexdv(index);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glIndex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2014,6 +3079,26 @@ public class GL {
      */
     public static void glIndexdv(@NativeType("const GLdouble *") DoubleBuffer index) {
         org.lwjgl.opengl.GL11.glIndexdv(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glIndexMask">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * The least significant n bits of mask, where n is the number of bits in a color index buffer, specify a mask. Where a 1 appears in this mask, the
+     * corresponding bit in the color index buffer (or buffers) is written; where a 0 appears, the bit is not written. This mask applies only in color index
+     * mode.
+     *
+     * @param mask the color index mask value
+     */
+    public static void glIndexMask(@NativeType("GLuint") int mask) {
+        org.lwjgl.opengl.GL11.glIndexMask(mask);
+    }
+    /**
+     * Unsafe version of: {@link #glIndexPointer IndexPointer}
+     *
+     * @param type the data type of the values stored in the array. One of:<br><table><tr><td>{@link #GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link #GL_SHORT SHORT}</td><td>{@link #GL_INT INT}</td><td>{@link #GL_FLOAT FLOAT}</td><td>{@link #GL_DOUBLE DOUBLE}</td></tr></table>
+     */
+    public static void nglIndexPointer(int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL11.nglIndexPointer(type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glIndexPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2071,6 +3156,18 @@ public class GL {
      */
     public static void glIndexPointer(@NativeType("GLsizei") int stride, @NativeType("const void *") IntBuffer pointer) {
         org.lwjgl.opengl.GL11.glIndexPointer(stride, pointer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glInitNames">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Clears the selection name stack.
+     */
+    public static void glInitNames() {
+        org.lwjgl.opengl.GL11.glInitNames();
+    }
+    /** Unsafe version of: {@link #glInterleavedArrays InterleavedArrays} */
+    public static void nglInterleavedArrays(int format, int stride, long pointer) {
+        org.lwjgl.opengl.GL11.nglInterleavedArrays(format, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glInterleavedArrays">Reference Page</a></p>
@@ -2145,6 +3242,65 @@ public class GL {
         org.lwjgl.opengl.GL11.glInterleavedArrays(format, stride, pointer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsEnabled">Reference Page</a></p>
+     * 
+     * Determines if {@code cap} is currently enabled (as with {@link #glEnable Enable}) or disabled.
+     *
+     * @param cap the enable state to query
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsEnabled(@NativeType("GLenum") int cap) {
+        return org.lwjgl.opengl.GL11.glIsEnabled(cap);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glIsList">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Returns true if the {@code list} is the index of some display list.
+     *
+     * @param list the list index to query
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsList(@NativeType("GLuint") int list) {
+        return org.lwjgl.opengl.GL11.glIsList(list);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsTexture">Reference Page</a></p>
+     * 
+     * Returns true if {@code texture} is the name of a texture object.
+     *
+     * @param texture the texture name to query
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsTexture(@NativeType("GLuint") int texture) {
+        return org.lwjgl.opengl.GL11.glIsTexture(texture);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glLightModeli">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Set the integer value of a lighting model parameter.
+     *
+     * @param pname the lighting model parameter to set. One of:<br><table><tr><td>{@link #GL_LIGHT_MODEL_AMBIENT LIGHT_MODEL_AMBIENT}</td><td>{@link #GL_LIGHT_MODEL_LOCAL_VIEWER LIGHT_MODEL_LOCAL_VIEWER}</td><td>{@link #GL_LIGHT_MODEL_TWO_SIDE LIGHT_MODEL_TWO_SIDE}</td></tr><tr><td>{@link GL12#GL_LIGHT_MODEL_COLOR_CONTROL LIGHT_MODEL_COLOR_CONTROL}</td></tr></table>
+     * @param param the parameter value
+     */
+    public static void glLightModeli(@NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glLightModeli(pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glLightModelf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glLightModeli LightModeli}.
+     *
+     * @param pname the lighting model parameter to set
+     * @param param the parameter value
+     */
+    public static void glLightModelf(@NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glLightModelf(pname, param);
+    }
+    /** Unsafe version of: {@link #glLightModeliv LightModeliv} */
+    public static void nglLightModeliv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglLightModeliv(pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLightModel">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glLightModeli LightModeli}.
@@ -2154,6 +3310,10 @@ public class GL {
      */
     public static void glLightModeliv(@NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL11.glLightModeliv(pname, params);
+    }
+    /** Unsafe version of: {@link #glLightModelfv LightModelfv} */
+    public static void nglLightModelfv(int pname, long params) {
+        org.lwjgl.opengl.GL11.nglLightModelfv(pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLightModel">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2167,6 +3327,34 @@ public class GL {
         org.lwjgl.opengl.GL11.glLightModelfv(pname, params);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glLighti">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the integer value of a light parameter.
+     *
+     * @param light the light for which to set the parameter. One of:<br><table><tr><td>{@link #GL_LIGHT0 LIGHT0}</td><td>GL_LIGHT[1-7]</td></tr></table>
+     * @param pname the parameter to set. One of:<br><table><tr><td>{@link #GL_AMBIENT AMBIENT}</td><td>{@link #GL_DIFFUSE DIFFUSE}</td><td>{@link #GL_SPECULAR SPECULAR}</td><td>{@link #GL_POSITION POSITION}</td><td>{@link #GL_CONSTANT_ATTENUATION CONSTANT_ATTENUATION}</td><td>{@link #GL_LINEAR_ATTENUATION LINEAR_ATTENUATION}</td></tr><tr><td>{@link #GL_QUADRATIC_ATTENUATION QUADRATIC_ATTENUATION}</td><td>{@link #GL_SPOT_DIRECTION SPOT_DIRECTION}</td><td>{@link #GL_SPOT_EXPONENT SPOT_EXPONENT}</td><td>{@link #GL_SPOT_CUTOFF SPOT_CUTOFF}</td></tr></table>
+     * @param param the parameter value
+     */
+    public static void glLighti(@NativeType("GLenum") int light, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glLighti(light, pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glLightf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glLighti Lighti}.
+     *
+     * @param light the light for which to set the parameter
+     * @param pname the parameter to set
+     * @param param the parameter value
+     */
+    public static void glLightf(@NativeType("GLenum") int light, @NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glLightf(light, pname, param);
+    }
+    /** Unsafe version of: {@link #glLightiv Lightiv} */
+    public static void nglLightiv(int light, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglLightiv(light, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLight">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glLighti Lighti}.
@@ -2177,6 +3365,10 @@ public class GL {
      */
     public static void glLightiv(@NativeType("GLenum") int light, @NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL11.glLightiv(light, pname, params);
+    }
+    /** Unsafe version of: {@link #glLightfv Lightfv} */
+    public static void nglLightfv(int light, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglLightfv(light, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLight">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2189,6 +3381,43 @@ public class GL {
      */
     public static void glLightfv(@NativeType("GLenum") int light, @NativeType("GLenum") int pname, @NativeType("const GLfloat *") FloatBuffer params) {
         org.lwjgl.opengl.GL11.glLightfv(light, pname, params);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glLineStipple">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Defines a line stipple. It determines those fragments that are to be drawn when the line is rasterized. Line stippling may be enabled or disabled using
+     * {@link #glEnable Enable} or {@link #glDisable Disable} with the constant {@link #GL_LINE_STIPPLE LINE_STIPPLE}. When disabled, it is as if the line stipple has its default value.
+     *
+     * @param factor  a count that is used to modify the effective line stipple by causing each bit in pattern to be used {@code factor} times. {@code factor} is clamped
+     *                to the range [1, 256].
+     * @param pattern an unsigned short integer whose 16 bits define the stipple pattern
+     */
+    public static void glLineStipple(@NativeType("GLint") int factor, @NativeType("GLushort") short pattern) {
+        org.lwjgl.opengl.GL11.glLineStipple(factor, pattern);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glLineWidth">Reference Page</a></p>
+     * 
+     * Sets the width of rasterized line segments. The default width is 1.0.
+     *
+     * @param width the line width
+     */
+    public static void glLineWidth(@NativeType("GLfloat") float width) {
+        org.lwjgl.opengl.GL11.glLineWidth(width);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glListBase">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the display list base.
+     *
+     * @param base the display list base offset
+     */
+    public static void glListBase(@NativeType("GLuint") int base) {
+        org.lwjgl.opengl.GL11.glListBase(base);
+    }
+    /** Unsafe version of: {@link #glLoadMatrixf LoadMatrixf} */
+    public static void nglLoadMatrixf(long m) {
+        org.lwjgl.opengl.GL11.nglLoadMatrixf(m);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLoadMatrixf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2212,6 +3441,10 @@ public class GL {
     public static void glLoadMatrixf(@NativeType("const GLfloat *") FloatBuffer m) {
         org.lwjgl.opengl.GL11.glLoadMatrixf(m);
     }
+    /** Unsafe version of: {@link #glLoadMatrixd LoadMatrixd} */
+    public static void nglLoadMatrixd(long m) {
+        org.lwjgl.opengl.GL11.nglLoadMatrixd(m);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLoadMatrixd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2221,6 +3454,47 @@ public class GL {
      */
     public static void glLoadMatrixd(@NativeType("const GLdouble *") DoubleBuffer m) {
         org.lwjgl.opengl.GL11.glLoadMatrixd(m);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glLoadIdentity">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the current matrix to the identity matrix.
+     * 
+     * <p>Calling this function is equivalent to calling {@link #glLoadMatrixf LoadMatrixf} with the following matrix:</p>
+     * 
+     * <table class="lwjgl matrix">
+     * <tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+     * <tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+     * <tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+     * <tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+     * </table>
+     */
+    public static void glLoadIdentity() {
+        org.lwjgl.opengl.GL11.glLoadIdentity();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glLoadName">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Replaces the value on the top of the selection stack with {@code name}.
+     *
+     * @param name the name to load
+     */
+    public static void glLoadName(@NativeType("GLuint") int name) {
+        org.lwjgl.opengl.GL11.glLoadName(name);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glLogicOp">Reference Page</a></p>
+     * 
+     * Sets the logical framebuffer operation.
+     *
+     * @param op the operation to set. One of:<br><table><tr><td>{@link #GL_CLEAR CLEAR}</td><td>{@link #GL_AND AND}</td><td>{@link #GL_AND_REVERSE AND_REVERSE}</td><td>{@link #GL_COPY COPY}</td><td>{@link #GL_AND_INVERTED AND_INVERTED}</td><td>{@link #GL_NOOP NOOP}</td><td>{@link #GL_XOR XOR}</td><td>{@link #GL_OR OR}</td><td>{@link #GL_NOR NOR}</td><td>{@link #GL_EQUIV EQUIV}</td><td>{@link #GL_INVERT INVERT}</td><td>{@link #GL_OR_REVERSE OR_REVERSE}</td><td>{@link #GL_COPY_INVERTED COPY_INVERTED}</td></tr><tr><td>{@link #GL_OR_INVERTED OR_INVERTED}</td><td>{@link #GL_NAND NAND}</td><td>{@link #GL_SET SET}</td></tr></table>
+     */
+    public static void glLogicOp(@NativeType("GLenum") int op) {
+        org.lwjgl.opengl.GL11.glLogicOp(op);
+    }
+    /** Unsafe version of: {@link #glMap1f Map1f} */
+    public static void nglMap1f(int target, float u1, float u2, int stride, int order, long points) {
+        org.lwjgl.opengl.GL11.nglMap1f(target, u1, u2, stride, order, points);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2238,6 +3512,10 @@ public class GL {
     public static void glMap1f(@NativeType("GLenum") int target, @NativeType("GLfloat") float u1, @NativeType("GLfloat") float u2, @NativeType("GLint") int stride, @NativeType("GLint") int order, @NativeType("const GLfloat *") FloatBuffer points) {
         org.lwjgl.opengl.GL11.glMap1f(target, u1, u2, stride, order, points);
     }
+    /** Unsafe version of: {@link #glMap1d Map1d} */
+    public static void nglMap1d(int target, double u1, double u2, int stride, int order, long points) {
+        org.lwjgl.opengl.GL11.nglMap1d(target, u1, u2, stride, order, points);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2252,6 +3530,10 @@ public class GL {
      */
     public static void glMap1d(@NativeType("GLenum") int target, @NativeType("GLdouble") double u1, @NativeType("GLdouble") double u2, @NativeType("GLint") int stride, @NativeType("GLint") int order, @NativeType("const GLdouble *") DoubleBuffer points) {
         org.lwjgl.opengl.GL11.glMap1d(target, u1, u2, stride, order, points);
+    }
+    /** Unsafe version of: {@link #glMap2f Map2f} */
+    public static void nglMap2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, long points) {
+        org.lwjgl.opengl.GL11.nglMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2271,6 +3553,10 @@ public class GL {
      */
     public static void glMap2f(@NativeType("GLenum") int target, @NativeType("GLfloat") float u1, @NativeType("GLfloat") float u2, @NativeType("GLint") int ustride, @NativeType("GLint") int uorder, @NativeType("GLfloat") float v1, @NativeType("GLfloat") float v2, @NativeType("GLint") int vstride, @NativeType("GLint") int vorder, @NativeType("const GLfloat *") FloatBuffer points) {
         org.lwjgl.opengl.GL11.glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+    }
+    /** Unsafe version of: {@link #glMap2d Map2d} */
+    public static void nglMap2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, long points) {
+        org.lwjgl.opengl.GL11.nglMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2292,6 +3578,88 @@ public class GL {
         org.lwjgl.opengl.GL11.glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMapGrid">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Defines a one-dimensional grid in the map evaluator domain.
+     *
+     * @param n  the number of partitions of the interval
+     * @param u1 the first interval endpoint
+     * @param u2 the second interval endpoint
+     */
+    public static void glMapGrid1f(@NativeType("GLint") int n, @NativeType("GLfloat") float u1, @NativeType("GLfloat") float u2) {
+        org.lwjgl.opengl.GL11.glMapGrid1f(n, u1, u2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMapGrid">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glMapGrid1f MapGrid1f}.
+     *
+     * @param n  the number of partitions of the interval
+     * @param u1 the first interval endpoint
+     * @param u2 the second interval endpoint
+     */
+    public static void glMapGrid1d(@NativeType("GLint") int n, @NativeType("GLdouble") double u1, @NativeType("GLdouble") double u2) {
+        org.lwjgl.opengl.GL11.glMapGrid1d(n, u1, u2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMapGrid">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Defines a two-dimensional grid in the map evaluator domain.
+     *
+     * @param un the number of partitions of the interval in the u-dimension
+     * @param u1 the first u-dimension interval endpoint
+     * @param u2 the second u-dimension interval endpoint
+     * @param vn the number of partitions of the interval in the v-dimension
+     * @param v1 the first v-dimension interval endpoint
+     * @param v2 the second v-dimension interval endpoint
+     */
+    public static void glMapGrid2f(@NativeType("GLint") int un, @NativeType("GLfloat") float u1, @NativeType("GLfloat") float u2, @NativeType("GLint") int vn, @NativeType("GLfloat") float v1, @NativeType("GLfloat") float v2) {
+        org.lwjgl.opengl.GL11.glMapGrid2f(un, u1, u2, vn, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMapGrid">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glMapGrid2f MapGrid2f}.
+     *
+     * @param un the number of partitions of the interval in the u-dimension
+     * @param u1 the first u-dimension interval endpoint
+     * @param u2 the second u-dimension interval endpoint
+     * @param vn the number of partitions of the interval in the v-dimension
+     * @param v1 the first v-dimension interval endpoint
+     * @param v2 the second v-dimension interval endpoint
+     */
+    public static void glMapGrid2d(@NativeType("GLint") int un, @NativeType("GLdouble") double u1, @NativeType("GLdouble") double u2, @NativeType("GLint") int vn, @NativeType("GLdouble") double v1, @NativeType("GLdouble") double v2) {
+        org.lwjgl.opengl.GL11.glMapGrid2d(un, u1, u2, vn, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMateriali">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the integer value of a material parameter.
+     *
+     * @param face  the material face for which to set the parameter. One of:<br><table><tr><td>{@link #GL_FRONT FRONT}</td><td>{@link #GL_BACK BACK}</td><td>{@link #GL_FRONT_AND_BACK FRONT_AND_BACK}</td></tr></table>
+     * @param pname the parameter to set. Must be:<br><table><tr><td>{@link #GL_SHININESS SHININESS}</td></tr></table>
+     * @param param the parameter value
+     */
+    public static void glMateriali(@NativeType("GLenum") int face, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glMateriali(face, pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMaterialf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glMateriali Materiali}.
+     *
+     * @param face  the material face for which to set the parameter
+     * @param pname the parameter to set
+     * @param param the parameter value
+     */
+    public static void glMaterialf(@NativeType("GLenum") int face, @NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glMaterialf(face, pname, param);
+    }
+    /** Unsafe version of: {@link #glMaterialiv Materialiv} */
+    public static void nglMaterialiv(int face, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglMaterialiv(face, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMaterial">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glMateriali Materiali}.
@@ -2302,6 +3670,10 @@ public class GL {
      */
     public static void glMaterialiv(@NativeType("GLenum") int face, @NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL11.glMaterialiv(face, pname, params);
+    }
+    /** Unsafe version of: {@link #glMaterialfv Materialfv} */
+    public static void nglMaterialfv(int face, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglMaterialfv(face, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMaterial">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2316,6 +3688,20 @@ public class GL {
         org.lwjgl.opengl.GL11.glMaterialfv(face, pname, params);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMatrixMode">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Set the current matrix mode.
+     *
+     * @param mode the matrix mode. One of:<br><table><tr><td>{@link #GL_MODELVIEW MODELVIEW}</td><td>{@link #GL_PROJECTION PROJECTION}</td><td>{@link #GL_TEXTURE TEXTURE}</td><td>{@link #GL_COLOR COLOR}</td></tr></table>
+     */
+    public static void glMatrixMode(@NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL11.glMatrixMode(mode);
+    }
+    /** Unsafe version of: {@link #glMultMatrixf MultMatrixf} */
+    public static void nglMultMatrixf(long m) {
+        org.lwjgl.opengl.GL11.nglMultMatrixf(m);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultMatrixf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Multiplies the current matrix with a 4 &times; 4 matrix in column-major order. See {@link #glLoadMatrixf LoadMatrixf} for details.
@@ -2324,6 +3710,10 @@ public class GL {
      */
     public static void glMultMatrixf(@NativeType("const GLfloat *") FloatBuffer m) {
         org.lwjgl.opengl.GL11.glMultMatrixf(m);
+    }
+    /** Unsafe version of: {@link #glMultMatrixd MultMatrixd} */
+    public static void nglMultMatrixd(long m) {
+        org.lwjgl.opengl.GL11.nglMultMatrixd(m);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultMatrixd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2336,6 +3726,117 @@ public class GL {
         org.lwjgl.opengl.GL11.glMultMatrixd(m);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glFrustum">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Manipulates the current matrix with a matrix that produces perspective projection, in such a way that the coordinates <code>(lb &ndash; n)<sup>T</sup></code>
+     * and <code>(rt &ndash; n)<sup>T</sup></code> specify the points on the near clipping plane that are mapped to the lower left and upper right corners of the
+     * window, respectively (assuming that the eye is located at <code>(0 0 0)<sup>T</sup></code>). {@code f} gives the distance from the eye to the far clipping
+     * plane.
+     * 
+     * <p>Calling this function is equivalent to calling {@link #glMultMatrixf MultMatrixf} with the following matrix:</p>
+     * 
+     * <table class="lwjgl matrix">
+     * <tr><td>2n / (r - l)</td><td>0</td><td>(r + l) / (r - l)</td><td>0</td></tr>
+     * <tr><td>0</td><td>2n / (t - b)</td><td>(t + b) / (t - b)</td><td>0</td></tr>
+     * <tr><td>0</td><td>0</td><td>- (f + n) / (f - n)</td><td>- (2fn) / (f - n)</td></tr>
+     * <tr><td>0</td><td>0</td><td>-1</td><td>0</td></tr>
+     * </table>
+     *
+     * @param l the left frustum plane
+     * @param r the right frustum plane
+     * @param b the bottom frustum plane
+     * @param t the top frustum plane
+     * @param n the near frustum plane
+     * @param f the far frustum plane
+     */
+    public static void glFrustum(@NativeType("GLdouble") double l, @NativeType("GLdouble") double r, @NativeType("GLdouble") double b, @NativeType("GLdouble") double t, @NativeType("GLdouble") double n, @NativeType("GLdouble") double f) {
+        org.lwjgl.opengl.GL11.glFrustum(l, r, b, t, n, f);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glNewList">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Begins the definition of a display list.
+     *
+     * @param n    a positive integer to which the display list that follows is assigned
+     * @param mode a symbolic constant that controls the behavior of the GL during display list creation. One of:<br><table><tr><td>{@link #GL_COMPILE COMPILE}</td><td>{@link #GL_COMPILE_AND_EXECUTE COMPILE_AND_EXECUTE}</td></tr></table>
+     */
+    public static void glNewList(@NativeType("GLuint") int n, @NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL11.glNewList(n, mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glEndList">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Ends the definition of GL commands to be placed in a display list. It is only when {@code EndList} occurs that the specified display list is actually
+     * associated with the index indicated with {@link #glNewList NewList}.
+     */
+    public static void glEndList() {
+        org.lwjgl.opengl.GL11.glEndList();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the current normal.
+     *
+     * @param nx the x coordinate of the current normal
+     * @param ny the y coordinate of the current normal
+     * @param nz the z coordinate of the current normal
+     */
+    public static void glNormal3f(@NativeType("GLfloat") float nx, @NativeType("GLfloat") float ny, @NativeType("GLfloat") float nz) {
+        org.lwjgl.opengl.GL11.glNormal3f(nx, ny, nz);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Byte version of {@link #glNormal3f Normal3f}.
+     *
+     * @param nx the x coordinate of the current normal
+     * @param ny the y coordinate of the current normal
+     * @param nz the z coordinate of the current normal
+     */
+    public static void glNormal3b(@NativeType("GLbyte") byte nx, @NativeType("GLbyte") byte ny, @NativeType("GLbyte") byte nz) {
+        org.lwjgl.opengl.GL11.glNormal3b(nx, ny, nz);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glNormal3f Normal3f}.
+     *
+     * @param nx the x coordinate of the current normal
+     * @param ny the y coordinate of the current normal
+     * @param nz the z coordinate of the current normal
+     */
+    public static void glNormal3s(@NativeType("GLshort") short nx, @NativeType("GLshort") short ny, @NativeType("GLshort") short nz) {
+        org.lwjgl.opengl.GL11.glNormal3s(nx, ny, nz);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glNormal3f Normal3f}.
+     *
+     * @param nx the x coordinate of the current normal
+     * @param ny the y coordinate of the current normal
+     * @param nz the z coordinate of the current normal
+     */
+    public static void glNormal3i(@NativeType("GLint") int nx, @NativeType("GLint") int ny, @NativeType("GLint") int nz) {
+        org.lwjgl.opengl.GL11.glNormal3i(nx, ny, nz);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glNormal3f Normal3f}.
+     *
+     * @param nx the x coordinate of the current normal
+     * @param ny the y coordinate of the current normal
+     * @param nz the z coordinate of the current normal
+     */
+    public static void glNormal3d(@NativeType("GLdouble") double nx, @NativeType("GLdouble") double ny, @NativeType("GLdouble") double nz) {
+        org.lwjgl.opengl.GL11.glNormal3d(nx, ny, nz);
+    }
+    /** Unsafe version of: {@link #glNormal3fv Normal3fv} */
+    public static void nglNormal3fv(long v) {
+        org.lwjgl.opengl.GL11.nglNormal3fv(v);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glNormal3f Normal3f}.
@@ -2344,6 +3845,10 @@ public class GL {
      */
     public static void glNormal3fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL11.glNormal3fv(v);
+    }
+    /** Unsafe version of: {@link #glNormal3bv Normal3bv} */
+    public static void nglNormal3bv(long v) {
+        org.lwjgl.opengl.GL11.nglNormal3bv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2355,6 +3860,10 @@ public class GL {
     public static void glNormal3bv(@NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL11.glNormal3bv(v);
     }
+    /** Unsafe version of: {@link #glNormal3sv Normal3sv} */
+    public static void nglNormal3sv(long v) {
+        org.lwjgl.opengl.GL11.nglNormal3sv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2364,6 +3873,10 @@ public class GL {
      */
     public static void glNormal3sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glNormal3sv(v);
+    }
+    /** Unsafe version of: {@link #glNormal3iv Normal3iv} */
+    public static void nglNormal3iv(long v) {
+        org.lwjgl.opengl.GL11.nglNormal3iv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2375,6 +3888,10 @@ public class GL {
     public static void glNormal3iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glNormal3iv(v);
     }
+    /** Unsafe version of: {@link #glNormal3dv Normal3dv} */
+    public static void nglNormal3dv(long v) {
+        org.lwjgl.opengl.GL11.nglNormal3dv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2384,6 +3901,10 @@ public class GL {
      */
     public static void glNormal3dv(@NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL11.glNormal3dv(v);
+    }
+    /** Unsafe version of: {@link #glNormalPointer NormalPointer} */
+    public static void nglNormalPointer(int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL11.nglNormalPointer(type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glNormalPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2446,6 +3967,53 @@ public class GL {
         org.lwjgl.opengl.GL11.glNormalPointer(type, stride, pointer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glOrtho">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Manipulates the current matrix with a matrix that produces parallel projection, in such a way that the coordinates <code>(lb &ndash; n)<sup>T</sup></code>
+     * and <code>(rt &ndash; n)<sup>T</sup></code> specify the points on the near clipping plane that are mapped to the lower left and upper right corners of the
+     * window, respectively (assuming that the eye is located at <code>(0 0 0)<sup>T</sup></code>). {@code f} gives the distance from the eye to the far clipping
+     * plane.
+     * 
+     * <p>Calling this function is equivalent to calling {@link #glMultMatrixf MultMatrixf} with the following matrix:</p>
+     * 
+     * <table class="lwjgl matrix">
+     * <tr><td>2 / (r - l)</td><td>0</td><td>0</td><td>- (r + l) / (r - l)</td></tr>
+     * <tr><td>0</td><td>2 / (t - b)</td><td>0</td><td>- (t + b) / (t - b)</td></tr>
+     * <tr><td>0</td><td>0</td><td>- 2 / (f - n)</td><td>- (f + n) / (f - n)</td></tr>
+     * <tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+     * </table>
+     *
+     * @param l the left frustum plane
+     * @param r the right frustum plane
+     * @param b the bottom frustum plane
+     * @param t the top frustum plane
+     * @param n the near frustum plane
+     * @param f the far frustum plane
+     */
+    public static void glOrtho(@NativeType("GLdouble") double l, @NativeType("GLdouble") double r, @NativeType("GLdouble") double b, @NativeType("GLdouble") double t, @NativeType("GLdouble") double n, @NativeType("GLdouble") double f) {
+        org.lwjgl.opengl.GL11.glOrtho(l, r, b, t, n, f);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPassThrough">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Inserts a marker when the GL is in feeback mode. {@code token} is returned as if it were a primitive; it is indicated with its own unique identifying
+     * value. The ordering of any {@code PassThrough} commands with respect to primitive specification is maintained by feedback. {@code PassThrough} may
+     * not occur between {@link #glBegin Begin} and {@link #glEnd End}.
+     *
+     * @param token the marker value to insert
+     */
+    public static void glPassThrough(@NativeType("GLfloat") float token) {
+        org.lwjgl.opengl.GL11.glPassThrough(token);
+    }
+    /**
+     * Unsafe version of: {@link #glPixelMapfv PixelMapfv}
+     *
+     * @param size the map size
+     */
+    public static void nglPixelMapfv(int map, int size, long values) {
+        org.lwjgl.opengl.GL11.nglPixelMapfv(map, size, values);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glPixelMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Sets a pixel map lookup table.
@@ -2467,6 +4035,14 @@ public class GL {
      */
     public static void glPixelMapfv(@NativeType("GLenum") int map, @NativeType("const GLfloat *") FloatBuffer values) {
         org.lwjgl.opengl.GL11.glPixelMapfv(map, values);
+    }
+    /**
+     * Unsafe version of: {@link #glPixelMapusv PixelMapusv}
+     *
+     * @param size the map size
+     */
+    public static void nglPixelMapusv(int map, int size, long values) {
+        org.lwjgl.opengl.GL11.nglPixelMapusv(map, size, values);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glPixelMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2492,6 +4068,14 @@ public class GL {
         org.lwjgl.opengl.GL11.glPixelMapusv(map, values);
     }
     /**
+     * Unsafe version of: {@link #glPixelMapuiv PixelMapuiv}
+     *
+     * @param size the map size
+     */
+    public static void nglPixelMapuiv(int map, int size, long values) {
+        org.lwjgl.opengl.GL11.nglPixelMapuiv(map, size, values);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glPixelMap">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Unsigned integer version of {@link #glPixelMapfv PixelMapfv}.
@@ -2513,6 +4097,113 @@ public class GL {
      */
     public static void glPixelMapuiv(@NativeType("GLenum") int map, @NativeType("const GLuint *") IntBuffer values) {
         org.lwjgl.opengl.GL11.glPixelMapuiv(map, values);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPixelStorei">Reference Page</a></p>
+     * 
+     * Sets the integer value of a pixel store parameter.
+     *
+     * @param pname the pixel store parameter to set. One of:<br><table><tr><td>{@link #GL_UNPACK_SWAP_BYTES UNPACK_SWAP_BYTES}</td><td>{@link #GL_UNPACK_LSB_FIRST UNPACK_LSB_FIRST}</td><td>{@link #GL_UNPACK_ROW_LENGTH UNPACK_ROW_LENGTH}</td></tr><tr><td>{@link #GL_UNPACK_SKIP_ROWS UNPACK_SKIP_ROWS}</td><td>{@link #GL_UNPACK_SKIP_PIXELS UNPACK_SKIP_PIXELS}</td><td>{@link #GL_UNPACK_ALIGNMENT UNPACK_ALIGNMENT}</td></tr><tr><td>{@link GL12#GL_UNPACK_IMAGE_HEIGHT UNPACK_IMAGE_HEIGHT}</td><td>{@link GL12#GL_UNPACK_SKIP_IMAGES UNPACK_SKIP_IMAGES}</td><td>{@link GL42#GL_UNPACK_COMPRESSED_BLOCK_WIDTH UNPACK_COMPRESSED_BLOCK_WIDTH}</td></tr><tr><td>{@link GL42#GL_UNPACK_COMPRESSED_BLOCK_HEIGHT UNPACK_COMPRESSED_BLOCK_HEIGHT}</td><td>{@link GL42#GL_UNPACK_COMPRESSED_BLOCK_DEPTH UNPACK_COMPRESSED_BLOCK_DEPTH}</td><td>{@link GL42#GL_UNPACK_COMPRESSED_BLOCK_SIZE UNPACK_COMPRESSED_BLOCK_SIZE}</td></tr></table>
+     * @param param the parameter value
+     */
+    public static void glPixelStorei(@NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glPixelStorei(pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPixelStoref">Reference Page</a></p>
+     * 
+     * Float version of {@link #glPixelStorei PixelStorei}.
+     *
+     * @param pname the pixel store parameter to set
+     * @param param the parameter value
+     */
+    public static void glPixelStoref(@NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glPixelStoref(pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPixelTransferi">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the integer value of a pixel transfer parameter.
+     *
+     * @param pname the pixel transfer parameter to set. One of:<br><table><tr><td>{@link #GL_MAP_COLOR MAP_COLOR}</td><td>{@link #GL_MAP_STENCIL MAP_STENCIL}</td><td>{@link #GL_INDEX_SHIFT INDEX_SHIFT}</td><td>{@link #GL_INDEX_OFFSET INDEX_OFFSET}</td></tr><tr><td>{@link #GL_RED_SCALE RED_SCALE}</td><td>{@link #GL_GREEN_SCALE GREEN_SCALE}</td><td>{@link #GL_BLUE_SCALE BLUE_SCALE}</td><td>{@link #GL_ALPHA_SCALE ALPHA_SCALE}</td></tr><tr><td>{@link #GL_DEPTH_SCALE DEPTH_SCALE}</td><td>{@link #GL_RED_BIAS RED_BIAS}</td><td>{@link #GL_GREEN_BIAS GREEN_BIAS}</td><td>{@link #GL_BLUE_BIAS BLUE_BIAS}</td></tr><tr><td>{@link #GL_ALPHA_BIAS ALPHA_BIAS}</td><td>{@link #GL_DEPTH_BIAS DEPTH_BIAS}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_RED_SCALE POST_CONVOLUTION_RED_SCALE}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_RED_BIAS POST_CONVOLUTION_RED_BIAS}</td></tr><tr><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_RED_SCALE POST_COLOR_MATRIX_RED_SCALE}</td><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_RED_BIAS POST_COLOR_MATRIX_RED_BIAS}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_GREEN_SCALE POST_CONVOLUTION_GREEN_SCALE}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_GREEN_BIAS POST_CONVOLUTION_GREEN_BIAS}</td></tr><tr><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_GREEN_SCALE POST_COLOR_MATRIX_GREEN_SCALE}</td><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_GREEN_BIAS POST_COLOR_MATRIX_GREEN_BIAS}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_BLUE_SCALE POST_CONVOLUTION_BLUE_SCALE}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_BLUE_BIAS POST_CONVOLUTION_BLUE_BIAS}</td></tr><tr><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_BLUE_SCALE POST_COLOR_MATRIX_BLUE_SCALE}</td><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_BLUE_BIAS POST_COLOR_MATRIX_BLUE_BIAS}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_ALPHA_SCALE POST_CONVOLUTION_ALPHA_SCALE}</td><td>{@link ARBImaging#GL_POST_CONVOLUTION_ALPHA_BIAS POST_CONVOLUTION_ALPHA_BIAS}</td></tr><tr><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_ALPHA_SCALE POST_COLOR_MATRIX_ALPHA_SCALE}</td><td>{@link ARBImaging#GL_POST_COLOR_MATRIX_ALPHA_BIAS POST_COLOR_MATRIX_ALPHA_BIAS}</td></tr></table>
+     * @param param the parameter value
+     */
+    public static void glPixelTransferi(@NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glPixelTransferi(pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPixelTransferf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glPixelTransferi PixelTransferi}.
+     *
+     * @param pname the pixel transfer parameter to set
+     * @param param the parameter value
+     */
+    public static void glPixelTransferf(@NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glPixelTransferf(pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPixelZoom">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Controls the conversion of a group of fragments.
+     * 
+     * <p>Let (x<sub>rp</sub>, y<sub>rp</sub>) be the current raster position. If a particular group is the n<sup>th</sup> in a row and belongs to the
+     * m<sup>th</sup> row, consider the region in window coordinates bounded by the rectangle with corners</p>
+     * 
+     * <p>(x<sub>rp</sub> + z<sub>x</sub>n, y<sub>rp</sub> + z<sub>y</sub>m) and (x<sub>rp</sub> + z<sub>x</sub>(n + 1), y<sub>rp</sub> + z<sub>y</sub>(m + 1))</p>
+     * 
+     * <p>(either z<sub>x</sub> or z<sub>y</sub> may be negative). A fragment representing group {@code (n, m)} is produced for each framebuffer pixel inside, or
+     * on the bottom or left boundary, of this rectangle.</p>
+     *
+     * @param xfactor the z<sub>x</sub> factor
+     * @param yfactor the z<sub>y</sub> factor
+     */
+    public static void glPixelZoom(@NativeType("GLfloat") float xfactor, @NativeType("GLfloat") float yfactor) {
+        org.lwjgl.opengl.GL11.glPixelZoom(xfactor, yfactor);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPointSize">Reference Page</a></p>
+     * 
+     * Controls the rasterization of points if no vertex, tessellation control, tessellation evaluation, or geometry shader is active. The default point size is 1.0.
+     *
+     * @param size the request size of a point
+     */
+    public static void glPointSize(@NativeType("GLfloat") float size) {
+        org.lwjgl.opengl.GL11.glPointSize(size);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPolygonMode">Reference Page</a></p>
+     * 
+     * Controls the interpretation of polygons for rasterization.
+     * 
+     * <p>{@link #GL_FILL FILL} is the default mode of polygon rasterization. Note that these modes affect only the final rasterization of polygons: in particular, a
+     * polygon's vertices are lit, and the polygon is clipped and possibly culled before these modes are applied. Polygon antialiasing applies only to the
+     * {@link #GL_FILL FILL} state of PolygonMode. For {@link #GL_POINT POINT} or {@link #GL_LINE LINE}, point antialiasing or line segment antialiasing, respectively, apply.</p>
+     *
+     * @param face the face for which to set the rasterizing method. One of:<br><table><tr><td>{@link #GL_FRONT FRONT}</td><td>{@link #GL_BACK BACK}</td><td>{@link #GL_FRONT_AND_BACK FRONT_AND_BACK}</td></tr></table>
+     * @param mode the rasterization mode. One of:<br><table><tr><td>{@link #GL_POINT POINT}</td><td>{@link #GL_LINE LINE}</td><td>{@link #GL_FILL FILL}</td></tr></table>
+     */
+    public static void glPolygonMode(@NativeType("GLenum") int face, @NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL11.glPolygonMode(face, mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPolygonOffset">Reference Page</a></p>
+     * 
+     * The depth values of all fragments generated by the rasterization of a polygon may be offset by a single value that is computed for that polygon. This
+     * function determines that value.
+     * 
+     * <p>{@code factor} scales the maximum depth slope of the polygon, and {@code units} scales an implementation-dependent constant that relates to the usable
+     * resolution of the depth buffer. The resulting values are summed to produce the polygon offset value.</p>
+     *
+     * @param factor the maximum depth slope factor
+     * @param units  the constant scale
+     */
+    public static void glPolygonOffset(@NativeType("GLfloat") float factor, @NativeType("GLfloat") float units) {
+        org.lwjgl.opengl.GL11.glPolygonOffset(factor, units);
+    }
+    /** Unsafe version of: {@link #glPolygonStipple PolygonStipple} */
+    public static void nglPolygonStipple(long pattern) {
+        org.lwjgl.opengl.GL11.nglPolygonStipple(pattern);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glPolygonStipple">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2549,6 +4240,80 @@ public class GL {
         org.lwjgl.opengl.GL11.glPolygonStipple(pattern);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPushAttrib">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Takes a bitwise OR of symbolic constants indicating which groups of state variables to push onto the server attribute stack. Each constant refers to a
+     * group of state variables.
+     * 
+     * <p>Bits set in mask that do not correspond to an attribute group are ignored. The special mask value {@link #GL_ALL_ATTRIB_BITS ALL_ATTRIB_BITS} may be used to push all
+     * stackable server state.</p>
+     * 
+     * <p>A {@link #GL_STACK_OVERFLOW STACK_OVERFLOW} error is generated if {@code PushAttrib} is called and the attribute stack depth is equal to the value of
+     * {@link #GL_MAX_ATTRIB_STACK_DEPTH MAX_ATTRIB_STACK_DEPTH}.</p>
+     *
+     * @param mask the state variables to push. One or more of:<br><table><tr><td>{@link #GL_ACCUM_BUFFER_BIT ACCUM_BUFFER_BIT}</td><td>{@link #GL_COLOR_BUFFER_BIT COLOR_BUFFER_BIT}</td><td>{@link #GL_CURRENT_BIT CURRENT_BIT}</td><td>{@link #GL_DEPTH_BUFFER_BIT DEPTH_BUFFER_BIT}</td><td>{@link #GL_ENABLE_BIT ENABLE_BIT}</td><td>{@link #GL_EVAL_BIT EVAL_BIT}</td></tr><tr><td>{@link #GL_FOG_BIT FOG_BIT}</td><td>{@link #GL_HINT_BIT HINT_BIT}</td><td>{@link #GL_LIGHTING_BIT LIGHTING_BIT}</td><td>{@link #GL_LINE_BIT LINE_BIT}</td><td>{@link #GL_LIST_BIT LIST_BIT}</td><td>{@link GL13#GL_MULTISAMPLE_BIT MULTISAMPLE_BIT}</td></tr><tr><td>{@link #GL_PIXEL_MODE_BIT PIXEL_MODE_BIT}</td><td>{@link #GL_POINT_BIT POINT_BIT}</td><td>{@link #GL_POLYGON_BIT POLYGON_BIT}</td><td>{@link #GL_POLYGON_STIPPLE_BIT POLYGON_STIPPLE_BIT}</td><td>{@link #GL_SCISSOR_BIT SCISSOR_BIT}</td><td>{@link #GL_STENCIL_BUFFER_BIT STENCIL_BUFFER_BIT}</td></tr><tr><td>{@link #GL_TEXTURE_BIT TEXTURE_BIT}</td><td>{@link #GL_TRANSFORM_BIT TRANSFORM_BIT}</td><td>{@link #GL_VIEWPORT_BIT VIEWPORT_BIT}</td><td>{@link #GL_ALL_ATTRIB_BITS ALL_ATTRIB_BITS}</td></tr></table>
+     */
+    public static void glPushAttrib(@NativeType("GLbitfield") int mask) {
+        org.lwjgl.opengl.GL11.glPushAttrib(mask);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPushClientAttrib">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Takes a bitwise OR of symbolic constants indicating which groups of state variables to push onto the client attribute stack. Each constant refers to a
+     * group of state variables.
+     * 
+     * <p>Bits set in mask that do not correspond to an attribute group are ignored. The special mask value {@link #GL_CLIENT_ALL_ATTRIB_BITS CLIENT_ALL_ATTRIB_BITS} may be used to push
+     * all stackable client state.</p>
+     * 
+     * <p>A {@link #GL_STACK_OVERFLOW STACK_OVERFLOW} error is generated if {@code PushAttrib} is called and the client attribute stack depth is equal to the value of
+     * {@link #GL_MAX_CLIENT_ATTRIB_STACK_DEPTH MAX_CLIENT_ATTRIB_STACK_DEPTH}.</p>
+     *
+     * @param mask the state variables to push. One or more of:<br><table><tr><td>{@link #GL_CLIENT_VERTEX_ARRAY_BIT CLIENT_VERTEX_ARRAY_BIT}</td><td>{@link #GL_CLIENT_PIXEL_STORE_BIT CLIENT_PIXEL_STORE_BIT}</td><td>{@link #GL_CLIENT_ALL_ATTRIB_BITS CLIENT_ALL_ATTRIB_BITS}</td></tr></table>
+     */
+    public static void glPushClientAttrib(@NativeType("GLbitfield") int mask) {
+        org.lwjgl.opengl.GL11.glPushClientAttrib(mask);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPopAttrib">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Resets the values of those state variables that were saved with the last {@link #glPushAttrib PushAttrib}. Those not saved remain unchanged.
+     */
+    public static void glPopAttrib() {
+        org.lwjgl.opengl.GL11.glPopAttrib();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPopClientAttrib">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Resets the values of those state variables that were saved with the last {@link #glPushClientAttrib PushClientAttrib}. Those not saved remain unchanged.
+     */
+    public static void glPopClientAttrib() {
+        org.lwjgl.opengl.GL11.glPopClientAttrib();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPopMatrix">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Pops the top entry off the current matrix stack, replacing the current matrix with the matrix that was the second entry in the stack.
+     */
+    public static void glPopMatrix() {
+        org.lwjgl.opengl.GL11.glPopMatrix();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPopName">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Pops one name off the top of the selection name stack.
+     */
+    public static void glPopName() {
+        org.lwjgl.opengl.GL11.glPopName();
+    }
+    /**
+     * Unsafe version of: {@link #glPrioritizeTextures PrioritizeTextures}
+     *
+     * @param n the number of texture object priorities to set
+     */
+    public static void nglPrioritizeTextures(int n, long textures, long priorities) {
+        org.lwjgl.opengl.GL11.nglPrioritizeTextures(n, textures, priorities);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glPrioritizeTextures">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Sets the priority of texture objects. Each priority value is clamped to the range [0, 1] before it is assigned. Zero indicates the lowest priority, with
@@ -2561,6 +4326,78 @@ public class GL {
         org.lwjgl.opengl.GL11.glPrioritizeTextures(textures, priorities);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPushMatrix">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Pushes the current matrix stack down by one, duplicating the current matrix in both the top of the stack and the entry below it.
+     */
+    public static void glPushMatrix() {
+        org.lwjgl.opengl.GL11.glPushMatrix();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glPushName">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Causes {@code name} to be pushed onto the selection name stack.
+     *
+     * @param name the name to push
+     */
+    public static void glPushName(@NativeType("GLuint") int name) {
+        org.lwjgl.opengl.GL11.glPushName(name);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the two-dimensional current raster position. {@code z} is implicitly set to 0 and {@code w} implicitly set to 1.
+     * 
+     * <p>The coordinates are treated as if they were specified in a Vertex command. If a vertex shader is active, this vertex shader is executed using the x, y,
+     * z, and w coordinates as the object coordinates of the vertex. Otherwise, the x, y, z, and w coordinates are transformed by the current model-view and
+     * projection matrices. These coordinates, along with current values, are used to generate primary and secondary colors and texture coordinates just as is
+     * done for a vertex. The colors and texture coordinates so produced replace the colors and texture coordinates stored in the current raster position's
+     * associated data.</p>
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     */
+    public static void glRasterPos2i(@NativeType("GLint") int x, @NativeType("GLint") int y) {
+        org.lwjgl.opengl.GL11.glRasterPos2i(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glRasterPos2i RasterPos2i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     */
+    public static void glRasterPos2s(@NativeType("GLshort") short x, @NativeType("GLshort") short y) {
+        org.lwjgl.opengl.GL11.glRasterPos2s(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glRasterPos2i RasterPos2i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     */
+    public static void glRasterPos2f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y) {
+        org.lwjgl.opengl.GL11.glRasterPos2f(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glRasterPos2i RasterPos2i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     */
+    public static void glRasterPos2d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y) {
+        org.lwjgl.opengl.GL11.glRasterPos2d(x, y);
+    }
+    /** Unsafe version of: {@link #glRasterPos2iv RasterPos2iv} */
+    public static void nglRasterPos2iv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos2iv(coords);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glRasterPos2i RasterPos2i}.
@@ -2569,6 +4406,10 @@ public class GL {
      */
     public static void glRasterPos2iv(@NativeType("const GLint *") IntBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos2iv(coords);
+    }
+    /** Unsafe version of: {@link #glRasterPos2sv RasterPos2sv} */
+    public static void nglRasterPos2sv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos2sv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2580,6 +4421,10 @@ public class GL {
     public static void glRasterPos2sv(@NativeType("const GLshort *") ShortBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos2sv(coords);
     }
+    /** Unsafe version of: {@link #glRasterPos2fv RasterPos2fv} */
+    public static void nglRasterPos2fv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos2fv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2589,6 +4434,10 @@ public class GL {
      */
     public static void glRasterPos2fv(@NativeType("const GLfloat *") FloatBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos2fv(coords);
+    }
+    /** Unsafe version of: {@link #glRasterPos2dv RasterPos2dv} */
+    public static void nglRasterPos2dv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos2dv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2603,12 +4452,68 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the three-dimensional current raster position. {@code w} is implicitly set to 1. See {@link #glRasterPos2i RasterPos2i} for more details.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     */
+    public static void glRasterPos3i(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z) {
+        org.lwjgl.opengl.GL11.glRasterPos3i(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glRasterPos3i RasterPos3i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     */
+    public static void glRasterPos3s(@NativeType("GLshort") short x, @NativeType("GLshort") short y, @NativeType("GLshort") short z) {
+        org.lwjgl.opengl.GL11.glRasterPos3s(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glRasterPos3i RasterPos3i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     */
+    public static void glRasterPos3f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z) {
+        org.lwjgl.opengl.GL11.glRasterPos3f(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glRasterPos3i RasterPos3i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     */
+    public static void glRasterPos3d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL11.glRasterPos3d(x, y, z);
+    }
+    /** Unsafe version of: {@link #glRasterPos3iv RasterPos3iv} */
+    public static void nglRasterPos3iv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos3iv(coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glRasterPos3i RasterPos3i}.
      *
      * @param coords the raster position buffer
      */
     public static void glRasterPos3iv(@NativeType("const GLint *") IntBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos3iv(coords);
+    }
+    /** Unsafe version of: {@link #glRasterPos3sv RasterPos3sv} */
+    public static void nglRasterPos3sv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos3sv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2620,6 +4525,10 @@ public class GL {
     public static void glRasterPos3sv(@NativeType("const GLshort *") ShortBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos3sv(coords);
     }
+    /** Unsafe version of: {@link #glRasterPos3fv RasterPos3fv} */
+    public static void nglRasterPos3fv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos3fv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2629,6 +4538,10 @@ public class GL {
      */
     public static void glRasterPos3fv(@NativeType("const GLfloat *") FloatBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos3fv(coords);
+    }
+    /** Unsafe version of: {@link #glRasterPos3dv RasterPos3dv} */
+    public static void nglRasterPos3dv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos3dv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2643,12 +4556,72 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the four-dimensional current raster position. See {@link #glRasterPos2i RasterPos2i} for more details.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     * @param w the {@code w} raster coordinate
+     */
+    public static void glRasterPos4i(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z, @NativeType("GLint") int w) {
+        org.lwjgl.opengl.GL11.glRasterPos4i(x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glRasterPos4i RasterPos4i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     * @param w the {@code w} raster coordinate
+     */
+    public static void glRasterPos4s(@NativeType("GLshort") short x, @NativeType("GLshort") short y, @NativeType("GLshort") short z, @NativeType("GLshort") short w) {
+        org.lwjgl.opengl.GL11.glRasterPos4s(x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of RasterPos4i.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     * @param w the {@code w} raster coordinate
+     */
+    public static void glRasterPos4f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z, @NativeType("GLfloat") float w) {
+        org.lwjgl.opengl.GL11.glRasterPos4f(x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glRasterPos4i RasterPos4i}.
+     *
+     * @param x the {@code x} raster coordinate
+     * @param y the {@code y} raster coordinate
+     * @param z the {@code z} raster coordinate
+     * @param w the {@code w} raster coordinate
+     */
+    public static void glRasterPos4d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z, @NativeType("GLdouble") double w) {
+        org.lwjgl.opengl.GL11.glRasterPos4d(x, y, z, w);
+    }
+    /** Unsafe version of: {@link #glRasterPos4iv RasterPos4iv} */
+    public static void nglRasterPos4iv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos4iv(coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glRasterPos4i RasterPos4i}.
      *
      * @param coords the raster position buffer
      */
     public static void glRasterPos4iv(@NativeType("const GLint *") IntBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos4iv(coords);
+    }
+    /** Unsafe version of: {@link #glRasterPos4sv RasterPos4sv} */
+    public static void nglRasterPos4sv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos4sv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2660,6 +4633,10 @@ public class GL {
     public static void glRasterPos4sv(@NativeType("const GLshort *") ShortBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos4sv(coords);
     }
+    /** Unsafe version of: {@link #glRasterPos4fv RasterPos4fv} */
+    public static void nglRasterPos4fv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos4fv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2670,6 +4647,10 @@ public class GL {
     public static void glRasterPos4fv(@NativeType("const GLfloat *") FloatBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos4fv(coords);
     }
+    /** Unsafe version of: {@link #glRasterPos4dv RasterPos4dv} */
+    public static void nglRasterPos4dv(long coords) {
+        org.lwjgl.opengl.GL11.nglRasterPos4dv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRasterPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2679,6 +4660,23 @@ public class GL {
      */
     public static void glRasterPos4dv(@NativeType("const GLdouble *") DoubleBuffer coords) {
         org.lwjgl.opengl.GL11.glRasterPos4dv(coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glReadBuffer">Reference Page</a></p>
+     * 
+     * Defines the color buffer from which values are obtained.
+     * 
+     * <p>Acceptable values for {@code src} depend on whether the GL is using the default framebuffer (i.e., {@link GL30#GL_DRAW_FRAMEBUFFER_BINDING DRAW_FRAMEBUFFER_BINDING} is zero), or
+     * a framebuffer object (i.e., {@link GL30#GL_DRAW_FRAMEBUFFER_BINDING DRAW_FRAMEBUFFER_BINDING} is non-zero). In the initial state, the GL is bound to the default framebuffer.</p>
+     *
+     * @param src the color buffer to read from. One of:<br><table><tr><td>{@link #GL_NONE NONE}</td><td>{@link #GL_FRONT_LEFT FRONT_LEFT}</td><td>{@link #GL_FRONT_RIGHT FRONT_RIGHT}</td><td>{@link #GL_BACK_LEFT BACK_LEFT}</td><td>{@link #GL_BACK_RIGHT BACK_RIGHT}</td><td>{@link #GL_FRONT FRONT}</td><td>{@link #GL_BACK BACK}</td><td>{@link #GL_LEFT LEFT}</td></tr><tr><td>{@link #GL_RIGHT RIGHT}</td><td>{@link #GL_FRONT_AND_BACK FRONT_AND_BACK}</td><td>{@link #GL_AUX0 AUX0}</td><td>{@link #GL_AUX1 AUX1}</td><td>{@link #GL_AUX2 AUX2}</td><td>{@link #GL_AUX3 AUX3}</td><td>{@link GL30#GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>GL30.GL_COLOR_ATTACHMENT[1-15]</td></tr></table>
+     */
+    public static void glReadBuffer(@NativeType("GLenum") int src) {
+        org.lwjgl.opengl.GL11.glReadBuffer(src);
+    }
+    /** Unsafe version of: {@link #glReadPixels ReadPixels} */
+    public static void nglReadPixels(int x, int y, int width, int height, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL11.nglReadPixels(x, y, width, height, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glReadPixels">Reference Page</a></p>
@@ -2781,6 +4779,75 @@ public class GL {
         org.lwjgl.opengl.GL11.glReadPixels(x, y, width, height, format, type, pixels);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRecti">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Specifies a rectangle as two corner vertices. The effect of the Rect command
+     * 
+     * <p>{@code Rect(x1, y1, x2, y2);}</p>
+     * 
+     * <p>is exactly the same as the following sequence of commands:
+     * {@code
+     * Begin(POLYGON);
+     * Vertex2(x1, y1);
+     * Vertex2(x2, y1);
+     * Vertex2(x2, y2);
+     * Vertex2(x1, y2);
+     * End();}</p>
+     * 
+     * <p>The appropriate Vertex2 command would be invoked depending on which of the Rect commands is issued.</p>
+     *
+     * @param x1 the x coordinate of the first corner vertex
+     * @param y1 the y coordinate of the first corner vertex
+     * @param x2 the x coordinate of the second corner vertex
+     * @param y2 the y coordinate of the second corner vertex
+     */
+    public static void glRecti(@NativeType("GLint") int x1, @NativeType("GLint") int y1, @NativeType("GLint") int x2, @NativeType("GLint") int y2) {
+        org.lwjgl.opengl.GL11.glRecti(x1, y1, x2, y2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRects">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glRecti Recti}.
+     *
+     * @param x1 the x coordinate of the first corner vertex
+     * @param y1 the y coordinate of the first corner vertex
+     * @param x2 the x coordinate of the second corner vertex
+     * @param y2 the y coordinate of the second corner vertex
+     */
+    public static void glRects(@NativeType("GLshort") short x1, @NativeType("GLshort") short y1, @NativeType("GLshort") short x2, @NativeType("GLshort") short y2) {
+        org.lwjgl.opengl.GL11.glRects(x1, y1, x2, y2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRectf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glRecti Recti}.
+     *
+     * @param x1 the x coordinate of the first corner vertex
+     * @param y1 the y coordinate of the first corner vertex
+     * @param x2 the x coordinate of the second corner vertex
+     * @param y2 the y coordinate of the second corner vertex
+     */
+    public static void glRectf(@NativeType("GLfloat") float x1, @NativeType("GLfloat") float y1, @NativeType("GLfloat") float x2, @NativeType("GLfloat") float y2) {
+        org.lwjgl.opengl.GL11.glRectf(x1, y1, x2, y2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRectd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glRecti Recti}.
+     *
+     * @param x1 the x coordinate of the first corner vertex
+     * @param y1 the y coordinate of the first corner vertex
+     * @param x2 the x coordinate of the second corner vertex
+     * @param y2 the y coordinate of the second corner vertex
+     */
+    public static void glRectd(@NativeType("GLdouble") double x1, @NativeType("GLdouble") double y1, @NativeType("GLdouble") double x2, @NativeType("GLdouble") double y2) {
+        org.lwjgl.opengl.GL11.glRectd(x1, y1, x2, y2);
+    }
+    /** Unsafe version of: {@link #glRectiv Rectiv} */
+    public static void nglRectiv(long v1, long v2) {
+        org.lwjgl.opengl.GL11.nglRectiv(v1, v2);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRect">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glRecti Recti}.
@@ -2790,6 +4857,10 @@ public class GL {
      */
     public static void glRectiv(@NativeType("const GLint *") IntBuffer v1, @NativeType("const GLint *") IntBuffer v2) {
         org.lwjgl.opengl.GL11.glRectiv(v1, v2);
+    }
+    /** Unsafe version of: {@link #glRectsv Rectsv} */
+    public static void nglRectsv(long v1, long v2) {
+        org.lwjgl.opengl.GL11.nglRectsv(v1, v2);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRect">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2802,6 +4873,10 @@ public class GL {
     public static void glRectsv(@NativeType("const GLshort *") ShortBuffer v1, @NativeType("const GLshort *") ShortBuffer v2) {
         org.lwjgl.opengl.GL11.glRectsv(v1, v2);
     }
+    /** Unsafe version of: {@link #glRectfv Rectfv} */
+    public static void nglRectfv(long v1, long v2) {
+        org.lwjgl.opengl.GL11.nglRectfv(v1, v2);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRect">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2812,6 +4887,10 @@ public class GL {
      */
     public static void glRectfv(@NativeType("const GLfloat *") FloatBuffer v1, @NativeType("const GLfloat *") FloatBuffer v2) {
         org.lwjgl.opengl.GL11.glRectfv(v1, v2);
+    }
+    /** Unsafe version of: {@link #glRectdv Rectdv} */
+    public static void nglRectdv(long v1, long v2) {
+        org.lwjgl.opengl.GL11.nglRectdv(v1, v2);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glRect">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2825,6 +4904,121 @@ public class GL {
         org.lwjgl.opengl.GL11.glRectdv(v1, v2);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRenderMode">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the current render mode. The default is {@link #GL_RENDER RENDER}.
+     *
+     * @param mode the render mode. One of:<br><table><tr><td>{@link #GL_RENDER RENDER}</td><td>{@link #GL_SELECT SELECT}</td><td>{@link #GL_FEEDBACK FEEDBACK}</td></tr></table>
+     */
+    @NativeType("GLint")
+    public static int glRenderMode(@NativeType("GLenum") int mode) {
+        return org.lwjgl.opengl.GL11.glRenderMode(mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRotatef">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Manipulates the current matrix with a rotation matrix.
+     * 
+     * <p>{@code angle} gives an angle of rotation in degrees; the coordinates of a vector v are given by <code>v = (x y z)<sup>T</sup></code>. The computed matrix
+     * is a counter-clockwise rotation about the line through the origin with the specified axis when that axis is pointing up (i.e. the right-hand rule
+     * determines the sense of the rotation angle). The matrix is thus</p>
+     * 
+     * <table class="lwjgl matrix">
+     * <tr><td colspan=3 rowspan=3><b>R</b></td><td>0</td></tr>
+     * <tr><td>0</td></tr>
+     * <tr><td>0</td></tr>
+     * <tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+     * </table>
+     * 
+     * <p>Let <code>u = v / ||v|| = (x' y' z')<sup>T</sup></code>. If <b>S</b> =</p>
+     * 
+     * <table class="lwjgl matrix">
+     * <tr><td>0</td><td>-z'</td><td>y'</td></tr>
+     * <tr><td>z'</td><td>0</td><td>-x'</td></tr>
+     * <tr><td>-y'</td><td>x'</td><td>0</td></tr>
+     * </table>
+     * 
+     * <p>then <code><b>R</b> = uu<sup>T</sup> + cos(angle)(I - uu<sup>T</sup>) + sin(angle)<b>S</b></code></p>
+     *
+     * @param angle the angle of rotation in degrees
+     * @param x     the x coordinate of the rotation vector
+     * @param y     the y coordinate of the rotation vector
+     * @param z     the z coordinate of the rotation vector
+     */
+    public static void glRotatef(@NativeType("GLfloat") float angle, @NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z) {
+        org.lwjgl.opengl.GL11.glRotatef(angle, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glRotated">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glRotatef Rotatef}.
+     *
+     * @param angle the angle of rotation in degrees
+     * @param x     the x coordinate of the rotation vector
+     * @param y     the y coordinate of the rotation vector
+     * @param z     the z coordinate of the rotation vector
+     */
+    public static void glRotated(@NativeType("GLdouble") double angle, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL11.glRotated(angle, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glScalef">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Manipulates the current matrix with a general scaling matrix along the x-, y- and z- axes.
+     * 
+     * <p>Calling this function is equivalent to calling {@link #glMultMatrixf MultMatrixf} with the following matrix:</p>
+     * 
+     * <table class="lwjgl matrix">
+     * <tr><td>x</td><td>0</td><td>0</td><td>0</td></tr>
+     * <tr><td>0</td><td>y</td><td>0</td><td>0</td></tr>
+     * <tr><td>0</td><td>0</td><td>z</td><td>0</td></tr>
+     * <tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+     * </table>
+     *
+     * @param x the x-axis scaling factor
+     * @param y the y-axis scaling factor
+     * @param z the z-axis scaling factor
+     */
+    public static void glScalef(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z) {
+        org.lwjgl.opengl.GL11.glScalef(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glScaled">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glScalef Scalef}.
+     *
+     * @param x the x-axis scaling factor
+     * @param y the y-axis scaling factor
+     * @param z the z-axis scaling factor
+     */
+    public static void glScaled(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL11.glScaled(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glScissor">Reference Page</a></p>
+     * 
+     * Defines the scissor rectangle for all viewports. The scissor test is enabled or disabled for all viewports using {@link #glEnable Enable} or {@link #glDisable Disable}
+     * with the symbolic constant {@link #GL_SCISSOR_TEST SCISSOR_TEST}. When disabled, it is as if the scissor test always passes. When enabled, if
+     * <code>left <= x<sub>w</sub> < left + width</code> and <code>bottom <= y<sub>w</sub> < bottom + height</code> for the scissor rectangle, then the scissor
+     * test passes. Otherwise, the test fails and the fragment is discarded.
+     *
+     * @param x      the left scissor rectangle coordinate
+     * @param y      the bottom scissor rectangle coordinate
+     * @param width  the scissor rectangle width
+     * @param height the scissor rectangle height
+     */
+    public static void glScissor(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL11.glScissor(x, y, width, height);
+    }
+    /**
+     * Unsafe version of: {@link #glSelectBuffer SelectBuffer}
+     *
+     * @param size the maximum number of values that can be stored in {@code buffer}
+     */
+    public static void nglSelectBuffer(int size, long buffer) {
+        org.lwjgl.opengl.GL11.nglSelectBuffer(size, buffer);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSelectBuffer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Sets the selection array.
@@ -2833,6 +5027,114 @@ public class GL {
      */
     public static void glSelectBuffer(@NativeType("GLuint *") IntBuffer buffer) {
         org.lwjgl.opengl.GL11.glSelectBuffer(buffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glShadeModel">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the current shade mode. The initial value of the shade mode is {@link #GL_SMOOTH SMOOTH}.
+     * 
+     * <p>If mode is {@link #GL_SMOOTH SMOOTH}, vertex colors are treated individually. If mode is {@link #GL_FLAT FLAT}, flatshading is enabled and colors are taken from the
+     * provoking vertex of the primitive. The colors selected are those derived from current values, generated by lighting, or generated by vertex shading, if
+     * lighting is disabled, enabled, or a vertex shader is in use, respectively.</p>
+     *
+     * @param mode the shade mode. One of:<br><table><tr><td>{@link #GL_SMOOTH SMOOTH}</td><td>{@link #GL_FLAT FLAT}</td></tr></table>
+     */
+    public static void glShadeModel(@NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL11.glShadeModel(mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glStencilFunc">Reference Page</a></p>
+     * 
+     * Controls the stencil test.
+     * 
+     * <p>{@code ref} is an integer reference value that is used in the unsigned stencil comparison. Stencil comparison operations and queries of {@code ref}
+     * clamp its value to the range [0, 2<sup>s</sup> &ndash; 1], where s is the number of bits in the stencil buffer attached to the draw framebuffer. The s
+     * least significant bits of {@code mask} are bitwise ANDed with both the reference and the stored stencil value, and the resulting masked values are those that
+     * participate in the comparison controlled by {@code func}.</p>
+     *
+     * @param func the stencil comparison function. One of:<br><table><tr><td>{@link #GL_NEVER NEVER}</td><td>{@link #GL_ALWAYS ALWAYS}</td><td>{@link #GL_LESS LESS}</td><td>{@link #GL_LEQUAL LEQUAL}</td><td>{@link #GL_EQUAL EQUAL}</td><td>{@link #GL_GEQUAL GEQUAL}</td><td>{@link #GL_GREATER GREATER}</td><td>{@link #GL_NOTEQUAL NOTEQUAL}</td></tr></table>
+     * @param ref  the reference value
+     * @param mask the stencil comparison mask
+     */
+    public static void glStencilFunc(@NativeType("GLenum") int func, @NativeType("GLint") int ref, @NativeType("GLuint") int mask) {
+        org.lwjgl.opengl.GL11.glStencilFunc(func, ref, mask);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glStencilMask">Reference Page</a></p>
+     * 
+     * Masks the writing of particular bits into the stencil plans.
+     * 
+     * <p>The least significant s bits of {@code mask}, where s is the number of bits in the stencil buffer, specify an integer mask. Where a 1 appears in this
+     * mask, the corresponding bit in the stencil buffer is written; where a 0 appears, the bit is not written.</p>
+     *
+     * @param mask the stencil mask
+     */
+    public static void glStencilMask(@NativeType("GLuint") int mask) {
+        org.lwjgl.opengl.GL11.glStencilMask(mask);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glStencilOp">Reference Page</a></p>
+     * 
+     * Indicates what happens to the stored stencil value if this or certain subsequent tests fail or pass.
+     * 
+     * <p>The supported actions are {@link #GL_KEEP KEEP}, {@link #GL_ZERO ZERO}, {@link #GL_REPLACE REPLACE}, {@link #GL_INCR INCR}, {@link #GL_DECR DECR}, {@link #GL_INVERT INVERT},
+     * {@link GL14#GL_INCR_WRAP INCR_WRAP} and {@link GL14#GL_DECR_WRAP DECR_WRAP}. These correspond to keeping the current value, setting to zero, replacing with the reference value,
+     * incrementing with saturation, decrementing with saturation, bitwise inverting it, incrementing without saturation, and decrementing without saturation.</p>
+     * 
+     * <p>For purposes of increment and decrement, the stencil bits are considered as an unsigned integer. Incrementing or decrementing with saturation clamps
+     * the stencil value at 0 and the maximum representable value. Incrementing or decrementing without saturation will wrap such that incrementing the maximum
+     * representable value results in 0, and decrementing 0 results in the maximum representable value.</p>
+     *
+     * @param sfail  the action to take if the stencil test fails
+     * @param dpfail the action to take if the depth buffer test fails
+     * @param dppass the action to take if the depth buffer test passes
+     */
+    public static void glStencilOp(@NativeType("GLenum") int sfail, @NativeType("GLenum") int dpfail, @NativeType("GLenum") int dppass) {
+        org.lwjgl.opengl.GL11.glStencilOp(sfail, dpfail, dppass);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the current one-dimensional texture coordinate. {@code t} and {@code r} are implicitly set to 0 and {@code q} to 1.
+     *
+     * @param s the s component of the current texture coordinates
+     */
+    public static void glTexCoord1f(@NativeType("GLfloat") float s) {
+        org.lwjgl.opengl.GL11.glTexCoord1f(s);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glTexCoord1f TexCoord1f}.
+     *
+     * @param s the s component of the current texture coordinates
+     */
+    public static void glTexCoord1s(@NativeType("GLshort") short s) {
+        org.lwjgl.opengl.GL11.glTexCoord1s(s);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glTexCoord1f TexCoord1f}.
+     *
+     * @param s the s component of the current texture coordinates
+     */
+    public static void glTexCoord1i(@NativeType("GLint") int s) {
+        org.lwjgl.opengl.GL11.glTexCoord1i(s);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glTexCoord1f TexCoord1f}.
+     *
+     * @param s the s component of the current texture coordinates
+     */
+    public static void glTexCoord1d(@NativeType("GLdouble") double s) {
+        org.lwjgl.opengl.GL11.glTexCoord1d(s);
+    }
+    /** Unsafe version of: {@link #glTexCoord1fv TexCoord1fv} */
+    public static void nglTexCoord1fv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord1fv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2844,6 +5146,10 @@ public class GL {
     public static void glTexCoord1fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord1fv(v);
     }
+    /** Unsafe version of: {@link #glTexCoord1sv TexCoord1sv} */
+    public static void nglTexCoord1sv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord1sv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2854,6 +5160,10 @@ public class GL {
     public static void glTexCoord1sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord1sv(v);
     }
+    /** Unsafe version of: {@link #glTexCoord1iv TexCoord1iv} */
+    public static void nglTexCoord1iv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord1iv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2863,6 +5173,10 @@ public class GL {
      */
     public static void glTexCoord1iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord1iv(v);
+    }
+    /** Unsafe version of: {@link #glTexCoord1dv TexCoord1dv} */
+    public static void nglTexCoord1dv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord1dv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2877,12 +5191,64 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the current two-dimensional texture coordinate. {@code r} is implicitly set to 0 and {@code q} to 1.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     */
+    public static void glTexCoord2f(@NativeType("GLfloat") float s, @NativeType("GLfloat") float t) {
+        org.lwjgl.opengl.GL11.glTexCoord2f(s, t);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glTexCoord2f TexCoord2f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     */
+    public static void glTexCoord2s(@NativeType("GLshort") short s, @NativeType("GLshort") short t) {
+        org.lwjgl.opengl.GL11.glTexCoord2s(s, t);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glTexCoord2f TexCoord2f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     */
+    public static void glTexCoord2i(@NativeType("GLint") int s, @NativeType("GLint") int t) {
+        org.lwjgl.opengl.GL11.glTexCoord2i(s, t);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glTexCoord2f TexCoord2f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     */
+    public static void glTexCoord2d(@NativeType("GLdouble") double s, @NativeType("GLdouble") double t) {
+        org.lwjgl.opengl.GL11.glTexCoord2d(s, t);
+    }
+    /** Unsafe version of: {@link #glTexCoord2fv TexCoord2fv} */
+    public static void nglTexCoord2fv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord2fv(v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glTexCoord2f TexCoord2f}.
      *
      * @param v the texture coordinate buffer
      */
     public static void glTexCoord2fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord2fv(v);
+    }
+    /** Unsafe version of: {@link #glTexCoord2sv TexCoord2sv} */
+    public static void nglTexCoord2sv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord2sv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2894,6 +5260,10 @@ public class GL {
     public static void glTexCoord2sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord2sv(v);
     }
+    /** Unsafe version of: {@link #glTexCoord2iv TexCoord2iv} */
+    public static void nglTexCoord2iv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord2iv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2903,6 +5273,10 @@ public class GL {
      */
     public static void glTexCoord2iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord2iv(v);
+    }
+    /** Unsafe version of: {@link #glTexCoord2dv TexCoord2dv} */
+    public static void nglTexCoord2dv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord2dv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2917,12 +5291,68 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the current three-dimensional texture coordinate. {@code q} is implicitly set to 1.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     */
+    public static void glTexCoord3f(@NativeType("GLfloat") float s, @NativeType("GLfloat") float t, @NativeType("GLfloat") float r) {
+        org.lwjgl.opengl.GL11.glTexCoord3f(s, t, r);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glTexCoord3f TexCoord3f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     */
+    public static void glTexCoord3s(@NativeType("GLshort") short s, @NativeType("GLshort") short t, @NativeType("GLshort") short r) {
+        org.lwjgl.opengl.GL11.glTexCoord3s(s, t, r);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glTexCoord3f TexCoord3f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     */
+    public static void glTexCoord3i(@NativeType("GLint") int s, @NativeType("GLint") int t, @NativeType("GLint") int r) {
+        org.lwjgl.opengl.GL11.glTexCoord3i(s, t, r);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glTexCoord3f TexCoord3f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     */
+    public static void glTexCoord3d(@NativeType("GLdouble") double s, @NativeType("GLdouble") double t, @NativeType("GLdouble") double r) {
+        org.lwjgl.opengl.GL11.glTexCoord3d(s, t, r);
+    }
+    /** Unsafe version of: {@link #glTexCoord3fv TexCoord3fv} */
+    public static void nglTexCoord3fv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord3fv(v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glTexCoord3f TexCoord3f}.
      *
      * @param v the texture coordinate buffer
      */
     public static void glTexCoord3fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord3fv(v);
+    }
+    /** Unsafe version of: {@link #glTexCoord3sv TexCoord3sv} */
+    public static void nglTexCoord3sv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord3sv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2934,6 +5364,10 @@ public class GL {
     public static void glTexCoord3sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord3sv(v);
     }
+    /** Unsafe version of: {@link #glTexCoord3iv TexCoord3iv} */
+    public static void nglTexCoord3iv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord3iv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2943,6 +5377,10 @@ public class GL {
      */
     public static void glTexCoord3iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord3iv(v);
+    }
+    /** Unsafe version of: {@link #glTexCoord3dv TexCoord3dv} */
+    public static void nglTexCoord3dv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord3dv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2957,12 +5395,72 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the current four-dimensional texture coordinate.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     * @param q the q component of the current texture coordinates
+     */
+    public static void glTexCoord4f(@NativeType("GLfloat") float s, @NativeType("GLfloat") float t, @NativeType("GLfloat") float r, @NativeType("GLfloat") float q) {
+        org.lwjgl.opengl.GL11.glTexCoord4f(s, t, r, q);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glTexCoord4f TexCoord4f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     * @param q the q component of the current texture coordinates
+     */
+    public static void glTexCoord4s(@NativeType("GLshort") short s, @NativeType("GLshort") short t, @NativeType("GLshort") short r, @NativeType("GLshort") short q) {
+        org.lwjgl.opengl.GL11.glTexCoord4s(s, t, r, q);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glTexCoord4f TexCoord4f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     * @param q the q component of the current texture coordinates
+     */
+    public static void glTexCoord4i(@NativeType("GLint") int s, @NativeType("GLint") int t, @NativeType("GLint") int r, @NativeType("GLint") int q) {
+        org.lwjgl.opengl.GL11.glTexCoord4i(s, t, r, q);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glTexCoord4f TexCoord4f}.
+     *
+     * @param s the s component of the current texture coordinates
+     * @param t the t component of the current texture coordinates
+     * @param r the r component of the current texture coordinates
+     * @param q the q component of the current texture coordinates
+     */
+    public static void glTexCoord4d(@NativeType("GLdouble") double s, @NativeType("GLdouble") double t, @NativeType("GLdouble") double r, @NativeType("GLdouble") double q) {
+        org.lwjgl.opengl.GL11.glTexCoord4d(s, t, r, q);
+    }
+    /** Unsafe version of: {@link #glTexCoord4fv TexCoord4fv} */
+    public static void nglTexCoord4fv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord4fv(v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glTexCoord4f TexCoord4f}.
      *
      * @param v the texture coordinate buffer
      */
     public static void glTexCoord4fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord4fv(v);
+    }
+    /** Unsafe version of: {@link #glTexCoord4sv TexCoord4sv} */
+    public static void nglTexCoord4sv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord4sv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -2974,6 +5472,10 @@ public class GL {
     public static void glTexCoord4sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord4sv(v);
     }
+    /** Unsafe version of: {@link #glTexCoord4iv TexCoord4iv} */
+    public static void nglTexCoord4iv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord4iv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2984,6 +5486,10 @@ public class GL {
     public static void glTexCoord4iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord4iv(v);
     }
+    /** Unsafe version of: {@link #glTexCoord4dv TexCoord4dv} */
+    public static void nglTexCoord4dv(long v) {
+        org.lwjgl.opengl.GL11.nglTexCoord4dv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -2993,6 +5499,10 @@ public class GL {
      */
     public static void glTexCoord4dv(@NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL11.glTexCoord4dv(v);
+    }
+    /** Unsafe version of: {@link #glTexCoordPointer TexCoordPointer} */
+    public static void nglTexCoordPointer(int size, int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL11.nglTexCoordPointer(size, type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoordPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3060,6 +5570,23 @@ public class GL {
         org.lwjgl.opengl.GL11.glTexCoordPointer(size, type, stride, pointer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexEnvi">Reference Page</a></p>
+     * 
+     * Sets parameters of the texture environment that specifies how texture values are interpreted when texturing a fragment, or sets per-texture-unit
+     * filtering parameters.
+     *
+     * @param target the texture environment target. One of:<br><table><tr><td>{@link #GL_TEXTURE_ENV TEXTURE_ENV}</td><td>{@link GL14#GL_TEXTURE_FILTER_CONTROL TEXTURE_FILTER_CONTROL}</td><td>{@link GL20#GL_POINT_SPRITE POINT_SPRITE}</td></tr></table>
+     * @param pname  the parameter to set. One of:<br><table><tr><td>{@link GL20#GL_COORD_REPLACE COORD_REPLACE}</td><td>{@link #GL_TEXTURE_ENV_MODE TEXTURE_ENV_MODE}</td><td>{@link GL14#GL_TEXTURE_LOD_BIAS TEXTURE_LOD_BIAS}</td><td>{@link GL13#GL_COMBINE_RGB COMBINE_RGB}</td><td>{@link GL13#GL_COMBINE_ALPHA COMBINE_ALPHA}</td><td>{@link GL15#GL_SRC0_RGB SRC0_RGB}</td></tr><tr><td>{@link GL15#GL_SRC1_RGB SRC1_RGB}</td><td>{@link GL15#GL_SRC2_RGB SRC2_RGB}</td><td>{@link GL15#GL_SRC0_ALPHA SRC0_ALPHA}</td><td>{@link GL15#GL_SRC1_ALPHA SRC1_ALPHA}</td><td>{@link GL15#GL_SRC2_ALPHA SRC2_ALPHA}</td><td>{@link GL13#GL_OPERAND0_RGB OPERAND0_RGB}</td></tr><tr><td>{@link GL13#GL_OPERAND1_RGB OPERAND1_RGB}</td><td>{@link GL13#GL_OPERAND2_RGB OPERAND2_RGB}</td><td>{@link GL13#GL_OPERAND0_ALPHA OPERAND0_ALPHA}</td><td>{@link GL13#GL_OPERAND1_ALPHA OPERAND1_ALPHA}</td><td>{@link GL13#GL_OPERAND2_ALPHA OPERAND2_ALPHA}</td><td>{@link GL13#GL_RGB_SCALE RGB_SCALE}</td></tr><tr><td>{@link #GL_ALPHA_SCALE ALPHA_SCALE}</td></tr></table>
+     * @param param  the parameter value. Scalar value or one of:<br><table><tr><td>{@link #GL_REPLACE REPLACE}</td><td>{@link #GL_MODULATE MODULATE}</td><td>{@link #GL_DECAL DECAL}</td><td>{@link #GL_BLEND BLEND}</td><td>{@link #GL_ADD ADD}</td><td>{@link GL13#GL_COMBINE COMBINE}</td><td>{@link GL13#GL_ADD_SIGNED ADD_SIGNED}</td><td>{@link GL13#GL_INTERPOLATE INTERPOLATE}</td></tr><tr><td>{@link GL13#GL_SUBTRACT SUBTRACT}</td><td>{@link GL13#GL_DOT3_RGB DOT3_RGB}</td><td>{@link GL13#GL_DOT3_RGBA DOT3_RGBA}</td><td>{@link #GL_TEXTURE TEXTURE}</td><td>{@link GL13#GL_TEXTURE0 TEXTURE0}</td><td>GL13.GL_TEXTURE[1-31]</td><td>{@link GL13#GL_CONSTANT CONSTANT}</td><td>{@link GL13#GL_PRIMARY_COLOR PRIMARY_COLOR}</td></tr><tr><td>{@link GL13#GL_PREVIOUS PREVIOUS}</td></tr></table>
+     */
+    public static void glTexEnvi(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glTexEnvi(target, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexEnviv TexEnviv} */
+    public static void nglTexEnviv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglTexEnviv(target, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexEnv">Reference Page</a></p>
      * 
      * Pointer version of {@link #glTexEnvi TexEnvi}.
@@ -3070,6 +5597,22 @@ public class GL {
      */
     public static void glTexEnviv(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL11.glTexEnviv(target, pname, params);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexEnvf">Reference Page</a></p>
+     * 
+     * Float version of {@link #glTexEnvi TexEnvi}.
+     *
+     * @param target the texture environment target
+     * @param pname  the parameter to set
+     * @param param  the parameter value
+     */
+    public static void glTexEnvf(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glTexEnvf(target, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexEnvfv TexEnvfv} */
+    public static void nglTexEnvfv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglTexEnvfv(target, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexEnv">Reference Page</a></p>
@@ -3084,6 +5627,30 @@ public class GL {
         org.lwjgl.opengl.GL11.glTexEnvfv(target, pname, params);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexGeni">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets an integer texture coordinate generation parameter.
+     * 
+     * <p>A texture coordinate generation function is enabled or disabled using {@link #glEnable Enable} and {@link #glDisable Disable} with an argument of
+     * {@link #GL_TEXTURE_GEN_S TEXTURE_GEN_S}, {@link #GL_TEXTURE_GEN_T TEXTURE_GEN_T}, {@link #GL_TEXTURE_GEN_R TEXTURE_GEN_R}, or {@link #GL_TEXTURE_GEN_Q TEXTURE_GEN_Q} (each indicates the corresponding texture
+     * coordinate). When enabled, the specified texture coordinate is computed according to the current {@link #GL_EYE_LINEAR EYE_LINEAR}, {@link #GL_OBJECT_LINEAR OBJECT_LINEAR} or
+     * {@link #GL_SPHERE_MAP SPHERE_MAP} specification, depending on the current setting of {@link #GL_TEXTURE_GEN_MODE TEXTURE_GEN_MODE} for that coordinate. When disabled, subsequent
+     * vertices will take the indicated texture coordinate from the current texture coordinates.</p>
+     * 
+     * <p>The initial state has the texture generation function disabled for all texture coordinates. Initially all texture generation modes are EYE_LINEAR.</p>
+     *
+     * @param coord the coordinate for which to set the parameter. One of:<br><table><tr><td>{@link #GL_S S}</td><td>{@link #GL_T T}</td><td>{@link #GL_R R}</td><td>{@link #GL_Q Q}</td></tr></table>
+     * @param pname the parameter to set. Must be:<br><table><tr><td>{@link #GL_TEXTURE_GEN_MODE TEXTURE_GEN_MODE}</td></tr></table>
+     * @param param the parameter value. One of:<br><table><tr><td>{@link #GL_OBJECT_LINEAR OBJECT_LINEAR}</td><td>{@link #GL_EYE_LINEAR EYE_LINEAR}</td><td>{@link #GL_SPHERE_MAP SPHERE_MAP}</td><td>{@link GL13#GL_REFLECTION_MAP REFLECTION_MAP}</td><td>{@link GL13#GL_NORMAL_MAP NORMAL_MAP}</td></tr></table>
+     */
+    public static void glTexGeni(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glTexGeni(coord, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexGeniv TexGeniv} */
+    public static void nglTexGeniv(int coord, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglTexGeniv(coord, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexGen">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glTexGeni TexGeni}.
@@ -3094,6 +5661,22 @@ public class GL {
      */
     public static void glTexGeniv(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL11.glTexGeniv(coord, pname, params);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexGenf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glTexGeni TexGeni}.
+     *
+     * @param coord the coordinate for which to set the parameter
+     * @param pname the parameter to set
+     * @param param the parameter value
+     */
+    public static void glTexGenf(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glTexGenf(coord, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexGenfv TexGenfv} */
+    public static void nglTexGenfv(int coord, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglTexGenfv(coord, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexGen">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3108,6 +5691,22 @@ public class GL {
         org.lwjgl.opengl.GL11.glTexGenfv(coord, pname, params);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexGend">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glTexGeni TexGeni}.
+     *
+     * @param coord the coordinate for which to set the parameter
+     * @param pname the parameter to set
+     * @param param the parameter value
+     */
+    public static void glTexGend(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname, @NativeType("GLdouble") double param) {
+        org.lwjgl.opengl.GL11.glTexGend(coord, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexGendv TexGendv} */
+    public static void nglTexGendv(int coord, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglTexGendv(coord, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexGen">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glTexGend TexGend}.
@@ -3118,6 +5717,10 @@ public class GL {
      */
     public static void glTexGendv(@NativeType("GLenum") int coord, @NativeType("GLenum") int pname, @NativeType("const GLdouble *") DoubleBuffer params) {
         org.lwjgl.opengl.GL11.glTexGendv(coord, pname, params);
+    }
+    /** Unsafe version of: {@link #glTexImage2D TexImage2D} */
+    public static void nglTexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL11.nglTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexImage2D">Reference Page</a></p>
@@ -3227,6 +5830,10 @@ public class GL {
     public static void glTexImage2D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLint") int border, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") DoubleBuffer pixels) {
         org.lwjgl.opengl.GL11.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
     }
+    /** Unsafe version of: {@link #glTexImage1D TexImage1D} */
+    public static void nglTexImage1D(int target, int level, int internalformat, int width, int border, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL11.nglTexImage1D(target, level, internalformat, width, border, format, type, pixels);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexImage1D">Reference Page</a></p>
      * 
@@ -3330,6 +5937,109 @@ public class GL {
         org.lwjgl.opengl.GL11.glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTexImage2D">Reference Page</a></p>
+     * 
+     * Defines a two-dimensional texel array in exactly the manner of {@link #glTexImage2D TexImage2D}, except that the image data are taken from the framebuffer rather
+     * than from client memory.
+     * 
+     * <p>{@code x}, {@code y}, {@code width}, and {@code height} correspond precisely to the corresponding arguments to {@link #glReadPixels ReadPixels}; they specify the
+     * image's width and height, and the lower left (x, y) coordinates of the framebuffer region to be copied.</p>
+     * 
+     * <p>The image is taken from the framebuffer exactly as if these arguments were passed to {@link #glCopyPixels CopyPixels} with argument type set to {@link #GL_COLOR COLOR},
+     * {@link #GL_DEPTH DEPTH}, or {@link GL30#GL_DEPTH_STENCIL DEPTH_STENCIL}, depending on {@code internalformat}. RGBA data is taken from the current color buffer, while depth
+     * component and stencil index data are taken from the depth and stencil buffers, respectively.</p>
+     * 
+     * <p>Subsequent processing is identical to that described for {@link #glTexImage2D TexImage2D}, beginning with clamping of the R, G, B, A, or depth values, and masking
+     * of the stencil index values from the resulting pixel groups. Parameters {@code level}, {@code internalformat}, and {@code border} are specified using
+     * the same values, with the same meanings, as the corresponding arguments of {@link #glTexImage2D TexImage2D}.</p>
+     * 
+     * <p>The constraints on width, height, and border are exactly those for the corresponding arguments of {@link #glTexImage2D TexImage2D}.</p>
+     *
+     * @param target         the texture target. One of:<br><table><tr><td>{@link #GL_TEXTURE_2D TEXTURE_2D}</td><td>{@link GL30#GL_TEXTURE_1D_ARRAY TEXTURE_1D_ARRAY}</td><td>{@link GL31#GL_TEXTURE_RECTANGLE TEXTURE_RECTANGLE}</td><td>{@link GL13#GL_TEXTURE_CUBE_MAP TEXTURE_CUBE_MAP}</td></tr></table>
+     * @param level          the level-of-detail number
+     * @param internalFormat the texture internal format. See {@link #glTexImage2D TexImage2D} for a list of supported formats.
+     * @param x              the left framebuffer pixel coordinate
+     * @param y              the lower framebuffer pixel coordinate
+     * @param width          the texture width
+     * @param height         the texture height
+     * @param border         the texture border width
+     */
+    public static void glCopyTexImage2D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLenum") int internalFormat, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLint") int border) {
+        org.lwjgl.opengl.GL11.glCopyTexImage2D(target, level, internalFormat, x, y, width, height, border);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTexImage1D">Reference Page</a></p>
+     * 
+     * Defines a one-dimensional texel array in exactly the manner of {@link #glTexImage1D TexImage1D}, except that the image data are taken from the framebuffer rather
+     * than from client memory. For the purposes of decoding the texture image, {@code CopyTexImage1D} is equivalent to calling {@link #glCopyTexImage2D CopyTexImage2D}
+     * with corresponding arguments and height of 1, except that the height of the image is always 1, regardless of the value of border. level, internalformat,
+     * and border are specified using the same values, with the same meanings, as the corresponding arguments of {@link #glTexImage1D TexImage1D}. The constraints on
+     * width and border are exactly those of the corresponding arguments of {@link #glTexImage1D TexImage1D}.
+     *
+     * @param target         the texture target. Must be:<br><table><tr><td>{@link #GL_TEXTURE_1D TEXTURE_1D}</td></tr></table>
+     * @param level          the level-of-detail number
+     * @param internalFormat the texture internal format. See {@link #glTexImage2D TexImage2D} for a list of supported formats.
+     * @param x              the left framebuffer pixel coordinate
+     * @param y              the lower framebuffer pixel coordinate
+     * @param width          the texture width
+     * @param border         the texture border width
+     */
+    public static void glCopyTexImage1D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLenum") int internalFormat, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLint") int border) {
+        org.lwjgl.opengl.GL11.glCopyTexImage1D(target, level, internalFormat, x, y, width, border);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTexSubImage1D">Reference Page</a></p>
+     * 
+     * Respecifies a rectangular subregion of an existing texel array. No change is made to the {@code internalformat}, {@code width} or {@code border}
+     * parameters of the specified texel array, nor is any change made to texel values outside the specified subregion. See {@link #glCopyTexImage1D CopyTexImage1D} for more
+     * details.
+     *
+     * @param target  the texture target. Must be:<br><table><tr><td>{@link #GL_TEXTURE_1D TEXTURE_1D}</td></tr></table>
+     * @param level   the level-of-detail number
+     * @param xoffset the left texel coordinate of the texture subregion to update
+     * @param x       the left framebuffer pixel coordinate
+     * @param y       the lower framebuffer pixel coordinate
+     * @param width   the texture subregion width
+     */
+    public static void glCopyTexSubImage1D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width) {
+        org.lwjgl.opengl.GL11.glCopyTexSubImage1D(target, level, xoffset, x, y, width);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTexSubImage2D">Reference Page</a></p>
+     * 
+     * Respecifies a rectangular subregion of an existing texel array. No change is made to the {@code internalformat}, {@code width}, {@code height},
+     * or {@code border} parameters of the specified texel array, nor is any change made to texel values outside the specified subregion. See
+     * {@link #glCopyTexImage2D CopyTexImage2D} for more details.
+     *
+     * @param target  the texture target. One of:<br><table><tr><td>{@link #GL_TEXTURE_2D TEXTURE_2D}</td><td>{@link GL30#GL_TEXTURE_1D_ARRAY TEXTURE_1D_ARRAY}</td><td>{@link GL31#GL_TEXTURE_RECTANGLE TEXTURE_RECTANGLE}</td><td>{@link GL13#GL_TEXTURE_CUBE_MAP TEXTURE_CUBE_MAP}</td></tr></table>
+     * @param level   the level-of-detail number
+     * @param xoffset the left texel coordinate of the texture subregion to update
+     * @param yoffset the lower texel coordinate of the texture subregion to update
+     * @param x       the left framebuffer pixel coordinate
+     * @param y       the lower framebuffer pixel coordinate
+     * @param width   the texture subregion width
+     * @param height  the texture subregion height
+     */
+    public static void glCopyTexSubImage2D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL11.glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexParameteri">Reference Page</a></p>
+     * 
+     * Sets the integer value of a texture parameter, which controls how the texel array is treated when specified or changed, and when applied to a fragment.
+     *
+     * @param target the texture target. One of:<br><table><tr><td>{@link #GL_TEXTURE_1D TEXTURE_1D}</td><td>{@link #GL_TEXTURE_2D TEXTURE_2D}</td><td>{@link GL12#GL_TEXTURE_3D TEXTURE_3D}</td><td>{@link GL30#GL_TEXTURE_1D_ARRAY TEXTURE_1D_ARRAY}</td></tr><tr><td>{@link GL30#GL_TEXTURE_2D_ARRAY TEXTURE_2D_ARRAY}</td><td>{@link GL31#GL_TEXTURE_RECTANGLE TEXTURE_RECTANGLE}</td><td>{@link GL13#GL_TEXTURE_CUBE_MAP TEXTURE_CUBE_MAP}</td><td>{@link GL40#GL_TEXTURE_CUBE_MAP_ARRAY TEXTURE_CUBE_MAP_ARRAY}</td></tr><tr><td>{@link GL32#GL_TEXTURE_2D_MULTISAMPLE TEXTURE_2D_MULTISAMPLE}</td><td>{@link GL32#GL_TEXTURE_2D_MULTISAMPLE_ARRAY TEXTURE_2D_MULTISAMPLE_ARRAY}</td></tr></table>
+     * @param pname  the parameter to set. One of:<br><table><tr><td>{@link GL12#GL_TEXTURE_BASE_LEVEL TEXTURE_BASE_LEVEL}</td><td>{@link #GL_TEXTURE_BORDER_COLOR TEXTURE_BORDER_COLOR}</td><td>{@link GL14#GL_TEXTURE_COMPARE_MODE TEXTURE_COMPARE_MODE}</td><td>{@link GL14#GL_TEXTURE_COMPARE_FUNC TEXTURE_COMPARE_FUNC}</td></tr><tr><td>{@link GL14#GL_TEXTURE_LOD_BIAS TEXTURE_LOD_BIAS}</td><td>{@link #GL_TEXTURE_MAG_FILTER TEXTURE_MAG_FILTER}</td><td>{@link GL12#GL_TEXTURE_MAX_LEVEL TEXTURE_MAX_LEVEL}</td><td>{@link GL12#GL_TEXTURE_MAX_LOD TEXTURE_MAX_LOD}</td></tr><tr><td>{@link #GL_TEXTURE_MIN_FILTER TEXTURE_MIN_FILTER}</td><td>{@link GL12#GL_TEXTURE_MIN_LOD TEXTURE_MIN_LOD}</td><td>{@link #GL_TEXTURE_PRIORITY TEXTURE_PRIORITY}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_R TEXTURE_SWIZZLE_R}</td></tr><tr><td>{@link GL33#GL_TEXTURE_SWIZZLE_G TEXTURE_SWIZZLE_G}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_B TEXTURE_SWIZZLE_B}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_A TEXTURE_SWIZZLE_A}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_RGBA TEXTURE_SWIZZLE_RGBA}</td></tr><tr><td>{@link #GL_TEXTURE_WRAP_S TEXTURE_WRAP_S}</td><td>{@link #GL_TEXTURE_WRAP_T TEXTURE_WRAP_T}</td><td>{@link GL12#GL_TEXTURE_WRAP_R TEXTURE_WRAP_R}</td><td>{@link GL14#GL_DEPTH_TEXTURE_MODE DEPTH_TEXTURE_MODE}</td></tr><tr><td>{@link GL14#GL_GENERATE_MIPMAP GENERATE_MIPMAP}</td></tr></table>
+     * @param param  the parameter value
+     */
+    public static void glTexParameteri(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL11.glTexParameteri(target, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexParameteriv TexParameteriv} */
+    public static void nglTexParameteriv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglTexParameteriv(target, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexParameter">Reference Page</a></p>
      * 
      * Pointer version of {@link #glTexParameteri TexParameteri}.
@@ -3342,6 +6052,22 @@ public class GL {
         org.lwjgl.opengl.GL11.glTexParameteriv(target, pname, params);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexParameterf">Reference Page</a></p>
+     * 
+     * Float version of {@link #glTexParameteri TexParameteri}.
+     *
+     * @param target the texture target
+     * @param pname  the parameter to set
+     * @param param  the parameter value
+     */
+    public static void glTexParameterf(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL11.glTexParameterf(target, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexParameterfv TexParameterfv} */
+    public static void nglTexParameterfv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL11.nglTexParameterfv(target, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexParameter">Reference Page</a></p>
      * 
      * Pointer version of {@link #glTexParameterf TexParameterf}.
@@ -3352,6 +6078,10 @@ public class GL {
      */
     public static void glTexParameterfv(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("const GLfloat *") FloatBuffer params) {
         org.lwjgl.opengl.GL11.glTexParameterfv(target, pname, params);
+    }
+    /** Unsafe version of: {@link #glTexSubImage1D TexSubImage1D} */
+    public static void nglTexSubImage1D(int target, int level, int xoffset, int width, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL11.nglTexSubImage1D(target, level, xoffset, width, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexSubImage1D">Reference Page</a></p>
@@ -3448,6 +6178,10 @@ public class GL {
      */
     public static void glTexSubImage1D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLsizei") int width, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") DoubleBuffer pixels) {
         org.lwjgl.opengl.GL11.glTexSubImage1D(target, level, xoffset, width, format, type, pixels);
+    }
+    /** Unsafe version of: {@link #glTexSubImage2D TexSubImage2D} */
+    public static void nglTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL11.nglTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexSubImage2D">Reference Page</a></p>
@@ -3564,6 +6298,88 @@ public class GL {
         org.lwjgl.opengl.GL11.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTranslatef">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Manipulates the current matrix with a translation matrix along the x-, y- and z- axes.
+     * 
+     * <p>Calling this function is equivalent to calling {@link #glMultMatrixf MultMatrixf} with the following matrix:</p>
+     * 
+     * <table class="lwjgl matrix">
+     * <tr><td>1</td><td>0</td><td>0</td><td>x</td></tr>
+     * <tr><td>0</td><td>1</td><td>0</td><td>y</td></tr>
+     * <tr><td>0</td><td>0</td><td>1</td><td>z</td></tr>
+     * <tr><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+     * </table>
+     *
+     * @param x the x-axis translation
+     * @param y the y-axis translation
+     * @param z the z-axis translation
+     */
+    public static void glTranslatef(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z) {
+        org.lwjgl.opengl.GL11.glTranslatef(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTranslated">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glTranslatef Translatef}.
+     *
+     * @param x the x-axis translation
+     * @param y the y-axis translation
+     * @param z the z-axis translation
+     */
+    public static void glTranslated(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL11.glTranslated(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Specifies a single vertex between {@link #glBegin Begin} and {@link #glEnd End} by giving its coordinates in two dimensions. The z coordinate is implicitly set
+     * to zero and the w coordinate to one.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     */
+    public static void glVertex2f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y) {
+        org.lwjgl.opengl.GL11.glVertex2f(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glVertex2f Vertex2f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     */
+    public static void glVertex2s(@NativeType("GLshort") short x, @NativeType("GLshort") short y) {
+        org.lwjgl.opengl.GL11.glVertex2s(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glVertex2f Vertex2f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     */
+    public static void glVertex2i(@NativeType("GLint") int x, @NativeType("GLint") int y) {
+        org.lwjgl.opengl.GL11.glVertex2i(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glVertex2f Vertex2f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     */
+    public static void glVertex2d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y) {
+        org.lwjgl.opengl.GL11.glVertex2d(x, y);
+    }
+    /** Unsafe version of: {@link #glVertex2fv Vertex2fv} */
+    public static void nglVertex2fv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex2fv(coords);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glVertex2f Vertex2f}.
@@ -3572,6 +6388,10 @@ public class GL {
      */
     public static void glVertex2fv(@NativeType("const GLfloat *") FloatBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex2fv(coords);
+    }
+    /** Unsafe version of: {@link #glVertex2sv Vertex2sv} */
+    public static void nglVertex2sv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex2sv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3583,6 +6403,10 @@ public class GL {
     public static void glVertex2sv(@NativeType("const GLshort *") ShortBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex2sv(coords);
     }
+    /** Unsafe version of: {@link #glVertex2iv Vertex2iv} */
+    public static void nglVertex2iv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex2iv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -3592,6 +6416,10 @@ public class GL {
      */
     public static void glVertex2iv(@NativeType("const GLint *") IntBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex2iv(coords);
+    }
+    /** Unsafe version of: {@link #glVertex2dv Vertex2dv} */
+    public static void nglVertex2dv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex2dv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3606,12 +6434,69 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Specifies a single vertex between {@link #glBegin Begin} and {@link #glEnd End} by giving its coordinates in three dimensions. The w coordinate is implicitly set
+     * to one.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     */
+    public static void glVertex3f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z) {
+        org.lwjgl.opengl.GL11.glVertex3f(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glVertex3f Vertex3f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     */
+    public static void glVertex3s(@NativeType("GLshort") short x, @NativeType("GLshort") short y, @NativeType("GLshort") short z) {
+        org.lwjgl.opengl.GL11.glVertex3s(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glVertex3f Vertex3f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     */
+    public static void glVertex3i(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z) {
+        org.lwjgl.opengl.GL11.glVertex3i(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glVertex3f Vertex3f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     */
+    public static void glVertex3d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL11.glVertex3d(x, y, z);
+    }
+    /** Unsafe version of: {@link #glVertex3fv Vertex3fv} */
+    public static void nglVertex3fv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex3fv(coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glVertex3f Vertex3f}.
      *
      * @param coords the vertex buffer
      */
     public static void glVertex3fv(@NativeType("const GLfloat *") FloatBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex3fv(coords);
+    }
+    /** Unsafe version of: {@link #glVertex3sv Vertex3sv} */
+    public static void nglVertex3sv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex3sv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3623,6 +6508,10 @@ public class GL {
     public static void glVertex3sv(@NativeType("const GLshort *") ShortBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex3sv(coords);
     }
+    /** Unsafe version of: {@link #glVertex3iv Vertex3iv} */
+    public static void nglVertex3iv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex3iv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -3632,6 +6521,10 @@ public class GL {
      */
     public static void glVertex3iv(@NativeType("const GLint *") IntBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex3iv(coords);
+    }
+    /** Unsafe version of: {@link #glVertex3dv Vertex3dv} */
+    public static void nglVertex3dv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex3dv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3646,12 +6539,72 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Specifies a single vertex between {@link #glBegin Begin} and {@link #glEnd End} by giving its coordinates in four dimensions.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     * @param w the vertex w coordinate
+     */
+    public static void glVertex4f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z, @NativeType("GLfloat") float w) {
+        org.lwjgl.opengl.GL11.glVertex4f(x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glVertex4f Vertex4f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     * @param w the vertex w coordinate
+     */
+    public static void glVertex4s(@NativeType("GLshort") short x, @NativeType("GLshort") short y, @NativeType("GLshort") short z, @NativeType("GLshort") short w) {
+        org.lwjgl.opengl.GL11.glVertex4s(x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glVertex4f Vertex4f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     * @param w the vertex w coordinate
+     */
+    public static void glVertex4i(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z, @NativeType("GLint") int w) {
+        org.lwjgl.opengl.GL11.glVertex4i(x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glVertex4f Vertex4f}.
+     *
+     * @param x the vertex x coordinate
+     * @param y the vertex y coordinate
+     * @param z the vertex z coordinate
+     * @param w the vertex w coordinate
+     */
+    public static void glVertex4d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z, @NativeType("GLdouble") double w) {
+        org.lwjgl.opengl.GL11.glVertex4d(x, y, z, w);
+    }
+    /** Unsafe version of: {@link #glVertex4fv Vertex4fv} */
+    public static void nglVertex4fv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex4fv(coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glVertex4f Vertex4f}.
      *
      * @param coords the vertex buffer
      */
     public static void glVertex4fv(@NativeType("const GLfloat *") FloatBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex4fv(coords);
+    }
+    /** Unsafe version of: {@link #glVertex4sv Vertex4sv} */
+    public static void nglVertex4sv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex4sv(coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3663,6 +6616,10 @@ public class GL {
     public static void glVertex4sv(@NativeType("const GLshort *") ShortBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex4sv(coords);
     }
+    /** Unsafe version of: {@link #glVertex4iv Vertex4iv} */
+    public static void nglVertex4iv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex4iv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -3673,6 +6630,10 @@ public class GL {
     public static void glVertex4iv(@NativeType("const GLint *") IntBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex4iv(coords);
     }
+    /** Unsafe version of: {@link #glVertex4dv Vertex4dv} */
+    public static void nglVertex4dv(long coords) {
+        org.lwjgl.opengl.GL11.nglVertex4dv(coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -3682,6 +6643,10 @@ public class GL {
      */
     public static void glVertex4dv(@NativeType("const GLdouble *") DoubleBuffer coords) {
         org.lwjgl.opengl.GL11.glVertex4dv(coords);
+    }
+    /** Unsafe version of: {@link #glVertexPointer VertexPointer} */
+    public static void nglVertexPointer(int size, int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL11.nglVertexPointer(size, type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertexPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -3747,6 +6712,30 @@ public class GL {
      */
     public static void glVertexPointer(@NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLsizei") int stride, @NativeType("const void *") FloatBuffer pointer) {
         org.lwjgl.opengl.GL11.glVertexPointer(size, type, stride, pointer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glViewport">Reference Page</a></p>
+     * 
+     * Specifies the viewport transformation parameters for all viewports.
+     * 
+     * <p>The location of the viewport's bottom-left corner, given by {@code (x, y)}, are clamped to be within the implementation-dependent viewport bounds range.
+     * The viewport bounds range {@code [min, max]} tuple may be determined by calling {@link #glGetFloatv GetFloatv} with the symbolic
+     * constant {@link GL41#GL_VIEWPORT_BOUNDS_RANGE VIEWPORT_BOUNDS_RANGE}. Viewport width and height are clamped to implementation-dependent maximums when specified. The maximum
+     * width and height may be found by calling {@link #glGetFloatv GetFloatv} with the symbolic constant {@link #GL_MAX_VIEWPORT_DIMS MAX_VIEWPORT_DIMS}. The
+     * maximum viewport dimensions must be greater than or equal to the larger of the visible dimensions of the display being rendered to (if a display
+     * exists), and the largest renderbuffer image which can be successfully created and attached to a framebuffer object.</p>
+     * 
+     * <p>In the initial state, {@code w} and {@code h} for each viewport are set to the width and height, respectively, of the window into which the GL is to do
+     * its rendering. If the default framebuffer is bound but no default framebuffer is associated with the GL context, then {@code w} and {@code h} are
+     * initially set to zero.</p>
+     *
+     * @param x the left viewport coordinate
+     * @param y the bottom viewport coordinate
+     * @param w the viewport width
+     * @param h the viewport height
+     */
+    public static void glViewport(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int w, @NativeType("GLsizei") int h) {
+        org.lwjgl.opengl.GL11.glViewport(x, y, w, h);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glAreTexturesResident">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -5059,6 +8048,10 @@ public class GL {
     public static final int
         GL_MAX_ELEMENTS_VERTICES = 0x80E8,
         GL_MAX_ELEMENTS_INDICES  = 0x80E9;
+    /** Unsafe version of: {@link #glTexImage3D TexImage3D} */
+    public static void nglTexImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL12.nglTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexImage3D">Reference Page</a></p>
      * 
@@ -5172,6 +8165,10 @@ public class GL {
      */
     public static void glTexImage3D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth, @NativeType("GLint") int border, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") DoubleBuffer pixels) {
         org.lwjgl.opengl.GL12.glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+    }
+    /** Unsafe version of: {@link #glTexSubImage3D TexSubImage3D} */
+    public static void nglTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL12.nglTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexSubImage3D">Reference Page</a></p>
@@ -5298,6 +8295,35 @@ public class GL {
      */
     public static void glTexSubImage3D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLint") int zoffset, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") DoubleBuffer pixels) {
         org.lwjgl.opengl.GL12.glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTexSubImage3D">Reference Page</a></p>
+     * 
+     * Respecifies a rectangular subregion of a slice of an existing 3D texel array. No change is made to the {@code internalformat}, {@code width},
+     * {@code height}, or {@code border} parameters of the specified texel array, nor is any change made to texel values outside the specified subregion. See
+     * {@link GL11#glCopyTexImage2D CopyTexImage2D} for more details.
+     *
+     * @param target  the texture target. One of:<br><table><tr><td>{@link #GL_TEXTURE_3D TEXTURE_3D}</td><td>{@link GL30#GL_TEXTURE_2D_ARRAY TEXTURE_2D_ARRAY}</td><td>{@link GL40#GL_TEXTURE_CUBE_MAP_ARRAY TEXTURE_CUBE_MAP_ARRAY}</td></tr></table>
+     * @param level   the level-of-detail number
+     * @param xoffset the x coordinate of the texture subregion to update
+     * @param yoffset the y coordinate of the texture subregion to update
+     * @param zoffset the z coordinate of the texture subregion to update
+     * @param x       the left framebuffer pixel coordinate
+     * @param y       the lower framebuffer pixel coordinate
+     * @param width   the texture subregion width
+     * @param height  the texture subregion height
+     */
+    public static void glCopyTexSubImage3D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLint") int zoffset, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL12.glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+    }
+    /**
+     * Unsafe version of: {@link #glDrawRangeElements DrawRangeElements}
+     *
+     * @param count the number of elements to be rendered
+     * @param type  the type of the values in {@code indices}. One of:<br><table><tr><td>{@link GL11#GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link GL11#GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link GL11#GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawRangeElements(int mode, int start, int end, int count, int type, long indices) {
+        org.lwjgl.opengl.GL12.nglDrawRangeElements(mode, start, end, count, type, indices);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawRangeElements">Reference Page</a></p>
@@ -5729,6 +8755,14 @@ public class GL {
         GL_TRANSPOSE_TEXTURE_MATRIX    = 0x84E5,
         GL_TRANSPOSE_COLOR_MATRIX      = 0x84E6;
     /**
+     * Unsafe version of: {@link #glCompressedTexImage3D CompressedTexImage3D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTexImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, long data) {
+        org.lwjgl.opengl.GL13.nglCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTexImage3D">Reference Page</a></p>
      * 
      * Specifies a three-dimensional texture image in a compressed format.
@@ -5764,6 +8798,14 @@ public class GL {
         org.lwjgl.opengl.GL13.glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, data);
     }
     /**
+     * Unsafe version of: {@link #glCompressedTexImage2D CompressedTexImage2D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTexImage2D(int target, int level, int internalformat, int width, int height, int border, int imageSize, long data) {
+        org.lwjgl.opengl.GL13.nglCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTexImage2D">Reference Page</a></p>
      * 
      * Specifies a two-dimensional texture image in a compressed format.
@@ -5797,6 +8839,14 @@ public class GL {
         org.lwjgl.opengl.GL13.glCompressedTexImage2D(target, level, internalformat, width, height, border, data);
     }
     /**
+     * Unsafe version of: {@link #glCompressedTexImage1D CompressedTexImage1D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTexImage1D(int target, int level, int internalformat, int width, int border, int imageSize, long data) {
+        org.lwjgl.opengl.GL13.nglCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTexImage1D">Reference Page</a></p>
      * 
      * Specifies a one-dimensional texture image in a compressed format.
@@ -5826,6 +8876,14 @@ public class GL {
      */
     public static void glCompressedTexImage1D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLint") int border, @NativeType("const void *") ByteBuffer data) {
         org.lwjgl.opengl.GL13.glCompressedTexImage1D(target, level, internalformat, width, border, data);
+    }
+    /**
+     * Unsafe version of: {@link #glCompressedTexSubImage3D CompressedTexSubImage3D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, long data) {
+        org.lwjgl.opengl.GL13.nglCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTexSubImage3D">Reference Page</a></p>
@@ -5867,6 +8925,14 @@ public class GL {
         org.lwjgl.opengl.GL13.glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, data);
     }
     /**
+     * Unsafe version of: {@link #glCompressedTexSubImage2D CompressedTexSubImage2D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, long data) {
+        org.lwjgl.opengl.GL13.nglCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTexSubImage2D">Reference Page</a></p>
      * 
      * Respecifies only a rectangular subregion of an existing 2D texel array, with incoming data stored in a specific compressed image format.
@@ -5902,6 +8968,14 @@ public class GL {
         org.lwjgl.opengl.GL13.glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, data);
     }
     /**
+     * Unsafe version of: {@link #glCompressedTexSubImage1D CompressedTexSubImage1D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTexSubImage1D(int target, int level, int xoffset, int width, int format, int imageSize, long data) {
+        org.lwjgl.opengl.GL13.nglCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTexSubImage1D">Reference Page</a></p>
      * 
      * Respecifies only a subregion of an existing 1D texel array, with incoming data stored in a specific compressed image format.
@@ -5932,6 +9006,10 @@ public class GL {
     public static void glCompressedTexSubImage1D(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLsizei") int width, @NativeType("GLenum") int format, @NativeType("const void *") ByteBuffer data) {
         org.lwjgl.opengl.GL13.glCompressedTexSubImage1D(target, level, xoffset, width, format, data);
     }
+    /** Unsafe version of: {@link #glGetCompressedTexImage GetCompressedTexImage} */
+    public static void nglGetCompressedTexImage(int target, int level, long pixels) {
+        org.lwjgl.opengl.GL13.nglGetCompressedTexImage(target, level, pixels);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetCompressedTexImage">Reference Page</a></p>
      * 
@@ -5957,6 +9035,100 @@ public class GL {
         org.lwjgl.opengl.GL13.glGetCompressedTexImage(target, level, pixels);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glSampleCoverage">Reference Page</a></p>
+     * 
+     * Specifies multisample coverage parameters.
+     * 
+     * <p>Multisampling samples a pixel multiple times at various implementation-dependent subpixel locations to generate antialiasing effects. Multisampling
+     * transparently antialiases points, lines, polygons, and images if it is enabled.</p>
+     * 
+     * <p>{@code value} is used in constructing a temporary mask used in determining which samples will be used in resolving the final fragment color. This mask
+     * is bitwise-ANDed with the coverage mask generated from the multisampling computation. If the {@code invert} flag is set, the temporary mask is inverted
+     * (all bits flipped) and then the bitwise-AND is computed.</p>
+     * 
+     * <p>If an implementation does not have any multisample buffers available, or multisampling is disabled, rasterization occurs with only a single sample
+     * computing a pixel's final RGB color.</p>
+     * 
+     * <p>Provided an implementation supports multisample buffers, and multisampling is enabled, then a pixel's final color is generated by combining several
+     * samples per pixel. Each sample contains color, depth, and stencil information, allowing those operations to be performed on each sample.</p>
+     *
+     * @param value  a sample coverage value. The value is clamped to the range [0, 1]. The initial value is 1.0.
+     * @param invert if the coverage masks should be inverted. The initial value is false.
+     */
+    public static void glSampleCoverage(@NativeType("GLfloat") float value, @NativeType("GLboolean") boolean invert) {
+        org.lwjgl.opengl.GL13.glSampleCoverage(value, invert);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glActiveTexture">Reference Page</a></p>
+     * 
+     * Selects which texture unit subsequent texture state calls will affect. The number of texture units an implementation supports is implementation
+     * dependent.
+     *
+     * @param texture which texture unit to make active. One of:<br><table><tr><td>{@link #GL_TEXTURE0 TEXTURE0}</td><td>GL_TEXTURE[1-31]</td></tr></table>
+     */
+    public static void glActiveTexture(@NativeType("GLenum") int texture) {
+        org.lwjgl.opengl.GL13.glActiveTexture(texture);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glClientActiveTexture">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Selects the vertex array client state parameters to be modified by the TexCoordPointer command and the array affected by EnableClientState and
+     * DisableClientState with parameter TEXTURE_COORD_ARRAY.
+     *
+     * @param texture which texture coordinate array to make active. One of:<br><table><tr><td>{@link #GL_TEXTURE0 TEXTURE0}</td><td>GL_TEXTURE[1-31]</td></tr></table>
+     */
+    public static void glClientActiveTexture(@NativeType("GLenum") int texture) {
+        org.lwjgl.opengl.GL13.glClientActiveTexture(texture);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the current one-dimensional texture coordinate for the specified texture coordinate set. {@code t} and {@code r} are implicitly set to 0 and {@code q} to 1.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     */
+    public static void glMultiTexCoord1f(@NativeType("GLenum") int texture, @NativeType("GLfloat") float s) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord1f(texture, s);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glMultiTexCoord1f MultiTexCoord1f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     */
+    public static void glMultiTexCoord1s(@NativeType("GLenum") int texture, @NativeType("GLshort") short s) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord1s(texture, s);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glMultiTexCoord1f MultiTexCoord1f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     */
+    public static void glMultiTexCoord1i(@NativeType("GLenum") int texture, @NativeType("GLint") int s) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord1i(texture, s);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glMultiTexCoord1f MultiTexCoord1f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     */
+    public static void glMultiTexCoord1d(@NativeType("GLenum") int texture, @NativeType("GLdouble") double s) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord1d(texture, s);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord1fv MultiTexCoord1fv} */
+    public static void nglMultiTexCoord1fv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord1fv(texture, v);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glMultiTexCoord1f MultiTexCoord1f}.
@@ -5966,6 +9138,10 @@ public class GL {
      */
     public static void glMultiTexCoord1fv(@NativeType("GLenum") int texture, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord1fv(texture, v);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord1sv MultiTexCoord1sv} */
+    public static void nglMultiTexCoord1sv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord1sv(texture, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -5978,6 +9154,10 @@ public class GL {
     public static void glMultiTexCoord1sv(@NativeType("GLenum") int texture, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord1sv(texture, v);
     }
+    /** Unsafe version of: {@link #glMultiTexCoord1iv MultiTexCoord1iv} */
+    public static void nglMultiTexCoord1iv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord1iv(texture, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -5988,6 +9168,10 @@ public class GL {
      */
     public static void glMultiTexCoord1iv(@NativeType("GLenum") int texture, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord1iv(texture, v);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord1dv MultiTexCoord1dv} */
+    public static void nglMultiTexCoord1dv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord1dv(texture, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6003,6 +9187,58 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the current two-dimensional texture coordinate for the specified texture coordinate set. {@code r} is implicitly set to 0 and {@code q} to 1.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     */
+    public static void glMultiTexCoord2f(@NativeType("GLenum") int texture, @NativeType("GLfloat") float s, @NativeType("GLfloat") float t) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord2f(texture, s, t);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glMultiTexCoord2f MultiTexCoord2f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     */
+    public static void glMultiTexCoord2s(@NativeType("GLenum") int texture, @NativeType("GLshort") short s, @NativeType("GLshort") short t) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord2s(texture, s, t);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glMultiTexCoord2f MultiTexCoord2f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     */
+    public static void glMultiTexCoord2i(@NativeType("GLenum") int texture, @NativeType("GLint") int s, @NativeType("GLint") int t) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord2i(texture, s, t);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glMultiTexCoord2f MultiTexCoord2f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     */
+    public static void glMultiTexCoord2d(@NativeType("GLenum") int texture, @NativeType("GLdouble") double s, @NativeType("GLdouble") double t) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord2d(texture, s, t);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord2fv MultiTexCoord2fv} */
+    public static void nglMultiTexCoord2fv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord2fv(texture, v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glMultiTexCoord2f MultiTexCoord2f}.
      *
      * @param texture the coordinate set to be modified
@@ -6010,6 +9246,10 @@ public class GL {
      */
     public static void glMultiTexCoord2fv(@NativeType("GLenum") int texture, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord2fv(texture, v);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord2sv MultiTexCoord2sv} */
+    public static void nglMultiTexCoord2sv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord2sv(texture, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6022,6 +9262,10 @@ public class GL {
     public static void glMultiTexCoord2sv(@NativeType("GLenum") int texture, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord2sv(texture, v);
     }
+    /** Unsafe version of: {@link #glMultiTexCoord2iv MultiTexCoord2iv} */
+    public static void nglMultiTexCoord2iv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord2iv(texture, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6032,6 +9276,10 @@ public class GL {
      */
     public static void glMultiTexCoord2iv(@NativeType("GLenum") int texture, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord2iv(texture, v);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord2dv MultiTexCoord2dv} */
+    public static void nglMultiTexCoord2dv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord2dv(texture, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6047,6 +9295,62 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the current three-dimensional texture coordinate for the specified texture coordinate set. {@code q} is implicitly set to 1.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     */
+    public static void glMultiTexCoord3f(@NativeType("GLenum") int texture, @NativeType("GLfloat") float s, @NativeType("GLfloat") float t, @NativeType("GLfloat") float r) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord3f(texture, s, t, r);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glMultiTexCoord3f MultiTexCoord3f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     */
+    public static void glMultiTexCoord3s(@NativeType("GLenum") int texture, @NativeType("GLshort") short s, @NativeType("GLshort") short t, @NativeType("GLshort") short r) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord3s(texture, s, t, r);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glMultiTexCoord3f MultiTexCoord3f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     */
+    public static void glMultiTexCoord3i(@NativeType("GLenum") int texture, @NativeType("GLint") int s, @NativeType("GLint") int t, @NativeType("GLint") int r) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord3i(texture, s, t, r);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glMultiTexCoord3f MultiTexCoord3f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     */
+    public static void glMultiTexCoord3d(@NativeType("GLenum") int texture, @NativeType("GLdouble") double s, @NativeType("GLdouble") double t, @NativeType("GLdouble") double r) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord3d(texture, s, t, r);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord3fv MultiTexCoord3fv} */
+    public static void nglMultiTexCoord3fv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord3fv(texture, v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glMultiTexCoord3f MultiTexCoord3f}.
      *
      * @param texture the coordinate set to be modified
@@ -6054,6 +9358,10 @@ public class GL {
      */
     public static void glMultiTexCoord3fv(@NativeType("GLenum") int texture, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord3fv(texture, v);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord3sv MultiTexCoord3sv} */
+    public static void nglMultiTexCoord3sv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord3sv(texture, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6066,6 +9374,10 @@ public class GL {
     public static void glMultiTexCoord3sv(@NativeType("GLenum") int texture, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord3sv(texture, v);
     }
+    /** Unsafe version of: {@link #glMultiTexCoord3iv MultiTexCoord3iv} */
+    public static void nglMultiTexCoord3iv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord3iv(texture, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6076,6 +9388,10 @@ public class GL {
      */
     public static void glMultiTexCoord3iv(@NativeType("GLenum") int texture, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord3iv(texture, v);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord3dv MultiTexCoord3dv} */
+    public static void nglMultiTexCoord3dv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord3dv(texture, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6091,6 +9407,66 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the current four-dimensional texture coordinate for the specified texture coordinate set.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     * @param q       the q component of the current texture coordinates
+     */
+    public static void glMultiTexCoord4f(@NativeType("GLenum") int texture, @NativeType("GLfloat") float s, @NativeType("GLfloat") float t, @NativeType("GLfloat") float r, @NativeType("GLfloat") float q) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord4f(texture, s, t, r, q);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glMultiTexCoord4f MultiTexCoord4f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     * @param q       the q component of the current texture coordinates
+     */
+    public static void glMultiTexCoord4s(@NativeType("GLenum") int texture, @NativeType("GLshort") short s, @NativeType("GLshort") short t, @NativeType("GLshort") short r, @NativeType("GLshort") short q) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord4s(texture, s, t, r, q);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glMultiTexCoord4f MultiTexCoord4f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     * @param q       the q component of the current texture coordinates
+     */
+    public static void glMultiTexCoord4i(@NativeType("GLenum") int texture, @NativeType("GLint") int s, @NativeType("GLint") int t, @NativeType("GLint") int r, @NativeType("GLint") int q) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord4i(texture, s, t, r, q);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glMultiTexCoord4f MultiTexCoord4f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param s       the s component of the current texture coordinates
+     * @param t       the t component of the current texture coordinates
+     * @param r       the r component of the current texture coordinates
+     * @param q       the q component of the current texture coordinates
+     */
+    public static void glMultiTexCoord4d(@NativeType("GLenum") int texture, @NativeType("GLdouble") double s, @NativeType("GLdouble") double t, @NativeType("GLdouble") double r, @NativeType("GLdouble") double q) {
+        org.lwjgl.opengl.GL13.glMultiTexCoord4d(texture, s, t, r, q);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord4fv MultiTexCoord4fv} */
+    public static void nglMultiTexCoord4fv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord4fv(texture, v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glMultiTexCoord4f MultiTexCoord4f}.
      *
      * @param texture the coordinate set to be modified
@@ -6098,6 +9474,10 @@ public class GL {
      */
     public static void glMultiTexCoord4fv(@NativeType("GLenum") int texture, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord4fv(texture, v);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoord4sv MultiTexCoord4sv} */
+    public static void nglMultiTexCoord4sv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord4sv(texture, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6110,6 +9490,10 @@ public class GL {
     public static void glMultiTexCoord4sv(@NativeType("GLenum") int texture, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord4sv(texture, v);
     }
+    /** Unsafe version of: {@link #glMultiTexCoord4iv MultiTexCoord4iv} */
+    public static void nglMultiTexCoord4iv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord4iv(texture, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6121,6 +9505,10 @@ public class GL {
     public static void glMultiTexCoord4iv(@NativeType("GLenum") int texture, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord4iv(texture, v);
     }
+    /** Unsafe version of: {@link #glMultiTexCoord4dv MultiTexCoord4dv} */
+    public static void nglMultiTexCoord4dv(int texture, long v) {
+        org.lwjgl.opengl.GL13.nglMultiTexCoord4dv(texture, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6131,6 +9519,10 @@ public class GL {
      */
     public static void glMultiTexCoord4dv(@NativeType("GLenum") int texture, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL13.glMultiTexCoord4dv(texture, v);
+    }
+    /** Unsafe version of: {@link #glLoadTransposeMatrixf LoadTransposeMatrixf} */
+    public static void nglLoadTransposeMatrixf(long m) {
+        org.lwjgl.opengl.GL13.nglLoadTransposeMatrixf(m);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLoadTransposeMatrixf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6151,6 +9543,10 @@ public class GL {
     public static void glLoadTransposeMatrixf(@NativeType("const GLfloat *") FloatBuffer m) {
         org.lwjgl.opengl.GL13.glLoadTransposeMatrixf(m);
     }
+    /** Unsafe version of: {@link #glLoadTransposeMatrixd LoadTransposeMatrixd} */
+    public static void nglLoadTransposeMatrixd(long m) {
+        org.lwjgl.opengl.GL13.nglLoadTransposeMatrixd(m);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glLoadTransposeMatrixd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6161,6 +9557,10 @@ public class GL {
     public static void glLoadTransposeMatrixd(@NativeType("const GLdouble *") DoubleBuffer m) {
         org.lwjgl.opengl.GL13.glLoadTransposeMatrixd(m);
     }
+    /** Unsafe version of: {@link #glMultTransposeMatrixf MultTransposeMatrixf} */
+    public static void nglMultTransposeMatrixf(long m) {
+        org.lwjgl.opengl.GL13.nglMultTransposeMatrixf(m);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultTransposeMatrixf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6170,6 +9570,10 @@ public class GL {
      */
     public static void glMultTransposeMatrixf(@NativeType("const GLfloat *") FloatBuffer m) {
         org.lwjgl.opengl.GL13.glMultTransposeMatrixf(m);
+    }
+    /** Unsafe version of: {@link #glMultTransposeMatrixd MultTransposeMatrixd} */
+    public static void nglMultTransposeMatrixd(long m) {
+        org.lwjgl.opengl.GL13.nglMultTransposeMatrixd(m);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultTransposeMatrixd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6439,6 +9843,53 @@ public class GL {
      */
     public static final int GL_MIRRORED_REPEAT = 0x8370;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendColor">Reference Page</a></p>
+     * 
+     * Specifies the constant color C<sub>c</sub> to be used in blending.
+     *
+     * @param red   the red color component
+     * @param green the green color component
+     * @param blue  the blue color component
+     * @param alpha the alpha color component
+     */
+    public static void glBlendColor(@NativeType("GLfloat") float red, @NativeType("GLfloat") float green, @NativeType("GLfloat") float blue, @NativeType("GLfloat") float alpha) {
+        org.lwjgl.opengl.GL14.glBlendColor(red, green, blue, alpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendEquation">Reference Page</a></p>
+     * 
+     * Controls the blend equations used for per-fragment blending.
+     *
+     * @param mode the blend equation. One of:<br><table><tr><td>{@link #GL_FUNC_ADD FUNC_ADD}</td><td>{@link #GL_FUNC_SUBTRACT FUNC_SUBTRACT}</td><td>{@link #GL_FUNC_REVERSE_SUBTRACT FUNC_REVERSE_SUBTRACT}</td><td>{@link #GL_MIN MIN}</td><td>{@link #GL_MAX MAX}</td></tr></table>
+     */
+    public static void glBlendEquation(@NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL14.glBlendEquation(mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glFogCoordf">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Sets the current fog coordinate.
+     *
+     * @param coord the fog coordinate value
+     */
+    public static void glFogCoordf(@NativeType("GLfloat") float coord) {
+        org.lwjgl.opengl.GL14.glFogCoordf(coord);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glFogCoordd">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glFogCoordf FogCoordf}.
+     *
+     * @param coord the fog coordinate value
+     */
+    public static void glFogCoordd(@NativeType("GLdouble") double coord) {
+        org.lwjgl.opengl.GL14.glFogCoordd(coord);
+    }
+    /** Unsafe version of: {@link #glFogCoordfv FogCoordfv} */
+    public static void nglFogCoordfv(long coord) {
+        org.lwjgl.opengl.GL14.nglFogCoordfv(coord);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glFogCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glFogCoordf FogCoordf}.
@@ -6447,6 +9898,10 @@ public class GL {
      */
     public static void glFogCoordfv(@NativeType("const GLfloat *") FloatBuffer coord) {
         org.lwjgl.opengl.GL14.glFogCoordfv(coord);
+    }
+    /** Unsafe version of: {@link #glFogCoorddv FogCoorddv} */
+    public static void nglFogCoorddv(long coord) {
+        org.lwjgl.opengl.GL14.nglFogCoorddv(coord);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glFogCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6457,6 +9912,10 @@ public class GL {
      */
     public static void glFogCoorddv(@NativeType("const GLdouble *") DoubleBuffer coord) {
         org.lwjgl.opengl.GL14.glFogCoorddv(coord);
+    }
+    /** Unsafe version of: {@link #glFogCoordPointer FogCoordPointer} */
+    public static void nglFogCoordPointer(int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL14.nglFogCoordPointer(type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glFogCoordPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6507,6 +9966,14 @@ public class GL {
         org.lwjgl.opengl.GL14.glFogCoordPointer(type, stride, pointer);
     }
     /**
+     * Unsafe version of: {@link #glMultiDrawArrays MultiDrawArrays}
+     *
+     * @param primcount the size of {@code first} and {@code count}
+     */
+    public static void nglMultiDrawArrays(int mode, long first, long count, int primcount) {
+        org.lwjgl.opengl.GL14.nglMultiDrawArrays(mode, first, count, primcount);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMultiDrawArrays">Reference Page</a></p>
      * 
      * Renders multiple sets of primitives from array data.
@@ -6517,6 +9984,14 @@ public class GL {
      */
     public static void glMultiDrawArrays(@NativeType("GLenum") int mode, @NativeType("const GLint *") IntBuffer first, @NativeType("const GLsizei *") IntBuffer count) {
         org.lwjgl.opengl.GL14.glMultiDrawArrays(mode, first, count);
+    }
+    /**
+     * Unsafe version of: {@link #glMultiDrawElements MultiDrawElements}
+     *
+     * @param primcount the size of the {@code count} array
+     */
+    public static void nglMultiDrawElements(int mode, long count, int type, long indices, int primcount) {
+        org.lwjgl.opengl.GL14.nglMultiDrawElements(mode, count, type, indices, primcount);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMultiDrawElements">Reference Page</a></p>
@@ -6534,6 +10009,32 @@ public class GL {
         org.lwjgl.opengl.GL14.glMultiDrawElements(mode, count, type, indices);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPointParameterf">Reference Page</a></p>
+     * 
+     * Sets the float value of a pointer parameter.
+     *
+     * @param pname the parameter to set. One of:<br><table><tr><td>{@link #GL_POINT_SIZE_MIN POINT_SIZE_MIN}</td><td>{@link #GL_POINT_SIZE_MAX POINT_SIZE_MAX}</td><td>{@link #GL_POINT_FADE_THRESHOLD_SIZE POINT_FADE_THRESHOLD_SIZE}</td></tr></table>
+     * @param param the parameter value
+     */
+    public static void glPointParameterf(@NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL14.glPointParameterf(pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPointParameteri">Reference Page</a></p>
+     * 
+     * Integer version of {@link #glPointParameterf PointParameterf}.
+     *
+     * @param pname the parameter to set. One of:<br><table><tr><td>{@link #GL_POINT_SIZE_MIN POINT_SIZE_MIN}</td><td>{@link #GL_POINT_SIZE_MAX POINT_SIZE_MAX}</td><td>{@link #GL_POINT_FADE_THRESHOLD_SIZE POINT_FADE_THRESHOLD_SIZE}</td></tr></table>
+     * @param param the parameter value
+     */
+    public static void glPointParameteri(@NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL14.glPointParameteri(pname, param);
+    }
+    /** Unsafe version of: {@link #glPointParameterfv PointParameterfv} */
+    public static void nglPointParameterfv(int pname, long params) {
+        org.lwjgl.opengl.GL14.nglPointParameterfv(pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glPointParameter">Reference Page</a></p>
      * 
      * Pointer version of {@link #glPointParameterf PointParameterf}.
@@ -6543,6 +10044,10 @@ public class GL {
      */
     public static void glPointParameterfv(@NativeType("GLenum") int pname, @NativeType("const GLfloat *") FloatBuffer params) {
         org.lwjgl.opengl.GL14.glPointParameterfv(pname, params);
+    }
+    /** Unsafe version of: {@link #glPointParameteriv PointParameteriv} */
+    public static void nglPointParameteriv(int pname, long params) {
+        org.lwjgl.opengl.GL14.nglPointParameteriv(pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glPointParameter">Reference Page</a></p>
@@ -6558,12 +10063,116 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Sets the R, G, and B components of the current secondary color. The alpha component is set to 1.0.
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3b(@NativeType("GLbyte") byte red, @NativeType("GLbyte") byte green, @NativeType("GLbyte") byte blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3b(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glSecondaryColor3b SecondaryColor3b}
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3s(@NativeType("GLshort") short red, @NativeType("GLshort") short green, @NativeType("GLshort") short blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3s(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Integer version of {@link #glSecondaryColor3b SecondaryColor3b}
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3i(@NativeType("GLint") int red, @NativeType("GLint") int green, @NativeType("GLint") int blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3i(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glSecondaryColor3b SecondaryColor3b}
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3f(@NativeType("GLfloat") float red, @NativeType("GLfloat") float green, @NativeType("GLfloat") float blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3f(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glSecondaryColor3b SecondaryColor3b}
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3d(@NativeType("GLdouble") double red, @NativeType("GLdouble") double green, @NativeType("GLdouble") double blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3d(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned version of {@link #glSecondaryColor3b SecondaryColor3b}
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3ub(@NativeType("GLubyte") byte red, @NativeType("GLubyte") byte green, @NativeType("GLubyte") byte blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3ub(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned short version of {@link #glSecondaryColor3b SecondaryColor3b}
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3us(@NativeType("GLushort") short red, @NativeType("GLushort") short green, @NativeType("GLushort") short blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3us(red, green, blue);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Unsigned int version of {@link #glSecondaryColor3b SecondaryColor3b}
+     *
+     * @param red   the red component of the current secondary color
+     * @param green the green component of the current secondary color
+     * @param blue  the blue component of the current secondary color
+     */
+    public static void glSecondaryColor3ui(@NativeType("GLint") int red, @NativeType("GLint") int green, @NativeType("GLint") int blue) {
+        org.lwjgl.opengl.GL14.glSecondaryColor3ui(red, green, blue);
+    }
+    /** Unsafe version of: {@link #glSecondaryColor3bv SecondaryColor3bv} */
+    public static void nglSecondaryColor3bv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3bv(v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Byte pointer version of {@link #glSecondaryColor3b SecondaryColor3b}.
      *
      * @param v the secondary color buffer
      */
     public static void glSecondaryColor3bv(@NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3bv(v);
+    }
+    /** Unsafe version of: {@link #glSecondaryColor3sv SecondaryColor3sv} */
+    public static void nglSecondaryColor3sv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3sv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6575,6 +10184,10 @@ public class GL {
     public static void glSecondaryColor3sv(@NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3sv(v);
     }
+    /** Unsafe version of: {@link #glSecondaryColor3iv SecondaryColor3iv} */
+    public static void nglSecondaryColor3iv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3iv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6584,6 +10197,10 @@ public class GL {
      */
     public static void glSecondaryColor3iv(@NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3iv(v);
+    }
+    /** Unsafe version of: {@link #glSecondaryColor3fv SecondaryColor3fv} */
+    public static void nglSecondaryColor3fv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3fv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6595,6 +10212,10 @@ public class GL {
     public static void glSecondaryColor3fv(@NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3fv(v);
     }
+    /** Unsafe version of: {@link #glSecondaryColor3dv SecondaryColor3dv} */
+    public static void nglSecondaryColor3dv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3dv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6604,6 +10225,10 @@ public class GL {
      */
     public static void glSecondaryColor3dv(@NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3dv(v);
+    }
+    /** Unsafe version of: {@link #glSecondaryColor3ubv SecondaryColor3ubv} */
+    public static void nglSecondaryColor3ubv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3ubv(v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6615,6 +10240,10 @@ public class GL {
     public static void glSecondaryColor3ubv(@NativeType("const GLubyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3ubv(v);
     }
+    /** Unsafe version of: {@link #glSecondaryColor3usv SecondaryColor3usv} */
+    public static void nglSecondaryColor3usv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3usv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6625,6 +10254,10 @@ public class GL {
     public static void glSecondaryColor3usv(@NativeType("const GLushort *") ShortBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3usv(v);
     }
+    /** Unsafe version of: {@link #glSecondaryColor3uiv SecondaryColor3uiv} */
+    public static void nglSecondaryColor3uiv(long v) {
+        org.lwjgl.opengl.GL14.nglSecondaryColor3uiv(v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6634,6 +10267,10 @@ public class GL {
      */
     public static void glSecondaryColor3uiv(@NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL14.glSecondaryColor3uiv(v);
+    }
+    /** Unsafe version of: {@link #glSecondaryColorPointer SecondaryColorPointer} */
+    public static void nglSecondaryColorPointer(int size, int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL14.nglSecondaryColorPointer(size, type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColorPointer">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6701,6 +10338,67 @@ public class GL {
         org.lwjgl.opengl.GL14.glSecondaryColorPointer(size, type, stride, pointer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendFuncSeparate">Reference Page</a></p>
+     * 
+     * Specifies pixel arithmetic for RGB and alpha components separately.
+     *
+     * @param sfactorRGB   how the red, green, and blue blending factors are computed. The initial value is GL_ONE.
+     * @param dfactorRGB   how the red, green, and blue destination blending factors are computed. The initial value is GL_ZERO.
+     * @param sfactorAlpha how the alpha source blending factor is computed. The initial value is GL_ONE.
+     * @param dfactorAlpha how the alpha destination blending factor is computed. The initial value is GL_ZERO.
+     */
+    public static void glBlendFuncSeparate(@NativeType("GLenum") int sfactorRGB, @NativeType("GLenum") int dfactorRGB, @NativeType("GLenum") int sfactorAlpha, @NativeType("GLenum") int dfactorAlpha) {
+        org.lwjgl.opengl.GL14.glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Alternate way to set the current raster position. {@code z} is implictly set to 0.
+     *
+     * @param x the x value
+     * @param y the y value
+     */
+    public static void glWindowPos2i(@NativeType("GLint") int x, @NativeType("GLint") int y) {
+        org.lwjgl.opengl.GL14.glWindowPos2i(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glWindowPos2i WindowPos2i}.
+     *
+     * @param x the x value
+     * @param y the y value
+     */
+    public static void glWindowPos2s(@NativeType("GLshort") short x, @NativeType("GLshort") short y) {
+        org.lwjgl.opengl.GL14.glWindowPos2s(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glWindowPos2i WindowPos2i}.
+     *
+     * @param x the x value
+     * @param y the y value
+     */
+    public static void glWindowPos2f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y) {
+        org.lwjgl.opengl.GL14.glWindowPos2f(x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glWindowPos2i WindowPos2i}.
+     *
+     * @param x the x value
+     * @param y the y value
+     */
+    public static void glWindowPos2d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y) {
+        org.lwjgl.opengl.GL14.glWindowPos2d(x, y);
+    }
+    /** Unsafe version of: {@link #glWindowPos2iv WindowPos2iv} */
+    public static void nglWindowPos2iv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos2iv(p);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glWindowPos2i WindowPos2i}.
@@ -6709,6 +10407,10 @@ public class GL {
      */
     public static void glWindowPos2iv(@NativeType("const GLint *") IntBuffer p) {
         org.lwjgl.opengl.GL14.glWindowPos2iv(p);
+    }
+    /** Unsafe version of: {@link #glWindowPos2sv WindowPos2sv} */
+    public static void nglWindowPos2sv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos2sv(p);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6720,6 +10422,10 @@ public class GL {
     public static void glWindowPos2sv(@NativeType("const GLshort *") ShortBuffer p) {
         org.lwjgl.opengl.GL14.glWindowPos2sv(p);
     }
+    /** Unsafe version of: {@link #glWindowPos2fv WindowPos2fv} */
+    public static void nglWindowPos2fv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos2fv(p);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6729,6 +10435,10 @@ public class GL {
      */
     public static void glWindowPos2fv(@NativeType("const GLfloat *") FloatBuffer p) {
         org.lwjgl.opengl.GL14.glWindowPos2fv(p);
+    }
+    /** Unsafe version of: {@link #glWindowPos2dv WindowPos2dv} */
+    public static void nglWindowPos2dv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos2dv(p);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6743,12 +10453,68 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Alternate way to set the current raster position.
+     *
+     * @param x the x value
+     * @param y the y value
+     * @param z the z value
+     */
+    public static void glWindowPos3i(@NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z) {
+        org.lwjgl.opengl.GL14.glWindowPos3i(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Short version of {@link #glWindowPos3i WindowPos3i}.
+     *
+     * @param x the x value
+     * @param y the y value
+     * @param z the z value
+     */
+    public static void glWindowPos3s(@NativeType("GLshort") short x, @NativeType("GLshort") short y, @NativeType("GLshort") short z) {
+        org.lwjgl.opengl.GL14.glWindowPos3s(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Float version of {@link #glWindowPos3i WindowPos3i}.
+     *
+     * @param x the x value
+     * @param y the y value
+     * @param z the z value
+     */
+    public static void glWindowPos3f(@NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z) {
+        org.lwjgl.opengl.GL14.glWindowPos3f(x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Double version of {@link #glWindowPos3i WindowPos3i}.
+     *
+     * @param x the x value
+     * @param y the y value
+     * @param z the z value
+     */
+    public static void glWindowPos3d(@NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL14.glWindowPos3d(x, y, z);
+    }
+    /** Unsafe version of: {@link #glWindowPos3iv WindowPos3iv} */
+    public static void nglWindowPos3iv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos3iv(p);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glWindowPos3i WindowPos3i}.
      *
      * @param p the position value
      */
     public static void glWindowPos3iv(@NativeType("const GLint *") IntBuffer p) {
         org.lwjgl.opengl.GL14.glWindowPos3iv(p);
+    }
+    /** Unsafe version of: {@link #glWindowPos3sv WindowPos3sv} */
+    public static void nglWindowPos3sv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos3sv(p);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -6760,6 +10526,10 @@ public class GL {
     public static void glWindowPos3sv(@NativeType("const GLshort *") ShortBuffer p) {
         org.lwjgl.opengl.GL14.glWindowPos3sv(p);
     }
+    /** Unsafe version of: {@link #glWindowPos3fv WindowPos3fv} */
+    public static void nglWindowPos3fv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos3fv(p);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -6769,6 +10539,10 @@ public class GL {
      */
     public static void glWindowPos3fv(@NativeType("const GLfloat *") FloatBuffer p) {
         org.lwjgl.opengl.GL14.glWindowPos3fv(p);
+    }
+    /** Unsafe version of: {@link #glWindowPos3dv WindowPos3dv} */
+    public static void nglWindowPos3dv(long p) {
+        org.lwjgl.opengl.GL14.nglWindowPos3dv(p);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glWindowPos">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -7013,6 +10787,25 @@ public class GL {
         GL_QUERY_RESULT           = 0x8866,
         GL_QUERY_RESULT_AVAILABLE = 0x8867;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindBuffer">Reference Page</a></p>
+     * 
+     * Binds a named buffer object.
+     *
+     * @param target the target to which the buffer object is bound. One of:<br><table><tr><td>{@link #GL_ARRAY_BUFFER ARRAY_BUFFER}</td><td>{@link #GL_ELEMENT_ARRAY_BUFFER ELEMENT_ARRAY_BUFFER}</td><td>{@link GL21#GL_PIXEL_PACK_BUFFER PIXEL_PACK_BUFFER}</td><td>{@link GL21#GL_PIXEL_UNPACK_BUFFER PIXEL_UNPACK_BUFFER}</td></tr><tr><td>{@link GL30#GL_TRANSFORM_FEEDBACK_BUFFER TRANSFORM_FEEDBACK_BUFFER}</td><td>{@link GL31#GL_UNIFORM_BUFFER UNIFORM_BUFFER}</td><td>{@link GL31#GL_TEXTURE_BUFFER TEXTURE_BUFFER}</td><td>{@link GL31#GL_COPY_READ_BUFFER COPY_READ_BUFFER}</td></tr><tr><td>{@link GL31#GL_COPY_WRITE_BUFFER COPY_WRITE_BUFFER}</td><td>{@link GL40#GL_DRAW_INDIRECT_BUFFER DRAW_INDIRECT_BUFFER}</td><td>{@link GL42#GL_ATOMIC_COUNTER_BUFFER ATOMIC_COUNTER_BUFFER}</td><td>{@link GL43#GL_DISPATCH_INDIRECT_BUFFER DISPATCH_INDIRECT_BUFFER}</td></tr><tr><td>{@link GL43#GL_SHADER_STORAGE_BUFFER SHADER_STORAGE_BUFFER}</td><td>{@link ARBIndirectParameters#GL_PARAMETER_BUFFER_ARB PARAMETER_BUFFER_ARB}</td></tr></table>
+     * @param buffer the name of a buffer object
+     */
+    public static void glBindBuffer(@NativeType("GLenum") int target, @NativeType("GLuint") int buffer) {
+        org.lwjgl.opengl.GL15.glBindBuffer(target, buffer);
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteBuffers DeleteBuffers}
+     *
+     * @param n the number of buffer objects to be deleted
+     */
+    public static void nglDeleteBuffers(int n, long buffers) {
+        org.lwjgl.opengl.GL15.nglDeleteBuffers(n, buffers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteBuffers">Reference Page</a></p>
      * 
      * Deletes named buffer objects.
@@ -7029,6 +10822,14 @@ public class GL {
      */
     public static void glDeleteBuffers(@NativeType("const GLuint *") int buffer) {
         org.lwjgl.opengl.GL15.glDeleteBuffers(buffer);
+    }
+    /**
+     * Unsafe version of: {@link #glGenBuffers GenBuffers}
+     *
+     * @param n the number of buffer object names to be generated
+     */
+    public static void nglGenBuffers(int n, long buffers) {
+        org.lwjgl.opengl.GL15.nglGenBuffers(n, buffers);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenBuffers">Reference Page</a></p>
@@ -7048,6 +10849,25 @@ public class GL {
     @NativeType("void")
     public static int glGenBuffers() {
         return org.lwjgl.opengl.GL15.glGenBuffers();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsBuffer">Reference Page</a></p>
+     * 
+     * Determines if a name corresponds to a buffer object.
+     *
+     * @param buffer a value that may be the name of a buffer object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsBuffer(@NativeType("GLuint") int buffer) {
+        return org.lwjgl.opengl.GL15.glIsBuffer(buffer);
+    }
+    /**
+     * Unsafe version of: {@link #glBufferData BufferData}
+     *
+     * @param size the size in bytes of the buffer object's new data store
+     */
+    public static void nglBufferData(int target, long size, long data, int usage) {
+        org.lwjgl.opengl.GL15.nglBufferData(target, size, data, usage);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBufferData">Reference Page</a></p>
@@ -7267,6 +11087,14 @@ public class GL {
         org.lwjgl.opengl.GL15.glBufferData(target, data, usage);
     }
     /**
+     * Unsafe version of: {@link #glBufferSubData BufferSubData}
+     *
+     * @param size the size in bytes of the data store region being replaced
+     */
+    public static void nglBufferSubData(int target, long offset, long size, long data) {
+        org.lwjgl.opengl.GL15.nglBufferSubData(target, offset, size, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBufferSubData">Reference Page</a></p>
      * 
      * Updates a subset of a buffer object's data store.
@@ -7337,6 +11165,14 @@ public class GL {
      */
     public static void glBufferSubData(@NativeType("GLenum") int target, @NativeType("GLintptr") long offset, @NativeType("const void *") DoubleBuffer data) {
         org.lwjgl.opengl.GL15.glBufferSubData(target, offset, data);
+    }
+    /**
+     * Unsafe version of: {@link #glGetBufferSubData GetBufferSubData}
+     *
+     * @param size the size in bytes of the data store region being returned
+     */
+    public static void nglGetBufferSubData(int target, long offset, long size, long data) {
+        org.lwjgl.opengl.GL15.nglGetBufferSubData(target, offset, size, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferSubData">Reference Page</a></p>
@@ -7410,6 +11246,10 @@ public class GL {
     public static void glGetBufferSubData(@NativeType("GLenum") int target, @NativeType("GLintptr") long offset, @NativeType("void *") DoubleBuffer data) {
         org.lwjgl.opengl.GL15.glGetBufferSubData(target, offset, data);
     }
+    /** Unsafe version of: {@link #glMapBuffer MapBuffer} */
+    public static long nglMapBuffer(int target, int access) {
+        return org.lwjgl.opengl.GL15.nglMapBuffer(target, access);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMapBuffer">Reference Page</a></p>
      * 
@@ -7471,6 +11311,26 @@ public class GL {
         return org.lwjgl.opengl.GL15.glMapBuffer(target, access, length, old_buffer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUnmapBuffer">Reference Page</a></p>
+     * 
+     * Relinquishes the mapping of a buffer object and invalidates the pointer to its data store.
+     * 
+     * <p>Returns TRUE unless data values in the buffer’s data store have become corrupted during the period that the buffer was mapped. Such corruption can be
+     * the result of a screen resolution change or other window system-dependent event that causes system heaps such as those for high-performance graphics
+     * memory to be discarded. GL implementations must guarantee that such corruption can occur only during the periods that a buffer’s data store is mapped.
+     * If such corruption has occurred, UnmapBuffer returns FALSE, and the contents of the buffer’s data store become undefined.</p>
+     *
+     * @param target the target buffer object being unmapped. One of:<br><table><tr><td>{@link #GL_ARRAY_BUFFER ARRAY_BUFFER}</td><td>{@link #GL_ELEMENT_ARRAY_BUFFER ELEMENT_ARRAY_BUFFER}</td><td>{@link GL21#GL_PIXEL_PACK_BUFFER PIXEL_PACK_BUFFER}</td><td>{@link GL21#GL_PIXEL_UNPACK_BUFFER PIXEL_UNPACK_BUFFER}</td></tr><tr><td>{@link GL30#GL_TRANSFORM_FEEDBACK_BUFFER TRANSFORM_FEEDBACK_BUFFER}</td><td>{@link GL31#GL_UNIFORM_BUFFER UNIFORM_BUFFER}</td><td>{@link GL31#GL_TEXTURE_BUFFER TEXTURE_BUFFER}</td><td>{@link GL31#GL_COPY_READ_BUFFER COPY_READ_BUFFER}</td></tr><tr><td>{@link GL31#GL_COPY_WRITE_BUFFER COPY_WRITE_BUFFER}</td><td>{@link GL40#GL_DRAW_INDIRECT_BUFFER DRAW_INDIRECT_BUFFER}</td><td>{@link GL42#GL_ATOMIC_COUNTER_BUFFER ATOMIC_COUNTER_BUFFER}</td><td>{@link GL43#GL_DISPATCH_INDIRECT_BUFFER DISPATCH_INDIRECT_BUFFER}</td></tr><tr><td>{@link GL43#GL_SHADER_STORAGE_BUFFER SHADER_STORAGE_BUFFER}</td><td>{@link ARBIndirectParameters#GL_PARAMETER_BUFFER_ARB PARAMETER_BUFFER_ARB}</td></tr></table>
+     */
+    @NativeType("GLboolean")
+    public static boolean glUnmapBuffer(@NativeType("GLenum") int target) {
+        return org.lwjgl.opengl.GL15.glUnmapBuffer(target);
+    }
+    /** Unsafe version of: {@link #glGetBufferParameteriv GetBufferParameteriv} */
+    public static void nglGetBufferParameteriv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL15.nglGetBufferParameteriv(target, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferParameter">Reference Page</a></p>
      * 
      * Returns the value of a buffer object parameter.
@@ -7493,6 +11353,10 @@ public class GL {
     @NativeType("void")
     public static int glGetBufferParameteri(@NativeType("GLenum") int target, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL15.glGetBufferParameteri(target, pname);
+    }
+    /** Unsafe version of: {@link #glGetBufferPointerv GetBufferPointerv} */
+    public static void nglGetBufferPointerv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL15.nglGetBufferPointerv(target, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferPointerv">Reference Page</a></p>
@@ -7519,6 +11383,14 @@ public class GL {
         return org.lwjgl.opengl.GL15.glGetBufferPointer(target, pname);
     }
     /**
+     * Unsafe version of: {@link #glGenQueries GenQueries}
+     *
+     * @param n the number of query object names to be generated
+     */
+    public static void nglGenQueries(int n, long ids) {
+        org.lwjgl.opengl.GL15.nglGenQueries(n, ids);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenQueries">Reference Page</a></p>
      * 
      * Generates query object names.
@@ -7538,6 +11410,14 @@ public class GL {
         return org.lwjgl.opengl.GL15.glGenQueries();
     }
     /**
+     * Unsafe version of: {@link #glDeleteQueries DeleteQueries}
+     *
+     * @param n the number of query objects to be deleted
+     */
+    public static void nglDeleteQueries(int n, long ids) {
+        org.lwjgl.opengl.GL15.nglDeleteQueries(n, ids);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteQueries">Reference Page</a></p>
      * 
      * Deletes named query objects.
@@ -7554,6 +11434,42 @@ public class GL {
      */
     public static void glDeleteQueries(@NativeType("const GLuint *") int id) {
         org.lwjgl.opengl.GL15.glDeleteQueries(id);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsQuery">Reference Page</a></p>
+     * 
+     * Determine if a name corresponds to a query object.
+     *
+     * @param id a value that may be the name of a query object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsQuery(@NativeType("GLuint") int id) {
+        return org.lwjgl.opengl.GL15.glIsQuery(id);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBeginQuery">Reference Page</a></p>
+     * 
+     * Creates a query object and makes it active.
+     *
+     * @param target the target type of query object established. One of:<br><table><tr><td>{@link #GL_SAMPLES_PASSED SAMPLES_PASSED}</td><td>{@link GL30#GL_PRIMITIVES_GENERATED PRIMITIVES_GENERATED}</td><td>{@link GL30#GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN}</td><td>{@link GL33#GL_TIME_ELAPSED TIME_ELAPSED}</td></tr><tr><td>{@link GL33#GL_TIMESTAMP TIMESTAMP}</td><td>{@link GL33#GL_ANY_SAMPLES_PASSED ANY_SAMPLES_PASSED}</td><td>{@link GL43#GL_ANY_SAMPLES_PASSED_CONSERVATIVE ANY_SAMPLES_PASSED_CONSERVATIVE}</td></tr></table>
+     * @param id     the name of a query object
+     */
+    public static void glBeginQuery(@NativeType("GLenum") int target, @NativeType("GLuint") int id) {
+        org.lwjgl.opengl.GL15.glBeginQuery(target, id);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEndQuery">Reference Page</a></p>
+     * 
+     * Marks the end of the sequence of commands to be tracked for the active query specified by {@code target}.
+     *
+     * @param target the query object target. One of:<br><table><tr><td>{@link #GL_SAMPLES_PASSED SAMPLES_PASSED}</td><td>{@link GL30#GL_PRIMITIVES_GENERATED PRIMITIVES_GENERATED}</td><td>{@link GL30#GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN}</td><td>{@link GL33#GL_TIME_ELAPSED TIME_ELAPSED}</td></tr><tr><td>{@link GL33#GL_TIMESTAMP TIMESTAMP}</td><td>{@link GL33#GL_ANY_SAMPLES_PASSED ANY_SAMPLES_PASSED}</td><td>{@link GL43#GL_ANY_SAMPLES_PASSED_CONSERVATIVE ANY_SAMPLES_PASSED_CONSERVATIVE}</td></tr></table>
+     */
+    public static void glEndQuery(@NativeType("GLenum") int target) {
+        org.lwjgl.opengl.GL15.glEndQuery(target);
+    }
+    /** Unsafe version of: {@link #glGetQueryiv GetQueryiv} */
+    public static void nglGetQueryiv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL15.nglGetQueryiv(target, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetQuery">Reference Page</a></p>
@@ -7579,6 +11495,10 @@ public class GL {
     public static int glGetQueryi(@NativeType("GLenum") int target, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL15.glGetQueryi(target, pname);
     }
+    /** Unsafe version of: {@link #glGetQueryObjectiv GetQueryObjectiv} */
+    public static void nglGetQueryObjectiv(int id, int pname, long params) {
+        org.lwjgl.opengl.GL15.nglGetQueryObjectiv(id, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryObject">Reference Page</a></p>
      * 
@@ -7602,6 +11522,10 @@ public class GL {
     @NativeType("void")
     public static int glGetQueryObjecti(@NativeType("GLuint") int id, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL15.glGetQueryObjecti(id, pname);
+    }
+    /** Unsafe version of: {@link #glGetQueryObjectuiv GetQueryObjectuiv} */
+    public static void nglGetQueryObjectuiv(int id, int pname, long params) {
+        org.lwjgl.opengl.GL15.nglGetQueryObjectuiv(id, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryObject">Reference Page</a></p>
@@ -7933,6 +11857,111 @@ public class GL {
         GL_STENCIL_BACK_VALUE_MASK      = 0x8CA4,
         GL_STENCIL_BACK_WRITEMASK       = 0x8CA5;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCreateProgram">Reference Page</a></p>
+     * 
+     * Creates a program object.
+     */
+    @NativeType("GLuint")
+    public static int glCreateProgram() {
+        return org.lwjgl.opengl.GL20.glCreateProgram();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteProgram">Reference Page</a></p>
+     * 
+     * Deletes a program object.
+     *
+     * @param program the program object to be deleted
+     */
+    public static void glDeleteProgram(@NativeType("GLuint") int program) {
+        org.lwjgl.opengl.GL20.glDeleteProgram(program);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsProgram">Reference Page</a></p>
+     * 
+     * Returns {@link GL11#GL_TRUE TRUE} if {@code program} is the name of a program object. If {@code program} is zero, or a non-zero value that is not the name of a program
+     * object, IsProgram returns {@link GL11#GL_FALSE FALSE}. No error is generated if program is not a valid program object name.
+     *
+     * @param program the program object name to query
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsProgram(@NativeType("GLuint") int program) {
+        return org.lwjgl.opengl.GL20.glIsProgram(program);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCreateShader">Reference Page</a></p>
+     * 
+     * Creates a shader object.
+     *
+     * @param type the type of shader to be created. One of:<br><table><tr><td>{@link #GL_VERTEX_SHADER VERTEX_SHADER}</td><td>{@link #GL_FRAGMENT_SHADER FRAGMENT_SHADER}</td><td>{@link GL32#GL_GEOMETRY_SHADER GEOMETRY_SHADER}</td><td>{@link GL40#GL_TESS_CONTROL_SHADER TESS_CONTROL_SHADER}</td></tr><tr><td>{@link GL40#GL_TESS_EVALUATION_SHADER TESS_EVALUATION_SHADER}</td></tr></table>
+     */
+    @NativeType("GLuint")
+    public static int glCreateShader(@NativeType("GLenum") int type) {
+        return org.lwjgl.opengl.GL20.glCreateShader(type);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteShader">Reference Page</a></p>
+     * 
+     * Deletes a shader object.
+     *
+     * @param shader the shader object to be deleted
+     */
+    public static void glDeleteShader(@NativeType("GLuint") int shader) {
+        org.lwjgl.opengl.GL20.glDeleteShader(shader);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsShader">Reference Page</a></p>
+     * 
+     * Returns {@link GL11#GL_TRUE TRUE} if {@code shader} is the name of a shader object. If {@code shader} is zero, or a nonzero value that is not the name of a shader
+     * object, IsShader returns {@link GL11#GL_FALSE FALSE}. No error is generated if shader is not a valid shader object name.
+     *
+     * @param shader the shader object name to query
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsShader(@NativeType("GLuint") int shader) {
+        return org.lwjgl.opengl.GL20.glIsShader(shader);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glAttachShader">Reference Page</a></p>
+     * 
+     * Attaches a shader object to a program object.
+     * 
+     * <p>In order to create a complete shader program, there must be a way to specify the list of things that will be linked together. Program objects provide
+     * this mechanism. Shaders that are to be linked together in a program object must first be attached to that program object. glAttachShader attaches the
+     * shader object specified by shader to the program object specified by program. This indicates that shader will be included in link operations that will
+     * be performed on program.</p>
+     * 
+     * <p>All operations that can be performed on a shader object are valid whether or not the shader object is attached to a program object. It is permissible to
+     * attach a shader object to a program object before source code has been loaded into the shader object or before the shader object has been compiled. It
+     * is permissible to attach multiple shader objects of the same type because each may contain a portion of the complete shader. It is also permissible to
+     * attach a shader object to more than one program object. If a shader object is deleted while it is attached to a program object, it will be flagged for
+     * deletion, and deletion will not occur until glDetachShader is called to detach it from all program objects to which it is attached.</p>
+     *
+     * @param program the program object to which a shader object will be attached
+     * @param shader  the shader object that is to be attached
+     */
+    public static void glAttachShader(@NativeType("GLuint") int program, @NativeType("GLuint") int shader) {
+        org.lwjgl.opengl.GL20.glAttachShader(program, shader);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDetachShader">Reference Page</a></p>
+     * 
+     * Detaches a shader object from a program object to which it is attached.
+     *
+     * @param program the program object from which to detach the shader object
+     * @param shader  the shader object to be detached
+     */
+    public static void glDetachShader(@NativeType("GLuint") int program, @NativeType("GLuint") int shader) {
+        org.lwjgl.opengl.GL20.glDetachShader(program, shader);
+    }
+    /**
+     * Unsafe version of: {@link #glShaderSource ShaderSource}
+     *
+     * @param count the number of elements in the string and length arrays
+     */
+    public static void nglShaderSource(int shader, int count, long strings, long length) {
+        org.lwjgl.opengl.GL20.nglShaderSource(shader, count, strings, length);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glShaderSource">Reference Page</a></p>
      * 
      * Sets the source code in {@code shader} to the source code in the array of strings specified by {@code strings}. Any source code previously stored in the
@@ -7981,6 +12010,154 @@ public class GL {
         org.lwjgl.opengl.GL20.glShaderSource(shader, string);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCompileShader">Reference Page</a></p>
+     * 
+     * Compiles a shader object.
+     *
+     * @param shader the shader object to be compiled
+     */
+    public static void glCompileShader(@NativeType("GLuint") int shader) {
+        org.lwjgl.opengl.GL20.glCompileShader(shader);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glLinkProgram">Reference Page</a></p>
+     * 
+     * Links a program object.
+     *
+     * @param program the program object to be linked
+     */
+    public static void glLinkProgram(@NativeType("GLuint") int program) {
+        org.lwjgl.opengl.GL20.glLinkProgram(program);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUseProgram">Reference Page</a></p>
+     * 
+     * Installs a program object as part of current rendering state.
+     *
+     * @param program the program object whose executables are to be used as part of current rendering state
+     */
+    public static void glUseProgram(@NativeType("GLuint") int program) {
+        org.lwjgl.opengl.GL20.glUseProgram(program);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glValidateProgram">Reference Page</a></p>
+     * 
+     * Validates a program object.
+     *
+     * @param program the program object to be validated
+     */
+    public static void glValidateProgram(@NativeType("GLuint") int program) {
+        org.lwjgl.opengl.GL20.glValidateProgram(program);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a float uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform value
+     */
+    public static void glUniform1f(@NativeType("GLint") int location, @NativeType("GLfloat") float v0) {
+        org.lwjgl.opengl.GL20.glUniform1f(location, v0);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a vec2 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     */
+    public static void glUniform2f(@NativeType("GLint") int location, @NativeType("GLfloat") float v0, @NativeType("GLfloat") float v1) {
+        org.lwjgl.opengl.GL20.glUniform2f(location, v0, v1);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a vec3 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     * @param v2       the uniform z value
+     */
+    public static void glUniform3f(@NativeType("GLint") int location, @NativeType("GLfloat") float v0, @NativeType("GLfloat") float v1, @NativeType("GLfloat") float v2) {
+        org.lwjgl.opengl.GL20.glUniform3f(location, v0, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a vec4 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     * @param v2       the uniform z value
+     * @param v3       the uniform w value
+     */
+    public static void glUniform4f(@NativeType("GLint") int location, @NativeType("GLfloat") float v0, @NativeType("GLfloat") float v1, @NativeType("GLfloat") float v2, @NativeType("GLfloat") float v3) {
+        org.lwjgl.opengl.GL20.glUniform4f(location, v0, v1, v2, v3);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of an int uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform value
+     */
+    public static void glUniform1i(@NativeType("GLint") int location, @NativeType("GLint") int v0) {
+        org.lwjgl.opengl.GL20.glUniform1i(location, v0);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of an ivec2 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     */
+    public static void glUniform2i(@NativeType("GLint") int location, @NativeType("GLint") int v0, @NativeType("GLint") int v1) {
+        org.lwjgl.opengl.GL20.glUniform2i(location, v0, v1);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of an ivec3 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     * @param v2       the uniform z value
+     */
+    public static void glUniform3i(@NativeType("GLint") int location, @NativeType("GLint") int v0, @NativeType("GLint") int v1, @NativeType("GLint") int v2) {
+        org.lwjgl.opengl.GL20.glUniform3i(location, v0, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of an ivec4 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     * @param v2       the uniform z value
+     * @param v3       the uniform w value
+     */
+    public static void glUniform4i(@NativeType("GLint") int location, @NativeType("GLint") int v0, @NativeType("GLint") int v1, @NativeType("GLint") int v2, @NativeType("GLint") int v3) {
+        org.lwjgl.opengl.GL20.glUniform4i(location, v0, v1, v2, v3);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform1fv Uniform1fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform1fv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform1fv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single float uniform variable or a float uniform variable array for the current program object.
@@ -7990,6 +12167,14 @@ public class GL {
      */
     public static void glUniform1fv(@NativeType("GLint") int location, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL20.glUniform1fv(location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform2fv Uniform2fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform2fv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform2fv(location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -8003,6 +12188,14 @@ public class GL {
         org.lwjgl.opengl.GL20.glUniform2fv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform3fv Uniform3fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform3fv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform3fv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single vec3 uniform variable or a vec3 uniform variable array for the current program object.
@@ -8012,6 +12205,14 @@ public class GL {
      */
     public static void glUniform3fv(@NativeType("GLint") int location, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL20.glUniform3fv(location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform4fv Uniform4fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform4fv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform4fv(location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -8025,6 +12226,14 @@ public class GL {
         org.lwjgl.opengl.GL20.glUniform4fv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform1iv Uniform1iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform1iv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform1iv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single int uniform variable or a int uniform variable array for the current program object.
@@ -8034,6 +12243,14 @@ public class GL {
      */
     public static void glUniform1iv(@NativeType("GLint") int location, @NativeType("const GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL20.glUniform1iv(location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform2iv Uniform2iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform2iv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform2iv(location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -8047,6 +12264,14 @@ public class GL {
         org.lwjgl.opengl.GL20.glUniform2iv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform3iv Uniform3iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform3iv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform3iv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single ivec3 uniform variable or an ivec3 uniform variable array for the current program object.
@@ -8058,6 +12283,14 @@ public class GL {
         org.lwjgl.opengl.GL20.glUniform3iv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform4iv Uniform4iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform4iv(int location, int count, long value) {
+        org.lwjgl.opengl.GL20.nglUniform4iv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single ivec4 uniform variable or an ivec4 uniform variable array for the current program object.
@@ -8067,6 +12300,14 @@ public class GL {
      */
     public static void glUniform4iv(@NativeType("GLint") int location, @NativeType("const GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL20.glUniform4iv(location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix2fv UniformMatrix2fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix2fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL20.nglUniformMatrix2fv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -8081,6 +12322,14 @@ public class GL {
         org.lwjgl.opengl.GL20.glUniformMatrix2fv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix3fv UniformMatrix3fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix3fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL20.nglUniformMatrix3fv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat3 uniform variable or a mat3 uniform variable array for the current program object.
@@ -8093,6 +12342,14 @@ public class GL {
         org.lwjgl.opengl.GL20.glUniformMatrix3fv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix4fv UniformMatrix4fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix4fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL20.nglUniformMatrix4fv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat4 uniform variable or a mat4 uniform variable array for the current program object.
@@ -8103,6 +12360,10 @@ public class GL {
      */
     public static void glUniformMatrix4fv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL20.glUniformMatrix4fv(location, transpose, value);
+    }
+    /** Unsafe version of: {@link #glGetShaderiv GetShaderiv} */
+    public static void nglGetShaderiv(int shader, int pname, long params) {
+        org.lwjgl.opengl.GL20.nglGetShaderiv(shader, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetShader">Reference Page</a></p>
@@ -8128,6 +12389,10 @@ public class GL {
     public static int glGetShaderi(@NativeType("GLuint") int shader, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL20.glGetShaderi(shader, pname);
     }
+    /** Unsafe version of: {@link #glGetProgramiv GetProgramiv} */
+    public static void nglGetProgramiv(int program, int pname, long params) {
+        org.lwjgl.opengl.GL20.nglGetProgramiv(program, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgram">Reference Page</a></p>
      * 
@@ -8151,6 +12416,14 @@ public class GL {
     @NativeType("void")
     public static int glGetProgrami(@NativeType("GLuint") int program, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL20.glGetProgrami(program, pname);
+    }
+    /**
+     * Unsafe version of: {@link #glGetShaderInfoLog GetShaderInfoLog}
+     *
+     * @param maxLength the size of the character buffer for storing the returned information log
+     */
+    public static void nglGetShaderInfoLog(int shader, int maxLength, long length, long infoLog) {
+        org.lwjgl.opengl.GL20.nglGetShaderInfoLog(shader, maxLength, length, infoLog);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetShaderInfoLog">Reference Page</a></p>
@@ -8188,6 +12461,14 @@ public class GL {
         return org.lwjgl.opengl.GL20.glGetShaderInfoLog(shader);
     }
     /**
+     * Unsafe version of: {@link #glGetProgramInfoLog GetProgramInfoLog}
+     *
+     * @param maxLength the size of the character buffer for storing the returned information log
+     */
+    public static void nglGetProgramInfoLog(int program, int maxLength, long length, long infoLog) {
+        org.lwjgl.opengl.GL20.nglGetProgramInfoLog(program, maxLength, length, infoLog);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramInfoLog">Reference Page</a></p>
      * 
      * Returns the information log for a program object.
@@ -8223,6 +12504,14 @@ public class GL {
         return org.lwjgl.opengl.GL20.glGetProgramInfoLog(program);
     }
     /**
+     * Unsafe version of: {@link #glGetAttachedShaders GetAttachedShaders}
+     *
+     * @param maxCount the size of the array for storing the returned object names
+     */
+    public static void nglGetAttachedShaders(int program, int maxCount, long count, long shaders) {
+        org.lwjgl.opengl.GL20.nglGetAttachedShaders(program, maxCount, count, shaders);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetAttachedShaders">Reference Page</a></p>
      * 
      * Returns the shader objects attached to a program object.
@@ -8233,6 +12522,10 @@ public class GL {
      */
     public static void glGetAttachedShaders(@NativeType("GLuint") int program, @NativeType("GLsizei *") IntBuffer count, @NativeType("GLuint *") IntBuffer shaders) {
         org.lwjgl.opengl.GL20.glGetAttachedShaders(program, count, shaders);
+    }
+    /** Unsafe version of: {@link #glGetUniformLocation GetUniformLocation} */
+    public static int nglGetUniformLocation(int program, long name) {
+        return org.lwjgl.opengl.GL20.nglGetUniformLocation(program, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniformLocation">Reference Page</a></p>
@@ -8257,6 +12550,14 @@ public class GL {
     @NativeType("GLint")
     public static int glGetUniformLocation(@NativeType("GLuint") int program, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL20.glGetUniformLocation(program, name);
+    }
+    /**
+     * Unsafe version of: {@link #glGetActiveUniform GetActiveUniform}
+     *
+     * @param maxLength the maximum number of characters OpenGL is allowed to write in the character buffer indicated by {@code name}
+     */
+    public static void nglGetActiveUniform(int program, int index, int maxLength, long length, long size, long type, long name) {
+        org.lwjgl.opengl.GL20.nglGetActiveUniform(program, index, maxLength, length, size, type, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveUniform">Reference Page</a></p>
@@ -8302,6 +12603,10 @@ public class GL {
     public static String glGetActiveUniform(@NativeType("GLuint") int program, @NativeType("GLuint") int index, @NativeType("GLint *") IntBuffer size, @NativeType("GLenum *") IntBuffer type) {
         return org.lwjgl.opengl.GL20.glGetActiveUniform(program, index, size, type);
     }
+    /** Unsafe version of: {@link #glGetUniformfv GetUniformfv} */
+    public static void nglGetUniformfv(int program, int location, long params) {
+        org.lwjgl.opengl.GL20.nglGetUniformfv(program, location, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
      * 
@@ -8326,6 +12631,10 @@ public class GL {
     public static float glGetUniformf(@NativeType("GLuint") int program, @NativeType("GLint") int location) {
         return org.lwjgl.opengl.GL20.glGetUniformf(program, location);
     }
+    /** Unsafe version of: {@link #glGetUniformiv GetUniformiv} */
+    public static void nglGetUniformiv(int program, int location, long params) {
+        org.lwjgl.opengl.GL20.nglGetUniformiv(program, location, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
      * 
@@ -8349,6 +12658,14 @@ public class GL {
     @NativeType("void")
     public static int glGetUniformi(@NativeType("GLuint") int program, @NativeType("GLint") int location) {
         return org.lwjgl.opengl.GL20.glGetUniformi(program, location);
+    }
+    /**
+     * Unsafe version of: {@link #glGetShaderSource GetShaderSource}
+     *
+     * @param maxLength the size of the character buffer for storing the returned source code string
+     */
+    public static void nglGetShaderSource(int shader, int maxLength, long length, long source) {
+        org.lwjgl.opengl.GL20.nglGetShaderSource(shader, maxLength, length, source);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetShaderSource">Reference Page</a></p>
@@ -8388,6 +12705,174 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
+     * Specifies the value of a generic vertex attribute. The y and z components are implicitly set to 0.0f and w to 1.0f.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     */
+    public static void glVertexAttrib1f(@NativeType("GLuint") int index, @NativeType("GLfloat") float v0) {
+        org.lwjgl.opengl.GL20.glVertexAttrib1f(index, v0);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Short version of {@link #glVertexAttrib1f VertexAttrib1f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     */
+    public static void glVertexAttrib1s(@NativeType("GLuint") int index, @NativeType("GLshort") short v0) {
+        org.lwjgl.opengl.GL20.glVertexAttrib1s(index, v0);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Double version of {@link #glVertexAttrib1f VertexAttrib1f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     */
+    public static void glVertexAttrib1d(@NativeType("GLuint") int index, @NativeType("GLdouble") double v0) {
+        org.lwjgl.opengl.GL20.glVertexAttrib1d(index, v0);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a generic vertex attribute. The y component is implicitly set to 0.0f and w to 1.0f.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     */
+    public static void glVertexAttrib2f(@NativeType("GLuint") int index, @NativeType("GLfloat") float v0, @NativeType("GLfloat") float v1) {
+        org.lwjgl.opengl.GL20.glVertexAttrib2f(index, v0, v1);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Short version of {@link #glVertexAttrib2f VertexAttrib2f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     */
+    public static void glVertexAttrib2s(@NativeType("GLuint") int index, @NativeType("GLshort") short v0, @NativeType("GLshort") short v1) {
+        org.lwjgl.opengl.GL20.glVertexAttrib2s(index, v0, v1);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Double version of {@link #glVertexAttrib2f VertexAttrib2f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     */
+    public static void glVertexAttrib2d(@NativeType("GLuint") int index, @NativeType("GLdouble") double v0, @NativeType("GLdouble") double v1) {
+        org.lwjgl.opengl.GL20.glVertexAttrib2d(index, v0, v1);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a generic vertex attribute. The w is implicitly set to 1.0f.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     * @param v2    the vertex attribute z component
+     */
+    public static void glVertexAttrib3f(@NativeType("GLuint") int index, @NativeType("GLfloat") float v0, @NativeType("GLfloat") float v1, @NativeType("GLfloat") float v2) {
+        org.lwjgl.opengl.GL20.glVertexAttrib3f(index, v0, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Short version of {@link #glVertexAttrib3f VertexAttrib3f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     * @param v2    the vertex attribute z component
+     */
+    public static void glVertexAttrib3s(@NativeType("GLuint") int index, @NativeType("GLshort") short v0, @NativeType("GLshort") short v1, @NativeType("GLshort") short v2) {
+        org.lwjgl.opengl.GL20.glVertexAttrib3s(index, v0, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Double version of {@link #glVertexAttrib3f VertexAttrib3f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     * @param v2    the vertex attribute z component
+     */
+    public static void glVertexAttrib3d(@NativeType("GLuint") int index, @NativeType("GLdouble") double v0, @NativeType("GLdouble") double v1, @NativeType("GLdouble") double v2) {
+        org.lwjgl.opengl.GL20.glVertexAttrib3d(index, v0, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a generic vertex attribute.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     * @param v2    the vertex attribute z component
+     * @param v3    the vertex attribute w component
+     */
+    public static void glVertexAttrib4f(@NativeType("GLuint") int index, @NativeType("GLfloat") float v0, @NativeType("GLfloat") float v1, @NativeType("GLfloat") float v2, @NativeType("GLfloat") float v3) {
+        org.lwjgl.opengl.GL20.glVertexAttrib4f(index, v0, v1, v2, v3);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Short version of {@link #glVertexAttrib4f VertexAttrib4f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     * @param v2    the vertex attribute z component
+     * @param v3    the vertex attribute w component
+     */
+    public static void glVertexAttrib4s(@NativeType("GLuint") int index, @NativeType("GLshort") short v0, @NativeType("GLshort") short v1, @NativeType("GLshort") short v2, @NativeType("GLshort") short v3) {
+        org.lwjgl.opengl.GL20.glVertexAttrib4s(index, v0, v1, v2, v3);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Double version of {@link #glVertexAttrib4f VertexAttrib4f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param v0    the vertex attribute x component
+     * @param v1    the vertex attribute y component
+     * @param v2    the vertex attribute z component
+     * @param v3    the vertex attribute w component
+     */
+    public static void glVertexAttrib4d(@NativeType("GLuint") int index, @NativeType("GLdouble") double v0, @NativeType("GLdouble") double v1, @NativeType("GLdouble") double v2, @NativeType("GLdouble") double v3) {
+        org.lwjgl.opengl.GL20.glVertexAttrib4d(index, v0, v1, v2, v3);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Normalized unsigned byte version of {@link #glVertexAttrib4f VertexAttrib4f}.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     * @param z     the vertex attribute z component
+     * @param w     the vertex attribute w component
+     */
+    public static void glVertexAttrib4Nub(@NativeType("GLuint") int index, @NativeType("GLubyte") byte x, @NativeType("GLubyte") byte y, @NativeType("GLubyte") byte z, @NativeType("GLubyte") byte w) {
+        org.lwjgl.opengl.GL20.glVertexAttrib4Nub(index, x, y, z, w);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib1fv VertexAttrib1fv} */
+    public static void nglVertexAttrib1fv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib1fv(index, v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
      * Pointer version of {@link #glVertexAttrib1f VertexAttrib1f}.
      *
      * @param index the index of the generic vertex attribute to be modified
@@ -8395,6 +12880,10 @@ public class GL {
      */
     public static void glVertexAttrib1fv(@NativeType("GLuint") int index, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib1fv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib1sv VertexAttrib1sv} */
+    public static void nglVertexAttrib1sv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib1sv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8407,6 +12896,10 @@ public class GL {
     public static void glVertexAttrib1sv(@NativeType("GLuint") int index, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib1sv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib1dv VertexAttrib1dv} */
+    public static void nglVertexAttrib1dv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib1dv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8417,6 +12910,10 @@ public class GL {
      */
     public static void glVertexAttrib1dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib1dv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib2fv VertexAttrib2fv} */
+    public static void nglVertexAttrib2fv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib2fv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8429,6 +12926,10 @@ public class GL {
     public static void glVertexAttrib2fv(@NativeType("GLuint") int index, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib2fv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib2sv VertexAttrib2sv} */
+    public static void nglVertexAttrib2sv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib2sv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8439,6 +12940,10 @@ public class GL {
      */
     public static void glVertexAttrib2sv(@NativeType("GLuint") int index, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib2sv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib2dv VertexAttrib2dv} */
+    public static void nglVertexAttrib2dv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib2dv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8451,6 +12956,10 @@ public class GL {
     public static void glVertexAttrib2dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib2dv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib3fv VertexAttrib3fv} */
+    public static void nglVertexAttrib3fv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib3fv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8461,6 +12970,10 @@ public class GL {
      */
     public static void glVertexAttrib3fv(@NativeType("GLuint") int index, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib3fv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib3sv VertexAttrib3sv} */
+    public static void nglVertexAttrib3sv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib3sv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8473,6 +12986,10 @@ public class GL {
     public static void glVertexAttrib3sv(@NativeType("GLuint") int index, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib3sv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib3dv VertexAttrib3dv} */
+    public static void nglVertexAttrib3dv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib3dv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8483,6 +13000,10 @@ public class GL {
      */
     public static void glVertexAttrib3dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib3dv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib4fv VertexAttrib4fv} */
+    public static void nglVertexAttrib4fv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4fv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8495,6 +13016,10 @@ public class GL {
     public static void glVertexAttrib4fv(@NativeType("GLuint") int index, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4fv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib4sv VertexAttrib4sv} */
+    public static void nglVertexAttrib4sv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4sv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8505,6 +13030,10 @@ public class GL {
      */
     public static void glVertexAttrib4sv(@NativeType("GLuint") int index, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4sv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib4dv VertexAttrib4dv} */
+    public static void nglVertexAttrib4dv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4dv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8517,6 +13046,10 @@ public class GL {
     public static void glVertexAttrib4dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4dv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib4iv VertexAttrib4iv} */
+    public static void nglVertexAttrib4iv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4iv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8527,6 +13060,10 @@ public class GL {
      */
     public static void glVertexAttrib4iv(@NativeType("GLuint") int index, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4iv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib4bv VertexAttrib4bv} */
+    public static void nglVertexAttrib4bv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4bv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8539,6 +13076,10 @@ public class GL {
     public static void glVertexAttrib4bv(@NativeType("GLuint") int index, @NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4bv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib4ubv VertexAttrib4ubv} */
+    public static void nglVertexAttrib4ubv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4ubv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8549,6 +13090,10 @@ public class GL {
      */
     public static void glVertexAttrib4ubv(@NativeType("GLuint") int index, @NativeType("const GLubyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4ubv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib4usv VertexAttrib4usv} */
+    public static void nglVertexAttrib4usv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4usv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8561,6 +13106,10 @@ public class GL {
     public static void glVertexAttrib4usv(@NativeType("GLuint") int index, @NativeType("const GLushort *") ShortBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4usv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib4uiv VertexAttrib4uiv} */
+    public static void nglVertexAttrib4uiv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4uiv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8571,6 +13120,10 @@ public class GL {
      */
     public static void glVertexAttrib4uiv(@NativeType("GLuint") int index, @NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4uiv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib4Nbv VertexAttrib4Nbv} */
+    public static void nglVertexAttrib4Nbv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4Nbv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8583,6 +13136,10 @@ public class GL {
     public static void glVertexAttrib4Nbv(@NativeType("GLuint") int index, @NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4Nbv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib4Nsv VertexAttrib4Nsv} */
+    public static void nglVertexAttrib4Nsv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4Nsv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8593,6 +13150,10 @@ public class GL {
      */
     public static void glVertexAttrib4Nsv(@NativeType("GLuint") int index, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4Nsv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib4Niv VertexAttrib4Niv} */
+    public static void nglVertexAttrib4Niv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4Niv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8605,6 +13166,10 @@ public class GL {
     public static void glVertexAttrib4Niv(@NativeType("GLuint") int index, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4Niv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib4Nubv VertexAttrib4Nubv} */
+    public static void nglVertexAttrib4Nubv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4Nubv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8615,6 +13180,10 @@ public class GL {
      */
     public static void glVertexAttrib4Nubv(@NativeType("GLuint") int index, @NativeType("const GLubyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4Nubv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttrib4Nusv VertexAttrib4Nusv} */
+    public static void nglVertexAttrib4Nusv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4Nusv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -8627,6 +13196,10 @@ public class GL {
     public static void glVertexAttrib4Nusv(@NativeType("GLuint") int index, @NativeType("const GLushort *") ShortBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4Nusv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttrib4Nuiv VertexAttrib4Nuiv} */
+    public static void nglVertexAttrib4Nuiv(int index, long v) {
+        org.lwjgl.opengl.GL20.nglVertexAttrib4Nuiv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -8637,6 +13210,10 @@ public class GL {
      */
     public static void glVertexAttrib4Nuiv(@NativeType("GLuint") int index, @NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL20.glVertexAttrib4Nuiv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribPointer VertexAttribPointer} */
+    public static void nglVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, long pointer) {
+        org.lwjgl.opengl.GL20.nglVertexAttribPointer(index, size, type, normalized, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribPointer">Reference Page</a></p>
@@ -8724,6 +13301,30 @@ public class GL {
         org.lwjgl.opengl.GL20.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEnableVertexAttribArray">Reference Page</a></p>
+     * 
+     * Enables a generic vertex attribute array.
+     *
+     * @param index the index of the generic vertex attribute to be enabled
+     */
+    public static void glEnableVertexAttribArray(@NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL20.glEnableVertexAttribArray(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDisableVertexAttribArray">Reference Page</a></p>
+     * 
+     * Disables a generic vertex attribute array.
+     *
+     * @param index the index of the generic vertex attribute to be disabled
+     */
+    public static void glDisableVertexAttribArray(@NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL20.glDisableVertexAttribArray(index);
+    }
+    /** Unsafe version of: {@link #glBindAttribLocation BindAttribLocation} */
+    public static void nglBindAttribLocation(int program, int index, long name) {
+        org.lwjgl.opengl.GL20.nglBindAttribLocation(program, index, name);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindAttribLocation">Reference Page</a></p>
      * 
      * Associates a generic vertex attribute index with a named attribute variable.
@@ -8746,6 +13347,14 @@ public class GL {
      */
     public static void glBindAttribLocation(@NativeType("GLuint") int program, @NativeType("GLuint") int index, @NativeType("const GLchar *") CharSequence name) {
         org.lwjgl.opengl.GL20.glBindAttribLocation(program, index, name);
+    }
+    /**
+     * Unsafe version of: {@link #glGetActiveAttrib GetActiveAttrib}
+     *
+     * @param maxLength the maximum number of characters OpenGL is allowed to write in the character buffer indicated by {@code name}
+     */
+    public static void nglGetActiveAttrib(int program, int index, int maxLength, long length, long size, long type, long name) {
+        org.lwjgl.opengl.GL20.nglGetActiveAttrib(program, index, maxLength, length, size, type, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveAttrib">Reference Page</a></p>
@@ -8792,6 +13401,10 @@ public class GL {
     public static String glGetActiveAttrib(@NativeType("GLuint") int program, @NativeType("GLuint") int index, @NativeType("GLint *") IntBuffer size, @NativeType("GLenum *") IntBuffer type) {
         return org.lwjgl.opengl.GL20.glGetActiveAttrib(program, index, size, type);
     }
+    /** Unsafe version of: {@link #glGetAttribLocation GetAttribLocation} */
+    public static int nglGetAttribLocation(int program, long name) {
+        return org.lwjgl.opengl.GL20.nglGetAttribLocation(program, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetAttribLocation">Reference Page</a></p>
      * 
@@ -8815,6 +13428,10 @@ public class GL {
     @NativeType("GLint")
     public static int glGetAttribLocation(@NativeType("GLuint") int program, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL20.glGetAttribLocation(program, name);
+    }
+    /** Unsafe version of: {@link #glGetVertexAttribiv GetVertexAttribiv} */
+    public static void nglGetVertexAttribiv(int index, int pname, long params) {
+        org.lwjgl.opengl.GL20.nglGetVertexAttribiv(index, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexAttrib">Reference Page</a></p>
@@ -8840,6 +13457,10 @@ public class GL {
     public static int glGetVertexAttribi(@NativeType("GLuint") int index, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL20.glGetVertexAttribi(index, pname);
     }
+    /** Unsafe version of: {@link #glGetVertexAttribfv GetVertexAttribfv} */
+    public static void nglGetVertexAttribfv(int index, int pname, long params) {
+        org.lwjgl.opengl.GL20.nglGetVertexAttribfv(index, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexAttrib">Reference Page</a></p>
      * 
@@ -8852,6 +13473,10 @@ public class GL {
     public static void glGetVertexAttribfv(@NativeType("GLuint") int index, @NativeType("GLenum") int pname, @NativeType("GLfloat *") FloatBuffer params) {
         org.lwjgl.opengl.GL20.glGetVertexAttribfv(index, pname, params);
     }
+    /** Unsafe version of: {@link #glGetVertexAttribdv GetVertexAttribdv} */
+    public static void nglGetVertexAttribdv(int index, int pname, long params) {
+        org.lwjgl.opengl.GL20.nglGetVertexAttribdv(index, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexAttrib">Reference Page</a></p>
      * 
@@ -8863,6 +13488,10 @@ public class GL {
      */
     public static void glGetVertexAttribdv(@NativeType("GLuint") int index, @NativeType("GLenum") int pname, @NativeType("GLdouble *") DoubleBuffer params) {
         org.lwjgl.opengl.GL20.glGetVertexAttribdv(index, pname, params);
+    }
+    /** Unsafe version of: {@link #glGetVertexAttribPointerv GetVertexAttribPointerv} */
+    public static void nglGetVertexAttribPointerv(int index, int pname, long pointer) {
+        org.lwjgl.opengl.GL20.nglGetVertexAttribPointerv(index, pname, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexAttribPointerv">Reference Page</a></p>
@@ -8889,6 +13518,14 @@ public class GL {
         return org.lwjgl.opengl.GL20.glGetVertexAttribPointer(index, pname);
     }
     /**
+     * Unsafe version of: {@link #glDrawBuffers DrawBuffers}
+     *
+     * @param n the number of buffers in {@code bufs}
+     */
+    public static void nglDrawBuffers(int n, long bufs) {
+        org.lwjgl.opengl.GL20.nglDrawBuffers(n, bufs);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawBuffers">Reference Page</a></p>
      * 
      * Specifies a list of color buffers to be drawn into.
@@ -8905,6 +13542,56 @@ public class GL {
      */
     public static void glDrawBuffers(@NativeType("const GLenum *") int buf) {
         org.lwjgl.opengl.GL20.glDrawBuffers(buf);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendEquationSeparate">Reference Page</a></p>
+     * 
+     * Sets the RGB blend equation and the alpha blend equation separately.
+     *
+     * @param modeRGB   the RGB blend equation, how the red, green, and blue components of the source and destination colors are combined. One of:<br><table><tr><td>{@link GL14#GL_FUNC_ADD FUNC_ADD}</td><td>{@link GL14#GL_FUNC_SUBTRACT FUNC_SUBTRACT}</td><td>{@link GL14#GL_FUNC_REVERSE_SUBTRACT FUNC_REVERSE_SUBTRACT}</td><td>{@link GL14#GL_MIN MIN}</td><td>{@link GL14#GL_MAX MAX}</td></tr></table>
+     * @param modeAlpha the alpha blend equation, how the alpha component of the source and destination colors are combined
+     */
+    public static void glBlendEquationSeparate(@NativeType("GLenum") int modeRGB, @NativeType("GLenum") int modeAlpha) {
+        org.lwjgl.opengl.GL20.glBlendEquationSeparate(modeRGB, modeAlpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glStencilOpSeparate">Reference Page</a></p>
+     * 
+     * Sets front and/or back stencil test actions.
+     *
+     * @param face   whether front and/or back stencil state is updated. One of:<br><table><tr><td>{@link GL11#GL_FRONT FRONT}</td><td>{@link GL11#GL_BACK BACK}</td><td>{@link GL11#GL_FRONT_AND_BACK FRONT_AND_BACK}</td></tr></table>
+     * @param sfail  the action to take when the stencil test fails. The initial value is GL_KEEP. One of:<br><table><tr><td>{@link GL11#GL_KEEP KEEP}</td><td>{@link GL11#GL_ZERO ZERO}</td><td>{@link GL11#GL_REPLACE REPLACE}</td><td>{@link GL11#GL_INCR INCR}</td><td>{@link GL14#GL_INCR_WRAP INCR_WRAP}</td><td>{@link GL11#GL_DECR DECR}</td><td>{@link GL14#GL_DECR_WRAP DECR_WRAP}</td><td>{@link GL11#GL_INVERT INVERT}</td></tr></table>
+     * @param dpfail the stencil action when the stencil test passes, but the depth test fails. The initial value is GL_KEEP
+     * @param dppass the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth
+     *               testing is not enabled. The initial value is GL_KEEP
+     */
+    public static void glStencilOpSeparate(@NativeType("GLenum") int face, @NativeType("GLenum") int sfail, @NativeType("GLenum") int dpfail, @NativeType("GLenum") int dppass) {
+        org.lwjgl.opengl.GL20.glStencilOpSeparate(face, sfail, dpfail, dppass);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glStencilFuncSeparate">Reference Page</a></p>
+     * 
+     * Sets front and/or back function and reference value for stencil testing.
+     *
+     * @param face whether front and/or back stencil state is updated. One of:<br><table><tr><td>{@link GL11#GL_FRONT FRONT}</td><td>{@link GL11#GL_BACK BACK}</td><td>{@link GL11#GL_FRONT_AND_BACK FRONT_AND_BACK}</td></tr></table>
+     * @param func the test function. The initial value is GL_ALWAYS. One of:<br><table><tr><td>{@link GL11#GL_NEVER NEVER}</td><td>{@link GL11#GL_LESS LESS}</td><td>{@link GL11#GL_LEQUAL LEQUAL}</td><td>{@link GL11#GL_GREATER GREATER}</td><td>{@link GL11#GL_GEQUAL GEQUAL}</td><td>{@link GL11#GL_EQUAL EQUAL}</td><td>{@link GL11#GL_NOTEQUAL NOTEQUAL}</td><td>{@link GL11#GL_ALWAYS ALWAYS}</td></tr></table>
+     * @param ref  the reference value for the stencil test. {@code ref} is clamped to the range [0, 2n &ndash; 1], where {@code n} is the number of bitplanes in the stencil
+     *             buffer. The initial value is 0.
+     * @param mask a mask that is ANDed with both the reference value and the stored stencil value when the test is done. The initial value is all 1's.
+     */
+    public static void glStencilFuncSeparate(@NativeType("GLenum") int face, @NativeType("GLenum") int func, @NativeType("GLint") int ref, @NativeType("GLuint") int mask) {
+        org.lwjgl.opengl.GL20.glStencilFuncSeparate(face, func, ref, mask);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glStencilMaskSeparate">Reference Page</a></p>
+     * 
+     * Controls the front and/or back writing of individual bits in the stencil planes.
+     *
+     * @param face whether front and/or back stencil writemask is updated. One of:<br><table><tr><td>{@link GL11#GL_FRONT FRONT}</td><td>{@link GL11#GL_BACK BACK}</td><td>{@link GL11#GL_FRONT_AND_BACK FRONT_AND_BACK}</td></tr></table>
+     * @param mask a bit mask to enable and disable writing of individual bits in the stencil planes. Initially, the mask is all 1's.
+     */
+    public static void glStencilMaskSeparate(@NativeType("GLenum") int face, @NativeType("GLuint") int mask) {
+        org.lwjgl.opengl.GL20.glStencilMaskSeparate(face, mask);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glShaderSource">Reference Page</a></p>
@@ -9302,6 +13989,14 @@ public class GL {
         GL_COMPRESSED_SLUMINANCE       = 0x8C4A,
         GL_COMPRESSED_SLUMINANCE_ALPHA = 0x8C4B;
     /**
+     * Unsafe version of: {@link #glUniformMatrix2x3fv UniformMatrix2x3fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix2x3fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL21.nglUniformMatrix2x3fv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat2x3 uniform variable or a mat2x3 uniform variable array for the current program object.
@@ -9312,6 +14007,14 @@ public class GL {
      */
     public static void glUniformMatrix2x3fv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL21.glUniformMatrix2x3fv(location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix3x2fv UniformMatrix3x2fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix3x2fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL21.nglUniformMatrix3x2fv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -9326,6 +14029,14 @@ public class GL {
         org.lwjgl.opengl.GL21.glUniformMatrix3x2fv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix2x4fv UniformMatrix2x4fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix2x4fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL21.nglUniformMatrix2x4fv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat2x4 uniform variable or a mat2x4 uniform variable array for the current program object.
@@ -9336,6 +14047,14 @@ public class GL {
      */
     public static void glUniformMatrix2x4fv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL21.glUniformMatrix2x4fv(location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix4x2fv UniformMatrix4x2fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix4x2fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL21.nglUniformMatrix4x2fv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -9350,6 +14069,14 @@ public class GL {
         org.lwjgl.opengl.GL21.glUniformMatrix4x2fv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix3x4fv UniformMatrix3x4fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix3x4fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL21.nglUniformMatrix3x4fv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat3x4 uniform variable or a mat3x4 uniform variable array for the current program object.
@@ -9360,6 +14087,14 @@ public class GL {
      */
     public static void glUniformMatrix3x4fv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL21.glUniformMatrix3x4fv(location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix4x3fv UniformMatrix4x3fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix4x3fv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL21.nglUniformMatrix4x3fv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -9798,6 +14533,10 @@ public class GL {
      * GetDoublev.
      */
     public static final int GL_FRAMEBUFFER_SRGB = 0x8DB9;
+    /** Unsafe version of: {@link #glGetStringi GetStringi} */
+    public static long nglGetStringi(int name, int index) {
+        return org.lwjgl.opengl.GL30.nglGetStringi(name, index);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetStringi">Reference Page</a></p>
      * 
@@ -9809,6 +14548,10 @@ public class GL {
     @NativeType("const GLubyte *")
     public static String glGetStringi(@NativeType("GLenum") int name, @NativeType("GLuint") int index) {
         return org.lwjgl.opengl.GL30.glGetStringi(name, index);
+    }
+    /** Unsafe version of: {@link #glClearBufferiv ClearBufferiv} */
+    public static void nglClearBufferiv(int buffer, int drawbuffer, long value) {
+        org.lwjgl.opengl.GL30.nglClearBufferiv(buffer, drawbuffer, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBuffer">Reference Page</a></p>
@@ -9823,6 +14566,10 @@ public class GL {
     public static void glClearBufferiv(@NativeType("GLenum") int buffer, @NativeType("GLint") int drawbuffer, @NativeType("GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL30.glClearBufferiv(buffer, drawbuffer, value);
     }
+    /** Unsafe version of: {@link #glClearBufferuiv ClearBufferuiv} */
+    public static void nglClearBufferuiv(int buffer, int drawbuffer, long value) {
+        org.lwjgl.opengl.GL30.nglClearBufferuiv(buffer, drawbuffer, value);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBuffer">Reference Page</a></p>
      * 
@@ -9834,6 +14581,10 @@ public class GL {
      */
     public static void glClearBufferuiv(@NativeType("GLenum") int buffer, @NativeType("GLint") int drawbuffer, @NativeType("GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL30.glClearBufferuiv(buffer, drawbuffer, value);
+    }
+    /** Unsafe version of: {@link #glClearBufferfv ClearBufferfv} */
+    public static void nglClearBufferfv(int buffer, int drawbuffer, long value) {
+        org.lwjgl.opengl.GL30.nglClearBufferfv(buffer, drawbuffer, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBuffer">Reference Page</a></p>
@@ -9849,6 +14600,123 @@ public class GL {
         org.lwjgl.opengl.GL30.glClearBufferfv(buffer, drawbuffer, value);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClearBufferfi">Reference Page</a></p>
+     * 
+     * Clears an individual buffer of the currently bound framebuffer object to the {@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER} binding.
+     *
+     * @param buffer     the buffer to clear. Must be:<br><table><tr><td>{@link #GL_DEPTH_STENCIL DEPTH_STENCIL}</td></tr></table>
+     * @param drawbuffer the draw buffer to clear
+     * @param depth      the depth value to clear the buffer to
+     * @param stencil    the stencil value to clear the buffer to
+     */
+    public static void glClearBufferfi(@NativeType("GLenum") int buffer, @NativeType("GLint") int drawbuffer, @NativeType("GLfloat") float depth, @NativeType("GLint") int stencil) {
+        org.lwjgl.opengl.GL30.glClearBufferfi(buffer, drawbuffer, depth, stencil);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a pure integer generic vertex attribute. The y and z components are implicitly set to 0 and w to 1.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     */
+    public static void glVertexAttribI1i(@NativeType("GLuint") int index, @NativeType("GLint") int x) {
+        org.lwjgl.opengl.GL30.glVertexAttribI1i(index, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a pure integer generic vertex attribute. The z component is implicitly set to 0 and w to 1.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     */
+    public static void glVertexAttribI2i(@NativeType("GLuint") int index, @NativeType("GLint") int x, @NativeType("GLint") int y) {
+        org.lwjgl.opengl.GL30.glVertexAttribI2i(index, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a pure integer generic vertex attribute. The w component is implicitly set to 1.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     * @param z     the vertex attribute z component
+     */
+    public static void glVertexAttribI3i(@NativeType("GLuint") int index, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z) {
+        org.lwjgl.opengl.GL30.glVertexAttribI3i(index, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a pure integer generic vertex attribute.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     * @param z     the vertex attribute z component
+     * @param w     the vertex attribute w component
+     */
+    public static void glVertexAttribI4i(@NativeType("GLuint") int index, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z, @NativeType("GLint") int w) {
+        org.lwjgl.opengl.GL30.glVertexAttribI4i(index, x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of an unsigned pure integer generic vertex attribute. The y and z components are implicitly set to 0 and w to 1.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     */
+    public static void glVertexAttribI1ui(@NativeType("GLuint") int index, @NativeType("GLuint") int x) {
+        org.lwjgl.opengl.GL30.glVertexAttribI1ui(index, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of an unsigned pure integer generic vertex attribute. The z component is implicitly set to 0 and w to 1.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     */
+    public static void glVertexAttribI2ui(@NativeType("GLuint") int index, @NativeType("GLuint") int x, @NativeType("GLuint") int y) {
+        org.lwjgl.opengl.GL30.glVertexAttribI2ui(index, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of an unsigned pure integer generic vertex attribute. The w component is implicitly set to 1.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     * @param z     the vertex attribute z component
+     */
+    public static void glVertexAttribI3ui(@NativeType("GLuint") int index, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z) {
+        org.lwjgl.opengl.GL30.glVertexAttribI3ui(index, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of an unsigned pure integer generic vertex attribute.
+     *
+     * @param index the index of the pure integer generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     * @param z     the vertex attribute z component
+     * @param w     the vertex attribute w component
+     */
+    public static void glVertexAttribI4ui(@NativeType("GLuint") int index, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z, @NativeType("GLint") int w) {
+        org.lwjgl.opengl.GL30.glVertexAttribI4ui(index, x, y, z, w);
+    }
+    /** Unsafe version of: {@link #glVertexAttribI1iv VertexAttribI1iv} */
+    public static void nglVertexAttribI1iv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI1iv(index, v);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
      * Pointer version of {@link #glVertexAttribI1i VertexAttribI1i}.
@@ -9858,6 +14726,10 @@ public class GL {
      */
     public static void glVertexAttribI1iv(@NativeType("GLuint") int index, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI1iv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribI2iv VertexAttribI2iv} */
+    public static void nglVertexAttribI2iv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI2iv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -9870,6 +14742,10 @@ public class GL {
     public static void glVertexAttribI2iv(@NativeType("GLuint") int index, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI2iv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribI3iv VertexAttribI3iv} */
+    public static void nglVertexAttribI3iv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI3iv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -9880,6 +14756,10 @@ public class GL {
      */
     public static void glVertexAttribI3iv(@NativeType("GLuint") int index, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI3iv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribI4iv VertexAttribI4iv} */
+    public static void nglVertexAttribI4iv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI4iv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -9892,6 +14772,10 @@ public class GL {
     public static void glVertexAttribI4iv(@NativeType("GLuint") int index, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI4iv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribI1uiv VertexAttribI1uiv} */
+    public static void nglVertexAttribI1uiv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI1uiv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -9902,6 +14786,10 @@ public class GL {
      */
     public static void glVertexAttribI1uiv(@NativeType("GLuint") int index, @NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI1uiv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribI2uiv VertexAttribI2uiv} */
+    public static void nglVertexAttribI2uiv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI2uiv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -9914,6 +14802,10 @@ public class GL {
     public static void glVertexAttribI2uiv(@NativeType("GLuint") int index, @NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI2uiv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribI3uiv VertexAttribI3uiv} */
+    public static void nglVertexAttribI3uiv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI3uiv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -9924,6 +14816,10 @@ public class GL {
      */
     public static void glVertexAttribI3uiv(@NativeType("GLuint") int index, @NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI3uiv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribI4uiv VertexAttribI4uiv} */
+    public static void nglVertexAttribI4uiv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI4uiv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -9936,6 +14832,10 @@ public class GL {
     public static void glVertexAttribI4uiv(@NativeType("GLuint") int index, @NativeType("const GLuint *") IntBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI4uiv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribI4bv VertexAttribI4bv} */
+    public static void nglVertexAttribI4bv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI4bv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -9946,6 +14846,10 @@ public class GL {
      */
     public static void glVertexAttribI4bv(@NativeType("GLuint") int index, @NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI4bv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribI4sv VertexAttribI4sv} */
+    public static void nglVertexAttribI4sv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI4sv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -9958,6 +14862,10 @@ public class GL {
     public static void glVertexAttribI4sv(@NativeType("GLuint") int index, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI4sv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribI4ubv VertexAttribI4ubv} */
+    public static void nglVertexAttribI4ubv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI4ubv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -9969,6 +14877,10 @@ public class GL {
     public static void glVertexAttribI4ubv(@NativeType("GLuint") int index, @NativeType("const GLbyte *") ByteBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI4ubv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribI4usv VertexAttribI4usv} */
+    public static void nglVertexAttribI4usv(int index, long v) {
+        org.lwjgl.opengl.GL30.nglVertexAttribI4usv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -9979,6 +14891,10 @@ public class GL {
      */
     public static void glVertexAttribI4usv(@NativeType("GLuint") int index, @NativeType("const GLshort *") ShortBuffer v) {
         org.lwjgl.opengl.GL30.glVertexAttribI4usv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribIPointer VertexAttribIPointer} */
+    public static void nglVertexAttribIPointer(int index, int size, int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL30.nglVertexAttribIPointer(index, size, type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribIPointer">Reference Page</a></p>
@@ -10044,6 +14960,10 @@ public class GL {
     public static void glVertexAttribIPointer(@NativeType("GLuint") int index, @NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLsizei") int stride, @NativeType("const void *") IntBuffer pointer) {
         org.lwjgl.opengl.GL30.glVertexAttribIPointer(index, size, type, stride, pointer);
     }
+    /** Unsafe version of: {@link #glGetVertexAttribIiv GetVertexAttribIiv} */
+    public static void nglGetVertexAttribIiv(int index, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglGetVertexAttribIiv(index, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexAttrib">Reference Page</a></p>
      * 
@@ -10067,6 +14987,10 @@ public class GL {
     @NativeType("void")
     public static int glGetVertexAttribIi(@NativeType("GLuint") int index, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL30.glGetVertexAttribIi(index, pname);
+    }
+    /** Unsafe version of: {@link #glGetVertexAttribIuiv GetVertexAttribIuiv} */
+    public static void nglGetVertexAttribIuiv(int index, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglGetVertexAttribIuiv(index, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexAttrib">Reference Page</a></p>
@@ -10095,6 +15019,64 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
+     * Specifies the value of a uint uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform value
+     */
+    public static void glUniform1ui(@NativeType("GLint") int location, @NativeType("GLuint") int v0) {
+        org.lwjgl.opengl.GL30.glUniform1ui(location, v0);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a uvec2 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     */
+    public static void glUniform2ui(@NativeType("GLint") int location, @NativeType("GLuint") int v0, @NativeType("GLuint") int v1) {
+        org.lwjgl.opengl.GL30.glUniform2ui(location, v0, v1);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a uvec3 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     * @param v2       the uniform z value
+     */
+    public static void glUniform3ui(@NativeType("GLint") int location, @NativeType("GLuint") int v0, @NativeType("GLuint") int v1, @NativeType("GLuint") int v2) {
+        org.lwjgl.opengl.GL30.glUniform3ui(location, v0, v1, v2);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a uvec4 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param v0       the uniform x value
+     * @param v1       the uniform y value
+     * @param v2       the uniform z value
+     * @param v3       the uniform w value
+     */
+    public static void glUniform4ui(@NativeType("GLint") int location, @NativeType("GLuint") int v0, @NativeType("GLuint") int v1, @NativeType("GLuint") int v2, @NativeType("GLuint") int v3) {
+        org.lwjgl.opengl.GL30.glUniform4ui(location, v0, v1, v2, v3);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform1uiv Uniform1uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform1uiv(int location, int count, long value) {
+        org.lwjgl.opengl.GL30.nglUniform1uiv(location, count, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
      * Specifies the value of a single uint uniform variable or a uint uniform variable array for the current program object.
      *
      * @param location the location of the uniform variable to be modified
@@ -10102,6 +15084,14 @@ public class GL {
      */
     public static void glUniform1uiv(@NativeType("GLint") int location, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL30.glUniform1uiv(location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform2uiv Uniform2uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform2uiv(int location, int count, long value) {
+        org.lwjgl.opengl.GL30.nglUniform2uiv(location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -10115,6 +15105,14 @@ public class GL {
         org.lwjgl.opengl.GL30.glUniform2uiv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform3uiv Uniform3uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform3uiv(int location, int count, long value) {
+        org.lwjgl.opengl.GL30.nglUniform3uiv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single uvec3 uniform variable or a uvec3 uniform variable array for the current program object.
@@ -10126,6 +15124,14 @@ public class GL {
         org.lwjgl.opengl.GL30.glUniform3uiv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform4uiv Uniform4uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform4uiv(int location, int count, long value) {
+        org.lwjgl.opengl.GL30.nglUniform4uiv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single uvec4 uniform variable or a uvec4 uniform variable array for the current program object.
@@ -10135,6 +15141,10 @@ public class GL {
      */
     public static void glUniform4uiv(@NativeType("GLint") int location, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL30.glUniform4uiv(location, value);
+    }
+    /** Unsafe version of: {@link #glGetUniformuiv GetUniformuiv} */
+    public static void nglGetUniformuiv(int program, int location, long params) {
+        org.lwjgl.opengl.GL30.nglGetUniformuiv(program, location, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
@@ -10160,6 +15170,10 @@ public class GL {
     public static int glGetUniformui(@NativeType("GLuint") int program, @NativeType("GLint") int location) {
         return org.lwjgl.opengl.GL30.glGetUniformui(program, location);
     }
+    /** Unsafe version of: {@link #glBindFragDataLocation BindFragDataLocation} */
+    public static void nglBindFragDataLocation(int program, int colorNumber, long name) {
+        org.lwjgl.opengl.GL30.nglBindFragDataLocation(program, colorNumber, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindFragDataLocation">Reference Page</a></p>
      * 
@@ -10184,6 +15198,10 @@ public class GL {
     public static void glBindFragDataLocation(@NativeType("GLuint") int program, @NativeType("GLuint") int colorNumber, @NativeType("const GLchar *") CharSequence name) {
         org.lwjgl.opengl.GL30.glBindFragDataLocation(program, colorNumber, name);
     }
+    /** Unsafe version of: {@link #glGetFragDataLocation GetFragDataLocation} */
+    public static int nglGetFragDataLocation(int program, long name) {
+        return org.lwjgl.opengl.GL30.nglGetFragDataLocation(program, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFragDataLocation">Reference Page</a></p>
      * 
@@ -10207,6 +15225,29 @@ public class GL {
     @NativeType("GLint")
     public static int glGetFragDataLocation(@NativeType("GLuint") int program, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL30.glGetFragDataLocation(program, name);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBeginConditionalRender">Reference Page</a></p>
+     * 
+     * Starts conditional rendering.
+     *
+     * @param id   the name of an occlusion query object whose results are used to determine if the rendering commands are discarded
+     * @param mode how {@code glBeginConditionalRender} interprets the results of the occlusion query. One of:<br><table><tr><td>{@link #GL_QUERY_WAIT QUERY_WAIT}</td><td>{@link #GL_QUERY_NO_WAIT QUERY_NO_WAIT}</td><td>{@link #GL_QUERY_BY_REGION_WAIT QUERY_BY_REGION_WAIT}</td></tr><tr><td>{@link #GL_QUERY_BY_REGION_NO_WAIT QUERY_BY_REGION_NO_WAIT}</td><td>{@link GL45#GL_QUERY_WAIT_INVERTED QUERY_WAIT_INVERTED}</td><td>{@link GL45#GL_QUERY_NO_WAIT_INVERTED QUERY_NO_WAIT_INVERTED}</td></tr><tr><td>{@link GL45#GL_QUERY_BY_REGION_WAIT_INVERTED QUERY_BY_REGION_WAIT_INVERTED}</td><td>{@link GL45#GL_QUERY_BY_REGION_NO_WAIT_INVERTED QUERY_BY_REGION_NO_WAIT_INVERTED}</td></tr></table>
+     */
+    public static void glBeginConditionalRender(@NativeType("GLuint") int id, @NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL30.glBeginConditionalRender(id, mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEndConditionalRender">Reference Page</a></p>
+     * 
+     * Ends conditional rendering.
+     */
+    public static void glEndConditionalRender() {
+        org.lwjgl.opengl.GL30.glEndConditionalRender();
+    }
+    /** Unsafe version of: {@link #glMapBufferRange MapBufferRange} */
+    public static long nglMapBufferRange(int target, long offset, long length, int access) {
+        return org.lwjgl.opengl.GL30.nglMapBufferRange(target, offset, length, access);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMapBufferRange">Reference Page</a></p>
@@ -10251,6 +15292,59 @@ public class GL {
         return org.lwjgl.opengl.GL30.glMapBufferRange(target, offset, length, access, old_buffer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFlushMappedBufferRange">Reference Page</a></p>
+     * 
+     * Indicates modifications to a range of a mapped buffer.
+     *
+     * @param target the target of the flush operation. One of:<br><table><tr><td>{@link GL15#GL_ARRAY_BUFFER ARRAY_BUFFER}</td><td>{@link GL15#GL_ELEMENT_ARRAY_BUFFER ELEMENT_ARRAY_BUFFER}</td><td>{@link GL21#GL_PIXEL_PACK_BUFFER PIXEL_PACK_BUFFER}</td><td>{@link GL21#GL_PIXEL_UNPACK_BUFFER PIXEL_UNPACK_BUFFER}</td></tr><tr><td>{@link #GL_TRANSFORM_FEEDBACK_BUFFER TRANSFORM_FEEDBACK_BUFFER}</td><td>{@link GL31#GL_UNIFORM_BUFFER UNIFORM_BUFFER}</td><td>{@link GL31#GL_TEXTURE_BUFFER TEXTURE_BUFFER}</td><td>{@link GL31#GL_COPY_READ_BUFFER COPY_READ_BUFFER}</td></tr><tr><td>{@link GL31#GL_COPY_WRITE_BUFFER COPY_WRITE_BUFFER}</td><td>{@link GL40#GL_DRAW_INDIRECT_BUFFER DRAW_INDIRECT_BUFFER}</td><td>{@link GL42#GL_ATOMIC_COUNTER_BUFFER ATOMIC_COUNTER_BUFFER}</td><td>{@link GL43#GL_DISPATCH_INDIRECT_BUFFER DISPATCH_INDIRECT_BUFFER}</td></tr><tr><td>{@link GL43#GL_SHADER_STORAGE_BUFFER SHADER_STORAGE_BUFFER}</td><td>{@link ARBIndirectParameters#GL_PARAMETER_BUFFER_ARB PARAMETER_BUFFER_ARB}</td></tr></table>
+     * @param offset the start of the buffer subrange, in basic machine units
+     * @param length the length of the buffer subrange, in basic machine units
+     */
+    public static void glFlushMappedBufferRange(@NativeType("GLenum") int target, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long length) {
+        org.lwjgl.opengl.GL30.glFlushMappedBufferRange(target, offset, length);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClampColor">Reference Page</a></p>
+     * 
+     * Controls color clamping.
+     *
+     * @param target target for color clamping. One of:<br><table><tr><td>{@link #GL_CLAMP_VERTEX_COLOR CLAMP_VERTEX_COLOR}</td><td>{@link #GL_CLAMP_FRAGMENT_COLOR CLAMP_FRAGMENT_COLOR}</td><td>{@link #GL_CLAMP_READ_COLOR CLAMP_READ_COLOR}</td></tr></table>
+     * @param clamp  whether to apply color clamping. One of:<br><table><tr><td>{@link GL11#GL_TRUE TRUE}</td><td>{@link GL11#GL_FALSE FALSE}</td><td>{@link #GL_FIXED_ONLY FIXED_ONLY}</td></tr></table>
+     */
+    public static void glClampColor(@NativeType("GLenum") int target, @NativeType("GLenum") int clamp) {
+        org.lwjgl.opengl.GL30.glClampColor(target, clamp);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsRenderbuffer">Reference Page</a></p>
+     * 
+     * Determines if a name corresponds to a renderbuffer object.
+     *
+     * @param renderbuffer a value that may be the name of a renderbuffer object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsRenderbuffer(@NativeType("GLuint") int renderbuffer) {
+        return org.lwjgl.opengl.GL30.glIsRenderbuffer(renderbuffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindRenderbuffer">Reference Page</a></p>
+     * 
+     * Binds a renderbuffer to a renderbuffer target.
+     *
+     * @param target       the renderbuffer target of the binding operation. Must be:<br><table><tr><td>{@link #GL_RENDERBUFFER RENDERBUFFER}</td></tr></table>
+     * @param renderbuffer the name of the renderbuffer object to bind
+     */
+    public static void glBindRenderbuffer(@NativeType("GLenum") int target, @NativeType("GLuint") int renderbuffer) {
+        org.lwjgl.opengl.GL30.glBindRenderbuffer(target, renderbuffer);
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteRenderbuffers DeleteRenderbuffers}
+     *
+     * @param n the number of renderbuffer objects to be deleted
+     */
+    public static void nglDeleteRenderbuffers(int n, long renderbuffers) {
+        org.lwjgl.opengl.GL30.nglDeleteRenderbuffers(n, renderbuffers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteRenderbuffers">Reference Page</a></p>
      * 
      * Deletes renderbuffer objects.
@@ -10267,6 +15361,14 @@ public class GL {
      */
     public static void glDeleteRenderbuffers(@NativeType("const GLuint *") int renderbuffer) {
         org.lwjgl.opengl.GL30.glDeleteRenderbuffers(renderbuffer);
+    }
+    /**
+     * Unsafe version of: {@link #glGenRenderbuffers GenRenderbuffers}
+     *
+     * @param n the number of renderbuffer object names to generate
+     */
+    public static void nglGenRenderbuffers(int n, long renderbuffers) {
+        org.lwjgl.opengl.GL30.nglGenRenderbuffers(n, renderbuffers);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenRenderbuffers">Reference Page</a></p>
@@ -10286,6 +15388,39 @@ public class GL {
     @NativeType("void")
     public static int glGenRenderbuffers() {
         return org.lwjgl.opengl.GL30.glGenRenderbuffers();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glRenderbufferStorage">Reference Page</a></p>
+     * 
+     * Establishes data storage, format and dimensions of a renderbuffer object's image.
+     *
+     * @param target         the target of the allocation. Must be:<br><table><tr><td>{@link #GL_RENDERBUFFER RENDERBUFFER}</td></tr></table>
+     * @param internalformat the internal format to use for the renderbuffer object's image. Must be a color-renderable, depth-renderable, or stencil-renderable format.
+     * @param width          the width of the renderbuffer, in pixels
+     * @param height         the height of the renderbuffer, in pixels
+     */
+    public static void glRenderbufferStorage(@NativeType("GLenum") int target, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL30.glRenderbufferStorage(target, internalformat, width, height);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glRenderbufferStorageMultisample">Reference Page</a></p>
+     * 
+     * Establishes data storage, format, dimensions and sample count of a renderbuffer object's image.
+     * 
+     * <p>{@link #glRenderbufferStorage RenderbufferStorage} is equivalent to calling this method with the samples set to zero.</p>
+     *
+     * @param target         the target of the allocation. Must be:<br><table><tr><td>{@link #GL_RENDERBUFFER RENDERBUFFER}</td></tr></table>
+     * @param samples        the number of samples to be used for the renderbuffer object's storage
+     * @param internalformat the internal format to use for the renderbuffer object's image. Must be a color-renderable, depth-renderable, or stencil-renderable format.
+     * @param width          the width of the renderbuffer, in pixels
+     * @param height         the height of the renderbuffer, in pixels
+     */
+    public static void glRenderbufferStorageMultisample(@NativeType("GLenum") int target, @NativeType("GLsizei") int samples, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL30.glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
+    }
+    /** Unsafe version of: {@link #glGetRenderbufferParameteriv GetRenderbufferParameteriv} */
+    public static void nglGetRenderbufferParameteriv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglGetRenderbufferParameteriv(target, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetRenderbufferParameter">Reference Page</a></p>
@@ -10312,6 +15447,36 @@ public class GL {
         return org.lwjgl.opengl.GL30.glGetRenderbufferParameteri(target, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsFramebuffer">Reference Page</a></p>
+     * 
+     * Determines if a name corresponds to a framebuffer object.
+     *
+     * @param framebuffer a value that may be the name of a framebuffer object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsFramebuffer(@NativeType("GLuint") int framebuffer) {
+        return org.lwjgl.opengl.GL30.glIsFramebuffer(framebuffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindFramebuffer">Reference Page</a></p>
+     * 
+     * Binds a framebuffer to a framebuffer target.
+     *
+     * @param target      the framebuffer target of the binding operation. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link #GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     * @param framebuffer the name of the framebuffer object to bind
+     */
+    public static void glBindFramebuffer(@NativeType("GLenum") int target, @NativeType("GLuint") int framebuffer) {
+        org.lwjgl.opengl.GL30.glBindFramebuffer(target, framebuffer);
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteFramebuffers DeleteFramebuffers}
+     *
+     * @param n the number of framebuffer objects to be deleted
+     */
+    public static void nglDeleteFramebuffers(int n, long framebuffers) {
+        org.lwjgl.opengl.GL30.nglDeleteFramebuffers(n, framebuffers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteFramebuffers">Reference Page</a></p>
      * 
      * Deletes framebuffer objects.
@@ -10328,6 +15493,14 @@ public class GL {
      */
     public static void glDeleteFramebuffers(@NativeType("const GLuint *") int framebuffer) {
         org.lwjgl.opengl.GL30.glDeleteFramebuffers(framebuffer);
+    }
+    /**
+     * Unsafe version of: {@link #glGenFramebuffers GenFramebuffers}
+     *
+     * @param n the number of framebuffer object names to generate
+     */
+    public static void nglGenFramebuffers(int n, long framebuffers) {
+        org.lwjgl.opengl.GL30.nglGenFramebuffers(n, framebuffers);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenFramebuffers">Reference Page</a></p>
@@ -10347,6 +15520,91 @@ public class GL {
     @NativeType("void")
     public static int glGenFramebuffers() {
         return org.lwjgl.opengl.GL30.glGenFramebuffers();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCheckFramebufferStatus">Reference Page</a></p>
+     * 
+     * Checks the completeness status of a framebuffer.
+     *
+     * @param target the target of the framebuffer completeness check. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link #GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     */
+    @NativeType("GLenum")
+    public static int glCheckFramebufferStatus(@NativeType("GLenum") int target) {
+        return org.lwjgl.opengl.GL30.glCheckFramebufferStatus(target);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferTexture1D">Reference Page</a></p>
+     * 
+     * Attaches a level of a 1D texture object as a logical buffer to the currently bound framebuffer object.
+     *
+     * @param target     the framebuffer target. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link #GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     * @param attachment the attachment point of the framebuffer. One of:<br><table><tr><td>{@link #GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>{@link #GL_COLOR_ATTACHMENT1 COLOR_ATTACHMENT1}</td><td>{@link #GL_COLOR_ATTACHMENT2 COLOR_ATTACHMENT2}</td><td>{@link #GL_COLOR_ATTACHMENT3 COLOR_ATTACHMENT3}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT4 COLOR_ATTACHMENT4}</td><td>{@link #GL_COLOR_ATTACHMENT5 COLOR_ATTACHMENT5}</td><td>{@link #GL_COLOR_ATTACHMENT6 COLOR_ATTACHMENT6}</td><td>{@link #GL_COLOR_ATTACHMENT7 COLOR_ATTACHMENT7}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT8 COLOR_ATTACHMENT8}</td><td>{@link #GL_COLOR_ATTACHMENT9 COLOR_ATTACHMENT9}</td><td>{@link #GL_COLOR_ATTACHMENT10 COLOR_ATTACHMENT10}</td><td>{@link #GL_COLOR_ATTACHMENT11 COLOR_ATTACHMENT11}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT12 COLOR_ATTACHMENT12}</td><td>{@link #GL_COLOR_ATTACHMENT13 COLOR_ATTACHMENT13}</td><td>{@link #GL_COLOR_ATTACHMENT14 COLOR_ATTACHMENT14}</td><td>{@link #GL_COLOR_ATTACHMENT15 COLOR_ATTACHMENT15}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT16 COLOR_ATTACHMENT16}</td><td>{@link #GL_COLOR_ATTACHMENT17 COLOR_ATTACHMENT17}</td><td>{@link #GL_COLOR_ATTACHMENT18 COLOR_ATTACHMENT18}</td><td>{@link #GL_COLOR_ATTACHMENT19 COLOR_ATTACHMENT19}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT20 COLOR_ATTACHMENT20}</td><td>{@link #GL_COLOR_ATTACHMENT21 COLOR_ATTACHMENT21}</td><td>{@link #GL_COLOR_ATTACHMENT22 COLOR_ATTACHMENT22}</td><td>{@link #GL_COLOR_ATTACHMENT23 COLOR_ATTACHMENT23}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT24 COLOR_ATTACHMENT24}</td><td>{@link #GL_COLOR_ATTACHMENT25 COLOR_ATTACHMENT25}</td><td>{@link #GL_COLOR_ATTACHMENT26 COLOR_ATTACHMENT26}</td><td>{@link #GL_COLOR_ATTACHMENT27 COLOR_ATTACHMENT27}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT28 COLOR_ATTACHMENT28}</td><td>{@link #GL_COLOR_ATTACHMENT29 COLOR_ATTACHMENT29}</td><td>{@link #GL_COLOR_ATTACHMENT30 COLOR_ATTACHMENT30}</td><td>{@link #GL_COLOR_ATTACHMENT31 COLOR_ATTACHMENT31}</td></tr><tr><td>{@link #GL_DEPTH_ATTACHMENT DEPTH_ATTACHMENT}</td><td>{@link #GL_STENCIL_ATTACHMENT STENCIL_ATTACHMENT}</td><td>{@link #GL_DEPTH_STENCIL_ATTACHMENT DEPTH_STENCIL_ATTACHMENT}</td></tr></table>
+     * @param textarget  the type of texture
+     * @param texture    the texture object to attach to the framebuffer attachment point named by {@code attachment}
+     * @param level      the mipmap level of {@code texture} to attach
+     */
+    public static void glFramebufferTexture1D(@NativeType("GLenum") int target, @NativeType("GLenum") int attachment, @NativeType("GLenum") int textarget, @NativeType("GLuint") int texture, @NativeType("GLint") int level) {
+        org.lwjgl.opengl.GL30.glFramebufferTexture1D(target, attachment, textarget, texture, level);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferTexture2D">Reference Page</a></p>
+     * 
+     * Attaches a level of a 2D texture object as a logical buffer to the currently bound framebuffer object.
+     *
+     * @param target     the framebuffer target. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link #GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     * @param attachment the attachment point of the framebuffer. One of:<br><table><tr><td>{@link #GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>{@link #GL_COLOR_ATTACHMENT1 COLOR_ATTACHMENT1}</td><td>{@link #GL_COLOR_ATTACHMENT2 COLOR_ATTACHMENT2}</td><td>{@link #GL_COLOR_ATTACHMENT3 COLOR_ATTACHMENT3}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT4 COLOR_ATTACHMENT4}</td><td>{@link #GL_COLOR_ATTACHMENT5 COLOR_ATTACHMENT5}</td><td>{@link #GL_COLOR_ATTACHMENT6 COLOR_ATTACHMENT6}</td><td>{@link #GL_COLOR_ATTACHMENT7 COLOR_ATTACHMENT7}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT8 COLOR_ATTACHMENT8}</td><td>{@link #GL_COLOR_ATTACHMENT9 COLOR_ATTACHMENT9}</td><td>{@link #GL_COLOR_ATTACHMENT10 COLOR_ATTACHMENT10}</td><td>{@link #GL_COLOR_ATTACHMENT11 COLOR_ATTACHMENT11}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT12 COLOR_ATTACHMENT12}</td><td>{@link #GL_COLOR_ATTACHMENT13 COLOR_ATTACHMENT13}</td><td>{@link #GL_COLOR_ATTACHMENT14 COLOR_ATTACHMENT14}</td><td>{@link #GL_COLOR_ATTACHMENT15 COLOR_ATTACHMENT15}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT16 COLOR_ATTACHMENT16}</td><td>{@link #GL_COLOR_ATTACHMENT17 COLOR_ATTACHMENT17}</td><td>{@link #GL_COLOR_ATTACHMENT18 COLOR_ATTACHMENT18}</td><td>{@link #GL_COLOR_ATTACHMENT19 COLOR_ATTACHMENT19}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT20 COLOR_ATTACHMENT20}</td><td>{@link #GL_COLOR_ATTACHMENT21 COLOR_ATTACHMENT21}</td><td>{@link #GL_COLOR_ATTACHMENT22 COLOR_ATTACHMENT22}</td><td>{@link #GL_COLOR_ATTACHMENT23 COLOR_ATTACHMENT23}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT24 COLOR_ATTACHMENT24}</td><td>{@link #GL_COLOR_ATTACHMENT25 COLOR_ATTACHMENT25}</td><td>{@link #GL_COLOR_ATTACHMENT26 COLOR_ATTACHMENT26}</td><td>{@link #GL_COLOR_ATTACHMENT27 COLOR_ATTACHMENT27}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT28 COLOR_ATTACHMENT28}</td><td>{@link #GL_COLOR_ATTACHMENT29 COLOR_ATTACHMENT29}</td><td>{@link #GL_COLOR_ATTACHMENT30 COLOR_ATTACHMENT30}</td><td>{@link #GL_COLOR_ATTACHMENT31 COLOR_ATTACHMENT31}</td></tr><tr><td>{@link #GL_DEPTH_ATTACHMENT DEPTH_ATTACHMENT}</td><td>{@link #GL_STENCIL_ATTACHMENT STENCIL_ATTACHMENT}</td><td>{@link #GL_DEPTH_STENCIL_ATTACHMENT DEPTH_STENCIL_ATTACHMENT}</td></tr></table>
+     * @param textarget  the type of texture
+     * @param texture    the texture object to attach to the framebuffer attachment point named by {@code attachment}
+     * @param level      the mipmap level of {@code texture} to attach
+     */
+    public static void glFramebufferTexture2D(@NativeType("GLenum") int target, @NativeType("GLenum") int attachment, @NativeType("GLenum") int textarget, @NativeType("GLuint") int texture, @NativeType("GLint") int level) {
+        org.lwjgl.opengl.GL30.glFramebufferTexture2D(target, attachment, textarget, texture, level);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferTexture3D">Reference Page</a></p>
+     * 
+     * Attaches a layer of a 3D texture object as a logical buffer to the currently bound framebuffer object.
+     *
+     * @param target     the framebuffer target. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link #GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     * @param attachment the attachment point of the framebuffer. One of:<br><table><tr><td>{@link #GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>{@link #GL_COLOR_ATTACHMENT1 COLOR_ATTACHMENT1}</td><td>{@link #GL_COLOR_ATTACHMENT2 COLOR_ATTACHMENT2}</td><td>{@link #GL_COLOR_ATTACHMENT3 COLOR_ATTACHMENT3}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT4 COLOR_ATTACHMENT4}</td><td>{@link #GL_COLOR_ATTACHMENT5 COLOR_ATTACHMENT5}</td><td>{@link #GL_COLOR_ATTACHMENT6 COLOR_ATTACHMENT6}</td><td>{@link #GL_COLOR_ATTACHMENT7 COLOR_ATTACHMENT7}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT8 COLOR_ATTACHMENT8}</td><td>{@link #GL_COLOR_ATTACHMENT9 COLOR_ATTACHMENT9}</td><td>{@link #GL_COLOR_ATTACHMENT10 COLOR_ATTACHMENT10}</td><td>{@link #GL_COLOR_ATTACHMENT11 COLOR_ATTACHMENT11}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT12 COLOR_ATTACHMENT12}</td><td>{@link #GL_COLOR_ATTACHMENT13 COLOR_ATTACHMENT13}</td><td>{@link #GL_COLOR_ATTACHMENT14 COLOR_ATTACHMENT14}</td><td>{@link #GL_COLOR_ATTACHMENT15 COLOR_ATTACHMENT15}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT16 COLOR_ATTACHMENT16}</td><td>{@link #GL_COLOR_ATTACHMENT17 COLOR_ATTACHMENT17}</td><td>{@link #GL_COLOR_ATTACHMENT18 COLOR_ATTACHMENT18}</td><td>{@link #GL_COLOR_ATTACHMENT19 COLOR_ATTACHMENT19}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT20 COLOR_ATTACHMENT20}</td><td>{@link #GL_COLOR_ATTACHMENT21 COLOR_ATTACHMENT21}</td><td>{@link #GL_COLOR_ATTACHMENT22 COLOR_ATTACHMENT22}</td><td>{@link #GL_COLOR_ATTACHMENT23 COLOR_ATTACHMENT23}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT24 COLOR_ATTACHMENT24}</td><td>{@link #GL_COLOR_ATTACHMENT25 COLOR_ATTACHMENT25}</td><td>{@link #GL_COLOR_ATTACHMENT26 COLOR_ATTACHMENT26}</td><td>{@link #GL_COLOR_ATTACHMENT27 COLOR_ATTACHMENT27}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT28 COLOR_ATTACHMENT28}</td><td>{@link #GL_COLOR_ATTACHMENT29 COLOR_ATTACHMENT29}</td><td>{@link #GL_COLOR_ATTACHMENT30 COLOR_ATTACHMENT30}</td><td>{@link #GL_COLOR_ATTACHMENT31 COLOR_ATTACHMENT31}</td></tr><tr><td>{@link #GL_DEPTH_ATTACHMENT DEPTH_ATTACHMENT}</td><td>{@link #GL_STENCIL_ATTACHMENT STENCIL_ATTACHMENT}</td><td>{@link #GL_DEPTH_STENCIL_ATTACHMENT DEPTH_STENCIL_ATTACHMENT}</td></tr></table>
+     * @param textarget  the type of texture
+     * @param texture    the texture object to attach to the framebuffer attachment point named by {@code attachment}
+     * @param level      the mipmap level of {@code texture} to attach
+     * @param layer      the layer of a 2-dimensional image within the 3-dimensional texture.
+     */
+    public static void glFramebufferTexture3D(@NativeType("GLenum") int target, @NativeType("GLenum") int attachment, @NativeType("GLenum") int textarget, @NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int layer) {
+        org.lwjgl.opengl.GL30.glFramebufferTexture3D(target, attachment, textarget, texture, level, layer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferTextureLayer">Reference Page</a></p>
+     * 
+     * Attaches a single layer of a texture to a framebuffer
+     *
+     * @param target     the framebuffer target. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link #GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     * @param attachment the attachment point of the framebuffer. One of:<br><table><tr><td>{@link #GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>{@link #GL_COLOR_ATTACHMENT1 COLOR_ATTACHMENT1}</td><td>{@link #GL_COLOR_ATTACHMENT2 COLOR_ATTACHMENT2}</td><td>{@link #GL_COLOR_ATTACHMENT3 COLOR_ATTACHMENT3}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT4 COLOR_ATTACHMENT4}</td><td>{@link #GL_COLOR_ATTACHMENT5 COLOR_ATTACHMENT5}</td><td>{@link #GL_COLOR_ATTACHMENT6 COLOR_ATTACHMENT6}</td><td>{@link #GL_COLOR_ATTACHMENT7 COLOR_ATTACHMENT7}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT8 COLOR_ATTACHMENT8}</td><td>{@link #GL_COLOR_ATTACHMENT9 COLOR_ATTACHMENT9}</td><td>{@link #GL_COLOR_ATTACHMENT10 COLOR_ATTACHMENT10}</td><td>{@link #GL_COLOR_ATTACHMENT11 COLOR_ATTACHMENT11}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT12 COLOR_ATTACHMENT12}</td><td>{@link #GL_COLOR_ATTACHMENT13 COLOR_ATTACHMENT13}</td><td>{@link #GL_COLOR_ATTACHMENT14 COLOR_ATTACHMENT14}</td><td>{@link #GL_COLOR_ATTACHMENT15 COLOR_ATTACHMENT15}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT16 COLOR_ATTACHMENT16}</td><td>{@link #GL_COLOR_ATTACHMENT17 COLOR_ATTACHMENT17}</td><td>{@link #GL_COLOR_ATTACHMENT18 COLOR_ATTACHMENT18}</td><td>{@link #GL_COLOR_ATTACHMENT19 COLOR_ATTACHMENT19}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT20 COLOR_ATTACHMENT20}</td><td>{@link #GL_COLOR_ATTACHMENT21 COLOR_ATTACHMENT21}</td><td>{@link #GL_COLOR_ATTACHMENT22 COLOR_ATTACHMENT22}</td><td>{@link #GL_COLOR_ATTACHMENT23 COLOR_ATTACHMENT23}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT24 COLOR_ATTACHMENT24}</td><td>{@link #GL_COLOR_ATTACHMENT25 COLOR_ATTACHMENT25}</td><td>{@link #GL_COLOR_ATTACHMENT26 COLOR_ATTACHMENT26}</td><td>{@link #GL_COLOR_ATTACHMENT27 COLOR_ATTACHMENT27}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT28 COLOR_ATTACHMENT28}</td><td>{@link #GL_COLOR_ATTACHMENT29 COLOR_ATTACHMENT29}</td><td>{@link #GL_COLOR_ATTACHMENT30 COLOR_ATTACHMENT30}</td><td>{@link #GL_COLOR_ATTACHMENT31 COLOR_ATTACHMENT31}</td></tr><tr><td>{@link #GL_DEPTH_ATTACHMENT DEPTH_ATTACHMENT}</td><td>{@link #GL_STENCIL_ATTACHMENT STENCIL_ATTACHMENT}</td><td>{@link #GL_DEPTH_STENCIL_ATTACHMENT DEPTH_STENCIL_ATTACHMENT}</td></tr></table>
+     * @param texture    the texture object to attach to the framebuffer attachment point named by {@code attachment}
+     * @param level      the mipmap level of {@code texture} to attach
+     * @param layer      the layer of {@code texture} to attach.
+     */
+    public static void glFramebufferTextureLayer(@NativeType("GLenum") int target, @NativeType("GLenum") int attachment, @NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int layer) {
+        org.lwjgl.opengl.GL30.glFramebufferTextureLayer(target, attachment, texture, level, layer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferRenderbuffer">Reference Page</a></p>
+     * 
+     * Attaches a renderbuffer as a logical buffer to the currently bound framebuffer object.
+     *
+     * @param target             the framebuffer target. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link #GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link #GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     * @param attachment         the attachment point of the framebuffer. One of:<br><table><tr><td>{@link #GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>{@link #GL_COLOR_ATTACHMENT1 COLOR_ATTACHMENT1}</td><td>{@link #GL_COLOR_ATTACHMENT2 COLOR_ATTACHMENT2}</td><td>{@link #GL_COLOR_ATTACHMENT3 COLOR_ATTACHMENT3}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT4 COLOR_ATTACHMENT4}</td><td>{@link #GL_COLOR_ATTACHMENT5 COLOR_ATTACHMENT5}</td><td>{@link #GL_COLOR_ATTACHMENT6 COLOR_ATTACHMENT6}</td><td>{@link #GL_COLOR_ATTACHMENT7 COLOR_ATTACHMENT7}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT8 COLOR_ATTACHMENT8}</td><td>{@link #GL_COLOR_ATTACHMENT9 COLOR_ATTACHMENT9}</td><td>{@link #GL_COLOR_ATTACHMENT10 COLOR_ATTACHMENT10}</td><td>{@link #GL_COLOR_ATTACHMENT11 COLOR_ATTACHMENT11}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT12 COLOR_ATTACHMENT12}</td><td>{@link #GL_COLOR_ATTACHMENT13 COLOR_ATTACHMENT13}</td><td>{@link #GL_COLOR_ATTACHMENT14 COLOR_ATTACHMENT14}</td><td>{@link #GL_COLOR_ATTACHMENT15 COLOR_ATTACHMENT15}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT16 COLOR_ATTACHMENT16}</td><td>{@link #GL_COLOR_ATTACHMENT17 COLOR_ATTACHMENT17}</td><td>{@link #GL_COLOR_ATTACHMENT18 COLOR_ATTACHMENT18}</td><td>{@link #GL_COLOR_ATTACHMENT19 COLOR_ATTACHMENT19}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT20 COLOR_ATTACHMENT20}</td><td>{@link #GL_COLOR_ATTACHMENT21 COLOR_ATTACHMENT21}</td><td>{@link #GL_COLOR_ATTACHMENT22 COLOR_ATTACHMENT22}</td><td>{@link #GL_COLOR_ATTACHMENT23 COLOR_ATTACHMENT23}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT24 COLOR_ATTACHMENT24}</td><td>{@link #GL_COLOR_ATTACHMENT25 COLOR_ATTACHMENT25}</td><td>{@link #GL_COLOR_ATTACHMENT26 COLOR_ATTACHMENT26}</td><td>{@link #GL_COLOR_ATTACHMENT27 COLOR_ATTACHMENT27}</td></tr><tr><td>{@link #GL_COLOR_ATTACHMENT28 COLOR_ATTACHMENT28}</td><td>{@link #GL_COLOR_ATTACHMENT29 COLOR_ATTACHMENT29}</td><td>{@link #GL_COLOR_ATTACHMENT30 COLOR_ATTACHMENT30}</td><td>{@link #GL_COLOR_ATTACHMENT31 COLOR_ATTACHMENT31}</td></tr><tr><td>{@link #GL_DEPTH_ATTACHMENT DEPTH_ATTACHMENT}</td><td>{@link #GL_STENCIL_ATTACHMENT STENCIL_ATTACHMENT}</td><td>{@link #GL_DEPTH_STENCIL_ATTACHMENT DEPTH_STENCIL_ATTACHMENT}</td></tr></table>
+     * @param renderbuffertarget the renderbuffer target. Must be:<br><table><tr><td>{@link #GL_RENDERBUFFER RENDERBUFFER}</td></tr></table>
+     * @param renderbuffer       the name of an existing renderbuffer object of type {@code renderbuffertarget} to attach
+     */
+    public static void glFramebufferRenderbuffer(@NativeType("GLenum") int target, @NativeType("GLenum") int attachment, @NativeType("GLenum") int renderbuffertarget, @NativeType("GLuint") int renderbuffer) {
+        org.lwjgl.opengl.GL30.glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
+    }
+    /** Unsafe version of: {@link #glGetFramebufferAttachmentParameteriv GetFramebufferAttachmentParameteriv} */
+    public static void nglGetFramebufferAttachmentParameteriv(int target, int attachment, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFramebufferAttachmentParameter">Reference Page</a></p>
@@ -10375,6 +15633,39 @@ public class GL {
         return org.lwjgl.opengl.GL30.glGetFramebufferAttachmentParameteri(target, attachment, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlitFramebuffer">Reference Page</a></p>
+     * 
+     * Copies a block of pixels from the read framebuffer to the draw framebuffer.
+     *
+     * @param srcX0  the lower-left coordinate of the source rectangle within the read buffer
+     * @param srcY0  the upper-left coordinate of the source rectangle within the read buffer
+     * @param srcX1  the lower-right coordinate of the source rectangle within the read buffer
+     * @param srcY1  the upper-right coordinate of the source rectangle within the read buffer
+     * @param dstX0  the lower-left coordinate of the destination rectangle within the write buffer
+     * @param dstY0  the upper-left coordinate of the destination rectangle within the write buffer
+     * @param dstX1  the lower-right coordinate of the destination rectangle within the write buffer
+     * @param dstY1  the upper-right coordinate of the destination rectangle within the write buffer
+     * @param mask   the bitwise OR of the flags indicating which buffers are to be copied. One of:<br><table><tr><td>{@link GL11#GL_COLOR_BUFFER_BIT COLOR_BUFFER_BIT}</td><td>{@link GL11#GL_DEPTH_BUFFER_BIT DEPTH_BUFFER_BIT}</td><td>{@link GL11#GL_STENCIL_BUFFER_BIT STENCIL_BUFFER_BIT}</td></tr></table>
+     * @param filter the interpolation to be applied if the image is stretched. One of:<br><table><tr><td>{@link GL11#GL_NEAREST NEAREST}</td><td>{@link GL11#GL_LINEAR LINEAR}</td></tr></table>
+     */
+    public static void glBlitFramebuffer(@NativeType("GLint") int srcX0, @NativeType("GLint") int srcY0, @NativeType("GLint") int srcX1, @NativeType("GLint") int srcY1, @NativeType("GLint") int dstX0, @NativeType("GLint") int dstY0, @NativeType("GLint") int dstX1, @NativeType("GLint") int dstY1, @NativeType("GLbitfield") int mask, @NativeType("GLenum") int filter) {
+        org.lwjgl.opengl.GL30.glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGenerateMipmap">Reference Page</a></p>
+     * 
+     * Generate mipmaps for a specified texture target.
+     *
+     * @param target the target to which the texture whose mimaps to generate is bound. One of:<br><table><tr><td>{@link GL11#GL_TEXTURE_1D TEXTURE_1D}</td><td>{@link GL11#GL_TEXTURE_2D TEXTURE_2D}</td><td>{@link GL12#GL_TEXTURE_3D TEXTURE_3D}</td><td>{@link #GL_TEXTURE_1D_ARRAY TEXTURE_1D_ARRAY}</td><td>{@link #GL_TEXTURE_2D_ARRAY TEXTURE_2D_ARRAY}</td><td>{@link GL13#GL_TEXTURE_CUBE_MAP TEXTURE_CUBE_MAP}</td></tr></table>
+     */
+    public static void glGenerateMipmap(@NativeType("GLenum") int target) {
+        org.lwjgl.opengl.GL30.glGenerateMipmap(target);
+    }
+    /** Unsafe version of: {@link #glTexParameterIiv TexParameterIiv} */
+    public static void nglTexParameterIiv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglTexParameterIiv(target, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexParameter">Reference Page</a></p>
      * 
      * Sets the integer value of a texture parameter.
@@ -10396,6 +15687,10 @@ public class GL {
      */
     public static void glTexParameterIi(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("const GLint *") int param) {
         org.lwjgl.opengl.GL30.glTexParameterIi(target, pname, param);
+    }
+    /** Unsafe version of: {@link #glTexParameterIuiv TexParameterIuiv} */
+    public static void nglTexParameterIuiv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglTexParameterIuiv(target, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTexParameter">Reference Page</a></p>
@@ -10420,6 +15715,10 @@ public class GL {
     public static void glTexParameterIui(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("const GLuint *") int param) {
         org.lwjgl.opengl.GL30.glTexParameterIui(target, pname, param);
     }
+    /** Unsafe version of: {@link #glGetTexParameterIiv GetTexParameterIiv} */
+    public static void nglGetTexParameterIiv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglGetTexParameterIiv(target, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexParameter">Reference Page</a></p>
      * 
@@ -10443,6 +15742,10 @@ public class GL {
     @NativeType("void")
     public static int glGetTexParameterIi(@NativeType("GLenum") int target, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL30.glGetTexParameterIi(target, pname);
+    }
+    /** Unsafe version of: {@link #glGetTexParameterIuiv GetTexParameterIuiv} */
+    public static void nglGetTexParameterIuiv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL30.nglGetTexParameterIuiv(target, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTexParameter">Reference Page</a></p>
@@ -10469,6 +15772,24 @@ public class GL {
         return org.lwjgl.opengl.GL30.glGetTexParameterIui(target, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glColorMaski">Reference Page</a></p>
+     * 
+     * Enables and disables writing of frame buffer color components.
+     *
+     * @param buf the index of the draw buffer whose color mask to set
+     * @param r   whether R values are written or not
+     * @param g   whether G values are written or not
+     * @param b   whether B values are written or not
+     * @param a   whether A values are written or not
+     */
+    public static void glColorMaski(@NativeType("GLuint") int buf, @NativeType("GLboolean") boolean r, @NativeType("GLboolean") boolean g, @NativeType("GLboolean") boolean b, @NativeType("GLboolean") boolean a) {
+        org.lwjgl.opengl.GL30.glColorMaski(buf, r, g, b, a);
+    }
+    /** Unsafe version of: {@link #glGetBooleani_v GetBooleani_v} */
+    public static void nglGetBooleani_v(int target, int index, long data) {
+        org.lwjgl.opengl.GL30.nglGetBooleani_v(target, index, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBooleani_v">Reference Page</a></p>
      * 
      * Queries the boolean value of an indexed state variable.
@@ -10491,6 +15812,10 @@ public class GL {
     @NativeType("void")
     public static boolean glGetBooleani(@NativeType("GLenum") int target, @NativeType("GLuint") int index) {
         return org.lwjgl.opengl.GL30.glGetBooleani(target, index);
+    }
+    /** Unsafe version of: {@link #glGetIntegeri_v GetIntegeri_v} */
+    public static void nglGetIntegeri_v(int target, int index, long data) {
+        org.lwjgl.opengl.GL30.nglGetIntegeri_v(target, index, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetIntegeri_v">Reference Page</a></p>
@@ -10515,6 +15840,92 @@ public class GL {
     @NativeType("void")
     public static int glGetIntegeri(@NativeType("GLenum") int target, @NativeType("GLuint") int index) {
         return org.lwjgl.opengl.GL30.glGetIntegeri(target, index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEnablei">Reference Page</a></p>
+     * 
+     * Enables an indexed capability.
+     *
+     * @param cap   the indexed capability to enable
+     * @param index the index to enable
+     */
+    public static void glEnablei(@NativeType("GLenum") int cap, @NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL30.glEnablei(cap, index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDisablei">Reference Page</a></p>
+     * 
+     * Disables an indexed capability.
+     *
+     * @param target the indexed capability to disable
+     * @param index  the index to disable
+     */
+    public static void glDisablei(@NativeType("GLenum") int target, @NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL30.glDisablei(target, index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsEnabledi">Reference Page</a></p>
+     * 
+     * Tests whether an indexed capability is enabled.
+     *
+     * @param target the indexed capability to query
+     * @param index  the index to query
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsEnabledi(@NativeType("GLenum") int target, @NativeType("GLuint") int index) {
+        return org.lwjgl.opengl.GL30.glIsEnabledi(target, index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindBufferRange">Reference Page</a></p>
+     * 
+     * Binds a range within a buffer object to an indexed buffer target.
+     *
+     * @param target the target of the bind operation. One of:<br><table><tr><td>{@link #GL_TRANSFORM_FEEDBACK_BUFFER TRANSFORM_FEEDBACK_BUFFER}</td><td>{@link GL31#GL_UNIFORM_BUFFER UNIFORM_BUFFER}</td><td>{@link GL42#GL_ATOMIC_COUNTER_BUFFER ATOMIC_COUNTER_BUFFER}</td><td>{@link GL43#GL_SHADER_STORAGE_BUFFER SHADER_STORAGE_BUFFER}</td></tr></table>
+     * @param index  the index of the binding point within the array specified by {@code target}
+     * @param buffer a buffer object to bind to the specified binding point
+     * @param offset the starting offset in basic machine units into the buffer object {@code buffer}
+     * @param size   the amount of data in machine units that can be read from the buffer object while used as an indexed target
+     */
+    public static void glBindBufferRange(@NativeType("GLenum") int target, @NativeType("GLuint") int index, @NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long size) {
+        org.lwjgl.opengl.GL30.glBindBufferRange(target, index, buffer, offset, size);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindBufferBase">Reference Page</a></p>
+     * 
+     * Binds a buffer object to an indexed buffer target.
+     *
+     * @param target the target of the bind operation. One of:<br><table><tr><td>{@link #GL_TRANSFORM_FEEDBACK_BUFFER TRANSFORM_FEEDBACK_BUFFER}</td><td>{@link GL31#GL_UNIFORM_BUFFER UNIFORM_BUFFER}</td><td>{@link GL42#GL_ATOMIC_COUNTER_BUFFER ATOMIC_COUNTER_BUFFER}</td><td>{@link GL43#GL_SHADER_STORAGE_BUFFER SHADER_STORAGE_BUFFER}</td></tr></table>
+     * @param index  the index of the binding point within the array specified by {@code target}
+     * @param buffer a buffer object to bind to the specified binding point
+     */
+    public static void glBindBufferBase(@NativeType("GLenum") int target, @NativeType("GLuint") int index, @NativeType("GLuint") int buffer) {
+        org.lwjgl.opengl.GL30.glBindBufferBase(target, index, buffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBeginTransformFeedback">Reference Page</a></p>
+     * 
+     * Starts transform feedback operation.
+     *
+     * @param primitiveMode the output type of the primitives that will be recorded into the buffer objects that are bound for transform feedback. One of:<br><table><tr><td>{@link GL11#GL_POINTS POINTS}</td><td>{@link GL11#GL_LINES LINES}</td><td>{@link GL11#GL_TRIANGLES TRIANGLES}</td></tr></table>
+     */
+    public static void glBeginTransformFeedback(@NativeType("GLenum") int primitiveMode) {
+        org.lwjgl.opengl.GL30.glBeginTransformFeedback(primitiveMode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEndTransformFeedback">Reference Page</a></p>
+     * 
+     * Ends transform feedback operation.
+     */
+    public static void glEndTransformFeedback() {
+        org.lwjgl.opengl.GL30.glEndTransformFeedback();
+    }
+    /**
+     * Unsafe version of: {@link #glTransformFeedbackVaryings TransformFeedbackVaryings}
+     *
+     * @param count the number of varying variables used for transform feedback
+     */
+    public static void nglTransformFeedbackVaryings(int program, int count, long varyings, int bufferMode) {
+        org.lwjgl.opengl.GL30.nglTransformFeedbackVaryings(program, count, varyings, bufferMode);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTransformFeedbackVaryings">Reference Page</a></p>
@@ -10550,6 +15961,14 @@ public class GL {
      */
     public static void glTransformFeedbackVaryings(@NativeType("GLuint") int program, @NativeType("const GLchar **") CharSequence varying, @NativeType("GLenum") int bufferMode) {
         org.lwjgl.opengl.GL30.glTransformFeedbackVaryings(program, varying, bufferMode);
+    }
+    /**
+     * Unsafe version of: {@link #glGetTransformFeedbackVarying GetTransformFeedbackVarying}
+     *
+     * @param bufSize the maximum number of characters, including the null terminator, that may be written into {@code name}
+     */
+    public static void nglGetTransformFeedbackVarying(int program, int index, int bufSize, long length, long size, long type, long name) {
+        org.lwjgl.opengl.GL30.nglGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTransformFeedbackVarying">Reference Page</a></p>
@@ -10596,6 +16015,24 @@ public class GL {
         return org.lwjgl.opengl.GL30.glGetTransformFeedbackVarying(program, index, size, type);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindVertexArray">Reference Page</a></p>
+     * 
+     * Binds a vertex array object
+     *
+     * @param array the name of the vertex array to bind
+     */
+    public static void glBindVertexArray(@NativeType("GLuint") int array) {
+        org.lwjgl.opengl.GL30.glBindVertexArray(array);
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteVertexArrays DeleteVertexArrays}
+     *
+     * @param n the number of vertex array objects to be deleted
+     */
+    public static void nglDeleteVertexArrays(int n, long arrays) {
+        org.lwjgl.opengl.GL30.nglDeleteVertexArrays(n, arrays);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteVertexArrays">Reference Page</a></p>
      * 
      * Deletes vertex array objects.
@@ -10612,6 +16049,14 @@ public class GL {
      */
     public static void glDeleteVertexArrays(@NativeType("const GLuint *") int array) {
         org.lwjgl.opengl.GL30.glDeleteVertexArrays(array);
+    }
+    /**
+     * Unsafe version of: {@link #glGenVertexArrays GenVertexArrays}
+     *
+     * @param n the number of vertex array object names to generate
+     */
+    public static void nglGenVertexArrays(int n, long arrays) {
+        org.lwjgl.opengl.GL30.nglGenVertexArrays(n, arrays);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenVertexArrays">Reference Page</a></p>
@@ -10631,6 +16076,17 @@ public class GL {
     @NativeType("void")
     public static int glGenVertexArrays() {
         return org.lwjgl.opengl.GL30.glGenVertexArrays();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsVertexArray">Reference Page</a></p>
+     * 
+     * Determines if a name corresponds to a vertex array object.
+     *
+     * @param array a value that may be the name of a vertex array object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsVertexArray(@NativeType("GLuint") int array) {
+        return org.lwjgl.opengl.GL30.glIsVertexArray(array);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBuffer">Reference Page</a></p>
@@ -11011,6 +16467,28 @@ public class GL {
     /** Returned by GetActiveUniformsiv and GetUniformBlockIndex. */
     public static final int GL_INVALID_INDEX = 0xFFFFFFFF;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawArraysInstanced">Reference Page</a></p>
+     * 
+     * Draw multiple instances of a range of elements.
+     *
+     * @param mode      the kind of primitives to render. One of:<br><table><tr><td>{@link GL11#GL_POINTS POINTS}</td><td>{@link GL11#GL_LINE_STRIP LINE_STRIP}</td><td>{@link GL11#GL_LINE_LOOP LINE_LOOP}</td><td>{@link GL11#GL_LINES LINES}</td><td>{@link GL11#GL_POLYGON POLYGON}</td><td>{@link GL11#GL_TRIANGLE_STRIP TRIANGLE_STRIP}</td><td>{@link GL11#GL_TRIANGLE_FAN TRIANGLE_FAN}</td></tr><tr><td>{@link GL11#GL_TRIANGLES TRIANGLES}</td><td>{@link GL11#GL_QUAD_STRIP QUAD_STRIP}</td><td>{@link GL11#GL_QUADS QUADS}</td><td>{@link GL32#GL_LINES_ADJACENCY LINES_ADJACENCY}</td><td>{@link GL32#GL_LINE_STRIP_ADJACENCY LINE_STRIP_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLES_ADJACENCY TRIANGLES_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLE_STRIP_ADJACENCY TRIANGLE_STRIP_ADJACENCY}</td></tr><tr><td>{@link GL40#GL_PATCHES PATCHES}</td></tr></table>
+     * @param first     the index of the first vertex to be rendered
+     * @param count     the number of vertices to be rendered
+     * @param primcount the number of instances of the specified range of vertices to be rendered
+     */
+    public static void glDrawArraysInstanced(@NativeType("GLenum") int mode, @NativeType("GLint") int first, @NativeType("GLsizei") int count, @NativeType("GLsizei") int primcount) {
+        org.lwjgl.opengl.GL31.glDrawArraysInstanced(mode, first, count, primcount);
+    }
+    /**
+     * Unsafe version of: {@link #glDrawElementsInstanced DrawElementsInstanced}
+     *
+     * @param count the number of elements to be rendered
+     * @param type  the type of the values in {@code indices}. One of:<br><table><tr><td>{@link GL11#GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link GL11#GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link GL11#GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawElementsInstanced(int mode, int count, int type, long indices, int primcount) {
+        org.lwjgl.opengl.GL31.nglDrawElementsInstanced(mode, count, type, indices, primcount);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawElementsInstanced">Reference Page</a></p>
      * 
      * Draws multiple instances of a set of elements.
@@ -11074,6 +16552,80 @@ public class GL {
         org.lwjgl.opengl.GL31.glDrawElementsInstanced(mode, indices, primcount);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyBufferSubData">Reference Page</a></p>
+     * 
+     * Copies all or part of one buffer object's data store to the data store of another buffer object.
+     * 
+     * <p>An {@link GL11#GL_INVALID_VALUE INVALID_VALUE} error is generated if any of readoffset, writeoffset, or size are negative, if readoffset+size exceeds the size of the buffer object
+     * bound to readtarget, or if writeoffset+size exceeds the size of the buffer object bound to writetarget.</p>
+     * 
+     * <p>An {@link GL11#GL_INVALID_VALUE INVALID_VALUE} error is generated if the same buffer object is bound to both readtarget and writetarget, and the ranges [readoffset, readoffset+size)
+     * and [writeoffset, writeoffset+size) overlap.</p>
+     * 
+     * <p>An {@link GL11#GL_INVALID_OPERATION INVALID_OPERATION} error is generated if zero is bound to readtarget or writetarget.</p>
+     * 
+     * <p>An {@link GL11#GL_INVALID_OPERATION INVALID_OPERATION} error is generated if the buffer objects bound to either readtarget or writetarget are mapped.</p>
+     *
+     * @param readTarget  the source buffer object target. One of:<br><table><tr><td>{@link GL15#GL_ARRAY_BUFFER ARRAY_BUFFER}</td><td>{@link #GL_COPY_READ_BUFFER COPY_READ_BUFFER}</td><td>{@link #GL_COPY_WRITE_BUFFER COPY_WRITE_BUFFER}</td><td>{@link GL15#GL_ELEMENT_ARRAY_BUFFER ELEMENT_ARRAY_BUFFER}</td></tr><tr><td>{@link GL21#GL_PIXEL_PACK_BUFFER PIXEL_PACK_BUFFER}</td><td>{@link GL21#GL_PIXEL_UNPACK_BUFFER PIXEL_UNPACK_BUFFER}</td><td>{@link GL30#GL_TRANSFORM_FEEDBACK_BUFFER TRANSFORM_FEEDBACK_BUFFER}</td><td>{@link #GL_TEXTURE_BUFFER TEXTURE_BUFFER}</td></tr><tr><td>{@link #GL_UNIFORM_BUFFER UNIFORM_BUFFER}</td></tr></table>
+     * @param writeTarget the destination buffer object target
+     * @param readOffset  the source buffer object offset, in bytes
+     * @param writeOffset the destination buffer object offset, in bytes
+     * @param size        the number of bytes to copy
+     */
+    public static void glCopyBufferSubData(@NativeType("GLenum") int readTarget, @NativeType("GLenum") int writeTarget, @NativeType("GLintptr") long readOffset, @NativeType("GLintptr") long writeOffset, @NativeType("GLsizeiptr") long size) {
+        org.lwjgl.opengl.GL31.glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPrimitiveRestartIndex">Reference Page</a></p>
+     * 
+     * Specifies the primitive restart index.
+     *
+     * @param index the value to be interpreted as the primitive restart index
+     */
+    public static void glPrimitiveRestartIndex(@NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL31.glPrimitiveRestartIndex(index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexBuffer">Reference Page</a></p>
+     * 
+     * Attaches the storage for the buffer object named {@code buffer} to the active buffer texture, and specifies an internal format for the texel array found
+     * in the attached buffer object. If {@code buffer} is zero, any buffer object attached to the buffer texture is detached, and no new buffer object is
+     * attached. If {@code buffer} is non-zero, but is not the name of an existing buffer object, the error {@link GL11#GL_INVALID_OPERATION INVALID_OPERATION} is generated.
+     * 
+     * <p>When a buffer object is attached to a buffer texture, the buffer object's data store is taken as the texture's texel array. The number of texels in the
+     * buffer texture's texel array is given by</p>
+     * 
+     * <p>{@code floor(buffer_size / (components * sizeof(base_type))},</p>
+     * 
+     * <p>where {@code buffer_size} is the size of the buffer object, in basic machine units and {@code components} and {@code base_type} are the element count
+     * and base data type for elements. The number of texels in the texel array is then clamped to the implementation-dependent limit {@link #GL_MAX_TEXTURE_BUFFER_SIZE MAX_TEXTURE_BUFFER_SIZE}.
+     * When a buffer texture is accessed in a shader, the results of a texel fetch are undefined if the specified texel number is greater than or equal to the
+     * clamped number of texels in the texel array.</p>
+     * 
+     * <p>When a buffer texture is accessed in a shader, an integer is provided to indicate the texel number being accessed. If no buffer object is bound to the
+     * buffer texture, the results of the texel access are undefined. Otherwise, the attached buffer object's data store is interpreted as an array of elements
+     * of the GL data type corresponding to {@code internalformat}. Each texel consists of one to four elements that are mapped to texture components
+     * (R, G, B, A, L, and I). Element {@code m} of the texel numbered {@code n} is taken from element {@code n} * {@code components} + {@code m} of the
+     * attached buffer object's data store. Elements and texels are both numbered starting with zero. For texture formats with normalized components, the
+     * extracted values are converted to floating-point values. The components of the texture are then converted to an (R,G,B,A) vector, and returned to the
+     * shader as a four-component result vector with components of the appropriate data type for the texture's internal format.</p>
+     *
+     * @param target         the target of the operation. Must be:<br><table><tr><td>{@link #GL_TEXTURE_BUFFER TEXTURE_BUFFER}</td></tr></table>
+     * @param internalformat the sized internal format of the data in the store belonging to {@code buffer}
+     * @param buffer         the name of the buffer object whose storage to attach to the active buffer texture
+     */
+    public static void glTexBuffer(@NativeType("GLenum") int target, @NativeType("GLenum") int internalformat, @NativeType("GLuint") int buffer) {
+        org.lwjgl.opengl.GL31.glTexBuffer(target, internalformat, buffer);
+    }
+    /**
+     * Unsafe version of: {@link #glGetUniformIndices GetUniformIndices}
+     *
+     * @param uniformCount the number of uniforms whose indices to query
+     */
+    public static void nglGetUniformIndices(int program, int uniformCount, long uniformNames, long uniformIndices) {
+        org.lwjgl.opengl.GL31.nglGetUniformIndices(program, uniformCount, uniformNames, uniformIndices);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniformIndices">Reference Page</a></p>
      * 
      * Retrieves the indices of a number of uniforms within a program object
@@ -11109,6 +16661,14 @@ public class GL {
         return org.lwjgl.opengl.GL31.glGetUniformIndices(program, uniformName);
     }
     /**
+     * Unsafe version of: {@link #glGetActiveUniformsiv GetActiveUniformsiv}
+     *
+     * @param uniformCount the number of elements in the array of indices {@code uniformIndices} and the number of parameters written to {@code params} upon successful return
+     */
+    public static void nglGetActiveUniformsiv(int program, int uniformCount, long uniformIndices, int pname, long params) {
+        org.lwjgl.opengl.GL31.nglGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveUniforms">Reference Page</a></p>
      * 
      * Returns information about several active uniform variables for the specified program object.
@@ -11132,6 +16692,14 @@ public class GL {
     @NativeType("void")
     public static int glGetActiveUniformsi(@NativeType("GLuint") int program, @NativeType("const GLuint *") int uniformIndex, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL31.glGetActiveUniformsi(program, uniformIndex, pname);
+    }
+    /**
+     * Unsafe version of: {@link #glGetActiveUniformName GetActiveUniformName}
+     *
+     * @param bufSize the size of the buffer, in units of {@code GLchar}, of the buffer whose address is specified in {@code uniformName}
+     */
+    public static void nglGetActiveUniformName(int program, int uniformIndex, int bufSize, long length, long uniformName) {
+        org.lwjgl.opengl.GL31.nglGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveUniformName">Reference Page</a></p>
@@ -11171,6 +16739,10 @@ public class GL {
     public static String glGetActiveUniformName(@NativeType("GLuint") int program, @NativeType("GLuint") int uniformIndex) {
         return org.lwjgl.opengl.GL31.glGetActiveUniformName(program, uniformIndex);
     }
+    /** Unsafe version of: {@link #glGetUniformBlockIndex GetUniformBlockIndex} */
+    public static int nglGetUniformBlockIndex(int program, long uniformBlockName) {
+        return org.lwjgl.opengl.GL31.nglGetUniformBlockIndex(program, uniformBlockName);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniformBlockIndex">Reference Page</a></p>
      * 
@@ -11194,6 +16766,10 @@ public class GL {
     @NativeType("GLuint")
     public static int glGetUniformBlockIndex(@NativeType("GLuint") int program, @NativeType("const GLchar *") CharSequence uniformBlockName) {
         return org.lwjgl.opengl.GL31.glGetUniformBlockIndex(program, uniformBlockName);
+    }
+    /** Unsafe version of: {@link #glGetActiveUniformBlockiv GetActiveUniformBlockiv} */
+    public static void nglGetActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, long params) {
+        org.lwjgl.opengl.GL31.nglGetActiveUniformBlockiv(program, uniformBlockIndex, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveUniformBlock">Reference Page</a></p>
@@ -11220,6 +16796,14 @@ public class GL {
     @NativeType("void")
     public static int glGetActiveUniformBlocki(@NativeType("GLuint") int program, @NativeType("GLuint") int uniformBlockIndex, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL31.glGetActiveUniformBlocki(program, uniformBlockIndex, pname);
+    }
+    /**
+     * Unsafe version of: {@link #glGetActiveUniformBlockName GetActiveUniformBlockName}
+     *
+     * @param bufSize the size of the buffer addressed by {@code uniformBlockName}
+     */
+    public static void nglGetActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, long length, long uniformBlockName) {
+        org.lwjgl.opengl.GL31.nglGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveUniformBlockName">Reference Page</a></p>
@@ -11258,6 +16842,18 @@ public class GL {
     @NativeType("void")
     public static String glGetActiveUniformBlockName(@NativeType("GLuint") int program, @NativeType("GLuint") int uniformBlockIndex) {
         return org.lwjgl.opengl.GL31.glGetActiveUniformBlockName(program, uniformBlockIndex);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniformBlockBinding">Reference Page</a></p>
+     * 
+     * Assigns a binding point to an active uniform block.
+     *
+     * @param program             the name of a program object containing the active uniform block whose binding to assign
+     * @param uniformBlockIndex   the index of the active uniform block within {@code program} whose binding to assign
+     * @param uniformBlockBinding the binding point to which to bind the uniform block with index {@code uniformBlockIndex} within {@code program}
+     */
+    public static void glUniformBlockBinding(@NativeType("GLuint") int program, @NativeType("GLuint") int uniformBlockIndex, @NativeType("GLuint") int uniformBlockBinding) {
+        org.lwjgl.opengl.GL31.glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniformIndices">Reference Page</a></p>
@@ -11420,6 +17016,10 @@ public class GL {
         GL_TIMEOUT_EXPIRED     = 0x911B,
         GL_CONDITION_SATISFIED = 0x911C,
         GL_WAIT_FAILED         = 0x911D;
+    /** Unsafe version of: {@link #glGetBufferParameteri64v GetBufferParameteri64v} */
+    public static void nglGetBufferParameteri64v(int target, int pname, long params) {
+        org.lwjgl.opengl.GL32.nglGetBufferParameteri64v(target, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferParameter">Reference Page</a></p>
      * 
@@ -11443,6 +17043,15 @@ public class GL {
     @NativeType("void")
     public static long glGetBufferParameteri64(@NativeType("GLenum") int target, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL32.glGetBufferParameteri64(target, pname);
+    }
+    /**
+     * Unsafe version of: {@link #glDrawElementsBaseVertex DrawElementsBaseVertex}
+     *
+     * @param count the number of elements to be rendered
+     * @param type  the type of the values in {@code indices}. One of:<br><table><tr><td>{@link GL11#GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link GL11#GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link GL11#GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawElementsBaseVertex(int mode, int count, int type, long indices, int basevertex) {
+        org.lwjgl.opengl.GL32.nglDrawElementsBaseVertex(mode, count, type, indices, basevertex);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawElementsBaseVertex">Reference Page</a></p>
@@ -11506,6 +17115,15 @@ public class GL {
      */
     public static void glDrawElementsBaseVertex(@NativeType("GLenum") int mode, @NativeType("const void *") IntBuffer indices, @NativeType("GLint") int basevertex) {
         org.lwjgl.opengl.GL32.glDrawElementsBaseVertex(mode, indices, basevertex);
+    }
+    /**
+     * Unsafe version of: {@link #glDrawRangeElementsBaseVertex DrawRangeElementsBaseVertex}
+     *
+     * @param count the number of elements to be rendered
+     * @param type  the type of the values in {@code indices}. One of:<br><table><tr><td>{@link GL11#GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link GL11#GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link GL11#GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, long indices, int basevertex) {
+        org.lwjgl.opengl.GL32.nglDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawRangeElementsBaseVertex">Reference Page</a></p>
@@ -11581,6 +17199,15 @@ public class GL {
         org.lwjgl.opengl.GL32.glDrawRangeElementsBaseVertex(mode, start, end, indices, basevertex);
     }
     /**
+     * Unsafe version of: {@link #glDrawElementsInstancedBaseVertex DrawElementsInstancedBaseVertex}
+     *
+     * @param count the number of elements to be rendered
+     * @param type  the type of the values in {@code indices}. One of:<br><table><tr><td>{@link GL11#GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link GL11#GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link GL11#GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawElementsInstancedBaseVertex(int mode, int count, int type, long indices, int primcount, int basevertex) {
+        org.lwjgl.opengl.GL32.nglDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawElementsInstancedBaseVertex">Reference Page</a></p>
      * 
      * Renders multiple instances of a set of primitives from array data with a per-element offset.
@@ -11649,6 +17276,14 @@ public class GL {
         org.lwjgl.opengl.GL32.glDrawElementsInstancedBaseVertex(mode, indices, primcount, basevertex);
     }
     /**
+     * Unsafe version of: {@link #glMultiDrawElementsBaseVertex MultiDrawElementsBaseVertex}
+     *
+     * @param primcount the size of the {@code count} array
+     */
+    public static void nglMultiDrawElementsBaseVertex(int mode, long count, int type, long indices, int primcount, long basevertex) {
+        org.lwjgl.opengl.GL32.nglMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMultiDrawElementsBaseVertex">Reference Page</a></p>
      * 
      * Renders multiple sets of primitives by specifying indices of array data elements and an offset to apply to each index.
@@ -11663,6 +17298,55 @@ public class GL {
      */
     public static void glMultiDrawElementsBaseVertex(@NativeType("GLenum") int mode, @NativeType("const GLsizei *") IntBuffer count, @NativeType("GLenum") int type, @NativeType("const void **") PointerBuffer indices, @NativeType("GLint *") IntBuffer basevertex) {
         org.lwjgl.opengl.GL32.glMultiDrawElementsBaseVertex(mode, count, type, indices, basevertex);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProvokingVertex">Reference Page</a></p>
+     * 
+     * Specifies the vertex to be used as the source of data for flat shaded varyings.
+     *
+     * @param mode the provoking vertex mode. One of:<br><table><tr><td>{@link #GL_FIRST_VERTEX_CONVENTION FIRST_VERTEX_CONVENTION}</td><td>{@link #GL_LAST_VERTEX_CONVENTION LAST_VERTEX_CONVENTION}</td></tr></table>
+     */
+    public static void glProvokingVertex(@NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL32.glProvokingVertex(mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexImage2DMultisample">Reference Page</a></p>
+     * 
+     * Establishes the data storage, format, dimensions, and number of samples of a 2D multisample texture's image.
+     *
+     * @param target               the target of the operation. One of:<br><table><tr><td>{@link #GL_TEXTURE_2D_MULTISAMPLE TEXTURE_2D_MULTISAMPLE}</td><td>{@link #GL_PROXY_TEXTURE_2D_MULTISAMPLE PROXY_TEXTURE_2D_MULTISAMPLE}</td></tr></table>
+     * @param samples              the number of samples in the multisample texture's image
+     * @param internalformat       the internal format to be used to store the multisample texture's image. {@code internalformat} must specify a color-renderable, depth-renderable,
+     *                             or stencil-renderable format.
+     * @param width                the width of the multisample texture's image, in texels
+     * @param height               the height of the multisample texture's image, in texels
+     * @param fixedsamplelocations whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not
+     *                             depend on the internal format or size of the image
+     */
+    public static void glTexImage2DMultisample(@NativeType("GLenum") int target, @NativeType("GLsizei") int samples, @NativeType("GLint") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLboolean") boolean fixedsamplelocations) {
+        org.lwjgl.opengl.GL32.glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexImage3DMultisample">Reference Page</a></p>
+     * 
+     * Establishes the data storage, format, dimensions, and number of samples of a 3D multisample texture's image.
+     *
+     * @param target               the target of the operation. One of:<br><table><tr><td>{@link #GL_TEXTURE_2D_MULTISAMPLE_ARRAY TEXTURE_2D_MULTISAMPLE_ARRAY}</td><td>{@link #GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY}</td></tr></table>
+     * @param samples              the number of samples in the multisample texture's image
+     * @param internalformat       the internal format to be used to store the multisample texture's image. {@code internalformat} must specify a color-renderable, depth-renderable,
+     *                             or stencil-renderable format.
+     * @param width                the width of the multisample texture's image, in texels
+     * @param height               the height of the multisample texture's image, in texels
+     * @param depth                the depth of the multisample texture's image, in texels
+     * @param fixedsamplelocations whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not
+     *                             depend on the internal format or size of the image
+     */
+    public static void glTexImage3DMultisample(@NativeType("GLenum") int target, @NativeType("GLsizei") int samples, @NativeType("GLint") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth, @NativeType("GLboolean") boolean fixedsamplelocations) {
+        org.lwjgl.opengl.GL32.glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+    }
+    /** Unsafe version of: {@link #glGetMultisamplefv GetMultisamplefv} */
+    public static void nglGetMultisamplefv(int pname, int index, long val) {
+        org.lwjgl.opengl.GL32.nglGetMultisamplefv(pname, index, val);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetMultisample">Reference Page</a></p>
@@ -11689,6 +17373,47 @@ public class GL {
         return org.lwjgl.opengl.GL32.glGetMultisamplef(pname, index);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glSampleMaski">Reference Page</a></p>
+     * 
+     * Sets the value of a sub-word of the sample mask.
+     *
+     * @param index which 32-bit sub-word of the sample mask to update
+     * @param mask  the new value of the mask sub-word
+     */
+    public static void glSampleMaski(@NativeType("GLuint") int index, @NativeType("GLbitfield") int mask) {
+        org.lwjgl.opengl.GL32.glSampleMaski(index, mask);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferTexture">Reference Page</a></p>
+     * 
+     * Attaches a level of a texture object as a logical buffer to the currently bound framebuffer object.
+     *
+     * @param target     the framebuffer target. One of:<br><table><tr><td>{@link GL30#GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link GL30#GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link GL30#GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     * @param attachment the attachment point of the framebuffer
+     * @param texture    the texture object to attach to the framebuffer attachment point named by {@code attachment}
+     * @param level      the mipmap level of {@code texture} to attach
+     */
+    public static void glFramebufferTexture(@NativeType("GLenum") int target, @NativeType("GLenum") int attachment, @NativeType("GLuint") int texture, @NativeType("GLint") int level) {
+        org.lwjgl.opengl.GL32.glFramebufferTexture(target, attachment, texture, level);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFenceSync">Reference Page</a></p>
+     * 
+     * Creates a new sync object and inserts it into the GL command stream.
+     *
+     * @param condition the condition that must be met to set the sync object's state to signaled. Must be:<br><table><tr><td>{@link #GL_SYNC_GPU_COMMANDS_COMPLETE SYNC_GPU_COMMANDS_COMPLETE}</td></tr></table>
+     * @param flags     a bitwise combination of flags controlling the behavior of the sync object. No flags are presently defined for this operation and {@code flags} must
+     *                  be zero.
+     */
+    @NativeType("GLsync")
+    public static long glFenceSync(@NativeType("GLenum") int condition, @NativeType("GLbitfield") int flags) {
+        return org.lwjgl.opengl.GL32.glFenceSync(condition, flags);
+    }
+    /** Unsafe version of: {@link #glIsSync IsSync} */
+    public static boolean nglIsSync(long sync) {
+        return org.lwjgl.opengl.GL32.nglIsSync(sync);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glIsSync">Reference Page</a></p>
      * 
      * Determines if a name corresponds to a sync object.
@@ -11699,6 +17424,10 @@ public class GL {
     public static boolean glIsSync(@NativeType("GLsync") long sync) {
         return org.lwjgl.opengl.GL32.glIsSync(sync);
     }
+    /** Unsafe version of: {@link #glDeleteSync DeleteSync} */
+    public static void nglDeleteSync(long sync) {
+        org.lwjgl.opengl.GL32.nglDeleteSync(sync);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteSync">Reference Page</a></p>
      * 
@@ -11708,6 +17437,10 @@ public class GL {
      */
     public static void glDeleteSync(@NativeType("GLsync") long sync) {
         org.lwjgl.opengl.GL32.glDeleteSync(sync);
+    }
+    /** Unsafe version of: {@link #glClientWaitSync ClientWaitSync} */
+    public static int nglClientWaitSync(long sync, int flags, long timeout) {
+        return org.lwjgl.opengl.GL32.nglClientWaitSync(sync, flags, timeout);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClientWaitSync">Reference Page</a></p>
@@ -11732,6 +17465,10 @@ public class GL {
     public static int glClientWaitSync(@NativeType("GLsync") long sync, @NativeType("GLbitfield") int flags, @NativeType("GLuint64") long timeout) {
         return org.lwjgl.opengl.GL32.glClientWaitSync(sync, flags, timeout);
     }
+    /** Unsafe version of: {@link #glWaitSync WaitSync} */
+    public static void nglWaitSync(long sync, int flags, long timeout) {
+        org.lwjgl.opengl.GL32.nglWaitSync(sync, flags, timeout);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glWaitSync">Reference Page</a></p>
      * 
@@ -11749,6 +17486,10 @@ public class GL {
      */
     public static void glWaitSync(@NativeType("GLsync") long sync, @NativeType("GLbitfield") int flags, @NativeType("GLuint64") long timeout) {
         org.lwjgl.opengl.GL32.glWaitSync(sync, flags, timeout);
+    }
+    /** Unsafe version of: {@link #glGetInteger64v GetInteger64v} */
+    public static void nglGetInteger64v(int pname, long params) {
+        org.lwjgl.opengl.GL32.nglGetInteger64v(pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetInteger64v">Reference Page</a></p>
@@ -11771,6 +17512,10 @@ public class GL {
     @NativeType("void")
     public static long glGetInteger64(@NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL32.glGetInteger64(pname);
+    }
+    /** Unsafe version of: {@link #glGetInteger64i_v GetInteger64i_v} */
+    public static void nglGetInteger64i_v(int pname, int index, long params) {
+        org.lwjgl.opengl.GL32.nglGetInteger64i_v(pname, index, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetInteger">Reference Page</a></p>
@@ -11795,6 +17540,14 @@ public class GL {
     @NativeType("void")
     public static long glGetInteger64i(@NativeType("GLenum") int pname, @NativeType("GLuint") int index) {
         return org.lwjgl.opengl.GL32.glGetInteger64i(pname, index);
+    }
+    /**
+     * Unsafe version of: {@link #glGetSynciv GetSynciv}
+     *
+     * @param bufSize the size of the buffer whose address is given in {@code values}
+     */
+    public static void nglGetSynciv(long sync, int pname, int bufSize, long length, long values) {
+        org.lwjgl.opengl.GL32.nglGetSynciv(sync, pname, bufSize, length, values);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetSync">Reference Page</a></p>
@@ -11911,6 +17664,10 @@ public class GL {
      * VertexAttribP{1234}ui, VertexP*, TexCoordP*, MultiTexCoordP*, NormalP3ui, ColorP*, SecondaryColorP* and VertexAttribP*.
      */
     public static final int GL_INT_2_10_10_10_REV = 0x8D9F;
+    /** Unsafe version of: {@link #glBindFragDataLocationIndexed BindFragDataLocationIndexed} */
+    public static void nglBindFragDataLocationIndexed(int program, int colorNumber, int index, long name) {
+        org.lwjgl.opengl.GL33.nglBindFragDataLocationIndexed(program, colorNumber, index, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindFragDataLocationIndexed">Reference Page</a></p>
      * 
@@ -11937,6 +17694,10 @@ public class GL {
     public static void glBindFragDataLocationIndexed(@NativeType("GLuint") int program, @NativeType("GLuint") int colorNumber, @NativeType("GLuint") int index, @NativeType("const GLchar *") CharSequence name) {
         org.lwjgl.opengl.GL33.glBindFragDataLocationIndexed(program, colorNumber, index, name);
     }
+    /** Unsafe version of: {@link #glGetFragDataIndex GetFragDataIndex} */
+    public static int nglGetFragDataIndex(int program, long name) {
+        return org.lwjgl.opengl.GL33.nglGetFragDataIndex(program, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFragDataIndex">Reference Page</a></p>
      * 
@@ -11962,6 +17723,14 @@ public class GL {
         return org.lwjgl.opengl.GL33.glGetFragDataIndex(program, name);
     }
     /**
+     * Unsafe version of: {@link #glGenSamplers GenSamplers}
+     *
+     * @param count the number of sampler object names to generate
+     */
+    public static void nglGenSamplers(int count, long samplers) {
+        org.lwjgl.opengl.GL33.nglGenSamplers(count, samplers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenSamplers">Reference Page</a></p>
      * 
      * Generates sampler object names.
@@ -11979,6 +17748,14 @@ public class GL {
     @NativeType("void")
     public static int glGenSamplers() {
         return org.lwjgl.opengl.GL33.glGenSamplers();
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteSamplers DeleteSamplers}
+     *
+     * @param count the number of sampler objects to be deleted
+     */
+    public static void nglDeleteSamplers(int count, long samplers) {
+        org.lwjgl.opengl.GL33.nglDeleteSamplers(count, samplers);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteSamplers">Reference Page</a></p>
@@ -11999,6 +17776,56 @@ public class GL {
         org.lwjgl.opengl.GL33.glDeleteSamplers(sampler);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsSampler">Reference Page</a></p>
+     * 
+     * Determines if a name corresponds to a sampler object.
+     *
+     * @param sampler a value that may be the name of a sampler object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsSampler(@NativeType("GLuint") int sampler) {
+        return org.lwjgl.opengl.GL33.glIsSampler(sampler);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindSampler">Reference Page</a></p>
+     * 
+     * Binds a named sampler to a texturing target.
+     *
+     * @param unit    the index of the texture unit to which the sampler is bound
+     * @param sampler the name of a sampler
+     */
+    public static void glBindSampler(@NativeType("GLuint") int unit, @NativeType("GLuint") int sampler) {
+        org.lwjgl.opengl.GL33.glBindSampler(unit, sampler);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glSamplerParameteri">Reference Page</a></p>
+     * 
+     * Set the integer value of a sampler parameter.
+     *
+     * @param sampler the sampler object whose parameter to modify
+     * @param pname   the symbolic name of a single-valued sampler parameter. One of:<br><table><tr><td>{@link GL11#GL_TEXTURE_WRAP_S TEXTURE_WRAP_S}</td><td>{@link GL11#GL_TEXTURE_WRAP_T TEXTURE_WRAP_T}</td><td>{@link GL12#GL_TEXTURE_WRAP_R TEXTURE_WRAP_R}</td><td>{@link GL11#GL_TEXTURE_MIN_FILTER TEXTURE_MIN_FILTER}</td><td>{@link GL11#GL_TEXTURE_MAG_FILTER TEXTURE_MAG_FILTER}</td></tr><tr><td>{@link GL12#GL_TEXTURE_MIN_LOD TEXTURE_MIN_LOD}</td><td>{@link GL12#GL_TEXTURE_MAX_LOD TEXTURE_MAX_LOD}</td><td>{@link GL14#GL_TEXTURE_LOD_BIAS TEXTURE_LOD_BIAS}</td><td>{@link GL14#GL_TEXTURE_COMPARE_MODE TEXTURE_COMPARE_MODE}</td><td>{@link GL14#GL_TEXTURE_COMPARE_FUNC TEXTURE_COMPARE_FUNC}</td></tr></table>
+     * @param param   the value of {@code pname}
+     */
+    public static void glSamplerParameteri(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL33.glSamplerParameteri(sampler, pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glSamplerParameterf">Reference Page</a></p>
+     * 
+     * Float version of {@link #glSamplerParameteri SamplerParameteri}.
+     *
+     * @param sampler the sampler object whose parameter to modify
+     * @param pname   the symbolic name of a single-valued sampler parameter
+     * @param param   the value of {@code pname}
+     */
+    public static void glSamplerParameterf(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL33.glSamplerParameterf(sampler, pname, param);
+    }
+    /** Unsafe version of: {@link #glSamplerParameteriv SamplerParameteriv} */
+    public static void nglSamplerParameteriv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglSamplerParameteriv(sampler, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glSamplerParameter">Reference Page</a></p>
      * 
      * Pointer version of {@link #glSamplerParameteri SamplerParameteri}.
@@ -12009,6 +17836,10 @@ public class GL {
      */
     public static void glSamplerParameteriv(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL33.glSamplerParameteriv(sampler, pname, params);
+    }
+    /** Unsafe version of: {@link #glSamplerParameterfv SamplerParameterfv} */
+    public static void nglSamplerParameterfv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglSamplerParameterfv(sampler, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glSamplerParameter">Reference Page</a></p>
@@ -12022,6 +17853,10 @@ public class GL {
     public static void glSamplerParameterfv(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname, @NativeType("const GLfloat *") FloatBuffer params) {
         org.lwjgl.opengl.GL33.glSamplerParameterfv(sampler, pname, params);
     }
+    /** Unsafe version of: {@link #glSamplerParameterIiv SamplerParameterIiv} */
+    public static void nglSamplerParameterIiv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglSamplerParameterIiv(sampler, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glSamplerParameter">Reference Page</a></p>
      * 
@@ -12034,6 +17869,10 @@ public class GL {
     public static void glSamplerParameterIiv(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL33.glSamplerParameterIiv(sampler, pname, params);
     }
+    /** Unsafe version of: {@link #glSamplerParameterIuiv SamplerParameterIuiv} */
+    public static void nglSamplerParameterIuiv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglSamplerParameterIuiv(sampler, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glSamplerParameter">Reference Page</a></p>
      * 
@@ -12045,6 +17884,10 @@ public class GL {
      */
     public static void glSamplerParameterIuiv(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname, @NativeType("const GLuint *") IntBuffer params) {
         org.lwjgl.opengl.GL33.glSamplerParameterIuiv(sampler, pname, params);
+    }
+    /** Unsafe version of: {@link #glGetSamplerParameteriv GetSamplerParameteriv} */
+    public static void nglGetSamplerParameteriv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglGetSamplerParameteriv(sampler, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetSamplerParameter">Reference Page</a></p>
@@ -12070,6 +17913,10 @@ public class GL {
     public static int glGetSamplerParameteri(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL33.glGetSamplerParameteri(sampler, pname);
     }
+    /** Unsafe version of: {@link #glGetSamplerParameterfv GetSamplerParameterfv} */
+    public static void nglGetSamplerParameterfv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglGetSamplerParameterfv(sampler, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetSamplerParameter">Reference Page</a></p>
      * 
@@ -12094,6 +17941,10 @@ public class GL {
     public static float glGetSamplerParameterf(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL33.glGetSamplerParameterf(sampler, pname);
     }
+    /** Unsafe version of: {@link #glGetSamplerParameterIiv GetSamplerParameterIiv} */
+    public static void nglGetSamplerParameterIiv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglGetSamplerParameterIiv(sampler, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetSamplerParameter">Reference Page</a></p>
      * 
@@ -12117,6 +17968,10 @@ public class GL {
     @NativeType("void")
     public static int glGetSamplerParameterIi(@NativeType("GLuint") int sampler, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL33.glGetSamplerParameterIi(sampler, pname);
+    }
+    /** Unsafe version of: {@link #glGetSamplerParameterIuiv GetSamplerParameterIuiv} */
+    public static void nglGetSamplerParameterIuiv(int sampler, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglGetSamplerParameterIuiv(sampler, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetSamplerParameter">Reference Page</a></p>
@@ -12143,6 +17998,21 @@ public class GL {
         return org.lwjgl.opengl.GL33.glGetSamplerParameterIui(sampler, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glQueryCounter">Reference Page</a></p>
+     * 
+     * Records the GL time into a query object after all previous commands have reached the GL server but have not yet necessarily executed.
+     *
+     * @param id     the name of a query object into which to record the GL time
+     * @param target the counter to query. Must be:<br><table><tr><td>{@link #GL_TIMESTAMP TIMESTAMP}</td></tr></table>
+     */
+    public static void glQueryCounter(@NativeType("GLuint") int id, @NativeType("GLenum") int target) {
+        org.lwjgl.opengl.GL33.glQueryCounter(id, target);
+    }
+    /** Unsafe version of: {@link #glGetQueryObjecti64v GetQueryObjecti64v} */
+    public static void nglGetQueryObjecti64v(int id, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglGetQueryObjecti64v(id, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryObject">Reference Page</a></p>
      * 
      * Returns the 64bit integer value of query object parameter.
@@ -12165,6 +18035,10 @@ public class GL {
     @NativeType("void")
     public static long glGetQueryObjecti64(@NativeType("GLuint") int id, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL33.glGetQueryObjecti64(id, pname);
+    }
+    /** Unsafe version of: {@link #glGetQueryObjectui64v GetQueryObjectui64v} */
+    public static void nglGetQueryObjectui64v(int id, int pname, long params) {
+        org.lwjgl.opengl.GL33.nglGetQueryObjectui64v(id, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryObject">Reference Page</a></p>
@@ -12191,6 +18065,54 @@ public class GL {
         return org.lwjgl.opengl.GL33.glGetQueryObjectui64(id, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribDivisor">Reference Page</a></p>
+     * 
+     * Modifies the rate at which generic vertex attributes advance during instanced rendering.
+     *
+     * @param index   the index of the generic vertex attribute
+     * @param divisor the number of instances that will pass between updates of the generic attribute at slot {@code index}
+     */
+    public static void glVertexAttribDivisor(@NativeType("GLuint") int index, @NativeType("GLuint") int divisor) {
+        org.lwjgl.opengl.GL33.glVertexAttribDivisor(index, divisor);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL11#glVertex2f Vertex2f}.
+     *
+     * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param value the packed value
+     */
+    public static void glVertexP2ui(@NativeType("GLenum") int type, @NativeType("GLuint") int value) {
+        org.lwjgl.opengl.GL33.glVertexP2ui(type, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL11#glVertex3f Vertex3f}.
+     *
+     * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param value the packed value
+     */
+    public static void glVertexP3ui(@NativeType("GLenum") int type, @NativeType("GLuint") int value) {
+        org.lwjgl.opengl.GL33.glVertexP3ui(type, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL11#glVertex4f Vertex4f}.
+     *
+     * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param value the packed value
+     */
+    public static void glVertexP4ui(@NativeType("GLenum") int type, @NativeType("GLuint") int value) {
+        org.lwjgl.opengl.GL33.glVertexP4ui(type, value);
+    }
+    /** Unsafe version of: {@link #glVertexP2uiv VertexP2uiv} */
+    public static void nglVertexP2uiv(int type, long value) {
+        org.lwjgl.opengl.GL33.nglVertexP2uiv(type, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
      * Pointer version of {@link #glVertexP2ui VertexP2ui}.
@@ -12200,6 +18122,10 @@ public class GL {
      */
     public static void glVertexP2uiv(@NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL33.glVertexP2uiv(type, value);
+    }
+    /** Unsafe version of: {@link #glVertexP3uiv VertexP3uiv} */
+    public static void nglVertexP3uiv(int type, long value) {
+        org.lwjgl.opengl.GL33.nglVertexP3uiv(type, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -12211,6 +18137,10 @@ public class GL {
      */
     public static void glVertexP3uiv(@NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL33.glVertexP3uiv(type, value);
+    }
+    /** Unsafe version of: {@link #glVertexP4uiv VertexP4uiv} */
+    public static void nglVertexP4uiv(int type, long value) {
+        org.lwjgl.opengl.GL33.nglVertexP4uiv(type, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glVertex">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -12226,6 +18156,54 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Packed component version of {@link GL11#glTexCoord1f TexCoord1f}.
+     *
+     * @param type   type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param coords the packed value
+     */
+    public static void glTexCoordP1ui(@NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glTexCoordP1ui(type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL11#glTexCoord2f TexCoord2f}.
+     *
+     * @param type   type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param coords the packed value
+     */
+    public static void glTexCoordP2ui(@NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glTexCoordP2ui(type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL11#glTexCoord3f TexCoord3f}.
+     *
+     * @param type   type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param coords the packed value
+     */
+    public static void glTexCoordP3ui(@NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glTexCoordP3ui(type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL11#glTexCoord4f TexCoord4f}.
+     *
+     * @param type   type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param coords the packed value
+     */
+    public static void glTexCoordP4ui(@NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glTexCoordP4ui(type, coords);
+    }
+    /** Unsafe version of: {@link #glTexCoordP1uiv TexCoordP1uiv} */
+    public static void nglTexCoordP1uiv(int type, long coords) {
+        org.lwjgl.opengl.GL33.nglTexCoordP1uiv(type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glTexCoordP1ui TexCoordP1ui}.
      *
      * @param type   type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
@@ -12233,6 +18211,10 @@ public class GL {
      */
     public static void glTexCoordP1uiv(@NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer coords) {
         org.lwjgl.opengl.GL33.glTexCoordP1uiv(type, coords);
+    }
+    /** Unsafe version of: {@link #glTexCoordP2uiv TexCoordP2uiv} */
+    public static void nglTexCoordP2uiv(int type, long coords) {
+        org.lwjgl.opengl.GL33.nglTexCoordP2uiv(type, coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -12245,6 +18227,10 @@ public class GL {
     public static void glTexCoordP2uiv(@NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer coords) {
         org.lwjgl.opengl.GL33.glTexCoordP2uiv(type, coords);
     }
+    /** Unsafe version of: {@link #glTexCoordP3uiv TexCoordP3uiv} */
+    public static void nglTexCoordP3uiv(int type, long coords) {
+        org.lwjgl.opengl.GL33.nglTexCoordP3uiv(type, coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -12255,6 +18241,10 @@ public class GL {
      */
     public static void glTexCoordP3uiv(@NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer coords) {
         org.lwjgl.opengl.GL33.glTexCoordP3uiv(type, coords);
+    }
+    /** Unsafe version of: {@link #glTexCoordP4uiv TexCoordP4uiv} */
+    public static void nglTexCoordP4uiv(int type, long coords) {
+        org.lwjgl.opengl.GL33.nglTexCoordP4uiv(type, coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -12270,6 +18260,58 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Packed component version of {@link GL13#glMultiTexCoord1f MultiTexCoord1f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param type    type of packing used on the data. One of:<br><table><tr><td>type</td><td>of</td><td>packing</td><td>used</td><td>on</td><td>the</td><td>data</td></tr></table>
+     * @param coords  the packed value
+     */
+    public static void glMultiTexCoordP1ui(@NativeType("GLenum") int texture, @NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glMultiTexCoordP1ui(texture, type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL13#glMultiTexCoord2f MultiTexCoord2f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param type    type of packing used on the data. One of:<br><table><tr><td>type</td><td>of</td><td>packing</td><td>used</td><td>on</td><td>the</td><td>data</td></tr></table>
+     * @param coords  the packed value
+     */
+    public static void glMultiTexCoordP2ui(@NativeType("GLenum") int texture, @NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glMultiTexCoordP2ui(texture, type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL13#glMultiTexCoord3f MultiTexCoord3f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param type    type of packing used on the data. One of:<br><table><tr><td>type</td><td>of</td><td>packing</td><td>used</td><td>on</td><td>the</td><td>data</td></tr></table>
+     * @param coords  the packed value
+     */
+    public static void glMultiTexCoordP3ui(@NativeType("GLenum") int texture, @NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glMultiTexCoordP3ui(texture, type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL13#glMultiTexCoord4f MultiTexCoord4f}.
+     *
+     * @param texture the coordinate set to be modified
+     * @param type    type of packing used on the data. One of:<br><table><tr><td>type</td><td>of</td><td>packing</td><td>used</td><td>on</td><td>the</td><td>data</td></tr></table>
+     * @param coords  the packed value
+     */
+    public static void glMultiTexCoordP4ui(@NativeType("GLenum") int texture, @NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glMultiTexCoordP4ui(texture, type, coords);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoordP1uiv MultiTexCoordP1uiv} */
+    public static void nglMultiTexCoordP1uiv(int texture, int type, long coords) {
+        org.lwjgl.opengl.GL33.nglMultiTexCoordP1uiv(texture, type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glMultiTexCoordP1ui MultiTexCoordP1ui}.
      *
      * @param texture the coordinate set to be modified
@@ -12278,6 +18320,10 @@ public class GL {
      */
     public static void glMultiTexCoordP1uiv(@NativeType("GLenum") int texture, @NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer coords) {
         org.lwjgl.opengl.GL33.glMultiTexCoordP1uiv(texture, type, coords);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoordP2uiv MultiTexCoordP2uiv} */
+    public static void nglMultiTexCoordP2uiv(int texture, int type, long coords) {
+        org.lwjgl.opengl.GL33.nglMultiTexCoordP2uiv(texture, type, coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -12291,6 +18337,10 @@ public class GL {
     public static void glMultiTexCoordP2uiv(@NativeType("GLenum") int texture, @NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer coords) {
         org.lwjgl.opengl.GL33.glMultiTexCoordP2uiv(texture, type, coords);
     }
+    /** Unsafe version of: {@link #glMultiTexCoordP3uiv MultiTexCoordP3uiv} */
+    public static void nglMultiTexCoordP3uiv(int texture, int type, long coords) {
+        org.lwjgl.opengl.GL33.nglMultiTexCoordP3uiv(texture, type, coords);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
@@ -12302,6 +18352,10 @@ public class GL {
      */
     public static void glMultiTexCoordP3uiv(@NativeType("GLenum") int texture, @NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer coords) {
         org.lwjgl.opengl.GL33.glMultiTexCoordP3uiv(texture, type, coords);
+    }
+    /** Unsafe version of: {@link #glMultiTexCoordP4uiv MultiTexCoordP4uiv} */
+    public static void nglMultiTexCoordP4uiv(int texture, int type, long coords) {
+        org.lwjgl.opengl.GL33.nglMultiTexCoordP4uiv(texture, type, coords);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glMultiTexCoord">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -12318,6 +18372,21 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Packed component version of {@link GL11#glNormal3f Normal3f}.
+     *
+     * @param type   type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param coords the packed value
+     */
+    public static void glNormalP3ui(@NativeType("GLenum") int type, @NativeType("GLuint") int coords) {
+        org.lwjgl.opengl.GL33.glNormalP3ui(type, coords);
+    }
+    /** Unsafe version of: {@link #glNormalP3uiv NormalP3uiv} */
+    public static void nglNormalP3uiv(int type, long coords) {
+        org.lwjgl.opengl.GL33.nglNormalP3uiv(type, coords);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glNormal">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version {@link #glNormalP3ui NormalP3ui}.
      *
      * @param type   type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
@@ -12329,6 +18398,32 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Packed component version of {@link GL11#glColor3f Color3f}.
+     *
+     * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param color the packed value
+     */
+    public static void glColorP3ui(@NativeType("GLenum") int type, @NativeType("GLuint") int color) {
+        org.lwjgl.opengl.GL33.glColorP3ui(type, color);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
+     * Packed component version of {@link GL11#glColor4f Color4f}.
+     *
+     * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param color the packed value
+     */
+    public static void glColorP4ui(@NativeType("GLenum") int type, @NativeType("GLuint") int color) {
+        org.lwjgl.opengl.GL33.glColorP4ui(type, color);
+    }
+    /** Unsafe version of: {@link #glColorP3uiv ColorP3uiv} */
+    public static void nglColorP3uiv(int type, long color) {
+        org.lwjgl.opengl.GL33.nglColorP3uiv(type, color);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glColorP3ui ColorP3ui}.
      *
      * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
@@ -12336,6 +18431,10 @@ public class GL {
      */
     public static void glColorP3uiv(@NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer color) {
         org.lwjgl.opengl.GL33.glColorP3uiv(type, color);
+    }
+    /** Unsafe version of: {@link #glColorP4uiv ColorP4uiv} */
+    public static void nglColorP4uiv(int type, long color) {
+        org.lwjgl.opengl.GL33.nglColorP4uiv(type, color);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
@@ -12351,6 +18450,21 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
      * 
+     * Packed component version of {@link GL14#glSecondaryColor3f SecondaryColor3f}.
+     *
+     * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param color the packed value
+     */
+    public static void glSecondaryColorP3ui(@NativeType("GLenum") int type, @NativeType("GLuint") int color) {
+        org.lwjgl.opengl.GL33.glSecondaryColorP3ui(type, color);
+    }
+    /** Unsafe version of: {@link #glSecondaryColorP3uiv SecondaryColorP3uiv} */
+    public static void nglSecondaryColorP3uiv(int type, long color) {
+        org.lwjgl.opengl.GL33.nglSecondaryColorP3uiv(type, color);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl3/glSecondaryColor">Reference Page</a> - <em>This function is deprecated and unavailable in the Core profile</em></p>
+     * 
      * Pointer version of {@link #glSecondaryColorP3ui SecondaryColorP3ui}.
      *
      * @param type  type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
@@ -12358,6 +18472,62 @@ public class GL {
      */
     public static void glSecondaryColorP3uiv(@NativeType("GLenum") int type, @NativeType("const GLuint *") IntBuffer color) {
         org.lwjgl.opengl.GL33.glSecondaryColorP3uiv(type, color);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Packed component version of {@link GL20#glVertexAttrib1f VertexAttrib1f}.
+     *
+     * @param index      the index of the generic vertex attribute to be modified
+     * @param type       type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param normalized whether values should be normalized or cast directly to floating-point
+     * @param value      the packed value
+     */
+    public static void glVertexAttribP1ui(@NativeType("GLuint") int index, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("GLuint") int value) {
+        org.lwjgl.opengl.GL33.glVertexAttribP1ui(index, type, normalized, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Packed component version of {@link GL20#glVertexAttrib2f VertexAttrib2f}.
+     *
+     * @param index      the index of the generic vertex attribute to be modified
+     * @param type       type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param normalized whether values should be normalized or cast directly to floating-point
+     * @param value      the packed value
+     */
+    public static void glVertexAttribP2ui(@NativeType("GLuint") int index, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("GLuint") int value) {
+        org.lwjgl.opengl.GL33.glVertexAttribP2ui(index, type, normalized, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Packed component version of {@link GL20#glVertexAttrib3f VertexAttrib3f}.
+     *
+     * @param index      the index of the generic vertex attribute to be modified
+     * @param type       type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param normalized whether values should be normalized or cast directly to floating-point
+     * @param value      the packed value
+     */
+    public static void glVertexAttribP3ui(@NativeType("GLuint") int index, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("GLuint") int value) {
+        org.lwjgl.opengl.GL33.glVertexAttribP3ui(index, type, normalized, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Packed component version of {@link GL20#glVertexAttrib4f VertexAttrib4f}.
+     *
+     * @param index      the index of the generic vertex attribute to be modified
+     * @param type       type of packing used on the data. One of:<br><table><tr><td>{@link #GL_INT_2_10_10_10_REV INT_2_10_10_10_REV}</td><td>{@link GL12#GL_UNSIGNED_INT_2_10_10_10_REV UNSIGNED_INT_2_10_10_10_REV}</td></tr></table>
+     * @param normalized whether values should be normalized or cast directly to floating-point
+     * @param value      the packed value
+     */
+    public static void glVertexAttribP4ui(@NativeType("GLuint") int index, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("GLuint") int value) {
+        org.lwjgl.opengl.GL33.glVertexAttribP4ui(index, type, normalized, value);
+    }
+    /** Unsafe version of: {@link #glVertexAttribP1uiv VertexAttribP1uiv} */
+    public static void nglVertexAttribP1uiv(int index, int type, boolean normalized, long value) {
+        org.lwjgl.opengl.GL33.nglVertexAttribP1uiv(index, type, normalized, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -12372,6 +18542,10 @@ public class GL {
     public static void glVertexAttribP1uiv(@NativeType("GLuint") int index, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL33.glVertexAttribP1uiv(index, type, normalized, value);
     }
+    /** Unsafe version of: {@link #glVertexAttribP2uiv VertexAttribP2uiv} */
+    public static void nglVertexAttribP2uiv(int index, int type, boolean normalized, long value) {
+        org.lwjgl.opengl.GL33.nglVertexAttribP2uiv(index, type, normalized, value);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -12385,6 +18559,10 @@ public class GL {
     public static void glVertexAttribP2uiv(@NativeType("GLuint") int index, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL33.glVertexAttribP2uiv(index, type, normalized, value);
     }
+    /** Unsafe version of: {@link #glVertexAttribP3uiv VertexAttribP3uiv} */
+    public static void nglVertexAttribP3uiv(int index, int type, boolean normalized, long value) {
+        org.lwjgl.opengl.GL33.nglVertexAttribP3uiv(index, type, normalized, value);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -12397,6 +18575,10 @@ public class GL {
      */
     public static void glVertexAttribP3uiv(@NativeType("GLuint") int index, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL33.glVertexAttribP3uiv(index, type, normalized, value);
+    }
+    /** Unsafe version of: {@link #glVertexAttribP4uiv VertexAttribP4uiv} */
+    public static void nglVertexAttribP4uiv(int index, int type, boolean normalized, long value) {
+        org.lwjgl.opengl.GL33.nglVertexAttribP4uiv(index, type, normalized, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -12785,6 +18967,59 @@ public class GL {
         GL_MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70,
         GL_MAX_VERTEX_STREAMS             = 0x8E71;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendEquationi">Reference Page</a></p>
+     * 
+     * Specifies the equation used for both the RGB blend equation and the Alpha blend equation for the specified draw buffer.
+     *
+     * @param buf  the index of the draw buffer for which to set the blend equation
+     * @param mode how source and destination colors are combined. One of:<br><table><tr><td>{@link GL14#GL_FUNC_ADD FUNC_ADD}</td><td>{@link GL14#GL_FUNC_SUBTRACT FUNC_SUBTRACT}</td><td>{@link GL14#GL_FUNC_REVERSE_SUBTRACT FUNC_REVERSE_SUBTRACT}</td><td>{@link GL14#GL_MIN MIN}</td><td>{@link GL14#GL_MAX MAX}</td></tr></table>
+     */
+    public static void glBlendEquationi(@NativeType("GLuint") int buf, @NativeType("GLenum") int mode) {
+        org.lwjgl.opengl.GL40.glBlendEquationi(buf, mode);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendEquationSeparatei">Reference Page</a></p>
+     * 
+     * Sets the RGB blend equation and the alpha blend equation separately for the specified draw buffer.
+     *
+     * @param buf       the index of the draw buffer for which to set the blend equations
+     * @param modeRGB   the RGB blend equation, how the red, green, and blue components of the source and destination colors are combined. One of:<br><table><tr><td>{@link GL14#GL_FUNC_ADD FUNC_ADD}</td><td>{@link GL14#GL_FUNC_SUBTRACT FUNC_SUBTRACT}</td><td>{@link GL14#GL_FUNC_REVERSE_SUBTRACT FUNC_REVERSE_SUBTRACT}</td><td>{@link GL14#GL_MIN MIN}</td><td>{@link GL14#GL_MAX MAX}</td></tr></table>
+     * @param modeAlpha the alpha blend equation, how the alpha component of the source and destination colors are combined. One of:<br><table><tr><td>{@link GL14#GL_FUNC_ADD FUNC_ADD}</td><td>{@link GL14#GL_FUNC_SUBTRACT FUNC_SUBTRACT}</td><td>{@link GL14#GL_FUNC_REVERSE_SUBTRACT FUNC_REVERSE_SUBTRACT}</td><td>{@link GL14#GL_MIN MIN}</td><td>{@link GL14#GL_MAX MAX}</td></tr></table>
+     */
+    public static void glBlendEquationSeparatei(@NativeType("GLuint") int buf, @NativeType("GLenum") int modeRGB, @NativeType("GLenum") int modeAlpha) {
+        org.lwjgl.opengl.GL40.glBlendEquationSeparatei(buf, modeRGB, modeAlpha);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendFunci">Reference Page</a></p>
+     * 
+     * Specifies pixel arithmetic for the specified draw buffer.
+     *
+     * @param buf     the index of the draw buffer for which to set the blend function
+     * @param sfactor how the red, green, blue, and alpha source blending factors are computed
+     * @param dfactor how the red, green, blue, and alpha destination blending factors are computed
+     */
+    public static void glBlendFunci(@NativeType("GLuint") int buf, @NativeType("GLenum") int sfactor, @NativeType("GLenum") int dfactor) {
+        org.lwjgl.opengl.GL40.glBlendFunci(buf, sfactor, dfactor);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlendFuncSeparatei">Reference Page</a></p>
+     * 
+     * Specifies pixel arithmetic for RGB and alpha components separately for the specified draw buffer.
+     *
+     * @param buf      the index of the draw buffer for which to set the blend functions
+     * @param srcRGB   how the red, green, and blue blending factors are computed
+     * @param dstRGB   how the red, green, and blue destination blending factors are computed
+     * @param srcAlpha how the alpha source blending factor is computed
+     * @param dstAlpha how the alpha destination blending factor is computed
+     */
+    public static void glBlendFuncSeparatei(@NativeType("GLuint") int buf, @NativeType("GLenum") int srcRGB, @NativeType("GLenum") int dstRGB, @NativeType("GLenum") int srcAlpha, @NativeType("GLenum") int dstAlpha) {
+        org.lwjgl.opengl.GL40.glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+    }
+    /** Unsafe version of: {@link #glDrawArraysIndirect DrawArraysIndirect} */
+    public static void nglDrawArraysIndirect(int mode, long indirect) {
+        org.lwjgl.opengl.GL40.nglDrawArraysIndirect(mode, indirect);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawArraysIndirect">Reference Page</a></p>
      * 
      * Renders primitives from array data, taking parameters from memory.
@@ -12864,6 +19099,10 @@ public class GL {
      */
     public static void glDrawArraysIndirect(@NativeType("GLenum") int mode, @NativeType("const void *") IntBuffer indirect) {
         org.lwjgl.opengl.GL40.glDrawArraysIndirect(mode, indirect);
+    }
+    /** Unsafe version of: {@link #glDrawElementsIndirect DrawElementsIndirect} */
+    public static void nglDrawElementsIndirect(int mode, int type, long indirect) {
+        org.lwjgl.opengl.GL40.nglDrawElementsIndirect(mode, type, indirect);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawElementsIndirect">Reference Page</a></p>
@@ -12994,6 +19233,64 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
+     * Specifies the value of a double uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     */
+    public static void glUniform1d(@NativeType("GLint") int location, @NativeType("GLdouble") double x) {
+        org.lwjgl.opengl.GL40.glUniform1d(location, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a dvec2 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     */
+    public static void glUniform2d(@NativeType("GLint") int location, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y) {
+        org.lwjgl.opengl.GL40.glUniform2d(location, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a dvec3 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     */
+    public static void glUniform3d(@NativeType("GLint") int location, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL40.glUniform3d(location, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a dvec4 uniform variable for the current program object.
+     *
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     * @param w        the uniform w value
+     */
+    public static void glUniform4d(@NativeType("GLint") int location, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z, @NativeType("GLdouble") double w) {
+        org.lwjgl.opengl.GL40.glUniform4d(location, x, y, z, w);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform1dv Uniform1dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform1dv(int location, int count, long value) {
+        org.lwjgl.opengl.GL40.nglUniform1dv(location, count, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
+     * 
      * Specifies the value of a single double uniform variable or a double uniform variable array for the current program object.
      *
      * @param location the location of the uniform variable to be modified
@@ -13001,6 +19298,14 @@ public class GL {
      */
     public static void glUniform1dv(@NativeType("GLint") int location, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL40.glUniform1dv(location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniform2dv Uniform2dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform2dv(int location, int count, long value) {
+        org.lwjgl.opengl.GL40.nglUniform2dv(location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -13014,6 +19319,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glUniform2dv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform3dv Uniform3dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform3dv(int location, int count, long value) {
+        org.lwjgl.opengl.GL40.nglUniform3dv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dvec3 uniform variable or a dvec3 uniform variable array for the current program object.
@@ -13025,6 +19338,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glUniform3dv(location, value);
     }
     /**
+     * Unsafe version of: {@link #glUniform4dv Uniform4dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglUniform4dv(int location, int count, long value) {
+        org.lwjgl.opengl.GL40.nglUniform4dv(location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dvec4 uniform variable or a dvec4 uniform variable array for the current program object.
@@ -13034,6 +19355,14 @@ public class GL {
      */
     public static void glUniform4dv(@NativeType("GLint") int location, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL40.glUniform4dv(location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix2dv UniformMatrix2dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix2dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix2dv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -13048,6 +19377,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glUniformMatrix2dv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix3dv UniformMatrix3dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix3dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix3dv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat3 uniform variable or a dmat3 uniform variable array for the current program object.
@@ -13058,6 +19395,14 @@ public class GL {
      */
     public static void glUniformMatrix3dv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL40.glUniformMatrix3dv(location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix4dv UniformMatrix4dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix4dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix4dv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -13072,6 +19417,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glUniformMatrix4dv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix2x3dv UniformMatrix2x3dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix2x3dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix2x3dv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat2x3 uniform variable or a dmat2x3 uniform variable array for the current program object.
@@ -13082,6 +19435,14 @@ public class GL {
      */
     public static void glUniformMatrix2x3dv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL40.glUniformMatrix2x3dv(location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix2x4dv UniformMatrix2x4dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix2x4dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix2x4dv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -13096,6 +19457,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glUniformMatrix2x4dv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix3x2dv UniformMatrix3x2dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix3x2dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix3x2dv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat3x2 uniform variable or a dmat3x2 uniform variable array for the current program object.
@@ -13106,6 +19475,14 @@ public class GL {
      */
     public static void glUniformMatrix3x2dv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL40.glUniformMatrix3x2dv(location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glUniformMatrix3x4dv UniformMatrix3x4dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix3x4dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix3x4dv(location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
@@ -13120,6 +19497,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glUniformMatrix3x4dv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix4x2dv UniformMatrix4x2dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix4x2dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix4x2dv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat4x2 uniform variable or a dmat4x2 uniform variable array for the current program object.
@@ -13132,6 +19517,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glUniformMatrix4x2dv(location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glUniformMatrix4x3dv UniformMatrix4x3dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglUniformMatrix4x3dv(int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL40.nglUniformMatrix4x3dv(location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat4x3 uniform variable or a dmat4x3 uniform variable array for the current program object.
@@ -13142,6 +19535,10 @@ public class GL {
      */
     public static void glUniformMatrix4x3dv(@NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL40.glUniformMatrix4x3dv(location, transpose, value);
+    }
+    /** Unsafe version of: {@link #glGetUniformdv GetUniformdv} */
+    public static void nglGetUniformdv(int program, int location, long params) {
+        org.lwjgl.opengl.GL40.nglGetUniformdv(program, location, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
@@ -13166,6 +19563,20 @@ public class GL {
     @NativeType("void")
     public static double glGetUniformd(@NativeType("GLuint") int program, @NativeType("GLint") int location) {
         return org.lwjgl.opengl.GL40.glGetUniformd(program, location);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glMinSampleShading">Reference Page</a></p>
+     * 
+     * Specifies the minimum rate at which sample shading takes place.
+     *
+     * @param value the rate at which samples are shaded within each covered pixel
+     */
+    public static void glMinSampleShading(@NativeType("GLfloat") float value) {
+        org.lwjgl.opengl.GL40.glMinSampleShading(value);
+    }
+    /** Unsafe version of: {@link #glGetSubroutineUniformLocation GetSubroutineUniformLocation} */
+    public static int nglGetSubroutineUniformLocation(int program, int shadertype, long name) {
+        return org.lwjgl.opengl.GL40.nglGetSubroutineUniformLocation(program, shadertype, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetSubroutineUniformLocation">Reference Page</a></p>
@@ -13193,6 +19604,10 @@ public class GL {
     public static int glGetSubroutineUniformLocation(@NativeType("GLuint") int program, @NativeType("GLenum") int shadertype, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL40.glGetSubroutineUniformLocation(program, shadertype, name);
     }
+    /** Unsafe version of: {@link #glGetSubroutineIndex GetSubroutineIndex} */
+    public static int nglGetSubroutineIndex(int program, int shadertype, long name) {
+        return org.lwjgl.opengl.GL40.nglGetSubroutineIndex(program, shadertype, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetSubroutineIndex">Reference Page</a></p>
      * 
@@ -13218,6 +19633,10 @@ public class GL {
     @NativeType("GLuint")
     public static int glGetSubroutineIndex(@NativeType("GLuint") int program, @NativeType("GLenum") int shadertype, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL40.glGetSubroutineIndex(program, shadertype, name);
+    }
+    /** Unsafe version of: {@link #glGetActiveSubroutineUniformiv GetActiveSubroutineUniformiv} */
+    public static void nglGetActiveSubroutineUniformiv(int program, int shadertype, int index, int pname, long values) {
+        org.lwjgl.opengl.GL40.nglGetActiveSubroutineUniformiv(program, shadertype, index, pname, values);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveSubroutineUniform">Reference Page</a></p>
@@ -13246,6 +19665,14 @@ public class GL {
     @NativeType("void")
     public static int glGetActiveSubroutineUniformi(@NativeType("GLuint") int program, @NativeType("GLenum") int shadertype, @NativeType("GLuint") int index, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL40.glGetActiveSubroutineUniformi(program, shadertype, index, pname);
+    }
+    /**
+     * Unsafe version of: {@link #glGetActiveSubroutineUniformName GetActiveSubroutineUniformName}
+     *
+     * @param bufsize the size of the buffer whose address is given in {@code name}
+     */
+    public static void nglGetActiveSubroutineUniformName(int program, int shadertype, int index, int bufsize, long length, long name) {
+        org.lwjgl.opengl.GL40.nglGetActiveSubroutineUniformName(program, shadertype, index, bufsize, length, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveSubroutineUniformName">Reference Page</a></p>
@@ -13289,6 +19716,14 @@ public class GL {
         return org.lwjgl.opengl.GL40.glGetActiveSubroutineUniformName(program, shadertype, index);
     }
     /**
+     * Unsafe version of: {@link #glGetActiveSubroutineName GetActiveSubroutineName}
+     *
+     * @param bufsize the size of the buffer whose address is given in {@code name}
+     */
+    public static void nglGetActiveSubroutineName(int program, int shadertype, int index, int bufsize, long length, long name) {
+        org.lwjgl.opengl.GL40.nglGetActiveSubroutineName(program, shadertype, index, bufsize, length, name);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveSubroutineName">Reference Page</a></p>
      * 
      * Queries the name of an active shader subroutine.
@@ -13330,6 +19765,14 @@ public class GL {
         return org.lwjgl.opengl.GL40.glGetActiveSubroutineName(program, shadertype, index);
     }
     /**
+     * Unsafe version of: {@link #glUniformSubroutinesuiv UniformSubroutinesuiv}
+     *
+     * @param count the number of uniform indices stored in {@code indices}
+     */
+    public static void nglUniformSubroutinesuiv(int shadertype, int count, long indices) {
+        org.lwjgl.opengl.GL40.nglUniformSubroutinesuiv(shadertype, count, indices);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glUniformSubroutines">Reference Page</a></p>
      * 
      * Loads active subroutine uniforms.
@@ -13349,6 +19792,10 @@ public class GL {
      */
     public static void glUniformSubroutinesui(@NativeType("GLenum") int shadertype, @NativeType("const GLuint *") int index) {
         org.lwjgl.opengl.GL40.glUniformSubroutinesui(shadertype, index);
+    }
+    /** Unsafe version of: {@link #glGetUniformSubroutineuiv GetUniformSubroutineuiv} */
+    public static void nglGetUniformSubroutineuiv(int shadertype, int location, long params) {
+        org.lwjgl.opengl.GL40.nglGetUniformSubroutineuiv(shadertype, location, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniformSubroutine">Reference Page</a></p>
@@ -13373,6 +19820,10 @@ public class GL {
     @NativeType("void")
     public static int glGetUniformSubroutineui(@NativeType("GLenum") int shadertype, @NativeType("GLint") int location) {
         return org.lwjgl.opengl.GL40.glGetUniformSubroutineui(shadertype, location);
+    }
+    /** Unsafe version of: {@link #glGetProgramStageiv GetProgramStageiv} */
+    public static void nglGetProgramStageiv(int program, int shadertype, int pname, long values) {
+        org.lwjgl.opengl.GL40.nglGetProgramStageiv(program, shadertype, pname, values);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramStage">Reference Page</a></p>
@@ -13401,6 +19852,21 @@ public class GL {
         return org.lwjgl.opengl.GL40.glGetProgramStagei(program, shadertype, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPatchParameteri">Reference Page</a></p>
+     * 
+     * Specifies the integer value of the specified parameter for patch primitives.
+     *
+     * @param pname the name of the parameter to set. Must be:<br><table><tr><td>{@link #GL_PATCH_VERTICES PATCH_VERTICES}</td></tr></table>
+     * @param value the new value for the parameter given by {@code pname}
+     */
+    public static void glPatchParameteri(@NativeType("GLenum") int pname, @NativeType("GLint") int value) {
+        org.lwjgl.opengl.GL40.glPatchParameteri(pname, value);
+    }
+    /** Unsafe version of: {@link #glPatchParameterfv PatchParameterfv} */
+    public static void nglPatchParameterfv(int pname, long values) {
+        org.lwjgl.opengl.GL40.nglPatchParameterfv(pname, values);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glPatchParameter">Reference Page</a></p>
      * 
      * Specifies an array of float values for the specified parameter for patch primitives.
@@ -13410,6 +19876,25 @@ public class GL {
      */
     public static void glPatchParameterfv(@NativeType("GLenum") int pname, @NativeType("const GLfloat *") FloatBuffer values) {
         org.lwjgl.opengl.GL40.glPatchParameterfv(pname, values);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindTransformFeedback">Reference Page</a></p>
+     * 
+     * Binds a transform feedback object.
+     *
+     * @param target the target to which to bind the transform feedback object {@code id}. Must be:<br><table><tr><td>{@link #GL_TRANSFORM_FEEDBACK TRANSFORM_FEEDBACK}</td></tr></table>
+     * @param id     the name of a transform feedback object
+     */
+    public static void glBindTransformFeedback(@NativeType("GLenum") int target, @NativeType("GLuint") int id) {
+        org.lwjgl.opengl.GL40.glBindTransformFeedback(target, id);
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteTransformFeedbacks DeleteTransformFeedbacks}
+     *
+     * @param n the number of transform feedback objects to delete
+     */
+    public static void nglDeleteTransformFeedbacks(int n, long ids) {
+        org.lwjgl.opengl.GL40.nglDeleteTransformFeedbacks(n, ids);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteTransformFeedbacks">Reference Page</a></p>
@@ -13430,6 +19915,14 @@ public class GL {
         org.lwjgl.opengl.GL40.glDeleteTransformFeedbacks(id);
     }
     /**
+     * Unsafe version of: {@link #glGenTransformFeedbacks GenTransformFeedbacks}
+     *
+     * @param n the number of transform feedback object names to reserve
+     */
+    public static void nglGenTransformFeedbacks(int n, long ids) {
+        org.lwjgl.opengl.GL40.nglGenTransformFeedbacks(n, ids);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenTransformFeedbacks">Reference Page</a></p>
      * 
      * Reserves transform feedback object names.
@@ -13447,6 +19940,95 @@ public class GL {
     @NativeType("void")
     public static int glGenTransformFeedbacks() {
         return org.lwjgl.opengl.GL40.glGenTransformFeedbacks();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsTransformFeedback">Reference Page</a></p>
+     * 
+     * Determines if a name corresponds to a transform feedback object.
+     *
+     * @param id a value that may be the name of a transform feedback object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsTransformFeedback(@NativeType("GLuint") int id) {
+        return org.lwjgl.opengl.GL40.glIsTransformFeedback(id);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPauseTransformFeedback">Reference Page</a></p>
+     * 
+     * Pauses transform feedback operations for the currently bound transform feedback object.
+     * 
+     * <p>When transform feedback operations are paused, transform feedback is still considered active and changing most transform feedback state related to the
+     * object results in an error. However, a new transform feedback object may be bound while transform feedback is paused. The error {@link GL11#GL_INVALID_OPERATION INVALID_OPERATION}
+     * is generated by PauseTransformFeedback if the currently bound transform feedback is not active or is paused.</p>
+     * 
+     * <p>When transform feedback is active and not paused, all geometric primitives generated must be compatible with the value of {@code primitiveMode} passed
+     * to {@link GL30#glBeginTransformFeedback BeginTransformFeedback}. The error {@link GL11#GL_INVALID_OPERATION INVALID_OPERATION} is generated by {@link GL11#glBegin Begin} or any operation that implicitly calls {@link GL11#glBegin Begin}
+     * (such as {@link GL11#glDrawElements DrawElements}) if {@code mode} is not one of the allowed modes. If a geometry shader is active, its output primitive type is used instead
+     * of the {@code mode} parameter passed to {@link GL11#glBegin Begin} for the purposes of this error check. Any primitive type may be used while transform feedback is
+     * paused.</p>
+     */
+    public static void glPauseTransformFeedback() {
+        org.lwjgl.opengl.GL40.glPauseTransformFeedback();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glResumeTransformFeedback">Reference Page</a></p>
+     * 
+     * Resumes transform feedback operations for the currently bound transform feedback object.
+     * 
+     * <p>The error {@link GL11#GL_INVALID_OPERATION INVALID_OPERATION} is generated by {@link #glResumeTransformFeedback ResumeTransformFeedback} if the currently bound transform feedback is not active or is not paused.</p>
+     */
+    public static void glResumeTransformFeedback() {
+        org.lwjgl.opengl.GL40.glResumeTransformFeedback();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawTransformFeedback">Reference Page</a></p>
+     * 
+     * Render primitives using a count derived from a transform feedback object.
+     *
+     * @param mode what kind of primitives to render. One of:<br><table><tr><td>{@link GL11#GL_POINTS POINTS}</td><td>{@link GL11#GL_LINE_STRIP LINE_STRIP}</td><td>{@link GL11#GL_LINE_LOOP LINE_LOOP}</td><td>{@link GL11#GL_LINES LINES}</td><td>{@link GL11#GL_POLYGON POLYGON}</td><td>{@link GL11#GL_TRIANGLE_STRIP TRIANGLE_STRIP}</td><td>{@link GL11#GL_TRIANGLE_FAN TRIANGLE_FAN}</td></tr><tr><td>{@link GL11#GL_TRIANGLES TRIANGLES}</td><td>{@link GL11#GL_QUAD_STRIP QUAD_STRIP}</td><td>{@link GL11#GL_QUADS QUADS}</td><td>{@link GL32#GL_LINES_ADJACENCY LINES_ADJACENCY}</td><td>{@link GL32#GL_LINE_STRIP_ADJACENCY LINE_STRIP_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLES_ADJACENCY TRIANGLES_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLE_STRIP_ADJACENCY TRIANGLE_STRIP_ADJACENCY}</td></tr><tr><td>{@link #GL_PATCHES PATCHES}</td></tr></table>
+     * @param id   the name of a transform feedback object from which to retrieve a primitive count
+     */
+    public static void glDrawTransformFeedback(@NativeType("GLenum") int mode, @NativeType("GLuint") int id) {
+        org.lwjgl.opengl.GL40.glDrawTransformFeedback(mode, id);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawTransformFeedbackStream">Reference Page</a></p>
+     * 
+     * Renders primitives using a count derived from a specifed stream of a transform feedback object.
+     *
+     * @param mode   what kind of primitives to render. One of:<br><table><tr><td>{@link GL11#GL_POINTS POINTS}</td><td>{@link GL11#GL_LINE_STRIP LINE_STRIP}</td><td>{@link GL11#GL_LINE_LOOP LINE_LOOP}</td><td>{@link GL11#GL_LINES LINES}</td><td>{@link GL11#GL_POLYGON POLYGON}</td><td>{@link GL11#GL_TRIANGLE_STRIP TRIANGLE_STRIP}</td><td>{@link GL11#GL_TRIANGLE_FAN TRIANGLE_FAN}</td></tr><tr><td>{@link GL11#GL_TRIANGLES TRIANGLES}</td><td>{@link GL11#GL_QUAD_STRIP QUAD_STRIP}</td><td>{@link GL11#GL_QUADS QUADS}</td><td>{@link GL32#GL_LINES_ADJACENCY LINES_ADJACENCY}</td><td>{@link GL32#GL_LINE_STRIP_ADJACENCY LINE_STRIP_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLES_ADJACENCY TRIANGLES_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLE_STRIP_ADJACENCY TRIANGLE_STRIP_ADJACENCY}</td></tr><tr><td>{@link #GL_PATCHES PATCHES}</td></tr></table>
+     * @param id     the name of a transform feedback object from which to retrieve a primitive count
+     * @param stream the index of the transform feedback stream from which to retrieve a primitive count
+     */
+    public static void glDrawTransformFeedbackStream(@NativeType("GLenum") int mode, @NativeType("GLuint") int id, @NativeType("GLuint") int stream) {
+        org.lwjgl.opengl.GL40.glDrawTransformFeedbackStream(mode, id, stream);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBeginQueryIndexed">Reference Page</a></p>
+     * 
+     * Begins a query object on an indexed target
+     *
+     * @param target the target type of query object established between {@code glBeginQueryIndexed} and the subsequent {@link #glEndQueryIndexed EndQueryIndexed}. One of:<br><table><tr><td>{@link GL15#GL_SAMPLES_PASSED SAMPLES_PASSED}</td><td>{@link GL30#GL_PRIMITIVES_GENERATED PRIMITIVES_GENERATED}</td><td>{@link GL30#GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN}</td><td>{@link GL33#GL_TIME_ELAPSED TIME_ELAPSED}</td></tr><tr><td>{@link GL33#GL_TIMESTAMP TIMESTAMP}</td><td>{@link GL33#GL_ANY_SAMPLES_PASSED ANY_SAMPLES_PASSED}</td><td>{@link GL43#GL_ANY_SAMPLES_PASSED_CONSERVATIVE ANY_SAMPLES_PASSED_CONSERVATIVE}</td></tr></table>
+     * @param index  the index of the query target upon which to begin the query
+     * @param id     the name of a query object
+     */
+    public static void glBeginQueryIndexed(@NativeType("GLenum") int target, @NativeType("GLuint") int index, @NativeType("GLuint") int id) {
+        org.lwjgl.opengl.GL40.glBeginQueryIndexed(target, index, id);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEndQueryIndexed">Reference Page</a></p>
+     * 
+     * Ends a query object on an indexed target
+     *
+     * @param target the target type of query object to be concluded. One of:<br><table><tr><td>{@link GL15#GL_SAMPLES_PASSED SAMPLES_PASSED}</td><td>{@link GL30#GL_PRIMITIVES_GENERATED PRIMITIVES_GENERATED}</td><td>{@link GL30#GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN}</td><td>{@link GL33#GL_TIME_ELAPSED TIME_ELAPSED}</td></tr><tr><td>{@link GL33#GL_TIMESTAMP TIMESTAMP}</td><td>{@link GL33#GL_ANY_SAMPLES_PASSED ANY_SAMPLES_PASSED}</td><td>{@link GL43#GL_ANY_SAMPLES_PASSED_CONSERVATIVE ANY_SAMPLES_PASSED_CONSERVATIVE}</td></tr></table>
+     * @param index  the index of the query target upon which to end the query
+     */
+    public static void glEndQueryIndexed(@NativeType("GLenum") int target, @NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL40.glEndQueryIndexed(target, index);
+    }
+    /** Unsafe version of: {@link #glGetQueryIndexediv GetQueryIndexediv} */
+    public static void nglGetQueryIndexediv(int target, int index, int pname, long params) {
+        org.lwjgl.opengl.GL40.nglGetQueryIndexediv(target, index, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryIndexed">Reference Page</a></p>
@@ -13736,6 +20318,23 @@ public class GL {
     /** Returned in the {@code data} parameter from a Get query with a {@code pname} of LAYER_PROVOKING_VERTEX or VIEWPORT_INDEX_PROVOKING_VERTEX. */
     public static final int GL_UNDEFINED_VERTEX = 0x8260;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glReleaseShaderCompiler">Reference Page</a></p>
+     * 
+     * Releases resources allocated by the shader compiler. This is a hint from the application, and does not prevent later use of the shader compiler.
+     */
+    public static void glReleaseShaderCompiler() {
+        org.lwjgl.opengl.GL41.glReleaseShaderCompiler();
+    }
+    /**
+     * Unsafe version of: {@link #glShaderBinary ShaderBinary}
+     *
+     * @param count  the number of shader object handles contained in {@code shaders}
+     * @param length the length of the array whose address is given in binary
+     */
+    public static void nglShaderBinary(int count, long shaders, int binaryformat, long binary, int length) {
+        org.lwjgl.opengl.GL41.nglShaderBinary(count, shaders, binaryformat, binary, length);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glShaderBinary">Reference Page</a></p>
      * 
      * Loads pre-compiled shader binaries.
@@ -13746,6 +20345,10 @@ public class GL {
      */
     public static void glShaderBinary(@NativeType("const GLuint *") IntBuffer shaders, @NativeType("GLenum") int binaryformat, @NativeType("const void *") ByteBuffer binary) {
         org.lwjgl.opengl.GL41.glShaderBinary(shaders, binaryformat, binary);
+    }
+    /** Unsafe version of: {@link #glGetShaderPrecisionFormat GetShaderPrecisionFormat} */
+    public static void nglGetShaderPrecisionFormat(int shadertype, int precisiontype, long range, long precision) {
+        org.lwjgl.opengl.GL41.nglGetShaderPrecisionFormat(shadertype, precisiontype, range, precision);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetShaderPrecisionFormat">Reference Page</a></p>
@@ -13774,6 +20377,35 @@ public class GL {
         return org.lwjgl.opengl.GL41.glGetShaderPrecisionFormat(shadertype, precisiontype, range);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDepthRangef">Reference Page</a></p>
+     * 
+     * Specifies mapping of depth values from normalized device coordinates to window coordinates
+     *
+     * @param zNear the mapping of the near clipping plane to window coordinates. The initial value is 0.0f.
+     * @param zFar  the mapping of the far clipping plane to window coordinates. The initial value is 1.0f.
+     */
+    public static void glDepthRangef(@NativeType("GLfloat") float zNear, @NativeType("GLfloat") float zFar) {
+        org.lwjgl.opengl.GL41.glDepthRangef(zNear, zFar);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClearDepthf">Reference Page</a></p>
+     * 
+     * Specifies the clear value for the depth buffer
+     *
+     * @param depth the depth value used when the depth buffer is cleared. The initial value is 1.0f.
+     */
+    public static void glClearDepthf(@NativeType("GLfloat") float depth) {
+        org.lwjgl.opengl.GL41.glClearDepthf(depth);
+    }
+    /**
+     * Unsafe version of: {@link #glGetProgramBinary GetProgramBinary}
+     *
+     * @param bufSize the size of the buffer whose address is given by {@code binary}
+     */
+    public static void nglGetProgramBinary(int program, int bufSize, long length, long binaryFormat, long binary) {
+        org.lwjgl.opengl.GL41.nglGetProgramBinary(program, bufSize, length, binaryFormat, binary);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramBinary">Reference Page</a></p>
      * 
      * Returns a binary representation of a program object's compiled and linked executable source.
@@ -13787,6 +20419,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glGetProgramBinary(program, length, binaryFormat, binary);
     }
     /**
+     * Unsafe version of: {@link #glProgramBinary ProgramBinary}
+     *
+     * @param length the number of bytes contained in {@code binary}
+     */
+    public static void nglProgramBinary(int program, int binaryFormat, long binary, int length) {
+        org.lwjgl.opengl.GL41.nglProgramBinary(program, binaryFormat, binary, length);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramBinary">Reference Page</a></p>
      * 
      * Loads a program object with a program binary.
@@ -13797,6 +20437,49 @@ public class GL {
      */
     public static void glProgramBinary(@NativeType("GLuint") int program, @NativeType("GLenum") int binaryFormat, @NativeType("const void *") ByteBuffer binary) {
         org.lwjgl.opengl.GL41.glProgramBinary(program, binaryFormat, binary);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramParameteri">Reference Page</a></p>
+     * 
+     * Specifies the integer value of a program object parameter.
+     *
+     * @param program the name of a program object whose parameter to modify
+     * @param pname   the name of the parameter to modify. One of:<br><table><tr><td>{@link #GL_PROGRAM_BINARY_RETRIEVABLE_HINT PROGRAM_BINARY_RETRIEVABLE_HINT}</td><td>{@link #GL_PROGRAM_SEPARABLE PROGRAM_SEPARABLE}</td></tr></table>
+     * @param value   the new value of the parameter specified by {@code pname} for {@code program}
+     */
+    public static void glProgramParameteri(@NativeType("GLuint") int program, @NativeType("GLenum") int pname, @NativeType("GLint") int value) {
+        org.lwjgl.opengl.GL41.glProgramParameteri(program, pname, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUseProgramStages">Reference Page</a></p>
+     * 
+     * Binds stages of a program object to a program pipeline.
+     *
+     * @param pipeline the program pipeline object to which to bind stages from {@code program}
+     * @param stages   a set of program stages to bind to the program pipeline object
+     * @param program  the program object containing the shader executables to use in {@code pipeline}
+     */
+    public static void glUseProgramStages(@NativeType("GLuint") int pipeline, @NativeType("GLbitfield") int stages, @NativeType("GLuint") int program) {
+        org.lwjgl.opengl.GL41.glUseProgramStages(pipeline, stages, program);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glActiveShaderProgram">Reference Page</a></p>
+     * 
+     * Sets the active program object for a program pipeline object.
+     *
+     * @param pipeline the program pipeline object to set the active program object for
+     * @param program  the program object to set as the active program pipeline object {@code pipeline}
+     */
+    public static void glActiveShaderProgram(@NativeType("GLuint") int pipeline, @NativeType("GLuint") int program) {
+        org.lwjgl.opengl.GL41.glActiveShaderProgram(pipeline, program);
+    }
+    /**
+     * Unsafe version of: {@link #glCreateShaderProgramv CreateShaderProgramv}
+     *
+     * @param count the number of source code strings in the array {@code strings}
+     */
+    public static int nglCreateShaderProgramv(int type, int count, long strings) {
+        return org.lwjgl.opengl.GL41.nglCreateShaderProgramv(type, count, strings);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateShaderProgramv">Reference Page</a></p>
@@ -13915,6 +20598,24 @@ public class GL {
         return org.lwjgl.opengl.GL41.glCreateShaderProgramv(type, string);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindProgramPipeline">Reference Page</a></p>
+     * 
+     * Binds a program pipeline to the current context.
+     *
+     * @param pipeline the name of the pipeline object to bind to the context
+     */
+    public static void glBindProgramPipeline(@NativeType("GLuint") int pipeline) {
+        org.lwjgl.opengl.GL41.glBindProgramPipeline(pipeline);
+    }
+    /**
+     * Unsafe version of: {@link #glDeleteProgramPipelines DeleteProgramPipelines}
+     *
+     * @param n the number of program pipeline objects to delete
+     */
+    public static void nglDeleteProgramPipelines(int n, long pipelines) {
+        org.lwjgl.opengl.GL41.nglDeleteProgramPipelines(n, pipelines);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDeleteProgramPipelines">Reference Page</a></p>
      * 
      * Deletes program pipeline objects.
@@ -13931,6 +20632,14 @@ public class GL {
      */
     public static void glDeleteProgramPipelines(@NativeType("const GLuint *") int pipeline) {
         org.lwjgl.opengl.GL41.glDeleteProgramPipelines(pipeline);
+    }
+    /**
+     * Unsafe version of: {@link #glGenProgramPipelines GenProgramPipelines}
+     *
+     * @param n the number of program pipeline object names to reserve
+     */
+    public static void nglGenProgramPipelines(int n, long pipelines) {
+        org.lwjgl.opengl.GL41.nglGenProgramPipelines(n, pipelines);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGenProgramPipelines">Reference Page</a></p>
@@ -13950,6 +20659,21 @@ public class GL {
     @NativeType("void")
     public static int glGenProgramPipelines() {
         return org.lwjgl.opengl.GL41.glGenProgramPipelines();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glIsProgramPipeline">Reference Page</a></p>
+     * 
+     * Determines if a name corresponds to a program pipeline object.
+     *
+     * @param pipeline a value that may be the name of a program pipeline object
+     */
+    @NativeType("GLboolean")
+    public static boolean glIsProgramPipeline(@NativeType("GLuint") int pipeline) {
+        return org.lwjgl.opengl.GL41.glIsProgramPipeline(pipeline);
+    }
+    /** Unsafe version of: {@link #glGetProgramPipelineiv GetProgramPipelineiv} */
+    public static void nglGetProgramPipelineiv(int pipeline, int pname, long params) {
+        org.lwjgl.opengl.GL41.nglGetProgramPipelineiv(pipeline, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramPipeline">Reference Page</a></p>
@@ -13978,6 +20702,230 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
+     * Specifies the value of an int uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     */
+    public static void glProgramUniform1i(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLint") int x) {
+        org.lwjgl.opengl.GL41.glProgramUniform1i(program, location, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of an ivec2 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     */
+    public static void glProgramUniform2i(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLint") int x, @NativeType("GLint") int y) {
+        org.lwjgl.opengl.GL41.glProgramUniform2i(program, location, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of an ivec3 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     */
+    public static void glProgramUniform3i(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z) {
+        org.lwjgl.opengl.GL41.glProgramUniform3i(program, location, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of an ivec4 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     * @param w        the uniform w value
+     */
+    public static void glProgramUniform4i(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLint") int z, @NativeType("GLint") int w) {
+        org.lwjgl.opengl.GL41.glProgramUniform4i(program, location, x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a uint uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     */
+    public static void glProgramUniform1ui(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLuint") int x) {
+        org.lwjgl.opengl.GL41.glProgramUniform1ui(program, location, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a uvec2 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     */
+    public static void glProgramUniform2ui(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLuint") int x, @NativeType("GLuint") int y) {
+        org.lwjgl.opengl.GL41.glProgramUniform2ui(program, location, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a uvec3 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     */
+    public static void glProgramUniform3ui(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLuint") int x, @NativeType("GLuint") int y, @NativeType("GLuint") int z) {
+        org.lwjgl.opengl.GL41.glProgramUniform3ui(program, location, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a uvec4 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     * @param w        the uniform w value
+     */
+    public static void glProgramUniform4ui(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLuint") int x, @NativeType("GLuint") int y, @NativeType("GLuint") int z, @NativeType("GLuint") int w) {
+        org.lwjgl.opengl.GL41.glProgramUniform4ui(program, location, x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a float uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     */
+    public static void glProgramUniform1f(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLfloat") float x) {
+        org.lwjgl.opengl.GL41.glProgramUniform1f(program, location, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a vec2 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     */
+    public static void glProgramUniform2f(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLfloat") float x, @NativeType("GLfloat") float y) {
+        org.lwjgl.opengl.GL41.glProgramUniform2f(program, location, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a vec3 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     */
+    public static void glProgramUniform3f(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z) {
+        org.lwjgl.opengl.GL41.glProgramUniform3f(program, location, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a vec4 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     * @param w        the uniform w value
+     */
+    public static void glProgramUniform4f(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float z, @NativeType("GLfloat") float w) {
+        org.lwjgl.opengl.GL41.glProgramUniform4f(program, location, x, y, z, w);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a double uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     */
+    public static void glProgramUniform1d(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLdouble") double x) {
+        org.lwjgl.opengl.GL41.glProgramUniform1d(program, location, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a dvec2 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     */
+    public static void glProgramUniform2d(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y) {
+        org.lwjgl.opengl.GL41.glProgramUniform2d(program, location, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a dvec3 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     */
+    public static void glProgramUniform3d(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL41.glProgramUniform3d(program, location, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
+     * Specifies the value of a dvec4 uniform variable for a specified program object.
+     *
+     * @param program  the handle of the program containing the uniform variable to be modified
+     * @param location the location of the uniform variable to be modified
+     * @param x        the uniform x value
+     * @param y        the uniform y value
+     * @param z        the uniform z value
+     * @param w        the uniform w value
+     */
+    public static void glProgramUniform4d(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z, @NativeType("GLdouble") double w) {
+        org.lwjgl.opengl.GL41.glProgramUniform4d(program, location, x, y, z, w);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform1iv ProgramUniform1iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform1iv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform1iv(program, location, count, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
+     * 
      * Specifies the value of a single float uniform variable or a float uniform variable array for a specified program object.
      *
      * @param program  the handle of the program containing the uniform variable to be modified
@@ -13986,6 +20934,14 @@ public class GL {
      */
     public static void glProgramUniform1iv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform1iv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform2iv ProgramUniform2iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform2iv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform2iv(program, location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14000,6 +20956,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform2iv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform3iv ProgramUniform3iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform3iv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform3iv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single ivec3 uniform variable or an ivec3 uniform variable array for a specified program object.
@@ -14010,6 +20974,14 @@ public class GL {
      */
     public static void glProgramUniform3iv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform3iv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform4iv ProgramUniform4iv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform4iv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform4iv(program, location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14024,6 +20996,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform4iv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform1uiv ProgramUniform1uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform1uiv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform1uiv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single uint uniform variable or a uint uniform variable array for a specified program object.
@@ -14034,6 +21014,14 @@ public class GL {
      */
     public static void glProgramUniform1uiv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform1uiv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform2uiv ProgramUniform2uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform2uiv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform2uiv(program, location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14048,6 +21036,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform2uiv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform3uiv ProgramUniform3uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform3uiv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform3uiv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single uvec3 uniform variable or a uvec3 uniform variable array for a specified program object.
@@ -14058,6 +21054,14 @@ public class GL {
      */
     public static void glProgramUniform3uiv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLuint *") IntBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform3uiv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform4uiv ProgramUniform4uiv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform4uiv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform4uiv(program, location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14072,6 +21076,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform4uiv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform1fv ProgramUniform1fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform1fv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform1fv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single float uniform variable or a float uniform variable array for a specified program object.
@@ -14082,6 +21094,14 @@ public class GL {
      */
     public static void glProgramUniform1fv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform1fv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform2fv ProgramUniform2fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform2fv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform2fv(program, location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14096,6 +21116,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform2fv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform3fv ProgramUniform3fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform3fv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform3fv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single vec3 uniform variable or a vec3 uniform variable array for a specified program object.
@@ -14106,6 +21134,14 @@ public class GL {
      */
     public static void glProgramUniform3fv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform3fv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform4fv ProgramUniform4fv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform4fv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform4fv(program, location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14120,6 +21156,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform4fv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform1dv ProgramUniform1dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform1dv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform1dv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single double uniform variable or a double uniform variable array for a specified program object.
@@ -14130,6 +21174,14 @@ public class GL {
      */
     public static void glProgramUniform1dv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform1dv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniform2dv ProgramUniform2dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform2dv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform2dv(program, location, count, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14144,6 +21196,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform2dv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform3dv ProgramUniform3dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform3dv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform3dv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dvec3 uniform variable or a dvec3 uniform variable array for a specified program object.
@@ -14156,6 +21216,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniform3dv(program, location, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniform4dv ProgramUniform4dv}
+     *
+     * @param count the number of elements that are to be modified. This should be 1 if the targeted uniform variable is not an array, and 1 or more if it is an array.
+     */
+    public static void nglProgramUniform4dv(int program, int location, int count, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniform4dv(program, location, count, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dvec4 uniform variable or a dvec4 uniform variable array for a specified program object.
@@ -14166,6 +21234,14 @@ public class GL {
      */
     public static void glProgramUniform4dv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniform4dv(program, location, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix2fv ProgramUniformMatrix2fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix2fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix2fv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14181,6 +21257,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix2fv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix3fv ProgramUniformMatrix3fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix3fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix3fv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat3 uniform variable or a mat3 uniform variable array for the current program object.
@@ -14192,6 +21276,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix3fv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix3fv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix4fv ProgramUniformMatrix4fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix4fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix4fv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14207,6 +21299,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix4fv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix2dv ProgramUniformMatrix2dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix2dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix2dv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat2 uniform variable or a dmat2 uniform variable array for the current program object.
@@ -14218,6 +21318,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix2dv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix2dv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix3dv ProgramUniformMatrix3dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix3dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix3dv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14233,6 +21341,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix3dv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix4dv ProgramUniformMatrix4dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix4dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix4dv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat4 uniform variable or a dmat4 uniform variable array for the current program object.
@@ -14244,6 +21360,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix4dv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix4dv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix2x3fv ProgramUniformMatrix2x3fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix2x3fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix2x3fv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14259,6 +21383,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix2x3fv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix3x2fv ProgramUniformMatrix3x2fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix3x2fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix3x2fv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat3x2 uniform variable or a mat3x2 uniform variable array for the current program object.
@@ -14270,6 +21402,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix3x2fv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix3x2fv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix2x4fv ProgramUniformMatrix2x4fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix2x4fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix2x4fv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14285,6 +21425,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix2x4fv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix4x2fv ProgramUniformMatrix4x2fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix4x2fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix4x2fv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat4x2 uniform variable or a mat4x2 uniform variable array for the current program object.
@@ -14296,6 +21444,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix4x2fv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix4x2fv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix3x4fv ProgramUniformMatrix3x4fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix3x4fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix3x4fv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14311,6 +21467,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix3x4fv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix4x3fv ProgramUniformMatrix4x3fv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix4x3fv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix4x3fv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single mat4x3 uniform variable or a mat4x3 uniform variable array for the current program object.
@@ -14322,6 +21486,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix4x3fv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix4x3fv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix2x3dv ProgramUniformMatrix2x3dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix2x3dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix2x3dv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14337,6 +21509,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix2x3dv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix3x2dv ProgramUniformMatrix3x2dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix3x2dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix3x2dv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat3x2 uniform variable or a dmat3x2 uniform variable array for the current program object.
@@ -14348,6 +21528,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix3x2dv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix3x2dv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix2x4dv ProgramUniformMatrix2x4dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix2x4dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix2x4dv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14363,6 +21551,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix2x4dv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix4x2dv ProgramUniformMatrix4x2dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix4x2dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix4x2dv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat4x2 uniform variable or a dmat4x2 uniform variable array for the current program object.
@@ -14374,6 +21570,14 @@ public class GL {
      */
     public static void glProgramUniformMatrix4x2dv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix4x2dv(program, location, transpose, value);
+    }
+    /**
+     * Unsafe version of: {@link #glProgramUniformMatrix3x4dv ProgramUniformMatrix3x4dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix3x4dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix3x4dv(program, location, count, transpose, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
@@ -14389,6 +21593,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix3x4dv(program, location, transpose, value);
     }
     /**
+     * Unsafe version of: {@link #glProgramUniformMatrix4x3dv ProgramUniformMatrix4x3dv}
+     *
+     * @param count the number of matrices that are to be modified. This should be 1 if the targeted uniform variable is not an array of matrices, and 1 or more if it is an array of matrices.
+     */
+    public static void nglProgramUniformMatrix4x3dv(int program, int location, int count, boolean transpose, long value) {
+        org.lwjgl.opengl.GL41.nglProgramUniformMatrix4x3dv(program, location, count, transpose, value);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glProgramUniform">Reference Page</a></p>
      * 
      * Specifies the value of a single dmat4x3 uniform variable or a dmat4x3 uniform variable array for the current program object.
@@ -14400,6 +21612,24 @@ public class GL {
      */
     public static void glProgramUniformMatrix4x3dv(@NativeType("GLuint") int program, @NativeType("GLint") int location, @NativeType("GLboolean") boolean transpose, @NativeType("const GLdouble *") DoubleBuffer value) {
         org.lwjgl.opengl.GL41.glProgramUniformMatrix4x3dv(program, location, transpose, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glValidateProgramPipeline">Reference Page</a></p>
+     * 
+     * Validates a program pipeline object against current GL state.
+     *
+     * @param pipeline the name of a program pipeline object to validate
+     */
+    public static void glValidateProgramPipeline(@NativeType("GLuint") int pipeline) {
+        org.lwjgl.opengl.GL41.glValidateProgramPipeline(pipeline);
+    }
+    /**
+     * Unsafe version of: {@link #glGetProgramPipelineInfoLog GetProgramPipelineInfoLog}
+     *
+     * @param bufSize the maximum number of characters, including the null terminator, that may be written into {@code infoLog}
+     */
+    public static void nglGetProgramPipelineInfoLog(int pipeline, int bufSize, long length, long infoLog) {
+        org.lwjgl.opengl.GL41.nglGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramPipelineInfoLog">Reference Page</a></p>
@@ -14439,6 +21669,60 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
+     * Specifies the value of a generic vertex attribute. The y and z components are implicitly set to 0.0 and w to 1.0.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     */
+    public static void glVertexAttribL1d(@NativeType("GLuint") int index, @NativeType("GLdouble") double x) {
+        org.lwjgl.opengl.GL41.glVertexAttribL1d(index, x);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a generic vertex attribute. The y component is implicitly set to 0.0 and w to 1.0.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     */
+    public static void glVertexAttribL2d(@NativeType("GLuint") int index, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y) {
+        org.lwjgl.opengl.GL41.glVertexAttribL2d(index, x, y);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a generic vertex attribute. The w is implicitly set to 1.0.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     * @param z     the vertex attribute z component
+     */
+    public static void glVertexAttribL3d(@NativeType("GLuint") int index, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z) {
+        org.lwjgl.opengl.GL41.glVertexAttribL3d(index, x, y, z);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
+     * Specifies the value of a generic vertex attribute.
+     *
+     * @param index the index of the generic vertex attribute to be modified
+     * @param x     the vertex attribute x component
+     * @param y     the vertex attribute y component
+     * @param z     the vertex attribute z component
+     * @param w     the vertex attribute w component
+     */
+    public static void glVertexAttribL4d(@NativeType("GLuint") int index, @NativeType("GLdouble") double x, @NativeType("GLdouble") double y, @NativeType("GLdouble") double z, @NativeType("GLdouble") double w) {
+        org.lwjgl.opengl.GL41.glVertexAttribL4d(index, x, y, z, w);
+    }
+    /** Unsafe version of: {@link #glVertexAttribL1dv VertexAttribL1dv} */
+    public static void nglVertexAttribL1dv(int index, long v) {
+        org.lwjgl.opengl.GL41.nglVertexAttribL1dv(index, v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
+     * 
      * Pointer version of {@link #glVertexAttribL1d VertexAttribL1d}.
      *
      * @param index the index of the generic vertex attribute to be modified
@@ -14446,6 +21730,10 @@ public class GL {
      */
     public static void glVertexAttribL1dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL41.glVertexAttribL1dv(index, v);
+    }
+    /** Unsafe version of: {@link #glVertexAttribL2dv VertexAttribL2dv} */
+    public static void nglVertexAttribL2dv(int index, long v) {
+        org.lwjgl.opengl.GL41.nglVertexAttribL2dv(index, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
@@ -14458,6 +21746,10 @@ public class GL {
     public static void glVertexAttribL2dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL41.glVertexAttribL2dv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribL3dv VertexAttribL3dv} */
+    public static void nglVertexAttribL3dv(int index, long v) {
+        org.lwjgl.opengl.GL41.nglVertexAttribL3dv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -14469,6 +21761,10 @@ public class GL {
     public static void glVertexAttribL3dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL41.glVertexAttribL3dv(index, v);
     }
+    /** Unsafe version of: {@link #glVertexAttribL4dv VertexAttribL4dv} */
+    public static void nglVertexAttribL4dv(int index, long v) {
+        org.lwjgl.opengl.GL41.nglVertexAttribL4dv(index, v);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttrib">Reference Page</a></p>
      * 
@@ -14479,6 +21775,14 @@ public class GL {
      */
     public static void glVertexAttribL4dv(@NativeType("GLuint") int index, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL41.glVertexAttribL4dv(index, v);
+    }
+    /**
+     * Unsafe version of: {@link #glVertexAttribLPointer VertexAttribLPointer}
+     *
+     * @param type the data type of each component in the array. Must be:<br><table><tr><td>{@link GL11#GL_DOUBLE DOUBLE}</td></tr></table>
+     */
+    public static void nglVertexAttribLPointer(int index, int size, int type, int stride, long pointer) {
+        org.lwjgl.opengl.GL41.nglVertexAttribLPointer(index, size, type, stride, pointer);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribLPointer">Reference Page</a></p>
@@ -14527,6 +21831,10 @@ public class GL {
     public static void glVertexAttribLPointer(@NativeType("GLuint") int index, @NativeType("GLint") int size, @NativeType("GLsizei") int stride, @NativeType("const void *") DoubleBuffer pointer) {
         org.lwjgl.opengl.GL41.glVertexAttribLPointer(index, size, stride, pointer);
     }
+    /** Unsafe version of: {@link #glGetVertexAttribLdv GetVertexAttribLdv} */
+    public static void nglGetVertexAttribLdv(int index, int pname, long params) {
+        org.lwjgl.opengl.GL41.nglGetVertexAttribLdv(index, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexAttrib">Reference Page</a></p>
      * 
@@ -14540,6 +21848,14 @@ public class GL {
         org.lwjgl.opengl.GL41.glGetVertexAttribLdv(index, pname, params);
     }
     /**
+     * Unsafe version of: {@link #glViewportArrayv ViewportArrayv}
+     *
+     * @param count the number of viewports to set
+     */
+    public static void nglViewportArrayv(int first, int count, long v) {
+        org.lwjgl.opengl.GL41.nglViewportArrayv(first, count, v);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glViewportArrayv">Reference Page</a></p>
      * 
      * Sets multiple viewports.
@@ -14551,6 +21867,24 @@ public class GL {
         org.lwjgl.opengl.GL41.glViewportArrayv(first, v);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glViewportIndexedf">Reference Page</a></p>
+     * 
+     * Sets a specified viewport.
+     *
+     * @param index the viewport to set
+     * @param x     the left viewport coordinate
+     * @param y     the bottom viewport coordinate
+     * @param w     the viewport width
+     * @param h     the viewport height
+     */
+    public static void glViewportIndexedf(@NativeType("GLuint") int index, @NativeType("GLfloat") float x, @NativeType("GLfloat") float y, @NativeType("GLfloat") float w, @NativeType("GLfloat") float h) {
+        org.lwjgl.opengl.GL41.glViewportIndexedf(index, x, y, w, h);
+    }
+    /** Unsafe version of: {@link #glViewportIndexedfv ViewportIndexedfv} */
+    public static void nglViewportIndexedfv(int index, long v) {
+        org.lwjgl.opengl.GL41.nglViewportIndexedfv(index, v);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glViewportIndexed">Reference Page</a></p>
      * 
      * Pointer version of {@link #glViewportIndexedf ViewportIndexedf}.
@@ -14560,6 +21894,14 @@ public class GL {
      */
     public static void glViewportIndexedfv(@NativeType("GLuint") int index, @NativeType("const GLfloat *") FloatBuffer v) {
         org.lwjgl.opengl.GL41.glViewportIndexedfv(index, v);
+    }
+    /**
+     * Unsafe version of: {@link #glScissorArrayv ScissorArrayv}
+     *
+     * @param count the number of scissor boxes to modify
+     */
+    public static void nglScissorArrayv(int first, int count, long v) {
+        org.lwjgl.opengl.GL41.nglScissorArrayv(first, count, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glScissorArrayv">Reference Page</a></p>
@@ -14575,6 +21917,24 @@ public class GL {
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glScissorIndexed">Reference Page</a></p>
      * 
+     * Defines the scissor box for a specific viewport.
+     *
+     * @param index  the index of the viewport whose scissor box to modify
+     * @param left   the left scissor box coordinate
+     * @param bottom the bottom scissor box coordinate
+     * @param width  the scissor box width
+     * @param height the scissor box height
+     */
+    public static void glScissorIndexed(@NativeType("GLuint") int index, @NativeType("GLint") int left, @NativeType("GLint") int bottom, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL41.glScissorIndexed(index, left, bottom, width, height);
+    }
+    /** Unsafe version of: {@link #glScissorIndexedv ScissorIndexedv} */
+    public static void nglScissorIndexedv(int index, long v) {
+        org.lwjgl.opengl.GL41.nglScissorIndexedv(index, v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glScissorIndexed">Reference Page</a></p>
+     * 
      * Pointer version of {@link #glScissorIndexed ScissorIndexed}.
      *
      * @param index the index of the viewport whose scissor box to modify
@@ -14582,6 +21942,14 @@ public class GL {
      */
     public static void glScissorIndexedv(@NativeType("GLuint") int index, @NativeType("const GLint *") IntBuffer v) {
         org.lwjgl.opengl.GL41.glScissorIndexedv(index, v);
+    }
+    /**
+     * Unsafe version of: {@link #glDepthRangeArrayv DepthRangeArrayv}
+     *
+     * @param count the number of viewports whose depth range to update
+     */
+    public static void nglDepthRangeArrayv(int first, int count, long v) {
+        org.lwjgl.opengl.GL41.nglDepthRangeArrayv(first, count, v);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDepthRangeArrayv">Reference Page</a></p>
@@ -14593,6 +21961,22 @@ public class GL {
      */
     public static void glDepthRangeArrayv(@NativeType("GLuint") int first, @NativeType("const GLdouble *") DoubleBuffer v) {
         org.lwjgl.opengl.GL41.glDepthRangeArrayv(first, v);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDepthRangeIndexed">Reference Page</a></p>
+     * 
+     * Specifies mapping of depth values from normalized device coordinates to window coordinates for a specified viewport.
+     *
+     * @param index the index of the viewport whose depth range to update
+     * @param zNear the mapping of the near clipping plane to window coordinates. The initial value is 0.
+     * @param zFar  the mapping of the far clipping plane to window coordinates. The initial value is 1.
+     */
+    public static void glDepthRangeIndexed(@NativeType("GLuint") int index, @NativeType("GLdouble") double zNear, @NativeType("GLdouble") double zFar) {
+        org.lwjgl.opengl.GL41.glDepthRangeIndexed(index, zNear, zFar);
+    }
+    /** Unsafe version of: {@link #glGetFloati_v GetFloati_v} */
+    public static void nglGetFloati_v(int target, int index, long data) {
+        org.lwjgl.opengl.GL41.nglGetFloati_v(target, index, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFloati_v">Reference Page</a></p>
@@ -14617,6 +22001,10 @@ public class GL {
     @NativeType("void")
     public static float glGetFloati(@NativeType("GLenum") int target, @NativeType("GLuint") int index) {
         return org.lwjgl.opengl.GL41.glGetFloati(target, index);
+    }
+    /** Unsafe version of: {@link #glGetDoublei_v GetDoublei_v} */
+    public static void nglGetDoublei_v(int target, int index, long data) {
+        org.lwjgl.opengl.GL41.nglGetDoublei_v(target, index, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetDoublei_v">Reference Page</a></p>
@@ -15218,6 +22606,10 @@ public class GL {
     public static final int GL_NUM_SAMPLE_COUNTS = 0x9380;
     /** Accepted by the {@code pname} parameter of GetBooleanv, GetIntegerv, GetInteger64v, GetFloatv, and GetDoublev. */
     public static final int GL_MIN_MAP_BUFFER_ALIGNMENT = 0x90BC;
+    /** Unsafe version of: {@link #glGetActiveAtomicCounterBufferiv GetActiveAtomicCounterBufferiv} */
+    public static void nglGetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, long params) {
+        org.lwjgl.opengl.GL42.nglGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetActiveAtomicCounterBuffer">Reference Page</a></p>
      * 
@@ -15243,6 +22635,96 @@ public class GL {
     @NativeType("void")
     public static int glGetActiveAtomicCounterBufferi(@NativeType("GLuint") int program, @NativeType("GLuint") int bufferIndex, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL42.glGetActiveAtomicCounterBufferi(program, bufferIndex, pname);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexStorage1D">Reference Page</a></p>
+     * 
+     * Simultaneously specifies storage for all levels of a one-dimensional texture.
+     *
+     * @param target         the target of the operation. One of:<br><table><tr><td>{@link GL11#GL_TEXTURE_1D TEXTURE_1D}</td><td>{@link GL11#GL_PROXY_TEXTURE_1D PROXY_TEXTURE_1D}</td></tr></table>
+     * @param levels         the number of texture levels
+     * @param internalformat the sized internal format to be used to store texture image data
+     * @param width          the width of the texture, in texels
+     */
+    public static void glTexStorage1D(@NativeType("GLenum") int target, @NativeType("GLsizei") int levels, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width) {
+        org.lwjgl.opengl.GL42.glTexStorage1D(target, levels, internalformat, width);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexStorage2D">Reference Page</a></p>
+     * 
+     * Simultaneously specifies storage for all levels of a two-dimensional or one-dimensional array texture.
+     *
+     * @param target         the target of the operation. One of:<br><table><tr><td>{@link GL11#GL_TEXTURE_2D TEXTURE_2D}</td><td>{@link GL30#GL_TEXTURE_1D_ARRAY TEXTURE_1D_ARRAY}</td><td>{@link GL31#GL_TEXTURE_RECTANGLE TEXTURE_RECTANGLE}</td><td>{@link GL13#GL_TEXTURE_CUBE_MAP TEXTURE_CUBE_MAP}</td></tr><tr><td>{@link GL11#GL_PROXY_TEXTURE_2D PROXY_TEXTURE_2D}</td><td>{@link GL30#GL_PROXY_TEXTURE_1D_ARRAY PROXY_TEXTURE_1D_ARRAY}</td><td>{@link GL31#GL_PROXY_TEXTURE_RECTANGLE PROXY_TEXTURE_RECTANGLE}</td><td>{@link GL13#GL_PROXY_TEXTURE_CUBE_MAP PROXY_TEXTURE_CUBE_MAP}</td></tr></table>
+     * @param levels         the number of texture levels
+     * @param internalformat the sized internal format to be used to store texture image data
+     * @param width          the width of the texture, in texels
+     * @param height         the height of the texture, in texels
+     */
+    public static void glTexStorage2D(@NativeType("GLenum") int target, @NativeType("GLsizei") int levels, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL42.glTexStorage2D(target, levels, internalformat, width, height);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexStorage3D">Reference Page</a></p>
+     * 
+     * Simultaneously specifies storage for all levels of a three-dimensional, two-dimensional array or cube-map array texture.
+     *
+     * @param target         the target of the operation. One of:<br><table><tr><td>{@link GL12#GL_TEXTURE_3D TEXTURE_3D}</td><td>{@link GL30#GL_TEXTURE_2D_ARRAY TEXTURE_2D_ARRAY}</td><td>{@link GL40#GL_TEXTURE_CUBE_MAP_ARRAY TEXTURE_CUBE_MAP_ARRAY}</td><td>{@link GL12#GL_PROXY_TEXTURE_3D PROXY_TEXTURE_3D}</td></tr><tr><td>{@link GL30#GL_PROXY_TEXTURE_2D_ARRAY PROXY_TEXTURE_2D_ARRAY}</td><td>{@link GL40#GL_PROXY_TEXTURE_CUBE_MAP_ARRAY PROXY_TEXTURE_CUBE_MAP_ARRAY}</td></tr></table>
+     * @param levels         the number of texture levels
+     * @param internalformat the sized internal format to be used to store texture image data
+     * @param width          the width of the texture, in texels
+     * @param height         the height of the texture, in texels
+     * @param depth          the depth of the texture, in texels
+     */
+    public static void glTexStorage3D(@NativeType("GLenum") int target, @NativeType("GLsizei") int levels, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth) {
+        org.lwjgl.opengl.GL42.glTexStorage3D(target, levels, internalformat, width, height, depth);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawTransformFeedbackInstanced">Reference Page</a></p>
+     * 
+     * Renders multiple instances of primitives using a count derived from a transform feedback object.
+     *
+     * @param mode      what kind of primitives to render. One of:<br><table><tr><td>{@link GL11#GL_POINTS POINTS}</td><td>{@link GL11#GL_LINE_STRIP LINE_STRIP}</td><td>{@link GL11#GL_LINE_LOOP LINE_LOOP}</td><td>{@link GL11#GL_LINES LINES}</td><td>{@link GL11#GL_POLYGON POLYGON}</td><td>{@link GL11#GL_TRIANGLE_STRIP TRIANGLE_STRIP}</td><td>{@link GL11#GL_TRIANGLE_FAN TRIANGLE_FAN}</td></tr><tr><td>{@link GL11#GL_TRIANGLES TRIANGLES}</td><td>{@link GL11#GL_QUAD_STRIP QUAD_STRIP}</td><td>{@link GL11#GL_QUADS QUADS}</td><td>{@link GL32#GL_LINES_ADJACENCY LINES_ADJACENCY}</td><td>{@link GL32#GL_LINE_STRIP_ADJACENCY LINE_STRIP_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLES_ADJACENCY TRIANGLES_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLE_STRIP_ADJACENCY TRIANGLE_STRIP_ADJACENCY}</td></tr><tr><td>{@link GL40#GL_PATCHES PATCHES}</td></tr></table>
+     * @param id        the name of a transform feedback object from which to retrieve a primitive count
+     * @param primcount the number of instances of the geometry to render
+     */
+    public static void glDrawTransformFeedbackInstanced(@NativeType("GLenum") int mode, @NativeType("GLuint") int id, @NativeType("GLsizei") int primcount) {
+        org.lwjgl.opengl.GL42.glDrawTransformFeedbackInstanced(mode, id, primcount);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawTransformFeedbackStreamInstanced">Reference Page</a></p>
+     * 
+     * Renders multiple instances of primitives using a count derived from a specifed stream of a transform feedback object.
+     *
+     * @param mode      what kind of primitives to render. One of:<br><table><tr><td>{@link GL11#GL_POINTS POINTS}</td><td>{@link GL11#GL_LINE_STRIP LINE_STRIP}</td><td>{@link GL11#GL_LINE_LOOP LINE_LOOP}</td><td>{@link GL11#GL_LINES LINES}</td><td>{@link GL11#GL_POLYGON POLYGON}</td><td>{@link GL11#GL_TRIANGLE_STRIP TRIANGLE_STRIP}</td><td>{@link GL11#GL_TRIANGLE_FAN TRIANGLE_FAN}</td></tr><tr><td>{@link GL11#GL_TRIANGLES TRIANGLES}</td><td>{@link GL11#GL_QUAD_STRIP QUAD_STRIP}</td><td>{@link GL11#GL_QUADS QUADS}</td><td>{@link GL32#GL_LINES_ADJACENCY LINES_ADJACENCY}</td><td>{@link GL32#GL_LINE_STRIP_ADJACENCY LINE_STRIP_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLES_ADJACENCY TRIANGLES_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLE_STRIP_ADJACENCY TRIANGLE_STRIP_ADJACENCY}</td></tr><tr><td>{@link GL40#GL_PATCHES PATCHES}</td></tr></table>
+     * @param id        the name of a transform feedback object from which to retrieve a primitive count
+     * @param stream    the index of the transform feedback stream from which to retrieve a primitive count
+     * @param primcount the number of instances of the geometry to render
+     */
+    public static void glDrawTransformFeedbackStreamInstanced(@NativeType("GLenum") int mode, @NativeType("GLuint") int id, @NativeType("GLuint") int stream, @NativeType("GLsizei") int primcount) {
+        org.lwjgl.opengl.GL42.glDrawTransformFeedbackStreamInstanced(mode, id, stream, primcount);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDrawArraysInstancedBaseInstance">Reference Page</a></p>
+     * 
+     * Draws multiple instances of a range of elements with an offset applied to instanced attributes.
+     *
+     * @param mode         what kind of primitives to render. One of:<br><table><tr><td>{@link GL11#GL_POINTS POINTS}</td><td>{@link GL11#GL_LINE_STRIP LINE_STRIP}</td><td>{@link GL11#GL_LINE_LOOP LINE_LOOP}</td><td>{@link GL11#GL_LINES LINES}</td><td>{@link GL11#GL_POLYGON POLYGON}</td><td>{@link GL11#GL_TRIANGLE_STRIP TRIANGLE_STRIP}</td><td>{@link GL11#GL_TRIANGLE_FAN TRIANGLE_FAN}</td></tr><tr><td>{@link GL11#GL_TRIANGLES TRIANGLES}</td><td>{@link GL11#GL_QUAD_STRIP QUAD_STRIP}</td><td>{@link GL11#GL_QUADS QUADS}</td><td>{@link GL32#GL_LINES_ADJACENCY LINES_ADJACENCY}</td><td>{@link GL32#GL_LINE_STRIP_ADJACENCY LINE_STRIP_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLES_ADJACENCY TRIANGLES_ADJACENCY}</td><td>{@link GL32#GL_TRIANGLE_STRIP_ADJACENCY TRIANGLE_STRIP_ADJACENCY}</td></tr><tr><td>{@link GL40#GL_PATCHES PATCHES}</td></tr></table>
+     * @param first        the starting index in the enabled arrays
+     * @param count        the number of indices to be rendered
+     * @param primcount    the number of instances of the specified range of indices to be rendered
+     * @param baseinstance the base instance for use in fetching instanced vertex attributes
+     */
+    public static void glDrawArraysInstancedBaseInstance(@NativeType("GLenum") int mode, @NativeType("GLint") int first, @NativeType("GLsizei") int count, @NativeType("GLsizei") int primcount, @NativeType("GLuint") int baseinstance) {
+        org.lwjgl.opengl.GL42.glDrawArraysInstancedBaseInstance(mode, first, count, primcount, baseinstance);
+    }
+    /**
+     * Unsafe version of: {@link #glDrawElementsInstancedBaseInstance DrawElementsInstancedBaseInstance}
+     *
+     * @param count the number of elements to be rendered
+     * @param type  the type of the values in {@code indices}. One of:<br><table><tr><td>{@link GL11#GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link GL11#GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link GL11#GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawElementsInstancedBaseInstance(int mode, int count, int type, long indices, int primcount, int baseinstance) {
+        org.lwjgl.opengl.GL42.nglDrawElementsInstancedBaseInstance(mode, count, type, indices, primcount, baseinstance);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawElementsInstancedBaseInstance">Reference Page</a></p>
@@ -15311,6 +22793,15 @@ public class GL {
      */
     public static void glDrawElementsInstancedBaseInstance(@NativeType("GLenum") int mode, @NativeType("const void *") IntBuffer indices, @NativeType("GLsizei") int primcount, @NativeType("GLuint") int baseinstance) {
         org.lwjgl.opengl.GL42.glDrawElementsInstancedBaseInstance(mode, indices, primcount, baseinstance);
+    }
+    /**
+     * Unsafe version of: {@link #glDrawElementsInstancedBaseVertexBaseInstance DrawElementsInstancedBaseVertexBaseInstance}
+     *
+     * @param count the number of elements to be rendered
+     * @param type  the type of the values in {@code indices}. One of:<br><table><tr><td>{@link GL11#GL_UNSIGNED_BYTE UNSIGNED_BYTE}</td><td>{@link GL11#GL_UNSIGNED_SHORT UNSIGNED_SHORT}</td><td>{@link GL11#GL_UNSIGNED_INT UNSIGNED_INT}</td></tr></table>
+     */
+    public static void nglDrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, long indices, int primcount, int basevertex, int baseinstance) {
+        org.lwjgl.opengl.GL42.nglDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, primcount, basevertex, baseinstance);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDrawElementsInstancedBaseVertexBaseInstance">Reference Page</a></p>
@@ -15384,6 +22875,40 @@ public class GL {
      */
     public static void glDrawElementsInstancedBaseVertexBaseInstance(@NativeType("GLenum") int mode, @NativeType("const void *") IntBuffer indices, @NativeType("GLsizei") int primcount, @NativeType("GLint") int basevertex, @NativeType("GLuint") int baseinstance) {
         org.lwjgl.opengl.GL42.glDrawElementsInstancedBaseVertexBaseInstance(mode, indices, primcount, basevertex, baseinstance);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindImageTexture">Reference Page</a></p>
+     * 
+     * Binds a level of a texture to an image unit.
+     *
+     * @param unit    the index of the image unit to which to bind the texture
+     * @param texture the name of the texture to bind to the image unit
+     * @param level   the level of the texture that is to be bound
+     * @param layered whether a layered texture binding is to be established
+     * @param layer   if {@code layered} is false, specifies the layer of texture to be bound to the image unit. Ignored otherwise.
+     * @param access  a token indicating the type of access that will be performed on the image
+     * @param format  the format that the elements of the image will be treated as for the purposes of formatted stores
+     */
+    public static void glBindImageTexture(@NativeType("GLuint") int unit, @NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLboolean") boolean layered, @NativeType("GLint") int layer, @NativeType("GLenum") int access, @NativeType("GLenum") int format) {
+        org.lwjgl.opengl.GL42.glBindImageTexture(unit, texture, level, layered, layer, access, format);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glMemoryBarrier">Reference Page</a></p>
+     * 
+     * Defines a barrier ordering memory transactions.
+     *
+     * @param barriers the barriers to insert (bitwise combination). One or more of:<br><table><tr><td>{@link #GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT VERTEX_ATTRIB_ARRAY_BARRIER_BIT}</td><td>{@link #GL_ELEMENT_ARRAY_BARRIER_BIT ELEMENT_ARRAY_BARRIER_BIT}</td><td>{@link #GL_UNIFORM_BARRIER_BIT UNIFORM_BARRIER_BIT}</td></tr><tr><td>{@link #GL_TEXTURE_FETCH_BARRIER_BIT TEXTURE_FETCH_BARRIER_BIT}</td><td>{@link #GL_SHADER_IMAGE_ACCESS_BARRIER_BIT SHADER_IMAGE_ACCESS_BARRIER_BIT}</td><td>{@link #GL_COMMAND_BARRIER_BIT COMMAND_BARRIER_BIT}</td></tr><tr><td>{@link #GL_PIXEL_BUFFER_BARRIER_BIT PIXEL_BUFFER_BARRIER_BIT}</td><td>{@link #GL_TEXTURE_UPDATE_BARRIER_BIT TEXTURE_UPDATE_BARRIER_BIT}</td><td>{@link #GL_BUFFER_UPDATE_BARRIER_BIT BUFFER_UPDATE_BARRIER_BIT}</td></tr><tr><td>{@link #GL_FRAMEBUFFER_BARRIER_BIT FRAMEBUFFER_BARRIER_BIT}</td><td>{@link #GL_TRANSFORM_FEEDBACK_BARRIER_BIT TRANSFORM_FEEDBACK_BARRIER_BIT}</td><td>{@link #GL_ATOMIC_COUNTER_BARRIER_BIT ATOMIC_COUNTER_BARRIER_BIT}</td></tr><tr><td>{@link #GL_ALL_BARRIER_BITS ALL_BARRIER_BITS}</td><td>{@link GL43#GL_SHADER_STORAGE_BARRIER_BIT SHADER_STORAGE_BARRIER_BIT}</td></tr></table>
+     */
+    public static void glMemoryBarrier(@NativeType("GLbitfield") int barriers) {
+        org.lwjgl.opengl.GL42.glMemoryBarrier(barriers);
+    }
+    /**
+     * Unsafe version of: {@link #glGetInternalformativ GetInternalformativ}
+     *
+     * @param bufSize the maximum number of values that may be written to params by the function
+     */
+    public static void nglGetInternalformativ(int target, int internalformat, int pname, int bufSize, long params) {
+        org.lwjgl.opengl.GL42.nglGetInternalformativ(target, internalformat, pname, bufSize, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetInternalformat">Reference Page</a></p>
@@ -15775,6 +23300,10 @@ public class GL {
     public static final int
         GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET = 0x82D9,
         GL_MAX_VERTEX_ATTRIB_BINDINGS        = 0x82DA;
+    /** Unsafe version of: {@link #glClearBufferData ClearBufferData} */
+    public static void nglClearBufferData(int target, int internalformat, int format, int type, long data) {
+        org.lwjgl.opengl.GL43.nglClearBufferData(target, internalformat, format, type, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBufferData">Reference Page</a></p>
      * 
@@ -15838,6 +23367,10 @@ public class GL {
      */
     public static void glClearBufferData(@NativeType("GLenum") int target, @NativeType("GLenum") int internalformat, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") FloatBuffer data) {
         org.lwjgl.opengl.GL43.glClearBufferData(target, internalformat, format, type, data);
+    }
+    /** Unsafe version of: {@link #glClearBufferSubData ClearBufferSubData} */
+    public static void nglClearBufferSubData(int target, int internalformat, long offset, long size, int format, int type, long data) {
+        org.lwjgl.opengl.GL43.nglClearBufferSubData(target, internalformat, offset, size, format, type, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBufferSubData">Reference Page</a></p>
@@ -15912,6 +23445,22 @@ public class GL {
         org.lwjgl.opengl.GL43.glClearBufferSubData(target, internalformat, offset, size, format, type, data);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDispatchCompute">Reference Page</a></p>
+     * 
+     * Launches one or more compute work groups.
+     *
+     * @param num_groups_x the number of work groups to be launched in the X dimension
+     * @param num_groups_y the number of work groups to be launched in the Y dimension
+     * @param num_groups_z the number of work groups to be launched in the Z dimension
+     */
+    public static void glDispatchCompute(@NativeType("GLuint") int num_groups_x, @NativeType("GLuint") int num_groups_y, @NativeType("GLuint") int num_groups_z) {
+        org.lwjgl.opengl.GL43.glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
+    }
+    /** Unsafe version of: {@link #glDispatchComputeIndirect DispatchComputeIndirect} */
+    public static void nglDispatchComputeIndirect(long indirect) {
+        org.lwjgl.opengl.GL43.nglDispatchComputeIndirect(indirect);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDispatchComputeIndirect">Reference Page</a></p>
      * 
      * Launches one or more compute work groups using parameters stored in a buffer.
@@ -15936,6 +23485,38 @@ public class GL {
      */
     public static void glDispatchComputeIndirect(@NativeType("GLintptr") long indirect) {
         org.lwjgl.opengl.GL43.glDispatchComputeIndirect(indirect);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyImageSubData">Reference Page</a></p>
+     * 
+     * Performs a raw data copy between two images.
+     *
+     * @param srcName   the name of a texture or renderbuffer object from which to copy
+     * @param srcTarget the target representing the namespace of the source name {@code srcName}
+     * @param srcLevel  the mipmap level to read from the source
+     * @param srcX      the X coordinate of the left edge of the souce region to copy
+     * @param srcY      the Y coordinate of the top edge of the souce region to copy
+     * @param srcZ      the Z coordinate of the near edge of the souce region to copy
+     * @param dstName   the name of a texture or renderbuffer object to which to copy
+     * @param dstTarget the target representing the namespace of the destination name {@code dstName}
+     * @param dstLevel  the mipmap level to write to the source
+     * @param dstX      the X coordinate of the left edge of the destination region
+     * @param dstY      the Y coordinate of the top edge of the destination region
+     * @param dstZ      the Z coordinate of the near edge of the destination region
+     * @param srcWidth  the width of the region to be copied
+     * @param srcHeight the height of the region to be copied
+     * @param srcDepth  the depth of the region to be copied
+     */
+    public static void glCopyImageSubData(@NativeType("GLuint") int srcName, @NativeType("GLenum") int srcTarget, @NativeType("GLint") int srcLevel, @NativeType("GLint") int srcX, @NativeType("GLint") int srcY, @NativeType("GLint") int srcZ, @NativeType("GLuint") int dstName, @NativeType("GLenum") int dstTarget, @NativeType("GLint") int dstLevel, @NativeType("GLint") int dstX, @NativeType("GLint") int dstY, @NativeType("GLint") int dstZ, @NativeType("GLsizei") int srcWidth, @NativeType("GLsizei") int srcHeight, @NativeType("GLsizei") int srcDepth) {
+        org.lwjgl.opengl.GL43.glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
+    }
+    /**
+     * Unsafe version of: {@link #glDebugMessageControl DebugMessageControl}
+     *
+     * @param count the length of the array {@code ids}
+     */
+    public static void nglDebugMessageControl(int source, int type, int severity, int count, long ids, boolean enabled) {
+        org.lwjgl.opengl.GL43.nglDebugMessageControl(source, type, severity, count, ids, enabled);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDebugMessageControl">Reference Page</a></p>
@@ -16011,6 +23592,14 @@ public class GL {
         org.lwjgl.opengl.GL43.glDebugMessageControl(source, type, severity, id, enabled);
     }
     /**
+     * Unsafe version of: {@link #glDebugMessageInsert DebugMessageInsert}
+     *
+     * @param length the length of the string contained in the character array whose address is given by {@code message}
+     */
+    public static void nglDebugMessageInsert(int source, int type, int id, int severity, int length, long message) {
+        org.lwjgl.opengl.GL43.nglDebugMessageInsert(source, type, id, severity, length, message);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDebugMessageInsert">Reference Page</a></p>
      * 
      * This function can be called by applications and third-party libraries to generate their own messages, such as ones containing timestamp information or
@@ -16056,6 +23645,10 @@ public class GL {
     public static void glDebugMessageInsert(@NativeType("GLenum") int source, @NativeType("GLenum") int type, @NativeType("GLuint") int id, @NativeType("GLenum") int severity, @NativeType("const GLchar *") CharSequence message) {
         org.lwjgl.opengl.GL43.glDebugMessageInsert(source, type, id, severity, message);
     }
+    /** Unsafe version of: {@link #glDebugMessageCallback DebugMessageCallback} */
+    public static void nglDebugMessageCallback(long callback, long userParam) {
+        org.lwjgl.opengl.GL43.nglDebugMessageCallback(callback, userParam);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDebugMessageCallback">Reference Page</a></p>
      * 
@@ -16091,6 +23684,14 @@ public class GL {
      */
     public static void glDebugMessageCallback(@NativeType("GLDEBUGPROC") GLDebugMessageCallbackI callback, @NativeType("const void *") long userParam) {
         org.lwjgl.opengl.GL43.glDebugMessageCallback(callback, userParam);
+    }
+    /**
+     * Unsafe version of: {@link #glGetDebugMessageLog GetDebugMessageLog}
+     *
+     * @param bufsize the size of the buffer whose address is given by {@code messageLog}
+     */
+    public static int nglGetDebugMessageLog(int count, int bufsize, long sources, long types, long ids, long severities, long lengths, long messageLog) {
+        return org.lwjgl.opengl.GL43.nglGetDebugMessageLog(count, bufsize, sources, types, ids, severities, lengths, messageLog);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetDebugMessageLog">Reference Page</a></p>
@@ -16130,6 +23731,14 @@ public class GL {
     @NativeType("GLuint")
     public static int glGetDebugMessageLog(@NativeType("GLuint") int count, @NativeType("GLenum *") IntBuffer sources, @NativeType("GLenum *") IntBuffer types, @NativeType("GLuint *") IntBuffer ids, @NativeType("GLenum *") IntBuffer severities, @NativeType("GLsizei *") IntBuffer lengths, @NativeType("GLchar *") ByteBuffer messageLog) {
         return org.lwjgl.opengl.GL43.glGetDebugMessageLog(count, sources, types, ids, severities, lengths, messageLog);
+    }
+    /**
+     * Unsafe version of: {@link #glPushDebugGroup PushDebugGroup}
+     *
+     * @param length the length of the message to be sent to the debug output stream
+     */
+    public static void nglPushDebugGroup(int source, int id, int length, long message) {
+        org.lwjgl.opengl.GL43.nglPushDebugGroup(source, id, length, message);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glPushDebugGroup">Reference Page</a></p>
@@ -16174,6 +23783,28 @@ public class GL {
         org.lwjgl.opengl.GL43.glPushDebugGroup(source, id, message);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPopDebugGroup">Reference Page</a></p>
+     * 
+     * Pops the active debug group. When a debug group is popped, the GL will also generate a debug output message describing its cause based on the
+     * {@code message} string, the source {@code source}, and an ID {@code id} submitted to the associated {@link #glPushDebugGroup PushDebugGroup} command. {@link #GL_DEBUG_TYPE_PUSH_GROUP DEBUG_TYPE_PUSH_GROUP}
+     * and {@link #GL_DEBUG_TYPE_POP_GROUP DEBUG_TYPE_POP_GROUP} share a single namespace for message {@code id}. {@code severity} has the value {@link #GL_DEBUG_SEVERITY_NOTIFICATION DEBUG_SEVERITY_NOTIFICATION}. The {@code type}
+     * has the value {@link #GL_DEBUG_TYPE_POP_GROUP DEBUG_TYPE_POP_GROUP}. Popping a debug group restores the debug output volume control of the parent debug group.
+     * 
+     * <p>Attempting to pop the default debug group off the stack generates a {@link GL11#GL_STACK_UNDERFLOW STACK_UNDERFLOW} error; pushing a debug group onto a stack containing
+     * {@link #GL_MAX_DEBUG_GROUP_STACK_DEPTH MAX_DEBUG_GROUP_STACK_DEPTH} minus one elements will generate a {@link GL11#GL_STACK_OVERFLOW STACK_OVERFLOW} error.</p>
+     */
+    public static void glPopDebugGroup() {
+        org.lwjgl.opengl.GL43.glPopDebugGroup();
+    }
+    /**
+     * Unsafe version of: {@link #glObjectLabel ObjectLabel}
+     *
+     * @param length the length of the label to be used for the object
+     */
+    public static void nglObjectLabel(int identifier, int name, int length, long label) {
+        org.lwjgl.opengl.GL43.nglObjectLabel(identifier, name, length, label);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glObjectLabel">Reference Page</a></p>
      * 
      * Labels a named object identified within a namespace.
@@ -16196,6 +23827,14 @@ public class GL {
      */
     public static void glObjectLabel(@NativeType("GLenum") int identifier, @NativeType("GLuint") int name, @NativeType("const GLchar *") CharSequence label) {
         org.lwjgl.opengl.GL43.glObjectLabel(identifier, name, label);
+    }
+    /**
+     * Unsafe version of: {@link #glGetObjectLabel GetObjectLabel}
+     *
+     * @param bufSize the length of the buffer whose address is in {@code label}
+     */
+    public static void nglGetObjectLabel(int identifier, int name, int bufSize, long length, long label) {
+        org.lwjgl.opengl.GL43.nglGetObjectLabel(identifier, name, bufSize, length, label);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetObjectLabel">Reference Page</a></p>
@@ -16236,6 +23875,14 @@ public class GL {
         return org.lwjgl.opengl.GL43.glGetObjectLabel(identifier, name);
     }
     /**
+     * Unsafe version of: {@link #glObjectPtrLabel ObjectPtrLabel}
+     *
+     * @param length the length of the label to be used for the object
+     */
+    public static void nglObjectPtrLabel(long ptr, int length, long label) {
+        org.lwjgl.opengl.GL43.nglObjectPtrLabel(ptr, length, label);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glObjectPtrLabel">Reference Page</a></p>
      * 
      * Labels a sync object identified by a pointer.
@@ -16256,6 +23903,14 @@ public class GL {
      */
     public static void glObjectPtrLabel(@NativeType("void *") long ptr, @NativeType("const GLchar *") CharSequence label) {
         org.lwjgl.opengl.GL43.glObjectPtrLabel(ptr, label);
+    }
+    /**
+     * Unsafe version of: {@link #glGetObjectPtrLabel GetObjectPtrLabel}
+     *
+     * @param bufSize the length of the buffer whose address is in {@code label}
+     */
+    public static void nglGetObjectPtrLabel(long ptr, int bufSize, long length, long label) {
+        org.lwjgl.opengl.GL43.nglGetObjectPtrLabel(ptr, bufSize, length, label);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetObjectPtrLabel">Reference Page</a></p>
@@ -16293,6 +23948,22 @@ public class GL {
         return org.lwjgl.opengl.GL43.glGetObjectPtrLabel(ptr);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferParameteri">Reference Page</a></p>
+     * 
+     * Sets a named parameter of a framebuffer.
+     *
+     * @param target target of the operation. One of:<br><table><tr><td>{@link GL30#GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link GL30#GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td><td>{@link GL30#GL_FRAMEBUFFER FRAMEBUFFER}</td></tr></table>
+     * @param pname  a token indicating the parameter to be modified. One of:<br><table><tr><td>{@link #GL_FRAMEBUFFER_DEFAULT_WIDTH FRAMEBUFFER_DEFAULT_WIDTH}</td><td>{@link #GL_FRAMEBUFFER_DEFAULT_HEIGHT FRAMEBUFFER_DEFAULT_HEIGHT}</td></tr><tr><td>{@link #GL_FRAMEBUFFER_DEFAULT_LAYERS FRAMEBUFFER_DEFAULT_LAYERS}</td><td>{@link #GL_FRAMEBUFFER_DEFAULT_SAMPLES FRAMEBUFFER_DEFAULT_SAMPLES}</td></tr><tr><td>{@link #GL_FRAMEBUFFER_DEFAULT_FIXED_SAMPLE_LOCATIONS FRAMEBUFFER_DEFAULT_FIXED_SAMPLE_LOCATIONS}</td></tr></table>
+     * @param param  the new value for the parameter named {@code pname}
+     */
+    public static void glFramebufferParameteri(@NativeType("GLenum") int target, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL43.glFramebufferParameteri(target, pname, param);
+    }
+    /** Unsafe version of: {@link #glGetFramebufferParameteriv GetFramebufferParameteriv} */
+    public static void nglGetFramebufferParameteriv(int target, int pname, long params) {
+        org.lwjgl.opengl.GL43.nglGetFramebufferParameteriv(target, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFramebufferParameter">Reference Page</a></p>
      * 
      * Retrieves a named parameter from a framebuffer.
@@ -16315,6 +23986,14 @@ public class GL {
     @NativeType("void")
     public static int glGetFramebufferParameteri(@NativeType("GLenum") int target, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL43.glGetFramebufferParameteri(target, pname);
+    }
+    /**
+     * Unsafe version of: {@link #glGetInternalformati64v GetInternalformati64v}
+     *
+     * @param bufSize the maximum number of values that may be written to params by the function
+     */
+    public static void nglGetInternalformati64v(int target, int internalformat, int pname, int bufSize, long params) {
+        org.lwjgl.opengl.GL43.nglGetInternalformati64v(target, internalformat, pname, bufSize, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetInternalformat">Reference Page</a></p>
@@ -16343,6 +24022,64 @@ public class GL {
         return org.lwjgl.opengl.GL43.glGetInternalformati64(target, internalformat, pname);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateTexSubImage">Reference Page</a></p>
+     * 
+     * Invalidates a region of a texture image.
+     *
+     * @param texture the name of a texture object a subregion of which to invalidate
+     * @param level   the level of detail of the texture object within which the region resides
+     * @param xoffset the X offset of the region to be invalidated
+     * @param yoffset the Y offset of the region to be invalidated
+     * @param zoffset the Z offset of the region to be invalidated
+     * @param width   the width of the region to be invalidated
+     * @param height  the height of the region to be invalidated
+     * @param depth   the depth of the region to be invalidated
+     */
+    public static void glInvalidateTexSubImage(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLint") int zoffset, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth) {
+        org.lwjgl.opengl.GL43.glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateTexImage">Reference Page</a></p>
+     * 
+     * Invalidates the entirety of a texture image.
+     *
+     * @param texture the name of a texture object to invalidate
+     * @param level   the level of detail of the texture object to invalidate
+     */
+    public static void glInvalidateTexImage(@NativeType("GLuint") int texture, @NativeType("GLint") int level) {
+        org.lwjgl.opengl.GL43.glInvalidateTexImage(texture, level);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateBufferSubData">Reference Page</a></p>
+     * 
+     * Invalidates a region of a buffer object's data store.
+     *
+     * @param buffer the name of a buffer object, a subrange of whose data store to invalidate
+     * @param offset the offset within the buffer's data store of the start of the range to be invalidated
+     * @param length the length of the range within the buffer's data store to be invalidated
+     */
+    public static void glInvalidateBufferSubData(@NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long length) {
+        org.lwjgl.opengl.GL43.glInvalidateBufferSubData(buffer, offset, length);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateBufferData">Reference Page</a></p>
+     * 
+     * Invalidates the content of a buffer object's data store.
+     *
+     * @param buffer the name of a buffer object whose data store to invalidate
+     */
+    public static void glInvalidateBufferData(@NativeType("GLuint") int buffer) {
+        org.lwjgl.opengl.GL43.glInvalidateBufferData(buffer);
+    }
+    /**
+     * Unsafe version of: {@link #glInvalidateFramebuffer InvalidateFramebuffer}
+     *
+     * @param numAttachments the number of entries in the {@code attachments} array
+     */
+    public static void nglInvalidateFramebuffer(int target, int numAttachments, long attachments) {
+        org.lwjgl.opengl.GL43.nglInvalidateFramebuffer(target, numAttachments, attachments);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateFramebuffer">Reference Page</a></p>
      * 
      * Invalidate the content some or all of a framebuffer object's attachments.
@@ -16362,6 +24099,14 @@ public class GL {
      */
     public static void glInvalidateFramebuffer(@NativeType("GLenum") int target, @NativeType("const GLenum *") int attachment) {
         org.lwjgl.opengl.GL43.glInvalidateFramebuffer(target, attachment);
+    }
+    /**
+     * Unsafe version of: {@link #glInvalidateSubFramebuffer InvalidateSubFramebuffer}
+     *
+     * @param numAttachments the number of entries in the {@code attachments} array
+     */
+    public static void nglInvalidateSubFramebuffer(int target, int numAttachments, long attachments, int x, int y, int width, int height) {
+        org.lwjgl.opengl.GL43.nglInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateSubFramebuffer">Reference Page</a></p>
@@ -16391,6 +24136,10 @@ public class GL {
      */
     public static void glInvalidateSubFramebuffer(@NativeType("GLenum") int target, @NativeType("const GLenum *") int attachment, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
         org.lwjgl.opengl.GL43.glInvalidateSubFramebuffer(target, attachment, x, y, width, height);
+    }
+    /** Unsafe version of: {@link #glMultiDrawArraysIndirect MultiDrawArraysIndirect} */
+    public static void nglMultiDrawArraysIndirect(int mode, long indirect, int primcount, int stride) {
+        org.lwjgl.opengl.GL43.nglMultiDrawArraysIndirect(mode, indirect, primcount, stride);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMultiDrawArraysIndirect">Reference Page</a></p>
@@ -16496,6 +24245,10 @@ public class GL {
      */
     public static void glMultiDrawArraysIndirect(@NativeType("GLenum") int mode, @NativeType("const void *") IntBuffer indirect, @NativeType("GLsizei") int primcount, @NativeType("GLsizei") int stride) {
         org.lwjgl.opengl.GL43.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+    }
+    /** Unsafe version of: {@link #glMultiDrawElementsIndirect MultiDrawElementsIndirect} */
+    public static void nglMultiDrawElementsIndirect(int mode, int type, long indirect, int primcount, int stride) {
+        org.lwjgl.opengl.GL43.nglMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMultiDrawElementsIndirect">Reference Page</a></p>
@@ -16608,6 +24361,10 @@ public class GL {
     public static void glMultiDrawElementsIndirect(@NativeType("GLenum") int mode, @NativeType("GLenum") int type, @NativeType("const void *") IntBuffer indirect, @NativeType("GLsizei") int primcount, @NativeType("GLsizei") int stride) {
         org.lwjgl.opengl.GL43.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
     }
+    /** Unsafe version of: {@link #glGetProgramInterfaceiv GetProgramInterfaceiv} */
+    public static void nglGetProgramInterfaceiv(int program, int programInterface, int pname, long params) {
+        org.lwjgl.opengl.GL43.nglGetProgramInterfaceiv(program, programInterface, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramInterface">Reference Page</a></p>
      * 
@@ -16634,6 +24391,10 @@ public class GL {
     public static int glGetProgramInterfacei(@NativeType("GLuint") int program, @NativeType("GLenum") int programInterface, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL43.glGetProgramInterfacei(program, programInterface, pname);
     }
+    /** Unsafe version of: {@link #glGetProgramResourceIndex GetProgramResourceIndex} */
+    public static int nglGetProgramResourceIndex(int program, int programInterface, long name) {
+        return org.lwjgl.opengl.GL43.nglGetProgramResourceIndex(program, programInterface, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramResourceIndex">Reference Page</a></p>
      * 
@@ -16659,6 +24420,14 @@ public class GL {
     @NativeType("GLuint")
     public static int glGetProgramResourceIndex(@NativeType("GLuint") int program, @NativeType("GLenum") int programInterface, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL43.glGetProgramResourceIndex(program, programInterface, name);
+    }
+    /**
+     * Unsafe version of: {@link #glGetProgramResourceName GetProgramResourceName}
+     *
+     * @param bufSize the size of the character array whose address is given by {@code name}
+     */
+    public static void nglGetProgramResourceName(int program, int programInterface, int index, int bufSize, long length, long name) {
+        org.lwjgl.opengl.GL43.nglGetProgramResourceName(program, programInterface, index, bufSize, length, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramResourceName">Reference Page</a></p>
@@ -16702,6 +24471,15 @@ public class GL {
         return org.lwjgl.opengl.GL43.glGetProgramResourceName(program, programInterface, index);
     }
     /**
+     * Unsafe version of: {@link #glGetProgramResourceiv GetProgramResourceiv}
+     *
+     * @param propCount the number of properties in {@code props}
+     * @param bufSize   the size of the integer array whose address is given by {@code params}
+     */
+    public static void nglGetProgramResourceiv(int program, int programInterface, int index, int propCount, long props, int bufSize, long length, long params) {
+        org.lwjgl.opengl.GL43.nglGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramResource">Reference Page</a></p>
      * 
      * Retrieves values for multiple properties of a single active resource within a program object.
@@ -16715,6 +24493,10 @@ public class GL {
      */
     public static void glGetProgramResourceiv(@NativeType("GLuint") int program, @NativeType("GLenum") int programInterface, @NativeType("GLuint") int index, @NativeType("const GLenum *") IntBuffer props, @NativeType("GLsizei *") IntBuffer length, @NativeType("GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL43.glGetProgramResourceiv(program, programInterface, index, props, length, params);
+    }
+    /** Unsafe version of: {@link #glGetProgramResourceLocation GetProgramResourceLocation} */
+    public static int nglGetProgramResourceLocation(int program, int programInterface, long name) {
+        return org.lwjgl.opengl.GL43.nglGetProgramResourceLocation(program, programInterface, name);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramResourceLocation">Reference Page</a></p>
@@ -16742,6 +24524,10 @@ public class GL {
     public static int glGetProgramResourceLocation(@NativeType("GLuint") int program, @NativeType("GLenum") int programInterface, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL43.glGetProgramResourceLocation(program, programInterface, name);
     }
+    /** Unsafe version of: {@link #glGetProgramResourceLocationIndex GetProgramResourceLocationIndex} */
+    public static int nglGetProgramResourceLocationIndex(int program, int programInterface, long name) {
+        return org.lwjgl.opengl.GL43.nglGetProgramResourceLocationIndex(program, programInterface, name);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetProgramResourceLocationIndex">Reference Page</a></p>
      * 
@@ -16767,6 +24553,158 @@ public class GL {
     @NativeType("GLint")
     public static int glGetProgramResourceLocationIndex(@NativeType("GLuint") int program, @NativeType("GLenum") int programInterface, @NativeType("const GLchar *") CharSequence name) {
         return org.lwjgl.opengl.GL43.glGetProgramResourceLocationIndex(program, programInterface, name);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glShaderStorageBlockBinding">Reference Page</a></p>
+     * 
+     * Changes an active shader storage block binding.
+     *
+     * @param program             the name of the program containing the block whose binding to change
+     * @param storageBlockIndex   the index storage block within the program
+     * @param storageBlockBinding the index storage block binding to associate with the specified storage block
+     */
+    public static void glShaderStorageBlockBinding(@NativeType("GLuint") int program, @NativeType("GLuint") int storageBlockIndex, @NativeType("GLuint") int storageBlockBinding) {
+        org.lwjgl.opengl.GL43.glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexBufferRange">Reference Page</a></p>
+     * 
+     * Binds a range of a buffer's data store to a buffer texture.
+     *
+     * @param target         the target of the operation. Must be:<br><table><tr><td>{@link GL31#GL_TEXTURE_BUFFER TEXTURE_BUFFER}</td></tr></table>
+     * @param internalformat the internal format of the data in the store belonging to {@code buffer}
+     * @param buffer         the name of the buffer object whose storage to attach to the active buffer texture
+     * @param offset         the offset of the start of the range of the buffer's data store to attach
+     * @param size           the size of the range of the buffer's data store to attach
+     */
+    public static void glTexBufferRange(@NativeType("GLenum") int target, @NativeType("GLenum") int internalformat, @NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long size) {
+        org.lwjgl.opengl.GL43.glTexBufferRange(target, internalformat, buffer, offset, size);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexStorage2DMultisample">Reference Page</a></p>
+     * 
+     * Specifies storage for a two-dimensional multisample texture.
+     *
+     * @param target               the target of the operation. One of:<br><table><tr><td>{@link GL32#GL_TEXTURE_2D_MULTISAMPLE TEXTURE_2D_MULTISAMPLE}</td><td>{@link GL32#GL_PROXY_TEXTURE_2D_MULTISAMPLE PROXY_TEXTURE_2D_MULTISAMPLE}</td></tr></table>
+     * @param samples              the number of samples in the texture
+     * @param internalformat       the sized internal format to be used to store texture image data
+     * @param width                the width of the texture, in texels
+     * @param height               the height of the texture, in texels
+     * @param fixedsamplelocations whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not
+     *                             depend on the internal format or size of the image
+     */
+    public static void glTexStorage2DMultisample(@NativeType("GLenum") int target, @NativeType("GLsizei") int samples, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLboolean") boolean fixedsamplelocations) {
+        org.lwjgl.opengl.GL43.glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTexStorage3DMultisample">Reference Page</a></p>
+     * 
+     * Specifies storage for a two-dimensional multisample array texture.
+     *
+     * @param target               the target of the operation. One of:<br><table><tr><td>{@link GL32#GL_TEXTURE_2D_MULTISAMPLE_ARRAY TEXTURE_2D_MULTISAMPLE_ARRAY}</td><td>{@link GL32#GL_PROXY_TEXTURE_2D_MULTISAMPLE PROXY_TEXTURE_2D_MULTISAMPLE}</td></tr></table>
+     * @param samples              the number of samples in the texture
+     * @param internalformat       the sized internal format to be used to store texture image data
+     * @param width                the width of the texture, in texels
+     * @param height               the height of the texture, in texels
+     * @param depth                the depth of the texture, in texels
+     * @param fixedsamplelocations whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not
+     *                             depend on the internal format or size of the image
+     */
+    public static void glTexStorage3DMultisample(@NativeType("GLenum") int target, @NativeType("GLsizei") int samples, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth, @NativeType("GLboolean") boolean fixedsamplelocations) {
+        org.lwjgl.opengl.GL43.glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureView">Reference Page</a></p>
+     * 
+     * Initializes a texture as a data alias of another texture's data store.
+     *
+     * @param texture        the texture object to be initialized as a view
+     * @param target         the target to be used for the newly initialized texture
+     * @param origtexture    the name of a texture object of which to make a view
+     * @param internalformat the internal format for the newly created view
+     * @param minlevel       the  lowest level of detail of the view
+     * @param numlevels      the number of levels of detail to include in the view
+     * @param minlayer       the index of the first layer to include in the view
+     * @param numlayers      the number of layers to include in the view
+     */
+    public static void glTextureView(@NativeType("GLuint") int texture, @NativeType("GLenum") int target, @NativeType("GLuint") int origtexture, @NativeType("GLenum") int internalformat, @NativeType("GLuint") int minlevel, @NativeType("GLuint") int numlevels, @NativeType("GLuint") int minlayer, @NativeType("GLuint") int numlayers) {
+        org.lwjgl.opengl.GL43.glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindVertexBuffer">Reference Page</a></p>
+     * 
+     * Binds a buffer to a vertex buffer bind point.
+     *
+     * @param bindingindex the index of the vertex buffer binding point to which to bind the buffer
+     * @param buffer       the name of an existing buffer to bind to the vertex buffer binding point
+     * @param offset       the offset of the first element of the buffer
+     * @param stride       the distance between elements within the buffer
+     */
+    public static void glBindVertexBuffer(@NativeType("GLuint") int bindingindex, @NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizei") int stride) {
+        org.lwjgl.opengl.GL43.glBindVertexBuffer(bindingindex, buffer, offset, stride);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribFormat">Reference Page</a></p>
+     * 
+     * Specifies the organization of data in vertex arrays.
+     *
+     * @param attribindex    the generic vertex attribute array being described
+     * @param size           the number of values per vertex that are stored in the array. One of:<br><table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>{@link GL12#GL_BGRA BGRA}</td></tr></table>
+     * @param type           the type of the data stored in the array
+     * @param normalized     if true then integer data is normalized to the range [-1, 1] or [0, 1] if it is signed or unsigned, respectively. If false then integer data is
+     *                       directly converted to floating point.
+     * @param relativeoffset the offset, measured in basic machine units of the first element relative to the start of the vertex buffer binding this attribute fetches from
+     */
+    public static void glVertexAttribFormat(@NativeType("GLuint") int attribindex, @NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("GLuint") int relativeoffset) {
+        org.lwjgl.opengl.GL43.glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribIFormat">Reference Page</a></p>
+     * 
+     * Specifies the organization of pure integer data in vertex arrays.
+     *
+     * @param attribindex    the generic vertex attribute array being described
+     * @param size           the number of values per vertex that are stored in the array. One of:<br><table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>{@link GL12#GL_BGRA BGRA}</td></tr></table>
+     * @param type           the type of the data stored in the array
+     * @param relativeoffset the offset, measured in basic machine units of the first element relative to the start of the vertex buffer binding this attribute fetches from
+     */
+    public static void glVertexAttribIFormat(@NativeType("GLuint") int attribindex, @NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLuint") int relativeoffset) {
+        org.lwjgl.opengl.GL43.glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribLFormat">Reference Page</a></p>
+     * 
+     * Specifies the organization of 64-bit double data in vertex arrays.
+     *
+     * @param attribindex    the generic vertex attribute array being described
+     * @param size           the number of values per vertex that are stored in the array. One of:<br><table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>{@link GL12#GL_BGRA BGRA}</td></tr></table>
+     * @param type           the type of the data stored in the array
+     * @param relativeoffset the offset, measured in basic machine units of the first element relative to the start of the vertex buffer binding this attribute fetches from
+     */
+    public static void glVertexAttribLFormat(@NativeType("GLuint") int attribindex, @NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLuint") int relativeoffset) {
+        org.lwjgl.opengl.GL43.glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexAttribBinding">Reference Page</a></p>
+     * 
+     * Associate a vertex attribute and a vertex buffer binding.
+     *
+     * @param attribindex  the index of the attribute to associate with a vertex buffer binding
+     * @param bindingindex the index of the vertex buffer binding with which to associate the generic vertex attribute
+     */
+    public static void glVertexAttribBinding(@NativeType("GLuint") int attribindex, @NativeType("GLuint") int bindingindex) {
+        org.lwjgl.opengl.GL43.glVertexAttribBinding(attribindex, bindingindex);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexBindingDivisor">Reference Page</a></p>
+     * 
+     * Modifies the rate at which generic vertex attributes advance during instanced rendering.
+     *
+     * @param bindingindex the index of the generic vertex attribute
+     * @param divisor      the number of instances that will pass between updates of the generic attribute at slot {@code index}
+     */
+    public static void glVertexBindingDivisor(@NativeType("GLuint") int bindingindex, @NativeType("GLuint") int divisor) {
+        org.lwjgl.opengl.GL43.glVertexBindingDivisor(bindingindex, divisor);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glDebugMessageControl">Reference Page</a></p>
@@ -16924,6 +24862,14 @@ public class GL {
      * {@link GL12#GL_TEXTURE_WRAP_R TEXTURE_WRAP_R},
      */
     public static final int GL_MIRROR_CLAMP_TO_EDGE = 0x8743;
+    /**
+     * Unsafe version of: {@link #glBufferStorage BufferStorage}
+     *
+     * @param size the size of the data store in basic machine units
+     */
+    public static void nglBufferStorage(int target, long size, long data, int flags) {
+        org.lwjgl.opengl.GL44.nglBufferStorage(target, size, data, flags);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBufferStorage">Reference Page</a></p>
      * 
@@ -17253,6 +25199,10 @@ public class GL {
     public static void glBufferStorage(@NativeType("GLenum") int target, @NativeType("const void *") DoubleBuffer data, @NativeType("GLbitfield") int flags) {
         org.lwjgl.opengl.GL44.glBufferStorage(target, data, flags);
     }
+    /** Unsafe version of: {@link #glClearTexSubImage ClearTexSubImage} */
+    public static void nglClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, long data) {
+        org.lwjgl.opengl.GL44.nglClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearTexSubImage">Reference Page</a></p>
      * 
@@ -17418,6 +25368,10 @@ public class GL {
     public static void glClearTexSubImage(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLint") int zoffset, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") DoubleBuffer data) {
         org.lwjgl.opengl.GL44.glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
     }
+    /** Unsafe version of: {@link #glClearTexImage ClearTexImage} */
+    public static void nglClearTexImage(int texture, int level, int format, int type, long data) {
+        org.lwjgl.opengl.GL44.nglClearTexImage(texture, level, format, type, data);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearTexImage">Reference Page</a></p>
      * 
@@ -17509,6 +25463,14 @@ public class GL {
         org.lwjgl.opengl.GL44.glClearTexImage(texture, level, format, type, data);
     }
     /**
+     * Unsafe version of: {@link #glBindBuffersBase BindBuffersBase}
+     *
+     * @param count the number of bindings
+     */
+    public static void nglBindBuffersBase(int target, int first, int count, long buffers) {
+        org.lwjgl.opengl.GL44.nglBindBuffersBase(target, first, count, buffers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindBuffersBase">Reference Page</a></p>
      * 
      * Binds {@code count} existing buffer objects to bindings numbered {@code first} through {@code first+count-1} in the array of buffer binding points
@@ -17532,6 +25494,14 @@ public class GL {
      */
     public static void glBindBuffersBase(@NativeType("GLenum") int target, @NativeType("GLuint") int first, @NativeType("const GLuint *") IntBuffer buffers) {
         org.lwjgl.opengl.GL44.glBindBuffersBase(target, first, buffers);
+    }
+    /**
+     * Unsafe version of: {@link #glBindBuffersRange BindBuffersRange}
+     *
+     * @param count the number of bindings
+     */
+    public static void nglBindBuffersRange(int target, int first, int count, long buffers, long offsets, long sizes) {
+        org.lwjgl.opengl.GL44.nglBindBuffersRange(target, first, count, buffers, offsets, sizes);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindBuffersRange">Reference Page</a></p>
@@ -17565,6 +25535,14 @@ public class GL {
      */
     public static void glBindBuffersRange(@NativeType("GLenum") int target, @NativeType("GLuint") int first, @NativeType("const GLuint *") IntBuffer buffers, @NativeType("const GLintptr *") PointerBuffer offsets, @NativeType("const GLsizeiptr *") PointerBuffer sizes) {
         org.lwjgl.opengl.GL44.glBindBuffersRange(target, first, buffers, offsets, sizes);
+    }
+    /**
+     * Unsafe version of: {@link #glBindTextures BindTextures}
+     *
+     * @param count the number of texture objects
+     */
+    public static void nglBindTextures(int first, int count, long textures) {
+        org.lwjgl.opengl.GL44.nglBindTextures(first, count, textures);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindTextures">Reference Page</a></p>
@@ -17611,6 +25589,14 @@ public class GL {
         org.lwjgl.opengl.GL44.glBindTextures(first, textures);
     }
     /**
+     * Unsafe version of: {@link #glBindSamplers BindSamplers}
+     *
+     * @param count the number of sampler objects
+     */
+    public static void nglBindSamplers(int first, int count, long samplers) {
+        org.lwjgl.opengl.GL44.nglBindSamplers(first, count, samplers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindSamplers">Reference Page</a></p>
      * 
      * Binds {@code count} existing sampler objects to texture image units numbered {@code first} through {@code first+count-1}. If {@code samplers} is not
@@ -17637,6 +25623,14 @@ public class GL {
      */
     public static void glBindSamplers(@NativeType("GLuint") int first, @NativeType("const GLuint *") IntBuffer samplers) {
         org.lwjgl.opengl.GL44.glBindSamplers(first, samplers);
+    }
+    /**
+     * Unsafe version of: {@link #glBindImageTextures BindImageTextures}
+     *
+     * @param count the number of image units
+     */
+    public static void nglBindImageTextures(int first, int count, long textures) {
+        org.lwjgl.opengl.GL44.nglBindImageTextures(first, count, textures);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindImageTextures">Reference Page</a></p>
@@ -17676,6 +25670,14 @@ public class GL {
      */
     public static void glBindImageTextures(@NativeType("GLuint") int first, @NativeType("const GLuint *") IntBuffer textures) {
         org.lwjgl.opengl.GL44.glBindImageTextures(first, textures);
+    }
+    /**
+     * Unsafe version of: {@link #glBindVertexBuffers BindVertexBuffers}
+     *
+     * @param count the number of vertex buffer binding points
+     */
+    public static void nglBindVertexBuffers(int first, int count, long buffers, long offsets, long strides) {
+        org.lwjgl.opengl.GL44.nglBindVertexBuffers(first, count, buffers, offsets, strides);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBindVertexBuffers">Reference Page</a></p>
@@ -17834,6 +25836,31 @@ public class GL {
     /** Returned by {@link GL11#glGetError GetError}. */
     public static final int GL_CONTEXT_LOST = 0x507;
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClipControl">Reference Page</a></p>
+     * 
+     * Controls the clipping volume behavior.
+     * 
+     * <p>These parameters update the clip control origin and depth mode respectively. The initial value of the clip control origin is {@link GL20#GL_LOWER_LEFT LOWER_LEFT} and the
+     * initial value of the depth mode is {@link #GL_NEGATIVE_ONE_TO_ONE NEGATIVE_ONE_TO_ONE}.</p>
+     * 
+     * <p>The error {@link GL11#GL_INVALID_OPERATION INVALID_OPERATION} is generated if ClipControl is executed between the execution of {@link GL11#glBegin Begin} and the corresponding
+     * execution of {@link GL11#glEnd End}.</p>
+     *
+     * @param origin the clip origin. One of:<br><table><tr><td>{@link GL20#GL_LOWER_LEFT LOWER_LEFT}</td><td>{@link GL20#GL_UPPER_LEFT UPPER_LEFT}</td></tr></table>
+     * @param depth  the clip depth mode. One of:<br><table><tr><td>{@link #GL_NEGATIVE_ONE_TO_ONE NEGATIVE_ONE_TO_ONE}</td><td>{@link #GL_ZERO_TO_ONE ZERO_TO_ONE}</td></tr></table>
+     */
+    public static void glClipControl(@NativeType("GLenum") int origin, @NativeType("GLenum") int depth) {
+        org.lwjgl.opengl.GL45.glClipControl(origin, depth);
+    }
+    /**
+     * Unsafe version of: {@link #glCreateTransformFeedbacks CreateTransformFeedbacks}
+     *
+     * @param n the number of transform feedback object names to create
+     */
+    public static void nglCreateTransformFeedbacks(int n, long ids) {
+        org.lwjgl.opengl.GL45.nglCreateTransformFeedbacks(n, ids);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateTransformFeedbacks">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused transform feedback object names in {@code ids}, each representing a new state vector.
@@ -17851,6 +25878,36 @@ public class GL {
     @NativeType("void")
     public static int glCreateTransformFeedbacks() {
         return org.lwjgl.opengl.GL45.glCreateTransformFeedbacks();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTransformFeedbackBufferBase">Reference Page</a></p>
+     * 
+     * Binds a buffer object to a transform feedback object.
+     *
+     * @param xfb    zero or the name of an existing transform feedback object
+     * @param index  the transform feedback stream index
+     * @param buffer the name of an existing buffer object
+     */
+    public static void glTransformFeedbackBufferBase(@NativeType("GLuint") int xfb, @NativeType("GLuint") int index, @NativeType("GLuint") int buffer) {
+        org.lwjgl.opengl.GL45.glTransformFeedbackBufferBase(xfb, index, buffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTransformFeedbackBufferRange">Reference Page</a></p>
+     * 
+     * Binds a region of a buffer object to a transform feedback object.
+     *
+     * @param xfb    zero or the name of an existing transform feedback object
+     * @param index  the transform feedback stream index
+     * @param buffer the name of an existing buffer object
+     * @param offset the starting offset in basic machine units into the buffer object
+     * @param size   the amount of data in machine units
+     */
+    public static void glTransformFeedbackBufferRange(@NativeType("GLuint") int xfb, @NativeType("GLuint") int index, @NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long size) {
+        org.lwjgl.opengl.GL45.glTransformFeedbackBufferRange(xfb, index, buffer, offset, size);
+    }
+    /** Unsafe version of: {@link #glGetTransformFeedbackiv GetTransformFeedbackiv} */
+    public static void nglGetTransformFeedbackiv(int xfb, int pname, long param) {
+        org.lwjgl.opengl.GL45.nglGetTransformFeedbackiv(xfb, pname, param);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTransformFeedback">Reference Page</a></p>
@@ -17875,6 +25932,10 @@ public class GL {
     @NativeType("void")
     public static int glGetTransformFeedbacki(@NativeType("GLuint") int xfb, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetTransformFeedbacki(xfb, pname);
+    }
+    /** Unsafe version of: {@link #glGetTransformFeedbacki_v GetTransformFeedbacki_v} */
+    public static void nglGetTransformFeedbacki_v(int xfb, int pname, int index, long param) {
+        org.lwjgl.opengl.GL45.nglGetTransformFeedbacki_v(xfb, pname, index, param);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTransformFeedbacki_v">Reference Page</a></p>
@@ -17901,6 +25962,10 @@ public class GL {
     @NativeType("void")
     public static int glGetTransformFeedbacki(@NativeType("GLuint") int xfb, @NativeType("GLenum") int pname, @NativeType("GLuint") int index) {
         return org.lwjgl.opengl.GL45.glGetTransformFeedbacki(xfb, pname, index);
+    }
+    /** Unsafe version of: {@link #glGetTransformFeedbacki64_v GetTransformFeedbacki64_v} */
+    public static void nglGetTransformFeedbacki64_v(int xfb, int pname, int index, long param) {
+        org.lwjgl.opengl.GL45.nglGetTransformFeedbacki64_v(xfb, pname, index, param);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTransformFeedbacki64_v">Reference Page</a></p>
@@ -17929,6 +25994,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetTransformFeedbacki64(xfb, pname, index);
     }
     /**
+     * Unsafe version of: {@link #glCreateBuffers CreateBuffers}
+     *
+     * @param n the number of buffer names to create
+     */
+    public static void nglCreateBuffers(int n, long buffers) {
+        org.lwjgl.opengl.GL45.nglCreateBuffers(n, buffers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateBuffers">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused buffer names in {@code buffers}, each representing a new buffer object initialized as if it had been bound to an
@@ -17948,6 +26021,14 @@ public class GL {
     @NativeType("void")
     public static int glCreateBuffers() {
         return org.lwjgl.opengl.GL45.glCreateBuffers();
+    }
+    /**
+     * Unsafe version of: {@link #glNamedBufferStorage NamedBufferStorage}
+     *
+     * @param size the size of the data store in basic machine units
+     */
+    public static void nglNamedBufferStorage(int buffer, long size, long data, int flags) {
+        org.lwjgl.opengl.GL45.nglNamedBufferStorage(buffer, size, data, flags);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBufferStorage">Reference Page</a></p>
@@ -18237,6 +26318,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glNamedBufferStorage(buffer, data, flags);
     }
     /**
+     * Unsafe version of: {@link #glNamedBufferData NamedBufferData}
+     *
+     * @param size the size in bytes of the buffer object's new data store
+     */
+    public static void nglNamedBufferData(int buffer, long size, long data, int usage) {
+        org.lwjgl.opengl.GL45.nglNamedBufferData(buffer, size, data, usage);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBufferData">Reference Page</a></p>
      * 
      * DSA version of {@link GL15#glBufferData BufferData}.
@@ -18321,6 +26410,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glNamedBufferData(buffer, data, usage);
     }
     /**
+     * Unsafe version of: {@link #glNamedBufferSubData NamedBufferSubData}
+     *
+     * @param size the size in bytes of the data store region being replaced
+     */
+    public static void nglNamedBufferSubData(int buffer, long offset, long size, long data) {
+        org.lwjgl.opengl.GL45.nglNamedBufferSubData(buffer, offset, size, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glBufferSubData">Reference Page</a></p>
      * 
      * DSA version of {@link GL15#glBufferSubData BufferSubData}.
@@ -18393,6 +26490,24 @@ public class GL {
         org.lwjgl.opengl.GL45.glNamedBufferSubData(buffer, offset, data);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyBufferSubData">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL31#glCopyBufferSubData CopyBufferSubData}.
+     *
+     * @param readBuffer  the source buffer object name
+     * @param writeBuffer the destination buffer object name
+     * @param readOffset  the source buffer object offset, in bytes
+     * @param writeOffset the destination buffer object offset, in bytes
+     * @param size        the number of bytes to copy
+     */
+    public static void glCopyNamedBufferSubData(@NativeType("GLuint") int readBuffer, @NativeType("GLuint") int writeBuffer, @NativeType("GLintptr") long readOffset, @NativeType("GLintptr") long writeOffset, @NativeType("GLsizeiptr") long size) {
+        org.lwjgl.opengl.GL45.glCopyNamedBufferSubData(readBuffer, writeBuffer, readOffset, writeOffset, size);
+    }
+    /** Unsafe version of: {@link #glClearNamedBufferData ClearNamedBufferData} */
+    public static void nglClearNamedBufferData(int buffer, int internalformat, int format, int type, long data) {
+        org.lwjgl.opengl.GL45.nglClearNamedBufferData(buffer, internalformat, format, type, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBufferData">Reference Page</a></p>
      * 
      * DSA version of {@link GL43#glClearBufferData ClearBufferData}.
@@ -18455,6 +26570,10 @@ public class GL {
      */
     public static void glClearNamedBufferData(@NativeType("GLuint") int buffer, @NativeType("GLenum") int internalformat, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") FloatBuffer data) {
         org.lwjgl.opengl.GL45.glClearNamedBufferData(buffer, internalformat, format, type, data);
+    }
+    /** Unsafe version of: {@link #glClearNamedBufferSubData ClearNamedBufferSubData} */
+    public static void nglClearNamedBufferSubData(int buffer, int internalformat, long offset, long size, int format, int type, long data) {
+        org.lwjgl.opengl.GL45.nglClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearBufferSubData">Reference Page</a></p>
@@ -18528,6 +26647,10 @@ public class GL {
     public static void glClearNamedBufferSubData(@NativeType("GLuint") int buffer, @NativeType("GLenum") int internalformat, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long size, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") FloatBuffer data) {
         org.lwjgl.opengl.GL45.glClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data);
     }
+    /** Unsafe version of: {@link #glMapNamedBuffer MapNamedBuffer} */
+    public static long nglMapNamedBuffer(int buffer, int access) {
+        return org.lwjgl.opengl.GL45.nglMapNamedBuffer(buffer, access);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMapBuffer">Reference Page</a></p>
      * 
@@ -18564,6 +26687,10 @@ public class GL {
     public static ByteBuffer glMapNamedBuffer(@NativeType("GLuint") int buffer, @NativeType("GLenum") int access, long length, ByteBuffer old_buffer) {
         return org.lwjgl.opengl.GL45.glMapNamedBuffer(buffer, access, length, old_buffer);
     }
+    /** Unsafe version of: {@link #glMapNamedBufferRange MapNamedBufferRange} */
+    public static long nglMapNamedBufferRange(int buffer, long offset, long length, int access) {
+        return org.lwjgl.opengl.GL45.nglMapNamedBufferRange(buffer, offset, length, access);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMapBufferRange">Reference Page</a></p>
      * 
@@ -18593,6 +26720,33 @@ public class GL {
         return org.lwjgl.opengl.GL45.glMapNamedBufferRange(buffer, offset, length, access, old_buffer);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glUnmapBuffer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL15#glUnmapBuffer UnmapBuffer}.
+     *
+     * @param buffer the buffer object name
+     */
+    @NativeType("GLboolean")
+    public static boolean glUnmapNamedBuffer(@NativeType("GLuint") int buffer) {
+        return org.lwjgl.opengl.GL45.glUnmapNamedBuffer(buffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFlushMappedBufferRange">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glFlushMappedBufferRange FlushMappedBufferRange}.
+     *
+     * @param buffer the buffer object name
+     * @param offset the start of the buffer subrange, in basic machine units
+     * @param length the length of the buffer subrange, in basic machine units
+     */
+    public static void glFlushMappedNamedBufferRange(@NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long length) {
+        org.lwjgl.opengl.GL45.glFlushMappedNamedBufferRange(buffer, offset, length);
+    }
+    /** Unsafe version of: {@link #glGetNamedBufferParameteriv GetNamedBufferParameteriv} */
+    public static void nglGetNamedBufferParameteriv(int buffer, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetNamedBufferParameteriv(buffer, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferParameter">Reference Page</a></p>
      * 
      * DSA version of {@link GL15#glGetBufferParameteriv GetBufferParameteriv}.
@@ -18615,6 +26769,10 @@ public class GL {
     @NativeType("void")
     public static int glGetNamedBufferParameteri(@NativeType("GLuint") int buffer, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetNamedBufferParameteri(buffer, pname);
+    }
+    /** Unsafe version of: {@link #glGetNamedBufferParameteri64v GetNamedBufferParameteri64v} */
+    public static void nglGetNamedBufferParameteri64v(int buffer, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetNamedBufferParameteri64v(buffer, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferParameter">Reference Page</a></p>
@@ -18640,6 +26798,10 @@ public class GL {
     public static long glGetNamedBufferParameteri64(@NativeType("GLuint") int buffer, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetNamedBufferParameteri64(buffer, pname);
     }
+    /** Unsafe version of: {@link #glGetNamedBufferPointerv GetNamedBufferPointerv} */
+    public static void nglGetNamedBufferPointerv(int buffer, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetNamedBufferPointerv(buffer, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferPointerv">Reference Page</a></p>
      * 
@@ -18663,6 +26825,14 @@ public class GL {
     @NativeType("void")
     public static long glGetNamedBufferPointer(@NativeType("GLuint") int buffer, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetNamedBufferPointer(buffer, pname);
+    }
+    /**
+     * Unsafe version of: {@link #glGetNamedBufferSubData GetNamedBufferSubData}
+     *
+     * @param size the size in bytes of the data store region being returned
+     */
+    public static void nglGetNamedBufferSubData(int buffer, long offset, long size, long data) {
+        org.lwjgl.opengl.GL45.nglGetNamedBufferSubData(buffer, offset, size, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetBufferSubData">Reference Page</a></p>
@@ -18737,6 +26907,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetNamedBufferSubData(buffer, offset, data);
     }
     /**
+     * Unsafe version of: {@link #glCreateFramebuffers CreateFramebuffers}
+     *
+     * @param n the number of framebuffer names to create
+     */
+    public static void nglCreateFramebuffers(int n, long framebuffers) {
+        org.lwjgl.opengl.GL45.nglCreateFramebuffers(n, framebuffers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateFramebuffers">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused framebuffer names in {@code framebuffers}, each representing a new framebuffer object.
@@ -18754,6 +26932,77 @@ public class GL {
     @NativeType("void")
     public static int glCreateFramebuffers() {
         return org.lwjgl.opengl.GL45.glCreateFramebuffers();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferRenderbuffer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glFramebufferRenderbuffer FramebufferRenderbuffer}.
+     *
+     * @param framebuffer        the framebuffer name
+     * @param attachment         the attachment point of the framebuffer. One of:<br><table><tr><td>{@link GL30#GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>{@link GL30#GL_COLOR_ATTACHMENT1 COLOR_ATTACHMENT1}</td><td>{@link GL30#GL_COLOR_ATTACHMENT2 COLOR_ATTACHMENT2}</td><td>{@link GL30#GL_COLOR_ATTACHMENT3 COLOR_ATTACHMENT3}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT4 COLOR_ATTACHMENT4}</td><td>{@link GL30#GL_COLOR_ATTACHMENT5 COLOR_ATTACHMENT5}</td><td>{@link GL30#GL_COLOR_ATTACHMENT6 COLOR_ATTACHMENT6}</td><td>{@link GL30#GL_COLOR_ATTACHMENT7 COLOR_ATTACHMENT7}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT8 COLOR_ATTACHMENT8}</td><td>{@link GL30#GL_COLOR_ATTACHMENT9 COLOR_ATTACHMENT9}</td><td>{@link GL30#GL_COLOR_ATTACHMENT10 COLOR_ATTACHMENT10}</td><td>{@link GL30#GL_COLOR_ATTACHMENT11 COLOR_ATTACHMENT11}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT12 COLOR_ATTACHMENT12}</td><td>{@link GL30#GL_COLOR_ATTACHMENT13 COLOR_ATTACHMENT13}</td><td>{@link GL30#GL_COLOR_ATTACHMENT14 COLOR_ATTACHMENT14}</td><td>{@link GL30#GL_COLOR_ATTACHMENT15 COLOR_ATTACHMENT15}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT16 COLOR_ATTACHMENT16}</td><td>{@link GL30#GL_COLOR_ATTACHMENT17 COLOR_ATTACHMENT17}</td><td>{@link GL30#GL_COLOR_ATTACHMENT18 COLOR_ATTACHMENT18}</td><td>{@link GL30#GL_COLOR_ATTACHMENT19 COLOR_ATTACHMENT19}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT20 COLOR_ATTACHMENT20}</td><td>{@link GL30#GL_COLOR_ATTACHMENT21 COLOR_ATTACHMENT21}</td><td>{@link GL30#GL_COLOR_ATTACHMENT22 COLOR_ATTACHMENT22}</td><td>{@link GL30#GL_COLOR_ATTACHMENT23 COLOR_ATTACHMENT23}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT24 COLOR_ATTACHMENT24}</td><td>{@link GL30#GL_COLOR_ATTACHMENT25 COLOR_ATTACHMENT25}</td><td>{@link GL30#GL_COLOR_ATTACHMENT26 COLOR_ATTACHMENT26}</td><td>{@link GL30#GL_COLOR_ATTACHMENT27 COLOR_ATTACHMENT27}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT28 COLOR_ATTACHMENT28}</td><td>{@link GL30#GL_COLOR_ATTACHMENT29 COLOR_ATTACHMENT29}</td><td>{@link GL30#GL_COLOR_ATTACHMENT30 COLOR_ATTACHMENT30}</td><td>{@link GL30#GL_COLOR_ATTACHMENT31 COLOR_ATTACHMENT31}</td></tr><tr><td>{@link GL30#GL_DEPTH_ATTACHMENT DEPTH_ATTACHMENT}</td><td>{@link GL30#GL_STENCIL_ATTACHMENT STENCIL_ATTACHMENT}</td><td>{@link GL30#GL_DEPTH_STENCIL_ATTACHMENT DEPTH_STENCIL_ATTACHMENT}</td></tr></table>
+     * @param renderbuffertarget the renderbuffer target. Must be:<br><table><tr><td>{@link GL30#GL_RENDERBUFFER RENDERBUFFER}</td></tr></table>
+     * @param renderbuffer       the name of an existing renderbuffer object of type {@code renderbuffertarget} to attach
+     */
+    public static void glNamedFramebufferRenderbuffer(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int attachment, @NativeType("GLenum") int renderbuffertarget, @NativeType("GLuint") int renderbuffer) {
+        org.lwjgl.opengl.GL45.glNamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferParameteri">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glFramebufferParameteri FramebufferParameteri}.
+     *
+     * @param framebuffer the framebuffer name
+     * @param pname       a token indicating the parameter to be modified. One of:<br><table><tr><td>{@link GL43#GL_FRAMEBUFFER_DEFAULT_WIDTH FRAMEBUFFER_DEFAULT_WIDTH}</td><td>{@link GL43#GL_FRAMEBUFFER_DEFAULT_HEIGHT FRAMEBUFFER_DEFAULT_HEIGHT}</td></tr><tr><td>{@link GL43#GL_FRAMEBUFFER_DEFAULT_LAYERS FRAMEBUFFER_DEFAULT_LAYERS}</td><td>{@link GL43#GL_FRAMEBUFFER_DEFAULT_SAMPLES FRAMEBUFFER_DEFAULT_SAMPLES}</td></tr><tr><td>{@link GL43#GL_FRAMEBUFFER_DEFAULT_FIXED_SAMPLE_LOCATIONS FRAMEBUFFER_DEFAULT_FIXED_SAMPLE_LOCATIONS}</td></tr></table>
+     * @param param       the new value for the parameter named {@code pname}
+     */
+    public static void glNamedFramebufferParameteri(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL45.glNamedFramebufferParameteri(framebuffer, pname, param);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferTexture">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL32#glFramebufferTexture FramebufferTexture}.
+     *
+     * @param framebuffer the framebuffer name
+     * @param attachment  the attachment point of the framebuffer
+     * @param texture     the texture object to attach to the framebuffer attachment point named by {@code attachment}
+     * @param level       the mipmap level of {@code texture} to attach
+     */
+    public static void glNamedFramebufferTexture(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int attachment, @NativeType("GLuint") int texture, @NativeType("GLint") int level) {
+        org.lwjgl.opengl.GL45.glNamedFramebufferTexture(framebuffer, attachment, texture, level);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferTextureLayer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glFramebufferTextureLayer FramebufferTextureLayer}.
+     *
+     * @param framebuffer the framebuffer name
+     * @param attachment  the attachment point of the framebuffer. One of:<br><table><tr><td>{@link GL30#GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>{@link GL30#GL_COLOR_ATTACHMENT1 COLOR_ATTACHMENT1}</td><td>{@link GL30#GL_COLOR_ATTACHMENT2 COLOR_ATTACHMENT2}</td><td>{@link GL30#GL_COLOR_ATTACHMENT3 COLOR_ATTACHMENT3}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT4 COLOR_ATTACHMENT4}</td><td>{@link GL30#GL_COLOR_ATTACHMENT5 COLOR_ATTACHMENT5}</td><td>{@link GL30#GL_COLOR_ATTACHMENT6 COLOR_ATTACHMENT6}</td><td>{@link GL30#GL_COLOR_ATTACHMENT7 COLOR_ATTACHMENT7}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT8 COLOR_ATTACHMENT8}</td><td>{@link GL30#GL_COLOR_ATTACHMENT9 COLOR_ATTACHMENT9}</td><td>{@link GL30#GL_COLOR_ATTACHMENT10 COLOR_ATTACHMENT10}</td><td>{@link GL30#GL_COLOR_ATTACHMENT11 COLOR_ATTACHMENT11}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT12 COLOR_ATTACHMENT12}</td><td>{@link GL30#GL_COLOR_ATTACHMENT13 COLOR_ATTACHMENT13}</td><td>{@link GL30#GL_COLOR_ATTACHMENT14 COLOR_ATTACHMENT14}</td><td>{@link GL30#GL_COLOR_ATTACHMENT15 COLOR_ATTACHMENT15}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT16 COLOR_ATTACHMENT16}</td><td>{@link GL30#GL_COLOR_ATTACHMENT17 COLOR_ATTACHMENT17}</td><td>{@link GL30#GL_COLOR_ATTACHMENT18 COLOR_ATTACHMENT18}</td><td>{@link GL30#GL_COLOR_ATTACHMENT19 COLOR_ATTACHMENT19}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT20 COLOR_ATTACHMENT20}</td><td>{@link GL30#GL_COLOR_ATTACHMENT21 COLOR_ATTACHMENT21}</td><td>{@link GL30#GL_COLOR_ATTACHMENT22 COLOR_ATTACHMENT22}</td><td>{@link GL30#GL_COLOR_ATTACHMENT23 COLOR_ATTACHMENT23}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT24 COLOR_ATTACHMENT24}</td><td>{@link GL30#GL_COLOR_ATTACHMENT25 COLOR_ATTACHMENT25}</td><td>{@link GL30#GL_COLOR_ATTACHMENT26 COLOR_ATTACHMENT26}</td><td>{@link GL30#GL_COLOR_ATTACHMENT27 COLOR_ATTACHMENT27}</td></tr><tr><td>{@link GL30#GL_COLOR_ATTACHMENT28 COLOR_ATTACHMENT28}</td><td>{@link GL30#GL_COLOR_ATTACHMENT29 COLOR_ATTACHMENT29}</td><td>{@link GL30#GL_COLOR_ATTACHMENT30 COLOR_ATTACHMENT30}</td><td>{@link GL30#GL_COLOR_ATTACHMENT31 COLOR_ATTACHMENT31}</td></tr><tr><td>{@link GL30#GL_DEPTH_ATTACHMENT DEPTH_ATTACHMENT}</td><td>{@link GL30#GL_STENCIL_ATTACHMENT STENCIL_ATTACHMENT}</td><td>{@link GL30#GL_DEPTH_STENCIL_ATTACHMENT DEPTH_STENCIL_ATTACHMENT}</td></tr></table>
+     * @param texture     the texture object to attach to the framebuffer attachment point named by {@code attachment}
+     * @param level       the mipmap level of {@code texture} to attach
+     * @param layer       the layer of {@code texture} to attach.
+     */
+    public static void glNamedFramebufferTextureLayer(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int attachment, @NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int layer) {
+        org.lwjgl.opengl.GL45.glNamedFramebufferTextureLayer(framebuffer, attachment, texture, level, layer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferDrawBuffer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL11#glDrawBuffer DrawBuffer}.
+     *
+     * @param framebuffer the framebuffer name
+     * @param buf         the color buffer to draw to. One of:<br><table><tr><td>{@link GL11#GL_NONE NONE}</td><td>{@link GL11#GL_FRONT_LEFT FRONT_LEFT}</td><td>{@link GL11#GL_FRONT_RIGHT FRONT_RIGHT}</td><td>{@link GL11#GL_BACK_LEFT BACK_LEFT}</td><td>{@link GL11#GL_BACK_RIGHT BACK_RIGHT}</td><td>{@link GL11#GL_FRONT FRONT}</td><td>{@link GL11#GL_BACK BACK}</td><td>{@link GL11#GL_LEFT LEFT}</td></tr><tr><td>{@link GL11#GL_RIGHT RIGHT}</td><td>{@link GL11#GL_FRONT_AND_BACK FRONT_AND_BACK}</td><td>{@link GL11#GL_AUX0 AUX0}</td><td>{@link GL11#GL_AUX1 AUX1}</td><td>{@link GL11#GL_AUX2 AUX2}</td><td>{@link GL11#GL_AUX3 AUX3}</td><td>{@link GL30#GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>GL30.GL_COLOR_ATTACHMENT[1-15]</td></tr></table>
+     */
+    public static void glNamedFramebufferDrawBuffer(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int buf) {
+        org.lwjgl.opengl.GL45.glNamedFramebufferDrawBuffer(framebuffer, buf);
+    }
+    /**
+     * Unsafe version of: {@link #glNamedFramebufferDrawBuffers NamedFramebufferDrawBuffers}
+     *
+     * @param n the number of buffers in {@code bufs}
+     */
+    public static void nglNamedFramebufferDrawBuffers(int framebuffer, int n, long bufs) {
+        org.lwjgl.opengl.GL45.nglNamedFramebufferDrawBuffers(framebuffer, n, bufs);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferDrawBuffers">Reference Page</a></p>
@@ -18777,6 +27026,25 @@ public class GL {
         org.lwjgl.opengl.GL45.glNamedFramebufferDrawBuffers(framebuffer, buf);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glFramebufferReadBuffer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL11#glReadBuffer ReadBuffer}.
+     *
+     * @param framebuffer the framebuffer name
+     * @param src         the color buffer to read from. One of:<br><table><tr><td>{@link GL11#GL_NONE NONE}</td><td>{@link GL11#GL_FRONT_LEFT FRONT_LEFT}</td><td>{@link GL11#GL_FRONT_RIGHT FRONT_RIGHT}</td><td>{@link GL11#GL_BACK_LEFT BACK_LEFT}</td><td>{@link GL11#GL_BACK_RIGHT BACK_RIGHT}</td><td>{@link GL11#GL_FRONT FRONT}</td><td>{@link GL11#GL_BACK BACK}</td><td>{@link GL11#GL_LEFT LEFT}</td></tr><tr><td>{@link GL11#GL_RIGHT RIGHT}</td><td>{@link GL11#GL_FRONT_AND_BACK FRONT_AND_BACK}</td><td>{@link GL11#GL_AUX0 AUX0}</td><td>{@link GL11#GL_AUX1 AUX1}</td><td>{@link GL11#GL_AUX2 AUX2}</td><td>{@link GL11#GL_AUX3 AUX3}</td><td>{@link GL30#GL_COLOR_ATTACHMENT0 COLOR_ATTACHMENT0}</td><td>GL30.GL_COLOR_ATTACHMENT[1-15]</td></tr></table>
+     */
+    public static void glNamedFramebufferReadBuffer(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int src) {
+        org.lwjgl.opengl.GL45.glNamedFramebufferReadBuffer(framebuffer, src);
+    }
+    /**
+     * Unsafe version of: {@link #glInvalidateNamedFramebufferData InvalidateNamedFramebufferData}
+     *
+     * @param numAttachments the number of entries in the {@code attachments} array
+     */
+    public static void nglInvalidateNamedFramebufferData(int framebuffer, int numAttachments, long attachments) {
+        org.lwjgl.opengl.GL45.nglInvalidateNamedFramebufferData(framebuffer, numAttachments, attachments);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateFramebufferData">Reference Page</a></p>
      * 
      * DSA version of {@link GL43#glInvalidateFramebuffer InvalidateFramebuffer}.
@@ -18796,6 +27064,14 @@ public class GL {
      */
     public static void glInvalidateNamedFramebufferData(@NativeType("GLuint") int framebuffer, @NativeType("const GLenum *") int attachment) {
         org.lwjgl.opengl.GL45.glInvalidateNamedFramebufferData(framebuffer, attachment);
+    }
+    /**
+     * Unsafe version of: {@link #glInvalidateNamedFramebufferSubData InvalidateNamedFramebufferSubData}
+     *
+     * @param numAttachments the number of entries in the {@code attachments} array
+     */
+    public static void nglInvalidateNamedFramebufferSubData(int framebuffer, int numAttachments, long attachments, int x, int y, int width, int height) {
+        org.lwjgl.opengl.GL45.nglInvalidateNamedFramebufferSubData(framebuffer, numAttachments, attachments, x, y, width, height);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glInvalidateFramebufferSubData">Reference Page</a></p>
@@ -18826,6 +27102,10 @@ public class GL {
     public static void glInvalidateNamedFramebufferSubData(@NativeType("GLuint") int framebuffer, @NativeType("const GLenum *") int attachment, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
         org.lwjgl.opengl.GL45.glInvalidateNamedFramebufferSubData(framebuffer, attachment, x, y, width, height);
     }
+    /** Unsafe version of: {@link #glClearNamedFramebufferiv ClearNamedFramebufferiv} */
+    public static void nglClearNamedFramebufferiv(int framebuffer, int buffer, int drawbuffer, long value) {
+        org.lwjgl.opengl.GL45.nglClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearFramebuffer">Reference Page</a></p>
      * 
@@ -18840,6 +27120,10 @@ public class GL {
     public static void glClearNamedFramebufferiv(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int buffer, @NativeType("GLint") int drawbuffer, @NativeType("GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL45.glClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value);
     }
+    /** Unsafe version of: {@link #glClearNamedFramebufferuiv ClearNamedFramebufferuiv} */
+    public static void nglClearNamedFramebufferuiv(int framebuffer, int buffer, int drawbuffer, long value) {
+        org.lwjgl.opengl.GL45.nglClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, value);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearFramebuffer">Reference Page</a></p>
      * 
@@ -18852,6 +27136,10 @@ public class GL {
      */
     public static void glClearNamedFramebufferuiv(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int buffer, @NativeType("GLint") int drawbuffer, @NativeType("GLint *") IntBuffer value) {
         org.lwjgl.opengl.GL45.glClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, value);
+    }
+    /** Unsafe version of: {@link #glClearNamedFramebufferfv ClearNamedFramebufferfv} */
+    public static void nglClearNamedFramebufferfv(int framebuffer, int buffer, int drawbuffer, long value) {
+        org.lwjgl.opengl.GL45.nglClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, value);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glClearFramebuffer">Reference Page</a></p>
@@ -18866,6 +27154,57 @@ public class GL {
      */
     public static void glClearNamedFramebufferfv(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int buffer, @NativeType("GLint") int drawbuffer, @NativeType("GLfloat *") FloatBuffer value) {
         org.lwjgl.opengl.GL45.glClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, value);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glClearFramebufferfi">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glClearBufferfi ClearBufferfi}.
+     *
+     * @param framebuffer the framebuffer name
+     * @param buffer      the buffer to clear. Must be:<br><table><tr><td>{@link GL30#GL_DEPTH_STENCIL DEPTH_STENCIL}</td></tr></table>
+     * @param drawbuffer  the draw buffer to clear
+     * @param depth       the depth value to clear the buffer to
+     * @param stencil     the stencil value to clear the buffer to
+     */
+    public static void glClearNamedFramebufferfi(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int buffer, @NativeType("GLint") int drawbuffer, @NativeType("GLfloat") float depth, @NativeType("GLint") int stencil) {
+        org.lwjgl.opengl.GL45.glClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBlitFramebuffer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glBlitFramebuffer BlitFramebuffer}.
+     *
+     * @param readFramebuffer the source framebuffer name
+     * @param drawFramebuffer the destination framebuffer name
+     * @param srcX0           the lower-left coordinate of the source rectangle within the read buffer
+     * @param srcY0           the upper-left coordinate of the source rectangle within the read buffer
+     * @param srcX1           the lower-right coordinate of the source rectangle within the read buffer
+     * @param srcY1           the upper-right coordinate of the source rectangle within the read buffer
+     * @param dstX0           the lower-left coordinate of the destination rectangle within the write buffer
+     * @param dstY0           the upper-left coordinate of the destination rectangle within the write buffer
+     * @param dstX1           the lower-right coordinate of the destination rectangle within the write buffer
+     * @param dstY1           the upper-right coordinate of the destination rectangle within the write buffer
+     * @param mask            the bitwise OR of the flags indicating which buffers are to be copied. One of:<br><table><tr><td>{@link GL11#GL_COLOR_BUFFER_BIT COLOR_BUFFER_BIT}</td><td>{@link GL11#GL_DEPTH_BUFFER_BIT DEPTH_BUFFER_BIT}</td><td>{@link GL11#GL_STENCIL_BUFFER_BIT STENCIL_BUFFER_BIT}</td></tr></table>
+     * @param filter          the interpolation to be applied if the image is stretched. One of:<br><table><tr><td>{@link GL11#GL_NEAREST NEAREST}</td><td>{@link GL11#GL_LINEAR LINEAR}</td></tr></table>
+     */
+    public static void glBlitNamedFramebuffer(@NativeType("GLuint") int readFramebuffer, @NativeType("GLuint") int drawFramebuffer, @NativeType("GLint") int srcX0, @NativeType("GLint") int srcY0, @NativeType("GLint") int srcX1, @NativeType("GLint") int srcY1, @NativeType("GLint") int dstX0, @NativeType("GLint") int dstY0, @NativeType("GLint") int dstX1, @NativeType("GLint") int dstY1, @NativeType("GLbitfield") int mask, @NativeType("GLenum") int filter) {
+        org.lwjgl.opengl.GL45.glBlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCheckFramebufferStatus">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glCheckFramebufferStatus CheckFramebufferStatus}.
+     *
+     * @param framebuffer the framebuffer name
+     * @param target      the target of the framebuffer completeness check. One of:<br><table><tr><td>{@link GL30#GL_FRAMEBUFFER FRAMEBUFFER}</td><td>{@link GL30#GL_READ_FRAMEBUFFER READ_FRAMEBUFFER}</td><td>{@link GL30#GL_DRAW_FRAMEBUFFER DRAW_FRAMEBUFFER}</td></tr></table>
+     */
+    @NativeType("GLenum")
+    public static int glCheckNamedFramebufferStatus(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int target) {
+        return org.lwjgl.opengl.GL45.glCheckNamedFramebufferStatus(framebuffer, target);
+    }
+    /** Unsafe version of: {@link #glGetNamedFramebufferParameteriv GetNamedFramebufferParameteriv} */
+    public static void nglGetNamedFramebufferParameteriv(int framebuffer, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetNamedFramebufferParameteriv(framebuffer, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFramebufferParameter">Reference Page</a></p>
@@ -18890,6 +27229,10 @@ public class GL {
     @NativeType("void")
     public static int glGetNamedFramebufferParameteri(@NativeType("GLuint") int framebuffer, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetNamedFramebufferParameteri(framebuffer, pname);
+    }
+    /** Unsafe version of: {@link #glGetNamedFramebufferAttachmentParameteriv GetNamedFramebufferAttachmentParameteriv} */
+    public static void nglGetNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetFramebufferAttachmentParameter">Reference Page</a></p>
@@ -18918,6 +27261,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetNamedFramebufferAttachmentParameteri(framebuffer, attachment, pname);
     }
     /**
+     * Unsafe version of: {@link #glCreateRenderbuffers CreateRenderbuffers}
+     *
+     * @param n the number of renderbuffer names to create
+     */
+    public static void nglCreateRenderbuffers(int n, long renderbuffers) {
+        org.lwjgl.opengl.GL45.nglCreateRenderbuffers(n, renderbuffers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateRenderbuffers">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused renderbuffer names in {@code renderbuffers}, each representing a new renderbuffer object.
@@ -18935,6 +27286,37 @@ public class GL {
     @NativeType("void")
     public static int glCreateRenderbuffers() {
         return org.lwjgl.opengl.GL45.glCreateRenderbuffers();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glRenderbufferStorage">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glRenderbufferStorage RenderbufferStorage}.
+     *
+     * @param renderbuffer   
+     * @param internalformat the internal format to use for the renderbuffer object's image. Must be a color-renderable, depth-renderable, or stencil-renderable format.
+     * @param width          the width of the renderbuffer, in pixels
+     * @param height         the height of the renderbuffer, in pixels
+     */
+    public static void glNamedRenderbufferStorage(@NativeType("GLuint") int renderbuffer, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL45.glNamedRenderbufferStorage(renderbuffer, internalformat, width, height);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glRenderbufferStorageMultisample">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glRenderbufferStorageMultisample RenderbufferStorageMultisample}.
+     *
+     * @param renderbuffer   
+     * @param samples        the number of samples to be used for the renderbuffer object's storage
+     * @param internalformat the internal format to use for the renderbuffer object's image. Must be a color-renderable, depth-renderable, or stencil-renderable format.
+     * @param width          the width of the renderbuffer, in pixels
+     * @param height         the height of the renderbuffer, in pixels
+     */
+    public static void glNamedRenderbufferStorageMultisample(@NativeType("GLuint") int renderbuffer, @NativeType("GLsizei") int samples, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL45.glNamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height);
+    }
+    /** Unsafe version of: {@link #glGetNamedRenderbufferParameteriv GetNamedRenderbufferParameteriv} */
+    public static void nglGetNamedRenderbufferParameteriv(int renderbuffer, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetNamedRenderbufferParameteriv(renderbuffer, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetRenderbufferParameter">Reference Page</a></p>
@@ -18961,6 +27343,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetNamedRenderbufferParameteri(renderbuffer, pname);
     }
     /**
+     * Unsafe version of: {@link #glCreateTextures CreateTextures}
+     *
+     * @param n the number of texture names to create
+     */
+    public static void nglCreateTextures(int target, int n, long textures) {
+        org.lwjgl.opengl.GL45.nglCreateTextures(target, n, textures);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateTextures">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused texture names in {@code textures}, each representing a new texture object.
@@ -18981,6 +27371,111 @@ public class GL {
     @NativeType("void")
     public static int glCreateTextures(@NativeType("GLenum") int target) {
         return org.lwjgl.opengl.GL45.glCreateTextures(target);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureBuffer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL31#glTexBuffer TexBuffer}.
+     *
+     * @param texture        the texture name
+     * @param internalformat the sized internal format of the data in the store belonging to {@code buffer}
+     * @param buffer         the name of the buffer object whose storage to attach to the active buffer texture
+     */
+    public static void glTextureBuffer(@NativeType("GLuint") int texture, @NativeType("GLenum") int internalformat, @NativeType("GLuint") int buffer) {
+        org.lwjgl.opengl.GL45.glTextureBuffer(texture, internalformat, buffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureBufferRange">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glTexBufferRange TexBufferRange}.
+     *
+     * @param texture        the texture name
+     * @param internalformat the internal format of the data in the store belonging to {@code buffer}
+     * @param buffer         the name of the buffer object whose storage to attach to the active buffer texture
+     * @param offset         the offset of the start of the range of the buffer's data store to attach
+     * @param size           the size of the range of the buffer's data store to attach
+     */
+    public static void glTextureBufferRange(@NativeType("GLuint") int texture, @NativeType("GLenum") int internalformat, @NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizeiptr") long size) {
+        org.lwjgl.opengl.GL45.glTextureBufferRange(texture, internalformat, buffer, offset, size);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureStorage1D">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL42#glTexStorage1D TexStorage1D}.
+     *
+     * @param texture        the texture name
+     * @param levels         the number of texture levels
+     * @param internalformat the sized internal format to be used to store texture image data
+     * @param width          the width of the texture, in texels
+     */
+    public static void glTextureStorage1D(@NativeType("GLuint") int texture, @NativeType("GLsizei") int levels, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width) {
+        org.lwjgl.opengl.GL45.glTextureStorage1D(texture, levels, internalformat, width);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureStorage2D">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL42#glTexStorage2D TexStorage2D}.
+     *
+     * @param texture        the texture name
+     * @param levels         the number of texture levels
+     * @param internalformat the sized internal format to be used to store texture image data
+     * @param width          the width of the texture, in texels
+     * @param height         the height of the texture, in texels
+     */
+    public static void glTextureStorage2D(@NativeType("GLuint") int texture, @NativeType("GLsizei") int levels, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL45.glTextureStorage2D(texture, levels, internalformat, width, height);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureStorage3D">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL42#glTexStorage3D TexStorage3D}.
+     *
+     * @param texture        the texture name
+     * @param levels         the number of texture levels
+     * @param internalformat the sized internal format to be used to store texture image data
+     * @param width          the width of the texture, in texels
+     * @param height         the height of the texture, in texels
+     * @param depth          the depth of the texture, in texels
+     */
+    public static void glTextureStorage3D(@NativeType("GLuint") int texture, @NativeType("GLsizei") int levels, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth) {
+        org.lwjgl.opengl.GL45.glTextureStorage3D(texture, levels, internalformat, width, height, depth);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureStorage2DMultisample">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glTexStorage2DMultisample TexStorage2DMultisample}.
+     *
+     * @param texture              the texture name
+     * @param samples              the number of samples in the texture
+     * @param internalformat       the sized internal format to be used to store texture image data
+     * @param width                the width of the texture, in texels
+     * @param height               the height of the texture, in texels
+     * @param fixedsamplelocations whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not
+     *                             depend on the internal format or size of the image
+     */
+    public static void glTextureStorage2DMultisample(@NativeType("GLuint") int texture, @NativeType("GLsizei") int samples, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLboolean") boolean fixedsamplelocations) {
+        org.lwjgl.opengl.GL45.glTextureStorage2DMultisample(texture, samples, internalformat, width, height, fixedsamplelocations);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureStorage3DMultisample">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glTexStorage3DMultisample TexStorage3DMultisample}.
+     *
+     * @param texture              the texture name
+     * @param samples              the number of samples in the texture
+     * @param internalformat       the sized internal format to be used to store texture image data
+     * @param width                the width of the texture, in texels
+     * @param height               the height of the texture, in texels
+     * @param depth                the depth of the texture, in texels
+     * @param fixedsamplelocations whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not
+     *                             depend on the internal format or size of the image
+     */
+    public static void glTextureStorage3DMultisample(@NativeType("GLuint") int texture, @NativeType("GLsizei") int samples, @NativeType("GLenum") int internalformat, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLsizei") int depth, @NativeType("GLboolean") boolean fixedsamplelocations) {
+        org.lwjgl.opengl.GL45.glTextureStorage3DMultisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations);
+    }
+    /** Unsafe version of: {@link #glTextureSubImage1D TextureSubImage1D} */
+    public static void nglTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL45.nglTextureSubImage1D(texture, level, xoffset, width, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTextureSubImage1D">Reference Page</a></p>
@@ -19077,6 +27572,10 @@ public class GL {
      */
     public static void glTextureSubImage1D(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLsizei") int width, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") DoubleBuffer pixels) {
         org.lwjgl.opengl.GL45.glTextureSubImage1D(texture, level, xoffset, width, format, type, pixels);
+    }
+    /** Unsafe version of: {@link #glTextureSubImage2D TextureSubImage2D} */
+    public static void nglTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL45.nglTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTextureSubImage2D">Reference Page</a></p>
@@ -19185,6 +27684,10 @@ public class GL {
      */
     public static void glTextureSubImage2D(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("const void *") DoubleBuffer pixels) {
         org.lwjgl.opengl.GL45.glTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels);
+    }
+    /** Unsafe version of: {@link #glTextureSubImage3D TextureSubImage3D} */
+    public static void nglTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, long pixels) {
+        org.lwjgl.opengl.GL45.nglTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTextureSubImage3D">Reference Page</a></p>
@@ -19307,6 +27810,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
     }
     /**
+     * Unsafe version of: {@link #glCompressedTextureSubImage1D CompressedTextureSubImage1D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int imageSize, long data) {
+        org.lwjgl.opengl.GL45.nglCompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTextureSubImage1D">Reference Page</a></p>
      * 
      * DSA version of {@link GL13#glCompressedTexSubImage1D CompressedTexSubImage1D}.
@@ -19336,6 +27847,14 @@ public class GL {
      */
     public static void glCompressedTextureSubImage1D(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLsizei") int width, @NativeType("GLenum") int format, @NativeType("const void *") ByteBuffer data) {
         org.lwjgl.opengl.GL45.glCompressedTextureSubImage1D(texture, level, xoffset, width, format, data);
+    }
+    /**
+     * Unsafe version of: {@link #glCompressedTextureSubImage2D CompressedTextureSubImage2D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, long data) {
+        org.lwjgl.opengl.GL45.nglCompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTextureSubImage2D">Reference Page</a></p>
@@ -19371,6 +27890,14 @@ public class GL {
      */
     public static void glCompressedTextureSubImage2D(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height, @NativeType("GLenum") int format, @NativeType("const void *") ByteBuffer data) {
         org.lwjgl.opengl.GL45.glCompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, data);
+    }
+    /**
+     * Unsafe version of: {@link #glCompressedTextureSubImage3D CompressedTextureSubImage3D}
+     *
+     * @param imageSize the number of unsigned bytes of image data starting at the address specified by {@code data}
+     */
+    public static void nglCompressedTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, long data) {
+        org.lwjgl.opengl.GL45.nglCompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCompressedTextureSubImage3D">Reference Page</a></p>
@@ -19412,6 +27939,72 @@ public class GL {
         org.lwjgl.opengl.GL45.glCompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, data);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTextureSubImage1D">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL11#glCopyTexSubImage1D CopyTexSubImage1D}.
+     *
+     * @param texture the texture name
+     * @param level   the level-of-detail number
+     * @param xoffset the left texel coordinate of the texture subregion to update
+     * @param x       the left framebuffer pixel coordinate
+     * @param y       the lower framebuffer pixel coordinate
+     * @param width   the texture subregion width
+     */
+    public static void glCopyTextureSubImage1D(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width) {
+        org.lwjgl.opengl.GL45.glCopyTextureSubImage1D(texture, level, xoffset, x, y, width);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTextureSubImage2D">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL11#glCopyTexSubImage2D CopyTexSubImage2D}.
+     *
+     * @param texture the texture name
+     * @param level   the level-of-detail number
+     * @param xoffset the left texel coordinate of the texture subregion to update
+     * @param yoffset the lower texel coordinate of the texture subregion to update
+     * @param x       the left framebuffer pixel coordinate
+     * @param y       the lower framebuffer pixel coordinate
+     * @param width   the texture subregion width
+     * @param height  the texture subregion height
+     */
+    public static void glCopyTextureSubImage2D(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL45.glCopyTextureSubImage2D(texture, level, xoffset, yoffset, x, y, width, height);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glCopyTextureSubImage3D">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL12#glCopyTexSubImage3D CopyTexSubImage3D}.
+     *
+     * @param texture the texture name
+     * @param level   the level-of-detail number
+     * @param xoffset the x coordinate of the texture subregion to update
+     * @param yoffset the y coordinate of the texture subregion to update
+     * @param zoffset the z coordinate of the texture subregion to update
+     * @param x       the left framebuffer pixel coordinate
+     * @param y       the lower framebuffer pixel coordinate
+     * @param width   the texture subregion width
+     * @param height  the texture subregion height
+     */
+    public static void glCopyTextureSubImage3D(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLint") int xoffset, @NativeType("GLint") int yoffset, @NativeType("GLint") int zoffset, @NativeType("GLint") int x, @NativeType("GLint") int y, @NativeType("GLsizei") int width, @NativeType("GLsizei") int height) {
+        org.lwjgl.opengl.GL45.glCopyTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, x, y, width, height);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureParameterf">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL11#glTexParameterf TexParameterf}.
+     *
+     * @param texture the texture name
+     * @param pname   the parameter to set
+     * @param param   the parameter value
+     */
+    public static void glTextureParameterf(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname, @NativeType("GLfloat") float param) {
+        org.lwjgl.opengl.GL45.glTextureParameterf(texture, pname, param);
+    }
+    /** Unsafe version of: {@link #glTextureParameterfv TextureParameterfv} */
+    public static void nglTextureParameterfv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglTextureParameterfv(texture, pname, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTextureParameter">Reference Page</a></p>
      * 
      * DSA version of {@link GL11#glTexParameterfv TexParameterfv}.
@@ -19422,6 +28015,22 @@ public class GL {
      */
     public static void glTextureParameterfv(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname, @NativeType("const GLfloat *") FloatBuffer params) {
         org.lwjgl.opengl.GL45.glTextureParameterfv(texture, pname, params);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureParameteri">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL11#glTexParameteri TexParameteri}.
+     *
+     * @param texture the texture name
+     * @param pname   the parameter to set. One of:<br><table><tr><td>{@link GL12#GL_TEXTURE_BASE_LEVEL TEXTURE_BASE_LEVEL}</td><td>{@link GL11#GL_TEXTURE_BORDER_COLOR TEXTURE_BORDER_COLOR}</td><td>{@link GL14#GL_TEXTURE_COMPARE_MODE TEXTURE_COMPARE_MODE}</td><td>{@link GL14#GL_TEXTURE_COMPARE_FUNC TEXTURE_COMPARE_FUNC}</td></tr><tr><td>{@link GL14#GL_TEXTURE_LOD_BIAS TEXTURE_LOD_BIAS}</td><td>{@link GL11#GL_TEXTURE_MAG_FILTER TEXTURE_MAG_FILTER}</td><td>{@link GL12#GL_TEXTURE_MAX_LEVEL TEXTURE_MAX_LEVEL}</td><td>{@link GL12#GL_TEXTURE_MAX_LOD TEXTURE_MAX_LOD}</td></tr><tr><td>{@link GL11#GL_TEXTURE_MIN_FILTER TEXTURE_MIN_FILTER}</td><td>{@link GL12#GL_TEXTURE_MIN_LOD TEXTURE_MIN_LOD}</td><td>{@link GL11#GL_TEXTURE_PRIORITY TEXTURE_PRIORITY}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_R TEXTURE_SWIZZLE_R}</td></tr><tr><td>{@link GL33#GL_TEXTURE_SWIZZLE_G TEXTURE_SWIZZLE_G}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_B TEXTURE_SWIZZLE_B}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_A TEXTURE_SWIZZLE_A}</td><td>{@link GL33#GL_TEXTURE_SWIZZLE_RGBA TEXTURE_SWIZZLE_RGBA}</td></tr><tr><td>{@link GL11#GL_TEXTURE_WRAP_S TEXTURE_WRAP_S}</td><td>{@link GL11#GL_TEXTURE_WRAP_T TEXTURE_WRAP_T}</td><td>{@link GL12#GL_TEXTURE_WRAP_R TEXTURE_WRAP_R}</td><td>{@link GL14#GL_DEPTH_TEXTURE_MODE DEPTH_TEXTURE_MODE}</td></tr><tr><td>{@link GL14#GL_GENERATE_MIPMAP GENERATE_MIPMAP}</td></tr></table>
+     * @param param   the parameter value
+     */
+    public static void glTextureParameteri(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname, @NativeType("GLint") int param) {
+        org.lwjgl.opengl.GL45.glTextureParameteri(texture, pname, param);
+    }
+    /** Unsafe version of: {@link #glTextureParameterIiv TextureParameterIiv} */
+    public static void nglTextureParameterIiv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglTextureParameterIiv(texture, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTextureParameter">Reference Page</a></p>
@@ -19446,6 +28055,10 @@ public class GL {
     public static void glTextureParameterIi(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname, @NativeType("const GLint *") int param) {
         org.lwjgl.opengl.GL45.glTextureParameterIi(texture, pname, param);
     }
+    /** Unsafe version of: {@link #glTextureParameterIuiv TextureParameterIuiv} */
+    public static void nglTextureParameterIuiv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglTextureParameterIuiv(texture, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTextureParameter">Reference Page</a></p>
      * 
@@ -19469,6 +28082,10 @@ public class GL {
     public static void glTextureParameterIui(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname, @NativeType("const GLuint *") int param) {
         org.lwjgl.opengl.GL45.glTextureParameterIui(texture, pname, param);
     }
+    /** Unsafe version of: {@link #glTextureParameteriv TextureParameteriv} */
+    public static void nglTextureParameteriv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglTextureParameteriv(texture, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glTextureParameter">Reference Page</a></p>
      * 
@@ -19480,6 +28097,39 @@ public class GL {
      */
     public static void glTextureParameteriv(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname, @NativeType("const GLint *") IntBuffer params) {
         org.lwjgl.opengl.GL45.glTextureParameteriv(texture, pname, params);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGenerateTextureMipmap">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL30#glGenerateMipmap GenerateMipmap}.
+     *
+     * @param texture the texture name
+     */
+    public static void glGenerateTextureMipmap(@NativeType("GLuint") int texture) {
+        org.lwjgl.opengl.GL45.glGenerateTextureMipmap(texture);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glBindTextureUnit">Reference Page</a></p>
+     * 
+     * Binds an existing texture object to the texture unit numbered {@code unit}.
+     * 
+     * <p>{@code texture} must be zero or the name of an existing texture object. When {@code texture} is the name of an existing texture object, that object is
+     * bound to the target, in the corresponding texture unit, that was specified when the object was created. When {@code texture} is zero, each of the targets
+     * enumerated at the beginning of this section is reset to its default texture for the corresponding texture image unit.</p>
+     *
+     * @param unit    the texture unit number
+     * @param texture the texture name
+     */
+    public static void glBindTextureUnit(@NativeType("GLuint") int unit, @NativeType("GLuint") int texture) {
+        org.lwjgl.opengl.GL45.glBindTextureUnit(unit, texture);
+    }
+    /**
+     * Unsafe version of: {@link #glGetTextureImage GetTextureImage}
+     *
+     * @param bufSize the size of the buffer to receive the retrieved pixel data
+     */
+    public static void nglGetTextureImage(int texture, int level, int format, int type, int bufSize, long pixels) {
+        org.lwjgl.opengl.GL45.nglGetTextureImage(texture, level, format, type, bufSize, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureImage">Reference Page</a></p>
@@ -19567,6 +28217,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetTextureImage(texture, level, format, type, pixels);
     }
     /**
+     * Unsafe version of: {@link #glGetCompressedTextureImage GetCompressedTextureImage}
+     *
+     * @param bufSize the size of the buffer to receive the retrieved pixel data
+     */
+    public static void nglGetCompressedTextureImage(int texture, int level, int bufSize, long pixels) {
+        org.lwjgl.opengl.GL45.nglGetCompressedTextureImage(texture, level, bufSize, pixels);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetCompressedTextureImage">Reference Page</a></p>
      * 
      * DSA version of {@link GL13#glGetCompressedTexImage GetCompressedTexImage}.
@@ -19590,6 +28248,10 @@ public class GL {
      */
     public static void glGetCompressedTextureImage(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("void *") ByteBuffer pixels) {
         org.lwjgl.opengl.GL45.glGetCompressedTextureImage(texture, level, pixels);
+    }
+    /** Unsafe version of: {@link #glGetTextureLevelParameterfv GetTextureLevelParameterfv} */
+    public static void nglGetTextureLevelParameterfv(int texture, int level, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetTextureLevelParameterfv(texture, level, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureLevelParameter">Reference Page</a></p>
@@ -19617,6 +28279,10 @@ public class GL {
     public static float glGetTextureLevelParameterf(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetTextureLevelParameterf(texture, level, pname);
     }
+    /** Unsafe version of: {@link #glGetTextureLevelParameteriv GetTextureLevelParameteriv} */
+    public static void nglGetTextureLevelParameteriv(int texture, int level, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetTextureLevelParameteriv(texture, level, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureLevelParameter">Reference Page</a></p>
      * 
@@ -19643,6 +28309,10 @@ public class GL {
     public static int glGetTextureLevelParameteri(@NativeType("GLuint") int texture, @NativeType("GLint") int level, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetTextureLevelParameteri(texture, level, pname);
     }
+    /** Unsafe version of: {@link #glGetTextureParameterfv GetTextureParameterfv} */
+    public static void nglGetTextureParameterfv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetTextureParameterfv(texture, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureParameter">Reference Page</a></p>
      * 
@@ -19666,6 +28336,10 @@ public class GL {
     @NativeType("void")
     public static float glGetTextureParameterf(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetTextureParameterf(texture, pname);
+    }
+    /** Unsafe version of: {@link #glGetTextureParameterIiv GetTextureParameterIiv} */
+    public static void nglGetTextureParameterIiv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetTextureParameterIiv(texture, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureParameter">Reference Page</a></p>
@@ -19691,6 +28365,10 @@ public class GL {
     public static int glGetTextureParameterIi(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetTextureParameterIi(texture, pname);
     }
+    /** Unsafe version of: {@link #glGetTextureParameterIuiv GetTextureParameterIuiv} */
+    public static void nglGetTextureParameterIuiv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetTextureParameterIuiv(texture, pname, params);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureParameter">Reference Page</a></p>
      * 
@@ -19714,6 +28392,10 @@ public class GL {
     @NativeType("void")
     public static int glGetTextureParameterIui(@NativeType("GLuint") int texture, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetTextureParameterIui(texture, pname);
+    }
+    /** Unsafe version of: {@link #glGetTextureParameteriv GetTextureParameteriv} */
+    public static void nglGetTextureParameteriv(int texture, int pname, long params) {
+        org.lwjgl.opengl.GL45.nglGetTextureParameteriv(texture, pname, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureParameter">Reference Page</a></p>
@@ -19740,6 +28422,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetTextureParameteri(texture, pname);
     }
     /**
+     * Unsafe version of: {@link #glCreateVertexArrays CreateVertexArrays}
+     *
+     * @param n the number of vertex array object names to create
+     */
+    public static void nglCreateVertexArrays(int n, long arrays) {
+        org.lwjgl.opengl.GL45.nglCreateVertexArrays(n, arrays);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateVertexArrays">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused vertex array object names in {@code arrays}.
@@ -19759,6 +28449,61 @@ public class GL {
         return org.lwjgl.opengl.GL45.glCreateVertexArrays();
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glDisableVertexArrayAttrib">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL20#glDisableVertexAttribArray DisableVertexAttribArray}.
+     *
+     * @param vaobj the vertex array object name
+     * @param index the index of the generic vertex attribute to be disabled
+     */
+    public static void glDisableVertexArrayAttrib(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL45.glDisableVertexArrayAttrib(vaobj, index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glEnableVertexArrayAttrib">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL20#glEnableVertexAttribArray EnableVertexAttribArray}.
+     *
+     * @param vaobj the vertex array object name
+     * @param index the index of the generic vertex attribute to be enabled
+     */
+    public static void glEnableVertexArrayAttrib(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int index) {
+        org.lwjgl.opengl.GL45.glEnableVertexArrayAttrib(vaobj, index);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayElementBuffer">Reference Page</a></p>
+     * 
+     * Binds a buffer object to the element array buffer bind point of a vertex array object.
+     *
+     * @param vaobj  the vertex array object name
+     * @param buffer the buffer object name. If {@code buffer} is zero, any existing element array buffer binding to {@code vaobj} is removed.
+     */
+    public static void glVertexArrayElementBuffer(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int buffer) {
+        org.lwjgl.opengl.GL45.glVertexArrayElementBuffer(vaobj, buffer);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayVertexBuffer">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glBindVertexBuffer BindVertexBuffer}.
+     *
+     * @param vaobj        the vertex array object name
+     * @param bindingindex the index of the vertex buffer binding point to which to bind the buffer
+     * @param buffer       the name of an existing buffer to bind to the vertex buffer binding point
+     * @param offset       the offset of the first element of the buffer
+     * @param stride       the distance between elements within the buffer
+     */
+    public static void glVertexArrayVertexBuffer(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int bindingindex, @NativeType("GLuint") int buffer, @NativeType("GLintptr") long offset, @NativeType("GLsizei") int stride) {
+        org.lwjgl.opengl.GL45.glVertexArrayVertexBuffer(vaobj, bindingindex, buffer, offset, stride);
+    }
+    /**
+     * Unsafe version of: {@link #glVertexArrayVertexBuffers VertexArrayVertexBuffers}
+     *
+     * @param count the number of vertex buffer binding points
+     */
+    public static void nglVertexArrayVertexBuffers(int vaobj, int first, int count, long buffers, long offsets, long strides) {
+        org.lwjgl.opengl.GL45.nglVertexArrayVertexBuffers(vaobj, first, count, buffers, offsets, strides);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayVertexBuffers">Reference Page</a></p>
      * 
      * DSA version of {@link GL44#glBindVertexBuffers BindVertexBuffers}.
@@ -19771,6 +28516,78 @@ public class GL {
      */
     public static void glVertexArrayVertexBuffers(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int first, @NativeType("const GLuint *") IntBuffer buffers, @NativeType("const GLintptr *") PointerBuffer offsets, @NativeType("const GLsizei *") IntBuffer strides) {
         org.lwjgl.opengl.GL45.glVertexArrayVertexBuffers(vaobj, first, buffers, offsets, strides);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayAttribFormat">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glVertexAttribFormat VertexAttribFormat}.
+     *
+     * @param vaobj          the vertex array object name
+     * @param attribindex    the generic vertex attribute array being described
+     * @param size           the number of values per vertex that are stored in the array. One of:<br><table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>{@link GL12#GL_BGRA BGRA}</td></tr></table>
+     * @param type           the type of the data stored in the array
+     * @param normalized     if true then integer data is normalized to the range [-1, 1] or [0, 1] if it is signed or unsigned, respectively. If false then integer data is
+     *                       directly converted to floating point.
+     * @param relativeoffset the offset, measured in basic machine units of the first element relative to the start of the vertex buffer binding this attribute fetches from
+     */
+    public static void glVertexArrayAttribFormat(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int attribindex, @NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLboolean") boolean normalized, @NativeType("GLuint") int relativeoffset) {
+        org.lwjgl.opengl.GL45.glVertexArrayAttribFormat(vaobj, attribindex, size, type, normalized, relativeoffset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayAttribIFormat">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glVertexAttribIFormat VertexAttribIFormat}.
+     *
+     * @param vaobj          the vertex array object name
+     * @param attribindex    the generic vertex attribute array being described
+     * @param size           the number of values per vertex that are stored in the array. One of:<br><table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>{@link GL12#GL_BGRA BGRA}</td></tr></table>
+     * @param type           the type of the data stored in the array
+     * @param relativeoffset the offset, measured in basic machine units of the first element relative to the start of the vertex buffer binding this attribute fetches from
+     */
+    public static void glVertexArrayAttribIFormat(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int attribindex, @NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLuint") int relativeoffset) {
+        org.lwjgl.opengl.GL45.glVertexArrayAttribIFormat(vaobj, attribindex, size, type, relativeoffset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayAttribLFormat">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glVertexAttribLFormat VertexAttribLFormat}.
+     *
+     * @param vaobj          the vertex array object name
+     * @param attribindex    the generic vertex attribute array being described
+     * @param size           the number of values per vertex that are stored in the array. One of:<br><table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>{@link GL12#GL_BGRA BGRA}</td></tr></table>
+     * @param type           the type of the data stored in the array
+     * @param relativeoffset the offset, measured in basic machine units of the first element relative to the start of the vertex buffer binding this attribute fetches from
+     */
+    public static void glVertexArrayAttribLFormat(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int attribindex, @NativeType("GLint") int size, @NativeType("GLenum") int type, @NativeType("GLuint") int relativeoffset) {
+        org.lwjgl.opengl.GL45.glVertexArrayAttribLFormat(vaobj, attribindex, size, type, relativeoffset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayAttribBinding">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glVertexAttribBinding VertexAttribBinding}.
+     *
+     * @param vaobj        the vertex array object name
+     * @param attribindex  the index of the attribute to associate with a vertex buffer binding
+     * @param bindingindex the index of the vertex buffer binding with which to associate the generic vertex attribute
+     */
+    public static void glVertexArrayAttribBinding(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int attribindex, @NativeType("GLuint") int bindingindex) {
+        org.lwjgl.opengl.GL45.glVertexArrayAttribBinding(vaobj, attribindex, bindingindex);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glVertexArrayBindingDivisor">Reference Page</a></p>
+     * 
+     * DSA version of {@link GL43#glVertexBindingDivisor VertexBindingDivisor}.
+     *
+     * @param vaobj        the vertex array object name
+     * @param bindingindex the index of the generic vertex attribute
+     * @param divisor      the number of instances that will pass between updates of the generic attribute at slot {@code index}
+     */
+    public static void glVertexArrayBindingDivisor(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int bindingindex, @NativeType("GLuint") int divisor) {
+        org.lwjgl.opengl.GL45.glVertexArrayBindingDivisor(vaobj, bindingindex, divisor);
+    }
+    /** Unsafe version of: {@link #glGetVertexArrayiv GetVertexArrayiv} */
+    public static void nglGetVertexArrayiv(int vaobj, int pname, long param) {
+        org.lwjgl.opengl.GL45.nglGetVertexArrayiv(vaobj, pname, param);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexArray">Reference Page</a></p>
@@ -19795,6 +28612,10 @@ public class GL {
     @NativeType("void")
     public static int glGetVertexArrayi(@NativeType("GLuint") int vaobj, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetVertexArrayi(vaobj, pname);
+    }
+    /** Unsafe version of: {@link #glGetVertexArrayIndexediv GetVertexArrayIndexediv} */
+    public static void nglGetVertexArrayIndexediv(int vaobj, int index, int pname, long param) {
+        org.lwjgl.opengl.GL45.nglGetVertexArrayIndexediv(vaobj, index, pname, param);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexArrayIndexed">Reference Page</a></p>
@@ -19821,6 +28642,10 @@ public class GL {
     @NativeType("void")
     public static int glGetVertexArrayIndexedi(@NativeType("GLuint") int vaobj, @NativeType("GLuint") int index, @NativeType("GLenum") int pname) {
         return org.lwjgl.opengl.GL45.glGetVertexArrayIndexedi(vaobj, index, pname);
+    }
+    /** Unsafe version of: {@link #glGetVertexArrayIndexed64iv GetVertexArrayIndexed64iv} */
+    public static void nglGetVertexArrayIndexed64iv(int vaobj, int index, int pname, long param) {
+        org.lwjgl.opengl.GL45.nglGetVertexArrayIndexed64iv(vaobj, index, pname, param);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetVertexArrayIndexed">Reference Page</a></p>
@@ -19849,6 +28674,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetVertexArrayIndexed64i(vaobj, index, pname);
     }
     /**
+     * Unsafe version of: {@link #glCreateSamplers CreateSamplers}
+     *
+     * @param n the number of sampler object names to create
+     */
+    public static void nglCreateSamplers(int n, long samplers) {
+        org.lwjgl.opengl.GL45.nglCreateSamplers(n, samplers);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateSamplers">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused sampler names in {@code samplers}, each representing a new sampler object.
@@ -19868,6 +28701,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glCreateSamplers();
     }
     /**
+     * Unsafe version of: {@link #glCreateProgramPipelines CreateProgramPipelines}
+     *
+     * @param n the number of program pipeline names to create
+     */
+    public static void nglCreateProgramPipelines(int n, long pipelines) {
+        org.lwjgl.opengl.GL45.nglCreateProgramPipelines(n, pipelines);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateProgramPipelines">Reference Page</a></p>
      * 
      * Returns {@code n} previously unused program pipeline names in {@code pipelines}, each representing a new program pipeline object.
@@ -19885,6 +28726,14 @@ public class GL {
     @NativeType("void")
     public static int glCreateProgramPipelines() {
         return org.lwjgl.opengl.GL45.glCreateProgramPipelines();
+    }
+    /**
+     * Unsafe version of: {@link #glCreateQueries CreateQueries}
+     *
+     * @param n the number of query object names to create
+     */
+    public static void nglCreateQueries(int target, int n, long ids) {
+        org.lwjgl.opengl.GL45.nglCreateQueries(target, n, ids);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glCreateQueries">Reference Page</a></p>
@@ -19907,6 +28756,88 @@ public class GL {
     @NativeType("void")
     public static int glCreateQueries(@NativeType("GLenum") int target) {
         return org.lwjgl.opengl.GL45.glCreateQueries(target);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryBufferObject">Reference Page</a></p>
+     * 
+     * Queries the state of a query object.
+     *
+     * @param id     the name of a query object
+     * @param buffer the name of a buffer object
+     * @param pname  the state to query
+     * @param offset the offset into {@code buffer} at which the queried value is written
+     */
+    public static void glGetQueryBufferObjectiv(@NativeType("GLuint") int id, @NativeType("GLuint") int buffer, @NativeType("GLenum") int pname, @NativeType("GLintptr") long offset) {
+        org.lwjgl.opengl.GL45.glGetQueryBufferObjectiv(id, buffer, pname, offset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryBufferObject">Reference Page</a></p>
+     * 
+     * Unsigned version of {@link #glGetQueryBufferObjectiv GetQueryBufferObjectiv}.
+     *
+     * @param id     the name of a query object
+     * @param buffer the name of a buffer object
+     * @param pname  the state to query
+     * @param offset the offset into {@code buffer} at which the queried value is written
+     */
+    public static void glGetQueryBufferObjectuiv(@NativeType("GLuint") int id, @NativeType("GLuint") int buffer, @NativeType("GLenum") int pname, @NativeType("GLintptr") long offset) {
+        org.lwjgl.opengl.GL45.glGetQueryBufferObjectuiv(id, buffer, pname, offset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryBufferObject">Reference Page</a></p>
+     * 
+     * 64bit version of {@link #glGetQueryBufferObjectiv GetQueryBufferObjectiv}.
+     *
+     * @param id     the name of a query object
+     * @param buffer the name of a buffer object
+     * @param pname  the state to query
+     * @param offset the offset into {@code buffer} at which the queried value is written
+     */
+    public static void glGetQueryBufferObjecti64v(@NativeType("GLuint") int id, @NativeType("GLuint") int buffer, @NativeType("GLenum") int pname, @NativeType("GLintptr") long offset) {
+        org.lwjgl.opengl.GL45.glGetQueryBufferObjecti64v(id, buffer, pname, offset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGetQueryBufferObject">Reference Page</a></p>
+     * 
+     * 64bit version of {@link #glGetQueryBufferObjectuiv GetQueryBufferObjectuiv}.
+     *
+     * @param id     the name of a query object
+     * @param buffer the name of a buffer object
+     * @param pname  the state to query
+     * @param offset the offset into {@code buffer} at which the queried value is written
+     */
+    public static void glGetQueryBufferObjectui64v(@NativeType("GLuint") int id, @NativeType("GLuint") int buffer, @NativeType("GLenum") int pname, @NativeType("GLintptr") long offset) {
+        org.lwjgl.opengl.GL45.glGetQueryBufferObjectui64v(id, buffer, pname, offset);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glMemoryBarrierByRegion">Reference Page</a></p>
+     * 
+     * Behaves like {@link GL42#glMemoryBarrier MemoryBarrier}, with two differences:
+     * 
+     * <p>First, it narrows the region under consideration so that only reads/writes of prior fragment shaders that are invoked for a smaller region of the
+     * framebuffer will be completed/reflected prior to subsequent reads/write of following fragment shaders. The size of the region is implementation
+     * dependent and may be as small as one framebuffer pixel.</p>
+     * 
+     * <p>Second, it only applies to memory transactions that may be read by or written by a fragment shader.</p>
+     * 
+     * <p>When barriers is {@link GL42#GL_ALL_BARRIER_BITS ALL_BARRIER_BITS}, shader memory accesses will be synchronized relative to all these barrier bits, but not to other
+     * barrier bits specific to {@link GL42#glMemoryBarrier MemoryBarrier}. This implies that reads/writes for scatter/gather-like algorithms may or may not be
+     * completed/reflected after a MemoryBarrierByRegion command. However, for uses such as deferred shading, where a linked list of visible
+     * surfaces with the head at a framebuffer address may be constructed, and the entirety of the list is only dependent on previous executions at that
+     * framebuffer address, MemoryBarrierByRegion may be significantly more efficient than {@link GL42#glMemoryBarrier MemoryBarrier}.</p>
+     *
+     * @param barriers the barriers to insert. One or more of:<br><table><tr><td>{@link GL42#GL_ATOMIC_COUNTER_BARRIER_BIT ATOMIC_COUNTER_BARRIER_BIT}</td><td>{@link GL42#GL_FRAMEBUFFER_BARRIER_BIT FRAMEBUFFER_BARRIER_BIT}</td><td>{@link GL42#GL_SHADER_IMAGE_ACCESS_BARRIER_BIT SHADER_IMAGE_ACCESS_BARRIER_BIT}</td></tr><tr><td>{@link GL43#GL_SHADER_STORAGE_BARRIER_BIT SHADER_STORAGE_BARRIER_BIT}</td><td>{@link GL42#GL_TEXTURE_FETCH_BARRIER_BIT TEXTURE_FETCH_BARRIER_BIT}</td><td>{@link GL42#GL_UNIFORM_BARRIER_BIT UNIFORM_BARRIER_BIT}</td></tr></table>
+     */
+    public static void glMemoryBarrierByRegion(@NativeType("GLbitfield") int barriers) {
+        org.lwjgl.opengl.GL45.glMemoryBarrierByRegion(barriers);
+    }
+    /**
+     * Unsafe version of: {@link #glGetTextureSubImage GetTextureSubImage}
+     *
+     * @param bufSize the size of the buffer to receive the retrieved pixel data
+     */
+    public static void nglGetTextureSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, long pixels) {
+        org.lwjgl.opengl.GL45.nglGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetTextureSubImage">Reference Page</a></p>
@@ -20030,6 +28961,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
     }
     /**
+     * Unsafe version of: {@link #glGetCompressedTextureSubImage GetCompressedTextureSubImage}
+     *
+     * @param bufSize the size of the buffer to receive the retrieved pixel data
+     */
+    public static void nglGetCompressedTextureSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, long pixels) {
+        org.lwjgl.opengl.GL45.nglGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetCompressedTextureSubImage">Reference Page</a></p>
      * 
      * Obtains a sub-region of a compressed texture image.
@@ -20139,6 +29078,63 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, pixels);
     }
     /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glTextureBarrier">Reference Page</a></p>
+     * 
+     * Guarantees that writes have completed and caches have been invalidated before subsequent Draws are executed.
+     */
+    public static void glTextureBarrier() {
+        org.lwjgl.opengl.GL45.glTextureBarrier();
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glGetGraphicsResetStatus">Reference Page</a></p>
+     * 
+     * Indicates if the GL context has been in a reset state at any point since the last call to GetGraphicsResetStatus:
+     * 
+     * <ul>
+     * <li>{@link GL11#GL_NO_ERROR NO_ERROR} indicates that the GL context has not been in a reset state since the last call.</li>
+     * <li>{@link #GL_GUILTY_CONTEXT_RESET GUILTY_CONTEXT_RESET} indicates that a reset has been detected that is attributable to the current GL context.</li>
+     * <li>{@link #GL_INNOCENT_CONTEXT_RESET INNOCENT_CONTEXT_RESET} indicates a reset has been detected that is not attributable to the current GL context.</li>
+     * <li>{@link #GL_UNKNOWN_CONTEXT_RESET UNKNOWN_CONTEXT_RESET} indicates a detected graphics reset whose cause is unknown.</li>
+     * </ul>
+     * 
+     * <p>If a reset status other than NO_ERROR is returned and subsequent calls return NO_ERROR, the context reset was encountered and completed. If a reset
+     * status is repeatedly returned, the context may be in the process of resetting.</p>
+     * 
+     * <p>Reset notification behavior is determined at context creation time, and may be queried by calling GetIntegerv with the symbolic constant
+     * {@link #GL_RESET_NOTIFICATION_STRATEGY RESET_NOTIFICATION_STRATEGY}.</p>
+     * 
+     * <p>If the reset notification behavior is {@link #GL_NO_RESET_NOTIFICATION NO_RESET_NOTIFICATION}, then the implementation will never deliver notification of reset events, and
+     * GetGraphicsResetStatus will always return NO_ERROR.</p>
+     * 
+     * <p>If the behavior is {@link #GL_LOSE_CONTEXT_ON_RESET LOSE_CONTEXT_ON_RESET}, a graphics reset will result in a lost context and require creating a new context as described
+     * above. In this case GetGraphicsResetStatus will return an appropriate value from those described above.</p>
+     * 
+     * <p>If a graphics reset notification occurs in a context, a notification must also occur in all other contexts which share objects with that context.</p>
+     * 
+     * <p>After a graphics reset has occurred on a context, subsequent GL commands on that context (or any context which shares with that context) will generate a
+     * {@link #GL_CONTEXT_LOST CONTEXT_LOST} error. Such commands will not have side effects (in particular, they will not modify memory passed by pointer for query results,
+     * and may not block indefinitely or cause termination of the application. Exceptions to this behavior include:</p>
+     * 
+     * <ul>
+     * <li>{@link GL11#glGetError GetError} and GetGraphicsResetStatus behave normally following a graphics reset, so that the application can determine a reset has
+     * occurred, and when it is safe to destroy and recreate the context.</li>
+     * <li>Any commands which might cause a polling application to block indefinitely will generate a CONTEXT_LOST error, but will also return a value
+     * indicating completion to the application.</li>
+     * </ul>
+     */
+    @NativeType("GLenum")
+    public static int glGetGraphicsResetStatus() {
+        return org.lwjgl.opengl.GL45.glGetGraphicsResetStatus();
+    }
+    /**
+     * Unsafe version of: {@link #glGetnMapdv GetnMapdv}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code data}
+     */
+    public static void nglGetnMapdv(int target, int query, int bufSize, long data) {
+        org.lwjgl.opengl.GL45.nglGetnMapdv(target, query, bufSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetMap">Reference Page</a></p>
      * 
      * Robust version of {@link GL11#glGetMapdv GetMapdv}
@@ -20161,6 +29157,14 @@ public class GL {
     @NativeType("void")
     public static double glGetnMapd(@NativeType("GLenum") int target, @NativeType("GLenum") int query) {
         return org.lwjgl.opengl.GL45.glGetnMapd(target, query);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnMapfv GetnMapfv}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code data}
+     */
+    public static void nglGetnMapfv(int target, int query, int bufSize, long data) {
+        org.lwjgl.opengl.GL45.nglGetnMapfv(target, query, bufSize, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetMap">Reference Page</a></p>
@@ -20187,6 +29191,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetnMapf(target, query);
     }
     /**
+     * Unsafe version of: {@link #glGetnMapiv GetnMapiv}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code data}
+     */
+    public static void nglGetnMapiv(int target, int query, int bufSize, long data) {
+        org.lwjgl.opengl.GL45.nglGetnMapiv(target, query, bufSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetMap">Reference Page</a></p>
      * 
      * Robust version of {@link GL11#glGetMapiv GetMapiv}
@@ -20211,6 +29223,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetnMapi(target, query);
     }
     /**
+     * Unsafe version of: {@link #glGetnPixelMapfv GetnPixelMapfv}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code data}
+     */
+    public static void nglGetnPixelMapfv(int map, int bufSize, long data) {
+        org.lwjgl.opengl.GL45.nglGetnPixelMapfv(map, bufSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetPixelMap">Reference Page</a></p>
      * 
      * Robust version of {@link GL11#glGetPixelMapfv GetPixelMapfv}
@@ -20220,6 +29240,14 @@ public class GL {
      */
     public static void glGetnPixelMapfv(@NativeType("GLenum") int map, @NativeType("GLfloat *") FloatBuffer data) {
         org.lwjgl.opengl.GL45.glGetnPixelMapfv(map, data);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnPixelMapuiv GetnPixelMapuiv}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code data}
+     */
+    public static void nglGetnPixelMapuiv(int map, int bufSize, long data) {
+        org.lwjgl.opengl.GL45.nglGetnPixelMapuiv(map, bufSize, data);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetPixelMap">Reference Page</a></p>
@@ -20233,6 +29261,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetnPixelMapuiv(map, data);
     }
     /**
+     * Unsafe version of: {@link #glGetnPixelMapusv GetnPixelMapusv}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code data}
+     */
+    public static void nglGetnPixelMapusv(int map, int bufSize, long data) {
+        org.lwjgl.opengl.GL45.nglGetnPixelMapusv(map, bufSize, data);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetPixelMap">Reference Page</a></p>
      * 
      * Robust version of {@link GL11#glGetPixelMapusv GetPixelMapusv}
@@ -20242,6 +29278,14 @@ public class GL {
      */
     public static void glGetnPixelMapusv(@NativeType("GLenum") int map, @NativeType("GLushort *") ShortBuffer data) {
         org.lwjgl.opengl.GL45.glGetnPixelMapusv(map, data);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnPolygonStipple GetnPolygonStipple}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code pattern}
+     */
+    public static void nglGetnPolygonStipple(int bufSize, long pattern) {
+        org.lwjgl.opengl.GL45.nglGetnPolygonStipple(bufSize, pattern);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnPolygonStipple">Reference Page</a></p>
@@ -20263,6 +29307,14 @@ public class GL {
      */
     public static void glGetnPolygonStipple(@NativeType("GLubyte *") ByteBuffer pattern) {
         org.lwjgl.opengl.GL45.glGetnPolygonStipple(pattern);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnTexImage GetnTexImage}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code img}
+     */
+    public static void nglGetnTexImage(int tex, int level, int format, int type, int bufSize, long img) {
+        org.lwjgl.opengl.GL45.nglGetnTexImage(tex, level, format, type, bufSize, img);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnTexImage">Reference Page</a></p>
@@ -20350,6 +29402,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetnTexImage(tex, level, format, type, img);
     }
     /**
+     * Unsafe version of: {@link #glReadnPixels ReadnPixels}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code data}
+     */
+    public static void nglReadnPixels(int x, int y, int width, int height, int format, int type, int bufSize, long pixels) {
+        org.lwjgl.opengl.GL45.nglReadnPixels(x, y, width, height, format, type, bufSize, pixels);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glReadnPixels">Reference Page</a></p>
      * 
      * Behaves identically to {@link GL11#glReadPixels ReadPixels} except that it does not write more than {@code bufSize} bytes into {@code data}
@@ -20431,6 +29491,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glReadnPixels(x, y, width, height, format, type, pixels);
     }
     /**
+     * Unsafe version of: {@link #glGetnColorTable GetnColorTable}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code table}
+     */
+    public static void nglGetnColorTable(int target, int format, int type, int bufSize, long table) {
+        org.lwjgl.opengl.GL45.nglGetnColorTable(target, format, type, bufSize, table);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnColorTable">Reference Page</a></p>
      * 
      * Robust version of {@link ARBImaging#glGetColorTable GetColorTable}
@@ -20497,6 +29565,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetnColorTable(target, format, type, table);
     }
     /**
+     * Unsafe version of: {@link #glGetnConvolutionFilter GetnConvolutionFilter}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code image}
+     */
+    public static void nglGetnConvolutionFilter(int target, int format, int type, int bufSize, long image) {
+        org.lwjgl.opengl.GL45.nglGetnConvolutionFilter(target, format, type, bufSize, image);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnConvolutionFilter">Reference Page</a></p>
      * 
      * Robust version of {@link ARBImaging#glGetConvolutionFilter GetConvolutionFilter}
@@ -20522,6 +29598,15 @@ public class GL {
      */
     public static void glGetnConvolutionFilter(@NativeType("GLenum") int target, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("void *") ByteBuffer image) {
         org.lwjgl.opengl.GL45.glGetnConvolutionFilter(target, format, type, image);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnSeparableFilter GetnSeparableFilter}
+     *
+     * @param rowBufSize    the maximum number of bytes to write into {@code row}
+     * @param columnBufSize the maximum number of bytes to write into {@code column}
+     */
+    public static void nglGetnSeparableFilter(int target, int format, int type, int rowBufSize, long row, int columnBufSize, long column, long span) {
+        org.lwjgl.opengl.GL45.nglGetnSeparableFilter(target, format, type, rowBufSize, row, columnBufSize, column, span);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnSeparableFilter">Reference Page</a></p>
@@ -20556,6 +29641,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetnSeparableFilter(target, format, type, row, column, span);
     }
     /**
+     * Unsafe version of: {@link #glGetnHistogram GetnHistogram}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code values}
+     */
+    public static void nglGetnHistogram(int target, boolean reset, int format, int type, int bufSize, long values) {
+        org.lwjgl.opengl.GL45.nglGetnHistogram(target, reset, format, type, bufSize, values);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnHistogram">Reference Page</a></p>
      * 
      * Robust version of {@link ARBImaging#glGetHistogram GetHistogram}
@@ -20583,6 +29676,14 @@ public class GL {
      */
     public static void glGetnHistogram(@NativeType("GLenum") int target, @NativeType("GLboolean") boolean reset, @NativeType("GLenum") int format, @NativeType("GLenum") int type, @NativeType("void *") ByteBuffer values) {
         org.lwjgl.opengl.GL45.glGetnHistogram(target, reset, format, type, values);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnMinmax GetnMinmax}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code values}
+     */
+    public static void nglGetnMinmax(int target, boolean reset, int format, int type, int bufSize, long values) {
+        org.lwjgl.opengl.GL45.nglGetnMinmax(target, reset, format, type, bufSize, values);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnMinmax">Reference Page</a></p>
@@ -20616,6 +29717,14 @@ public class GL {
         org.lwjgl.opengl.GL45.glGetnMinmax(target, reset, format, type, values);
     }
     /**
+     * Unsafe version of: {@link #glGetnCompressedTexImage GetnCompressedTexImage}
+     *
+     * @param bufSize the maximum number of bytes to write into {@code img}
+     */
+    public static void nglGetnCompressedTexImage(int target, int level, int bufSize, long img) {
+        org.lwjgl.opengl.GL45.nglGetnCompressedTexImage(target, level, bufSize, img);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetnCompressedTexImage">Reference Page</a></p>
      * 
      * Robust version of {@link GL13#glGetCompressedTexImage GetCompressedTexImage}
@@ -20639,6 +29748,14 @@ public class GL {
      */
     public static void glGetnCompressedTexImage(@NativeType("GLenum") int target, @NativeType("GLint") int level, @NativeType("void *") ByteBuffer img) {
         org.lwjgl.opengl.GL45.glGetnCompressedTexImage(target, level, img);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnUniformfv GetnUniformfv}
+     *
+     * @param bufSize the maximum number of bytes to write to {@code params}
+     */
+    public static void nglGetnUniformfv(int program, int location, int bufSize, long params) {
+        org.lwjgl.opengl.GL45.nglGetnUniformfv(program, location, bufSize, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
@@ -20665,6 +29782,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetnUniformf(program, location);
     }
     /**
+     * Unsafe version of: {@link #glGetnUniformdv GetnUniformdv}
+     *
+     * @param bufSize the maximum number of bytes to write to {@code params}
+     */
+    public static void nglGetnUniformdv(int program, int location, int bufSize, long params) {
+        org.lwjgl.opengl.GL45.nglGetnUniformdv(program, location, bufSize, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
      * 
      * Double version of {@link #glGetnUniformfv GetnUniformfv}.
@@ -20689,6 +29814,14 @@ public class GL {
         return org.lwjgl.opengl.GL45.glGetnUniformd(program, location);
     }
     /**
+     * Unsafe version of: {@link #glGetnUniformiv GetnUniformiv}
+     *
+     * @param bufSize the maximum number of bytes to write to {@code params}
+     */
+    public static void nglGetnUniformiv(int program, int location, int bufSize, long params) {
+        org.lwjgl.opengl.GL45.nglGetnUniformiv(program, location, bufSize, params);
+    }
+    /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
      * 
      * Integer version of {@link #glGetnUniformfv GetnUniformfv}.
@@ -20711,6 +29844,14 @@ public class GL {
     @NativeType("void")
     public static float glGetnUniformi(@NativeType("GLuint") int program, @NativeType("GLint") int location) {
         return org.lwjgl.opengl.GL45.glGetnUniformi(program, location);
+    }
+    /**
+     * Unsafe version of: {@link #glGetnUniformuiv GetnUniformuiv}
+     *
+     * @param bufSize the maximum number of bytes to write to {@code params}
+     */
+    public static void nglGetnUniformuiv(int program, int location, int bufSize, long params) {
+        org.lwjgl.opengl.GL45.nglGetnUniformuiv(program, location, bufSize, params);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glGetUniform">Reference Page</a></p>
@@ -21581,6 +30722,10 @@ public class GL {
     public static final int
         GL_TRANSFORM_FEEDBACK_OVERFLOW        = 0x82EC,
         GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
+    /** Unsafe version of: {@link #glMultiDrawArraysIndirectCount MultiDrawArraysIndirectCount} */
+    public static void nglMultiDrawArraysIndirectCount(int mode, long indirect, long drawcount, int maxdrawcount, int stride) {
+        org.lwjgl.opengl.GL46.nglMultiDrawArraysIndirectCount(mode, indirect, drawcount, maxdrawcount, stride);
+    }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMultiDrawArraysIndirectCount">Reference Page</a></p>
      * 
@@ -21634,6 +30779,10 @@ public class GL {
      */
     public static void glMultiDrawArraysIndirectCount(@NativeType("GLenum") int mode, @NativeType("const void *") IntBuffer indirect, @NativeType("GLintptr") long drawcount, @NativeType("GLsizei") int maxdrawcount, @NativeType("GLsizei") int stride) {
         org.lwjgl.opengl.GL46.glMultiDrawArraysIndirectCount(mode, indirect, drawcount, maxdrawcount, stride);
+    }
+    /** Unsafe version of: {@link #glMultiDrawElementsIndirectCount MultiDrawElementsIndirectCount} */
+    public static void nglMultiDrawElementsIndirectCount(int mode, int type, long indirect, long drawcount, int maxdrawcount, int stride) {
+        org.lwjgl.opengl.GL46.nglMultiDrawElementsIndirectCount(mode, type, indirect, drawcount, maxdrawcount, stride);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glMultiDrawElementsIndirectCount">Reference Page</a></p>
@@ -21691,6 +30840,34 @@ public class GL {
      */
     public static void glMultiDrawElementsIndirectCount(@NativeType("GLenum") int mode, @NativeType("GLenum") int type, @NativeType("const void *") IntBuffer indirect, @NativeType("GLintptr") long drawcount, @NativeType("GLsizei") int maxdrawcount, @NativeType("GLsizei") int stride) {
         org.lwjgl.opengl.GL46.glMultiDrawElementsIndirectCount(mode, type, indirect, drawcount, maxdrawcount, stride);
+    }
+    /**
+     * <p><a target="_blank" href="http://docs.gl/gl4/glPolygonOffsetClamp">Reference Page</a></p>
+     * 
+     * The depth values of all fragments generated by the rasterization of a polygon may be offset by a single value that is computed for that polygon. This
+     * function determines this value.
+     * 
+     * <p>{@code factor} scales the maximum depth slope of the polygon, and {@code units} scales an implementation-dependent constant that relates to the usable
+     * resolution of the depth buffer. The resulting values are summed to produce the polygon offset value, which may then be clamped to a minimum or maximum
+     * value specified by {@code clamp}.</p>
+     * 
+     * <p>The values {@code factor}, {@code units}, and {@code clamp} may each be positive, negative, or zero. Calling the command {@link GL11#glPolygonOffset PolygonOffset} is equivalent
+     * to calling the command {@code PolygonOffsetClamp} with clamp equal to zero.</p>
+     *
+     * @param factor scales the maximum depth slope of the polygon
+     * @param units  scales an implementation-dependent constant that relates to the usable resolution of the depth buffer
+     * @param clamp  the minimum or maximum polygon offset value
+     */
+    public static void glPolygonOffsetClamp(@NativeType("GLfloat") float factor, @NativeType("GLfloat") float units, @NativeType("GLfloat") float clamp) {
+        org.lwjgl.opengl.GL46.glPolygonOffsetClamp(factor, units, clamp);
+    }
+    /**
+     * Unsafe version of: {@link #glSpecializeShader SpecializeShader}
+     *
+     * @param numSpecializationConstants the number of specialization constants whose values to set in this call
+     */
+    public static void nglSpecializeShader(int shader, long pEntryPoint, int numSpecializationConstants, long pConstantIndex, long pConstantValue) {
+        org.lwjgl.opengl.GL46.nglSpecializeShader(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
     }
     /**
      * <p><a target="_blank" href="http://docs.gl/gl4/glSpecializeShader">Reference Page</a></p>
